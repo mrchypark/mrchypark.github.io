@@ -1,0 +1,73 @@
+---
+title: markdown 파일 테스트하는 데 여기서는 되려나
+author: mrchypark
+date: '2018-03-09'
+slug: markdown-파일-테스트하는-데-여기서는-되려나
+categories:
+  - R
+tags:
+  - ad
+  - api
+  - blog
+  - blogdown
+  - Boolean
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if(!requireNamespace("ggplot2")){
+    install.packages("ggplot2")
+}
+library(ggplot2)
+```
+
+안녕하세요! 드디어 [blogdown][1]으로 `blog`를 만드는 내용을 소개하겠습니다! 
+
+<br>
+<p style="text-align: center;">
+[<img src="https://camo.githubusercontent.com/0cab37d0a0a1237bc1fd97f41ceff51ce42f4444/68747470733a2f2f626f6f6b646f776e2e6f72672f79696875692f626c6f67646f776e2f696d616765732f6c6f676f2e706e67">][1]
+</p>
+<br>
+
+공식 문서의 패키지 설명은 다음과 같습니다.
+
+> An open-source (GPL-3) R package to generate `static websites` based on `R Markdown` and `Hugo`.
+
+R 마크다운과 Hugo를 사용하여 만든 정적 웹사이트를 작성하는 R 패키지랍니다. 설명에서 중요한 부분은 강조한 것과 같은 3가지입니다.
+
+----
+
+#### 1. static websites
+
+`static websites`가 어찌되었건 블로그 같은 사이트를 뜻합니다. 많은 IT 기술 블로그 들이 `static websites`인 셈입니다. 자세하고 좋은 포스트가 있어 [링크][4]로 설명을 대체하겠습니다. 
+
+#### 2. R Markdown
+
+우선 마크다운은 간단한 문법으로 디자인을 입힐 수 있게 설계되어서 많은 인기를 누리고 있습니다. 문법 또한 좋은 설명 포스트를 [링크][6] 첨부하겠습니다. 어쨌든 마크다운은 이번 블로그를 작성하는데 에디터 역할을 하기 때문에 필요한 문법은 알고 있는 것이 좋습니다.
+
+[R Markdown][2]은 [Markdown][5] + R 코드와 실행결과를 추가하여 작성하는 문서의 일종입니다. 지금의 문서도 `.Rmd` 확장자의 텍스트 파일로 작성하고 블로그 포스팅이 된 것입니다. R 마크다운은 아래에 있는 것같은 `code chunk`를 사용해서 R 코드와 그 실행 결과를 `.md` 첨부하여 변환할 수 있게 설계되어 있습니다.
+
+```
+여기는 코드 청크입니다.
+x <- 10
+```
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+#### 3. Hugo
+
+[Hugo][3]는 [Go 언어][7]로 작성된 `static website generator(SWG)`입니다. `jeykll`의 성공으로 많은 SWG가 각 언어를 기반으로 만들어졌고, Hugo도 그 중 하나입니다. Hugo는 Go 언어의 강점을 살려 **속도가 빠른 것**을 특징으로 내세우고 있습니다. `blogdown` 패키지 제작자도 이런 점을 염두해서 기반 도구로 선택한 것이 아닐까 싶습니다.
+
+
+
+[1]: https://bookdown.org/yihui/blogdown/
+[2]: https://rmarkdown.rstudio.com/
+[3]: https://gohugo.io/
+[4]: http://blog.nacyot.com/articles/2014-01-15-static-site-generator/
+[5]: https://namu.wiki/w/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
+[6]: https://steemit.com/kr/@nand/markdown
+[7]: https://golang.org/

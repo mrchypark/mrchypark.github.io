@@ -1,0 +1,59 @@
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+baseurl = "https://mrchypark.github.io/"
+languageCode = "ko-KR"
+title = "Mrchypark | log for you & me"
+theme = "blackburn"
+author = "mrchypark"
+copyright = "&copy; 2018. All rights reserved."
+canonifyurls = true
+paginate = 10
+
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
+[params]
+  # Shown in the home page
+  subtitle = "R, Python, Docker, Speech-To-Text, Text analysis"
+  brand = "Mrchypark"
+  googleAnalytics = "UA-47822682-14"
+  disqus = "mrchypark"
+  # CSS name for highlight.js
+  highlightjs = "agate"
+  dateFormat = "02 Jan 2006, 15:04"
+  custom_css = ["my.css"]
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 2
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 3
+    identifier = "about"
+    url = "/about/"
+  [[menu.main]]
+    name = "Material"
+    pre = "<i class='fa fa-book fa-fw'></i>"
+    weight = 4
+    url = "/Material/"
+
+[social]
+  # Link your social networking accouns to the side menu
+  # by entering your username or ID.
+  facebook = "mrchypark"
+  github = "mrchypark"
+  linkedin = "chanyubpark"
+  instagram = "mrchypark"
+  twitter = "mrchypark_"

@@ -1,0 +1,47 @@
+---
+title: '[R로나만의] 웹페이지 만들기 1탄 Rpubs'
+author: mrchypark
+date: '2018-03-09'
+slug: r로나만의-웹페이지-만들기
+categories:
+  - R
+tags:
+  - rpubs
+  - web
+  - html
+  - Rmd
+  - R로나만의
+---
+
+> 오늘날 웹사이트를 가지지 않은 사람은 존재하지 않는 것이다.
+
+Web에 자신의 결과물을 정리하고 공개하는 것은 시간이 가면 갈 수록 그 중요성을 더해 가고 있습니다. 
+어느 정도냐면 웹사이트를 가지지 않은 사람은 존재하지 않는 것이라고 말하는 사람이 있을 정도입니다.
+저는 코드 공유 SNS인 `Github`을 이용해 코드를 공유하고 대화하는 것을 공부하다 [github pages][pages]에 대해 알게 되었습니다.
+거기에 `.Rmd` 파일은 웹기술에 대한 사전지식 없이 `.html` 파일로 변환할 수 있었습니다.
+`R 마크다운` + `github pages` 조합으로 R에서 만들 수 있는 여려 결과물들을 웹으로 공개하여 인터넷 주소로 공유하는 방법이 있는 것입니다. 
+이건 다음 번에 설명하기로 하고, [Rstudio][2]를 이용해서 `.Rmd` 문서를 `.html` 파일로 변경하여 웹페이지로 만들어주는 [Rpubs][Rpubs]라는 서비스를 소개하겠습니다.
+
+
+### Rpub
+
+<img src="https://user-images.githubusercontent.com/6179259/37238858-eb19bb50-2472-11e8-86b7-5b0f51cca328.PNG" width=100%>
+
+[Rpubs][Rpubs]는 `Easy web publishing from R`라는 말처럼 Rstudio로 `.Rmd` 파일을 쉽게 **무료**로 [호스팅][호스팅]해주는 서비스입니다. 
+
+#### 회원가입을 해보자
+
+ttt
+
+#### Rstudio에 등록해보자
+
+<img src="https://user-images.githubusercontent.com/6179259/37238875-1b273872-2473-11e8-8278-40edfd2aff12.PNG", width=100%>
+
+#### 웹에 올려보자!
+
+
+[pages]: https://pages.github.com/
+[Rstudio]: https://www.rstudio.com/
+[Rpubs]: http://rpubs.com/
+[호스팅]: https://namu.wiki/w/%ED%98%B8%EC%8A%A4%ED%8C%85
+
