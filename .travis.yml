@@ -21,6 +21,5 @@ deploy:
     on:
         branch: source
     local_dir: public
-    keep-history: true
     target_branch: master
     verbose: true
