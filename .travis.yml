@@ -1,11 +1,18 @@
 language: r
-cache: packages
+dist: trusty
+sudo: false
+cache:
+  packages: yes
+  directories:
+    - $HOME/bin
+    
 branches:
     only:
         - source
+        
 r_github_packages:
-    - yihui/xaringan
     - yihui/xfun
+    - yihui/xaringan
     - rstudio/blogdown
 
 before_script:
@@ -16,10 +23,11 @@ script:
 
 deploy:
     provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_PAT
+    skip_cleanup: true
+    github_token: $GITHUB_PAT
     on:
         branch: source
-    local-dir: public
-    target-branch: master
+    local_dir: public
+    target_branch: master
     verbose: true
+
