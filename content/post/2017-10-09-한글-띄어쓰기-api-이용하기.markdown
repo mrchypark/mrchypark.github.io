@@ -15,6 +15,8 @@ tags:
 
 
 
+<img src="https://user-images.githubusercontent.com/6179259/37244197-a6b91c8e-24c8-11e8-96ae-30a489c266b2.jpg" width=100%>
+
 [KoNLP 패키지][1]를 만드신 [고감자][2]님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 [관련 연구][3]를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다.([관련글][4]) 사용법도 함께 공개하셨는데, R에서는 사용이 어색할 수 있는 [reticulate 패키지][5]로 예시를 작성해주셔서 R에서 많이 사용하는 패키지들로 예시코드를 공유하면서 웹 요청에 대한 내용도 함께 공유해볼까 합니다.
 
 ## 띄어쓰기 api 요청하기
@@ -79,9 +81,9 @@ content(res)
 
 ```
 ## {xml_document}
-## <html>
-## [1] <head>\n<meta http-equiv="Content-type" content="text/html; charset= ...
-## [2] <body>\n\n    <div class="container">\n\n      <h1>404</h1>\n      < ...
+## <html lang="ko">
+## [1] <head>\n<meta http-equiv="content-type" content="text/html; charset= ...
+## [2] <body>\r\n<div id="layout">\r\n\r\n  \n<a href="#menu" id="menuLink" ...
 ```
 
 위의 결과에서 `<html>`이라고 나온 것을 볼 수 있습니다. [html][9]는 css, javascrit와 함께 브라우저가 사람들이 볼 수 있는 그림을 그리도록 만들어진 규칙입니다. GET 요청은 대부분 서버에서 이런 html 문서를 데이터로 받기 위해서 브라우저에서 동작하는 방식입니다. 알고 계신 다른 사이트들을 시도해보시면 더 이해가 좋을 것 같습니다. 이 html 문서에서 필요한 곳의 내용만 추출하는 패키지로 [rvest 패키지][10]가 있습니다. rvest 패키지 사용법은 많은 분들이 소개해주셔서 검색해 보시길 [추천][11]드립니다. 

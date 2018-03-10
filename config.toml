@@ -38,16 +38,11 @@ paginate = 10
     identifier = "post"
     url = "/post/"
   [[menu.main]]
-    name = "About"
-    pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 3
-    identifier = "about"
-    url = "/about/"
-  [[menu.main]]
-    name = "Material"
+    name = "Materials"
     pre = "<i class='fa fa-book fa-fw'></i>"
-    weight = 4
-    url = "/Material/"
+    weight = 3
+    identifier = "material"
+    url = "/material/"
 
 [social]
   # Link your social networking accouns to the side menu

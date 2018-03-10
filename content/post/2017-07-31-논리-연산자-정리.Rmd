@@ -17,9 +17,12 @@ tags:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
-source("https://install-github.me/haozhu233/kableExtra")
+if(!requireNamespace("kableExtra")){
+source("https://install-github.me/haozhu233/kableExtra")}
 library(kableExtra)
 ```
+
+<img src="https://user-images.githubusercontent.com/6179259/37244179-69e8c354-24c8-11e8-9a12-7a345b4636c1.jpg" wigth=100%>
 
  드디어 블로그에서 `Rmd`를 사용할 수 있게 되어서 매우 기쁜 마음에 포스팅을 하나 기획하였습니다. 그것은 바로 `논리 연산자`! 기본적은 것은 다 쉬운데 데이터가 여러 개인 벡터(`vector`)일 때 동작에 대해서 많이 고민하지 않는 것 같아 이렇게 첫 번째 주제로 잡았습니다.
 
