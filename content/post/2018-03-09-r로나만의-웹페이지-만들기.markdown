@@ -29,21 +29,112 @@ Web에 자신의 결과물을 정리하고 공개하는 것은 시간이 가면 
 
 <img src="https://user-images.githubusercontent.com/6179259/37238858-eb19bb50-2472-11e8-86b7-5b0f51cca328.PNG" width=100%>
 
-[Rpubs][Rpubs]는 `Easy web publishing from R`라는 말처럼 Rstudio로 `.Rmd` 파일을 쉽게 **무료**로 [호스팅][호스팅]해주는 서비스입니다. 
+[Rpubs][Rpubs]는 `Easy web publishing from R`라는 말처럼 Rstudio로 `.html` 파일을 쉽게 **무료**로 [호스팅][호스팅]해주는 서비스입니다. 우리는 `.Rmd` 파일로 쉽게 `.html` 파일을 만들 수 있기 때문에, 이걸 이용해볼 겁니다.
 
-#### 회원가입을 해보자
+#### Rmd to html
+
+본래 일반적으로 사용하는 포멧은 `.md` 파일입니다. [판독(pandoc)][pandoc]이라는 오픈소스 프로젝트를 이용해서 여러 다른 문서 포멧으로 변환할 수 있습니다. 아래 그림은 input -> output인데 한번 확인해 보시죠.
+
+<img src="https://pandoc.org/diagram.jpg" width=100%>
+
+이렇게 많은 변환 기능을 제공해주는 판독을 사용해서 마크다운(`.md`)을 웹문서(`.html`)로 변환할 겁니다. 우리는 [knitr][knitr] 패키지를 이용해서 `.Rmd` 문서를 `.md` 파일로 바꾸고, 판독을 이용해서 원하는 다양한 포멧(이번 경우는 `.html`)으로 바꿉니다.
+
+<img src="http://rmarkdown.rstudio.com/lesson-images/RMarkdownFlow.png" width=100%>
+
+내부 동작은 이 정도로 가볍게 넘기고, Rstudio를 이용해서 `.Rmd` 파일을 만들고 저장하고, `.html` 파일로 바꿔보겠습니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249896-c7889b22-2533-11e8-9e93-1dd889582e0e.PNG" width=100%>
+
+Rstudio에서 File 버튼 밑에 새로 만들기 버튼을 누릅니다. 우리가 만들건 R Markdown 입니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249895-c75445a2-2533-11e8-89bd-63d298d68f69.PNG" width=100%>
+
+필요한 패키지가 설치안 안되어 있는데, 설치할꺼냐고 물어보네요! 당연히 Yes를 눌러 패키지들을 설치해줍니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249894-c725aa3a-2533-11e8-8044-25c73f508d17.PNG" width=100%>
+
+패키지가 설치되고 있습니다. 글자가 깨진 부분은 기능에는 이상이 없으니 넘어가겠습니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249893-c6f016d6-2533-11e8-886b-66aadfded6ff.PNG" width=100%>
+
+드디어 Rmd 파일을 만드는 창이 열렸습니다. 많은 옵션이 있지만 저희는 기본으로 진행하려고 하니, 바로 `OK`를 눌러주세요.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249892-c68e1a3a-2533-11e8-8fe8-fbbed1bd8164.PNG" width=100%>
+
+간단한 기능 설명이 포함되있는 문서가 만들어졌습니다! 그럼 간단하게만 구조를 확인해 볼까요?
+
+<img src="https://user-images.githubusercontent.com/6179259/37249898-c7ed414e-2533-11e8-8854-09e56dd1f18f.PNG" width=100%>
+
+우선 화면 내에 드래그 한 부분이 `YAML header` 입니다. [YAML][YAML]은 [JSON][JSON], [XML] 같은 양식의 일종입니다. 마크다운에는 `header`와 `body` 두 공간이 있습니다. 물론 대부분의 마크업이 같은 구성을 가지고 있습니다. `header`는 변환하기 위한 설정들을 작성하는 공간입니다. 지금 화면에서는 `html`문서를 변환결과로 하겠다고 작성한 것입니다. [여기][rmdhtml]에서 `html`로 변환할 때의 다양한 옵션을 확인하세요. `html` 문서 이외에 다른 포멧들의 옵션도 [설명][format]이 잘되어 있습니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37249897-c7b91d24-2533-11e8-8b67-c27c926626ca.PNG" width=100%>
+
+body 부분은 전부 markdown 문법을 그대로 지원합니다. [문법][문법] 설명은 정말 많이 있으니 한 번 확인해보세요. `.Rmd`는 코드 덩어리에서 R 코드를 실행하고 결과를 함께 `.md`로 변환해줍니다. 그래서 코드 덩어리 부분 문법만 확인하면 됩니다. 그 문법도 지금 범위는 아니니 [레퍼런스][code]를 확인해주세요!
+
+위의 규칙과 문법에 맞춰 `.Rmd` 파일을 작성하면 `Knit` 버튼으로 `.html` 문서 변환을 할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/37251605-b467a1e6-2556-11e8-957e-b51890ae9e40.PNG" width=100%>
 
 
 
-#### Rstudio에 등록해보자
+<img src="https://user-images.githubusercontent.com/6179259/37251606-b49aa32a-2556-11e8-8f6c-d09df2d21122.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251607-b4c85cb6-2556-11e8-9e8b-311f5780d39e.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251608-b4f587cc-2556-11e8-8a4c-6bab3e997d3d.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251609-b521326e-2556-11e8-80c7-bbabf091bd2f.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251610-b54b4d38-2556-11e8-9227-545fc1064ecb.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251611-b57a8bc0-2556-11e8-9b15-32795db881d5.PNG" width=100%>
+
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251612-b5a7b000-2556-11e8-9e05-25926edf00d4.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251613-b5d372b2-2556-11e8-8d61-ef84adc63994.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251614-b6046642-2556-11e8-97a2-80e25204ae47.PNG" width=100%>
+
+
+
+<img src="https://user-images.githubusercontent.com/6179259/37251604-b42d1db4-2556-11e8-80d5-af364633dee7.PNG" width=100%>
+
+
+
 
 <img src="https://user-images.githubusercontent.com/6179259/37238875-1b273872-2473-11e8-8278-40edfd2aff12.PNG", width=100%>
 
-#### 웹에 올려보자!
+
+
 
 
 [pages]: https://pages.github.com/
 [Rstudio]: https://www.rstudio.com/
 [Rpubs]: http://rpubs.com/
 [호스팅]: https://namu.wiki/w/%ED%98%B8%EC%8A%A4%ED%8C%85
-
+[pandoc]: https://pandoc.org/
+[knitr]: https://github.com/yihui/knitr
+[YAML]: http://yaml.org/
+[JSON]: https://www.json.org/json-ko.html
+[XML]: https://www.w3.org/XML/
+[rmdhtml]: https://rmarkdown.rstudio.com/html_document_format.html
+[format]: https://rmarkdown.rstudio.com/formats.html
+[문법]: https://gist.github.com/ihoneymon/652be052a0727ad59601
+[code]: https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf

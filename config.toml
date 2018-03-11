@@ -1,7 +1,7 @@
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 baseurl = "https://mrchypark.github.io/"
 languageCode = "ko-KR"
-title = "Mrchypark | log for you & me"
+title = "Mrchypark"
 theme = "blackburn"
 author = "mrchypark"
 copyright = "&copy; 2018. All rights reserved."
@@ -14,7 +14,7 @@ paginate = 10
 
 [params]
   # Shown in the home page
-  subtitle = "R, Python, Docker, Speech-To-Text, Text analysis"
+  subtitle = "log for you & me | R, Docker, Text analysis etc"
   brand = "Mrchypark"
   googleAnalytics = "UA-47822682-14"
   disqus = "mrchypark"
