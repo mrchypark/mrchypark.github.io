@@ -43,6 +43,12 @@ Web에 자신의 결과물을 정리하고 공개하는 것은 시간이 가면 
 
 내부 동작은 이 정도로 가볍게 넘기고, Rstudio를 이용해서 `.Rmd` 파일을 만들고 저장하고, `.html` 파일로 바꿔보겠습니다.
 
+그럼 이제 Rstudio를 실행해 볼까요?
+
+<img src="https://user-images.githubusercontent.com/6179259/37238875-1b273872-2473-11e8-8278-40edfd2aff12.PNG", width=100%>
+
+새로 파일을 만드는 방법이 몇 가지 있지만, 우리는 아래 방법을 시도해 볼겁니다.
+
 <img src="https://user-images.githubusercontent.com/6179259/37249896-c7889b22-2533-11e8-9e93-1dd889582e0e.PNG" width=100%>
 
 Rstudio에서 File 버튼 밑에 새로 만들기 버튼을 누릅니다. 우리가 만들건 R Markdown 입니다.
@@ -70,12 +76,6 @@ Rstudio에서 File 버튼 밑에 새로 만들기 버튼을 누릅니다. 우리
 <img src="https://user-images.githubusercontent.com/6179259/37249897-c7b91d24-2533-11e8-8b67-c27c926626ca.PNG" width=100%>
 
 body 부분은 전부 markdown 문법을 그대로 지원합니다. [문법][문법] 설명은 정말 많이 있으니 한 번 확인해보세요. `.Rmd`는 코드 덩어리에서 R 코드를 실행하고 결과를 함께 `.md`로 변환해줍니다. 그래서 코드 덩어리 부분 문법만 확인하면 됩니다. 그 문법도 지금 범위는 아니니 [레퍼런스][code]를 확인해주세요!
-
-위의 규칙과 문법에 맞춰 `.Rmd` 파일을 작성하면 `Knit` 버튼으로 `.html` 문서 변환을 할 수 있습니다. 그럼 이제 Rstudio를 실행해 볼까요?
-
-<img src="https://user-images.githubusercontent.com/6179259/37238875-1b273872-2473-11e8-8278-40edfd2aff12.PNG", width=100%>
-
-
 
 <img src="https://user-images.githubusercontent.com/6179259/37251605-b467a1e6-2556-11e8-957e-b51890ae9e40.PNG" width=100%>
 
