@@ -1,8 +1,0 @@
-## cmd
-
-cd public
-git init
-git remote add origin https://github.com/mrchypark/mrchypark.github.io
-git add .
-git commit -m "update post"
-git push -f origin master
