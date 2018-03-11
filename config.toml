@@ -43,6 +43,14 @@ paginate = 10
     weight = 3
     identifier = "material"
     url = "/material/"
+      [[menu.main]]
+    name = "Support"
+    pre = "<i class='fa fa-info fa-fw'></i>"
+    weight = 4
+    identifier = "support"
+    url = "/support/"
+    
+    
 
 [social]
   # Link your social networking accouns to the side menu
