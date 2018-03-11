@@ -43,7 +43,7 @@ paginate = 10
     weight = 3
     identifier = "material"
     url = "/material/"
-      [[menu.main]]
+  [[menu.main]]
     name = "Support"
     pre = "<i class='fa fa-info fa-fw'></i>"
     weight = 4

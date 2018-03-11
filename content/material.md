@@ -1,7 +1,7 @@
 ---
-title = "Materials"
-sidemenu = "true"
-description = "많은 활용 및 피드백 부탁드립니다."
+title: "Materials"
+sidemenu: "true"
+description: "많은 활용 및 피드백 부탁드립니다."
 ---
 
 직접 제작한 자료를 공유합니다. 부족한 부분도 많고, 잘못된 부분이 있을 수도 있습니다. 언제든지 지적해주시면 참고하도록 하겠습니다. 감사합니다.

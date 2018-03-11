@@ -1,7 +1,7 @@
 ---
 title: "Support"
 description: "블로그가 도움이 되셨나요"
-sidemenu = "true"
+sidemenu: "true"
 ---
 
 블로그가 도움이 되셨나요? 저는 여러 교류에 대해 열린 자세를 지향합니다. 블로그에 도움을 주시는 다양한 방법이 있어서 아래 소개해 드립니다.
