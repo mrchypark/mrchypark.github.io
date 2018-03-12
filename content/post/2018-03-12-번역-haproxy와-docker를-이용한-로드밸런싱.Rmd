@@ -1,0 +1,125 @@
+---
+title: '[번역]Haproxy와 Docker를 이용한 로드밸런싱'
+author: mrchypark
+date: '2018-03-12'
+slug: 번역-haproxy와-docker를-이용한-로드밸런싱
+categories:
+  - Docker
+tags:
+  - docker
+  - haproxy
+  - swarm
+  - load balance
+---
+
+
+
+> 본 번역은 [원글][원글]을 대상으로 [저자][저자]의 [허락][허락]을 받았습니다. 저처럼 많은 분들에게 도움이 되었으면 좋겠습니다.
+
+> 본 글에서 사용하는 이미지인 [dockercloud-haproxy][haproxy]에서 확인해보면 기능 추가는 없이 유지보수만 하는 이미지인 것을 알 수 있습니다. 제품에 사용할 때는 참고해주세요.
+
+## 실제 도커(Docker) 사용 사례에 대한 예제
+
+최근에 일때문에 Docker, Docker Compose 및 Docker Swarm으로 로드 밸런싱을 하는 글들을 많이 보았습니다. 
+몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야합니다.
+
+이 주제를 다루는 많은 글들이 있지만, 정말 쉽고 간단한 사례만 다루기 때문에 도움이 되지 않았습니다. 실제로 필요한 상황을 몇 가지 예로 살펴보면,
+
+> 1. 수백개의 컨테이너를 수동으로 생성하는 것
+> 1. 그 수백개의 컨테이너 포트를 각각 다르게 수동으로 설정하는 것
+> 1. nginx conf 파일에 각 컨테이너의 ip와 포트를 일일이 작성하는 것
+    
+그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 하기로 결정했습니다. 이것이 "올바른" 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*aLJqpovWFITztDq_3WiFpQ.jpeg" width=100%>
+<figcaption>시작해볼까요! :)</figcaption>
+</figure>
+
+### 예시를 위한 간단한 어플리케이션
+
+간단한 Node.js 애플리케이션을 만들어 보겠습니다. 다음 코드를 사용하여 `index.js`라는 파일을 만듭니다.
+
+```
+var http = require('http');
+var os = require('os');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(`<h1>I'm ${os.hostname()}</h1>`);
+}).listen(8080);
+```
+
+이제 `Dockerfile`이라는 이름의 파일을 만들어 아래 코드를 저장합니다. 도커라이즈(Dockerize)^[역자주: 도커파일로 작성하여 이미지화 하는 것]라고 합니다.
+
+```
+FROM node
+RUN mkdir -p /usr/src/app
+COPY index.js /usr/src/app
+EXPOSE 8080
+CMD [ "node", "/usr/src/app/index" ]
+```
+예시로 작성한 간단한 어플리케이션(이하 멋진 Node.js 앱) 도커 이미지를 빌드(build)하기 위해서 터미널에서 `docker build -t awesome .`이라고 입력합니다. 물론 `Dockerfile`과 `index.js` 파일이 한 공간에 있어야 하고 `Dockerfile`이 있는 곳에서 실행해야 합니다.
+
+이제 간단하고 (그리고 멋진) Node.js 앱의 도커 이미지가 생겼습니다. 이미지에서 컨테이너를 만들 수 있습니다. 해당 애플리케이션의 20 개 컨테이너가 필요하다고 가정하면 해당 컨테이너를 만들고 관리하는 자동화 된 방법이 필요합니다. 또한 요청을 라우팅하고 Node.js 컨테이너로 로드 밸런싱하기 위해 HTTP 서버가 있는 컨테이너가 필요합니다.
+
+---
+
+### Docker Compose 사용하기
+
+HTTP 서버는 [HAProxy][haproxy]를 사용합니다. 즉, 포트 80을 수신하고 요청을 포트 8080의 다른 Node.js 컨테이너에 로드 밸런싱하는 HAProxy가 있는 컨테이너를 만들어야 함을 의미합니다. Docker Compose를 사용할 컨테이너 (Node.js 앱 및 HAProxy)를 만들려면 `docker-compose.yml` 파일을 작성해 보겠습니다.
+
+```
+version: '3'
+
+services:
+  awesome:
+   image: awesome
+   ports:
+     - 8080
+   environment:
+     - SERVICE_PORTS=8080
+   deploy:
+     replicas: 20
+     update_config:
+       parallelism: 5
+       delay: 10s
+     restart_policy:
+       condition: on-failure
+       max_attempts: 3
+       window: 120s
+   networks:
+     - web
+
+  proxy:
+    image: dockercloud/haproxy
+    depends_on:
+      - awesome
+    environment:
+      - BALANCE=leastconn
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    networks:
+      - web
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  web:
+    driver: overlay
+```
+
+도대체 무슨 일이 일어나고 있는지 설명하겠습니다. 우리는 2 가지 서비스를 만듭니다.
+
+1. 첫 번째 서비스는 
+1.
+1.
+
+
+[저자]: http://nirgn.com/
+[원글]: https://medium.com/@nirgn/load-balancing-applications-with-haproxy-and-docker-d719b7c5b231
+[허락]: https://twitter.com/mrchypark_/status/972681403098808322
+[haproxy]: https://github.com/docker/dockercloud-haproxy
+[haproxy]
