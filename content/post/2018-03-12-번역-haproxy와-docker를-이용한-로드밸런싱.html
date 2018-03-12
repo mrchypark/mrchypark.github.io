@@ -15,17 +15,17 @@ tags:
 
 
 <blockquote>
-<p>본 번역은 <a href="https://medium.com/@nirgn/load-balancing-applications-with-haproxy-and-docker-d719b7c5b231">원글</a>을 대상으로 <a href="http://nirgn.com/">저자</a>의 <a href="https://twitter.com/mrchypark_/status/972681403098808322">허락</a>을 받았습니다. 저처럼 많은 분들에게 도움이 되었으면 좋겠습니다.</p>
+<p>본 번역은 <a href="https://medium.com/@nirgn/load-balancing-applications-with-haproxy-and-docker-d719b7c5b231">원글</a>을 대상으로 <a href="http://nirgn.com/">저자</a>의 <a href="https://twitter.com/mrchypark_/status/972681403098808322">허락</a>을 받았습니다. 저와 같은 문제에 직면한 분들에게 도움이 되었으면 좋겠습니다.</p>
 </blockquote>
 <blockquote>
 <p>본 글에서 사용하는 이미지인 <a href="https://github.com/docker/dockercloud-haproxy">dockercloud-haproxy</a>에서 확인해보면 기능 추가는 없이 유지보수만 하는 이미지인 것을 알 수 있습니다. 제품에 사용할 때는 참고해주세요.</p>
 </blockquote>
 <blockquote>
-<p>요약 : 도커(Docker)와 도커 스웜(Swarm), 스택(Stack)을 이용해서 여러 개의 컨테이너를 추가 설정없이 연결하고 업데이트하는 실전 예제를 수행해봄.</p>
+<p>요약 : 도커(Docker)와 도커 스웜(Swarm), 스택(Stack)을 이용해서 여러 개의 컨테이너를 추가 설정없이 연결하고 업데이트(컨테이너 갯수 추가/축소, 버전업 등)하는 실전 예제를 수행해봄.</p>
 </blockquote>
 <div id="-docker----" class="section level2">
 <h2>실제 도커(Docker) 사용 사례에 대한 예제</h2>
-<p>최근에 일때문에 Docker, Docker Compose 및 Docker Swarm으로 로드 밸런싱을 하는 글들을 많이 보았습니다. 몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야합니다.</p>
+<p>최근에 일때문에 Docker, Docker Compose 및 Docker Swarm으로 로드 밸런싱을 하는 글들을 많이 보았습니다. 몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야하는 일입니다.</p>
 <p>이 주제를 다루는 많은 글들이 있지만, 정말 쉽고 간단한 사례만 다루기 때문에 도움이 되지 않았습니다. 실제로 필요한 상황을 몇 가지 예로 살펴보면,</p>
 <blockquote>
 <ol style="list-style-type: decimal">
@@ -34,7 +34,7 @@ tags:
 <li>nginx conf 파일에 각 컨테이너의 ip와 포트를 일일이 작성하는 것</li>
 </ol>
 </blockquote>
-<p>그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 하기로 결정했습니다. 이것이 “올바른” 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.</p>
+<p>그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 작성하기로 결정했습니다. 이것이 “올바른” 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.</p>
 <figure>
 <img src="https://cdn-images-1.medium.com/max/1000/1*aLJqpovWFITztDq_3WiFpQ.jpeg" width=100%>
 <figcaption>
@@ -123,14 +123,39 @@ networks:
 <div id="docker-swarm-" class="section level3">
 <h3>Docker Swarm 사용하기</h3>
 <p>이제는 Swarm을 만들어 보겠습니다. (지금은 하나의 컴퓨터로 만들었지만 Swarm에 더 많은 컴퓨터를 쉽게 추가 할 수 있음) 이렇게 하기 위해 우리는 <code>docker swarm init</code>을 입력하고 우리는 Swarm을 만들었습니다!! 컴퓨터를 Swarm에 추가했으며, 지금 컴퓨터가 처음이기 때문에 Swarm의 관리자이기도 합니다.</p>
-<p>네트워크, 서비스, 그리고 모든 컨테이너들을 <code>스택(stack)</code>이라고 부릅니다. 스택을 생성하기 위해서는 <code>docker stack</code> 명령어를 사용해야 하지만 스택을 <code>docker-compose.yml</code> 파일로 수행하기를 원합니다.</p>
-<p>The network, the services, and all the containers called stack. To create our stack we need to use docker stack command, but we want to point the stack to our docker-compose.yml file, so it’ll build the stuck according to our plan there. We can do it by writing docker stack deploy –compose-file=docker-compose.yml prod. we use the deploy command to deploy a new stack (we’ll also use it to update an existing stack), we add a flag to point it to our docker-compose.yml file. And finally we call our stack prod (this is what came up in my head when I wrote those lines, sorry).</p>
+<p>네트워크, 서비스, 그리고 모든 컨테이너들을 <code>스택(stack)</code>이라고 부릅니다. 스택을 생성하기 위해서는 <code>docker stack</code> 명령어를 사용해야 하지만 스택을 <code>docker-compose.yml</code> 파일로 수행하기를 원합니다. 그래야 우리가 설계한대로 진행해줄테니까요. <code>docker stack deploy --compose-file=docker-compose.yml prod</code> 라고 실행하면 될 것 같습니다. <code>deploy</code> 명령으로 새로운 스택을 배포하고, <code>docker-compose.yml</code>을 사용해 수행하기 위해서 <code>--compose-file</code> 플래그(flag)를 사용했습니다. 물론 이미 있는 스택을 업데이트할 때에도 명령을 사용할 수 있습니다. 마지막으로 우리는 스택을 <code>prod</code>라고 부르기로 했습니다. (이걸 작성할 때 겨우 생각한 이름이 이거라서 죄송합니다. :p)</p>
+<hr />
+<p><code>http://localhost</code> 주소로 요청을 날리면, 우리는 응답으로 컨테이너 ID를 받을 수 있습니다. 그러면 지금 상황에서는 매 요청마다 다른 ID를 받겠죠.</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*uHGmKcjX3I8oivAQ_9nLvA.png" width=100%>
+<figcaption>
+요청마다 다른 컨테이너 ID를 받음
+</figcaption>
+</figure>
+<p><code>docker service ls</code> 명령으로 우리 서비스들을 확인할 수 있습니다. 어떤 서비스가 동작하고 있는지, 몇개의 복사본이 있는지 등을 확인할 수 있죠.</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*4yAhwsleJjva-aScU23dbw.png" width=100%>
+<figcaption>
+모든 도커 서비스 리스트
+</figcaption>
+</figure>
+<p>이제 두번째 버전의 <code>awesome</code> 앱을 작성해보겠습니다. 코드를 약간 바꿔서 응답의 마지막에 느낌표를 추가해보겠습니다.</p>
 <pre><code>var http = require(&#39;http&#39;);
 var os = require(&#39;os&#39;);
 http.createServer(function (req, res) {
     res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/html&#39;});
     res.end(`&lt;h1&gt;I&#39;m ${os.hostname()}!!!&lt;/h1&gt;`);
 }).listen(8080);</code></pre>
+<p>이제 다시 빌드를 해야됩니다. 이번에 빌드할 때는 <code>docker build -t awesome:v2 .</code> 라고 이미지에 태그를 추가해보겠습니다. <code>awesome</code> 이미지 이지만 태그가 <code>v2</code>인 이미지를 만드는 것이지요. 서비스의 중단없이 <code>prod</code> 스택에 <code>awesome</code> 서비스를 <code>v2</code>로 교체하기 위해서는 <code>docker service update --image awesome:v2 prod_awesome</code> 명령을 사용합니다. 그러면 <code>docker-compose.yml</code>에 명시한 업데이터 설정과 같이 각 5개의 컨테이너가 순차적으로 업데이트를 할 것입니다.</p>
+<p>도커가 차근차근 하지만 확실히 오래된 컨테이너를 제거하고 새로운 <code>v2</code> 태그의 컨테이너를 실행하는 것을 확인할 수 있습니다. 그 와중에 <code>http://localhost</code>에 요청해도 다운타임 없이 응답을 받을 수 있습니다.</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*GHjEnqDXxQQnWYxAK8IQMQ.png" width=100%>
+<figcaption>
+몇몇 컨테이너는 다운타임 없이 두번째 버전을 응답
+</figcaption>
+</figure>
+<p>만약 20개의 컨테이너보다 더 많이 필요하여 스케일을 키우고 싶다면, <code>docker service scale prod_awesome=50</code><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> 명령을 수행하면 됩니다. 도커는 <code>awesome:v2</code> 이미지로 30개의 컨테이너를 추가로 실행할 것입니다.</p>
+<hr />
 </div>
 <div class="section level3">
 <h3>마무리</h3>
@@ -143,5 +168,6 @@ http.createServer(function (req, res) {
 <ol>
 <li id="fn1"><p>역자주: 도커파일로 작성하여 이미지화 하는 것<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>역자주: 복사본이라는 뜻으로 여기서는 같은 이미지에서 생성된 같은 기능을 하는 컨테이너를 뜻함.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>역자가 가장 도움을 많이 받은 부분<a href="#fnref3">↩</a></p></li>
 </ol>
 </div>
