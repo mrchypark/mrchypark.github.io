@@ -100,11 +100,11 @@ services:
 networks:
   web:
     driver: overlay</code></pre>
-<p>도대체 무슨 일이 일어나고 있는지 설명하겠습니다. 우리는 2 가지 서비스를 만듭니다.</p>
+<p>도대체 무슨 일이 일어나는 건지 설명하겠습니다. 우리는 2 가지 서비스를 만들겁니다.</p>
 <ol style="list-style-type: decimal">
-<li>첫 번째 서비스는 <code>awesome</code>으로 부를 멋진 Node.js 앱입니다. 조금 전에 빌드한 <code>awesome</code> 이미지로 만들겁니다.</li>
-<li></li>
-<li></li>
+<li>첫 번째 서비스는 <code>awesome</code>으로 부를 멋진 Node.js 앱입니다. 조금 전에 빌드한 <code>awesome</code> 이미지로 만들겁니다. 8080 포트를 외부에 연결하고, 환경 변수로 <code>SERVICE_PORTS</code>로 작성해두었습니다. HAProxy가 사용하는 설정으로 뒤에서 설명하겠습니다. deploy 옵션으로 20개의 리플레카(replicas)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>를 만들고 업데이트 설정과 재시작 설정을 추가했습니다. 파일의 마지막에 작성한 <code>network</code>인 <code>web</code> 네트워크에 모든 컨테이너를 연결해둔 것이 가장 중요한 포인트입니다.</li>
+<li>두 번째 서비스는 Docker 팀의 haproxy 이미지로 만든 <code>HAProxy</code>입니다. 이미 Docker 팀에서 만들어 두었기 때문에 우리는 이미지를 빌드할 필요 없이 가져다 사용하면 됩니다. <code>depends_on</code> 옵션으로 <code>awesome</code> 서비스가 부팅이 완료된 이후에 실행을 시작합니다. 또한 <code>volumes</code> 옵션으로 <code>docker.sock</code> 파일을 공유합니다. HAProxy 컨테이너가 네트워크에 이미 있거나 새롭게 들어오는 컨테이너들을 찾고 확인할 수 있어야 하기 때문입니다. 우리는 80 포트는 외부에 연결했습니다. 그리고 <code>web</code> 네트워크에도 연결했습니다. 마지막으로 deploy 설정에서 manager node에서 항상 실행하도록 설정하였습니다. 이건 Docker Swarm의 설정으로, node가 여러 개라면 <code>volumes</code> 옵션 때문에 필요합니다.</li>
+<li>마지막으로 <code>web</code>이라는 이름의 network를 생성하였습니다.</li>
 </ol>
 <figure>
 <img src="https://cdn-images-1.medium.com/max/1000/1*pe0FTboUBkXLKwWojt0gdA.jpeg" width=100%>
@@ -115,11 +115,13 @@ networks:
 </div>
 <div id="dockercloud-haproxy-" class="section level3">
 <h3>DockerCloud HAProxy 소개</h3>
-<p>위에서 언급한대로 HTTP 서버로 HAProxy를 사용할 겁니다. 일반적인 버전이 아니라 Docker 팀이 자신들의 클라우드에서 사용하는 <a href="https://github.com/docker/dockercloud-haproxy">버전</a>을 선택했습니다.</p>
+<p>위에서 언급한대로 HTTP 서버로 HAProxy를 사용할 겁니다. 일반적인 버전이 아니라 Docker 팀이 자신들의 클라우드에서 사용하는 <a href="https://github.com/docker/dockercloud-haproxy">버전</a>을 선택했습니다. <code>awesome</code> 서비스에서 <code>SERVICE_PORTS</code> 환경변수를 사용한 이유이기도 합니다. <code>SERVICE_PORTS</code> 환경변수로 설정한 포트는 <code>HAProxy</code>에 연결됩니다. 쉼표로 구분하여 여러 포트를 연결할 수도 있습니다. 파일을 보면 <code>BALANCE</code> 환경변수도 확인할 수 있습니다. 이것은 로드 밸런싱 알고리즘을 선택하는 것인데요. 기본값인 <code>roundrobin</code>를 선택한 것이 아니라 <code>leastconn</code>으로 설정했습니다.</p>
 </div>
 <div id="docker-swarm-" class="section level3">
 <h3>Docker Swarm 사용하기</h3>
-<p>이제는 Swarm을 만들어 보겠습니다.(지금은 하나의 컴퓨터로 만들었지만 Swarm에 더 많은 컴퓨터를 쉽게 추가 할 수 있음) 이렇게 하기 위해 우리는 <code>docker swarm init</code>을 입력하고 우리는 Swarm을 만들었습니다!! 컴퓨터를 Swarm에 추가했으며, 지금 컴퓨터가 처음이기 때문에 Swarm의 관리자이기도 합니다.</p>
+<p>이제는 Swarm을 만들어 보겠습니다. (지금은 하나의 컴퓨터로 만들었지만 Swarm에 더 많은 컴퓨터를 쉽게 추가 할 수 있음) 이렇게 하기 위해 우리는 <code>docker swarm init</code>을 입력하고 우리는 Swarm을 만들었습니다!! 컴퓨터를 Swarm에 추가했으며, 지금 컴퓨터가 처음이기 때문에 Swarm의 관리자이기도 합니다.</p>
+<p>네트워크, 서비스, 그리고 모든 컨테이너들을 <code>스택(stack)</code>이라고 부릅니다. 스택을 생성하기 위해서는 <code>docker stack</code> 명령어를 사용해야 하지만 스택을 <code>docker-compose.yml</code> 파일로 수행하기를 원합니다.</p>
+<p>The network, the services, and all the containers called stack. To create our stack we need to use docker stack command, but we want to point the stack to our docker-compose.yml file, so it’ll build the stuck according to our plan there. We can do it by writing docker stack deploy –compose-file=docker-compose.yml prod. we use the deploy command to deploy a new stack (we’ll also use it to update an existing stack), we add a flag to point it to our docker-compose.yml file. And finally we call our stack prod (this is what came up in my head when I wrote those lines, sorry).</p>
 <pre><code>var http = require(&#39;http&#39;);
 var os = require(&#39;os&#39;);
 http.createServer(function (req, res) {
@@ -137,5 +139,6 @@ http.createServer(function (req, res) {
 <hr />
 <ol>
 <li id="fn1"><p>역자주: 도커파일로 작성하여 이미지화 하는 것<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>역자주: 복사본이라는 뜻으로 여기서는 같은 이미지에서 생성된 같은 기능을 하는 컨테이너를 뜻함.<a href="#fnref2">↩</a></p></li>
 </ol>
 </div>
