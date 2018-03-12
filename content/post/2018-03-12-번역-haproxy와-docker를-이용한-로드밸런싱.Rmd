@@ -114,8 +114,8 @@ networks:
 도대체 무슨 일이 일어나고 있는지 설명하겠습니다. 우리는 2 가지 서비스를 만듭니다.
 
 1. 첫 번째 서비스는 `awesome`으로 부를 멋진 Node.js 앱입니다. 조금 전에 빌드한 `awesome` 이미지로 만들겁니다. 
-1.
-1.
+1. 두 번째 서비스는 Docker 팀의 haproxy 이미지로 만든 `HAProxy`입니다. 이미 Docker 팀에서 만들어 두었기 때문에 우리는 이미지를 빌드할 필요 없이 가져다 사용하면 됩니다.
+1. 마지막으로 `web`이라는 이름의 network를 생성하였습니다.
 
 <figure>
 <img src="https://cdn-images-1.medium.com/max/1000/1*pe0FTboUBkXLKwWojt0gdA.jpeg" width=100%>
