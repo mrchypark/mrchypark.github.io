@@ -14,16 +14,16 @@ tags:
 
 
 
-> 본 번역은 [원글][원글]을 대상으로 [저자][저자]의 [허락][허락]을 받았습니다. 저처럼 많은 분들에게 도움이 되었으면 좋겠습니다.
+> 본 번역은 [원글][원글]을 대상으로 [저자][저자]의 [허락][허락]을 받았습니다. 저와 같은 문제에 직면한 분들에게 도움이 되었으면 좋겠습니다.
 
 > 본 글에서 사용하는 이미지인 [dockercloud-haproxy][haproxy]에서 확인해보면 기능 추가는 없이 유지보수만 하는 이미지인 것을 알 수 있습니다. 제품에 사용할 때는 참고해주세요.
 
-> 요약 : 도커(Docker)와 도커 스웜(Swarm), 스택(Stack)을 이용해서 여러 개의 컨테이너를 추가 설정없이 연결하고 업데이트하는 실전 예제를 수행해봄.
+> 요약 : 도커(Docker)와 도커 스웜(Swarm), 스택(Stack)을 이용해서 여러 개의 컨테이너를 추가 설정없이 연결하고 업데이트(컨테이너 갯수 추가/축소, 버전업 등)하는 실전 예제를 수행해봄.
 
 ## 실제 도커(Docker) 사용 사례에 대한 예제
 
 최근에 일때문에 Docker, Docker Compose 및 Docker Swarm으로 로드 밸런싱을 하는 글들을 많이 보았습니다. 
-몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야합니다.
+몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야하는 일입니다.
 
 이 주제를 다루는 많은 글들이 있지만, 정말 쉽고 간단한 사례만 다루기 때문에 도움이 되지 않았습니다. 실제로 필요한 상황을 몇 가지 예로 살펴보면,
 
@@ -31,7 +31,7 @@ tags:
 > 1. 그 수백개의 컨테이너 포트를 각각 다르게 수동으로 설정하는 것
 > 1. nginx conf 파일에 각 컨테이너의 ip와 포트를 일일이 작성하는 것
     
-그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 하기로 결정했습니다. 이것이 "올바른" 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.
+그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 작성하기로 결정했습니다. 이것이 "올바른" 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.
 
 <figure>
 <img src="https://cdn-images-1.medium.com/max/1000/1*aLJqpovWFITztDq_3WiFpQ.jpeg" width=100%>
@@ -153,11 +153,32 @@ deploy 옵션으로 20개의 리플레카(replicas)^[역자주: 복사본이라�
 이렇게 하기 위해 우리는 `docker swarm init`을 입력하고 우리는 Swarm을 만들었습니다!!
 컴퓨터를 Swarm에 추가했으며, 지금 컴퓨터가 처음이기 때문에 Swarm의 관리자이기도 합니다.
 
-네트워크, 서비스, 그리고 모든 컨테이너들을 `스택(stack)`이라고 부릅니다. 스택을 생성하기 위해서는 `docker stack` 명령어를 사용해야 하지만 스택을 `docker-compose.yml` 파일로 수행하기를 원합니다. 
+네트워크, 서비스, 그리고 모든 컨테이너들을 `스택(stack)`이라고 부릅니다. 
+스택을 생성하기 위해서는 `docker stack` 명령어를 사용해야 하지만 스택을 `docker-compose.yml` 파일로 수행하기를 원합니다. 
+그래야 우리가 설계한대로 진행해줄테니까요.
+`docker stack deploy --compose-file=docker-compose.yml prod` 라고 실행하면 될 것 같습니다.
+`deploy` 명령으로 새로운 스택을 배포하고, `docker-compose.yml`을 사용해 수행하기 위해서 `--compose-file` 플래그(flag)를 사용했습니다.
+물론 이미 있는 스택을 업데이트할 때에도 명령을 사용할 수 있습니다.
+마지막으로 우리는 스택을 `prod`라고 부르기로 했습니다.
+(이걸 작성할 때 겨우 생각한 이름이 이거라서 죄송합니다. :p)
 
-The network, the services, and all the containers called stack. To create our stack we need to use docker stack command, but we want to point the stack to our docker-compose.yml file, so it’ll build the stuck according to our plan there. We can do it by writing docker stack deploy --compose-file=docker-compose.yml prod. we use the deploy command to deploy a new stack (we’ll also use it to update an existing stack), we add a flag to point it to our docker-compose.yml file. And finally we call our stack prod (this is what came up in my head when I wrote those lines, sorry).
+---
 
+`http://localhost` 주소로 요청을 날리면, 우리는 응답으로 컨테이너 ID를 받을 수 있습니다. 그러면 지금 상황에서는 매 요청마다 다른 ID를 받겠죠.
 
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*uHGmKcjX3I8oivAQ_9nLvA.png" width=100%>
+<figcaption>요청마다 다른 컨테이너 ID를 받음</figcaption>
+</figure>
+
+`docker service ls` 명령으로 우리 서비스들을 확인할 수 있습니다. 어떤 서비스가 동작하고 있는지, 몇개의 복사본이 있는지 등을 확인할 수 있죠.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*4yAhwsleJjva-aScU23dbw.png" width=100%>
+<figcaption>모든 도커 서비스 리스트</figcaption>
+</figure>
+
+이제 두번째 버전의 `awesome` 앱을 작성해보겠습니다. 코드를 약간 바꿔서 응답의 마지막에 느낌표를 추가해보겠습니다.
 
 ```
 var http = require('http');
@@ -168,6 +189,24 @@ http.createServer(function (req, res) {
 }).listen(8080);
 ```
 
+이제 다시 빌드를 해야됩니다. 
+이번에 빌드할 때는 `docker build -t awesome:v2 .` 라고 이미지에 태그를 추가해보겠습니다. 
+`awesome` 이미지 이지만 태그가 `v2`인 이미지를 만드는 것이지요.
+서비스의 중단없이 `prod` 스택에 `awesome` 서비스를 `v2`로 교체하기 위해서는 `docker service update --image awesome:v2 prod_awesome` 명령을 사용합니다.
+그러면 `docker-compose.yml`에 명시한 업데이터 설정과 같이 각 5개의 컨테이너가 순차적으로 업데이트를 할 것입니다.
+
+도커가 차근차근 하지만 확실히 오래된 컨테이너를 제거하고 새로운 `v2` 태그의 컨테이너를 실행하는 것을 확인할 수 있습니다.
+그 와중에 `http://localhost`에 요청해도 다운타임 없이 응답을 받을 수 있습니다.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*GHjEnqDXxQQnWYxAK8IQMQ.png" width=100%>
+<figcaption>몇몇 컨테이너는 다운타임 없이 두번째 버전을 응답</figcaption>
+</figure>
+
+만약 20개의 컨테이너보다 더 많이 필요하여 스케일을 키우고 싶다면, `docker service scale prod_awesome=50` 명령을 수행하면 됩니다.
+도커는 `awesome:v2` 이미지로 30개의 컨테이너를 추가로 실행할 것입니다.
+
+---
 
 ### 마무리
 
