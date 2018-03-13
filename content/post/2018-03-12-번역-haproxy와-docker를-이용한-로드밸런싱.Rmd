@@ -165,7 +165,7 @@ deploy 옵션으로 20개의 리플레카(replicas)^[역자주: 복사본이라�
 `http://localhost` 주소로 요청을 날리면, 우리는 응답으로 컨테이너 ID를 받을 수 있습니다. 그러면 지금 상황에서는 매 요청마다 다른 ID를 받겠죠.
 
 <figure>
-<img src="https://cdn-images-1.medium.com/max/1000/1*uHGmKcjX3I8oivAQ_9nLvA.png" width=100%>
+<img src="https://cdn-images-1.medium.com/max/1000/1*uHGmKcjX3I8oivAQ_9nLvA.png">
 <figcaption>요청마다 다른 컨테이너 ID를 받음</figcaption>
 </figure>
 
@@ -197,7 +197,7 @@ http.createServer(function (req, res) {
 그 와중에 `http://localhost`에 요청해도 다운타임 없이 응답을 받을 수 있습니다.
 
 <figure>
-<img src="https://cdn-images-1.medium.com/max/1000/1*GHjEnqDXxQQnWYxAK8IQMQ.png" width=100%>
+<img src="https://cdn-images-1.medium.com/max/1000/1*GHjEnqDXxQQnWYxAK8IQMQ.png">
 <figcaption>몇몇 컨테이너는 다운타임 없이 두번째 버전을 응답</figcaption>
 </figure>
 
