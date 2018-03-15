@@ -281,4 +281,4 @@ a != b
 질문, 지적 대환영이며 댓글로 부탁드립니다.
 
 [1]: http://www.statmethods.net/management/operators.html
-[2]: https://mrchypark.github.io/r/match/%EC%99%9C-match-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80.html
+[2]: https://mrchypark.github.io/post/%EC%99%9C-match-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80/
