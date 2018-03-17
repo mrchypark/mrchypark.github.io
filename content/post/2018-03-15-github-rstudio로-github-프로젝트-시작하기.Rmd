@@ -57,12 +57,46 @@ Github은 원격 저장소를 회원 가입한 사람 모두에게 무료로 나
 
 1. github에 새 저장소 만들기
 1. 새 저장소에 결과물 업로드하기
-1. 
 
+이제 여기서 몇 가지 분기가 발생하는데요.
 
-여기에는 시작하기만 쓰자.
+1. git을 사용할 것인가 말것인가
+1. 결과물을 어떤 파일 형식으로 저장할 것인가
+
+입니다.
+
+git을 사용하지 않는다면 그냥 github에서 제공하는 `upload files` 버튼으로 업로드 하는 방법이 있습니다.
+예를 들어 `.pdf`는 엄청 큰 파일이 아닌 이상 업로드하면 바로 웹에서 보여주기도 합니다.
+
+<figure>
+<img src="https://user-images.githubusercontent.com/6179259/37452898-4d44e20a-2879-11e8-8d56-110d6a6bf412.png" width=100%>
+<figcaption>이 [주소][주소]로 확인하실 수 있습니다. 예쁘지는 않을 수...</figcaption>
+</figure>
+
+우리는 R을 사용하니 파일 형식은 다양할 수 있습니다. 
+`.Rmd`만 사용하면 이론적으로는 [rpubs 포스트][rpubs]에서 보여드린 만큼이나 가능하죠.
+대표적으로 많이 사용하는 형식으로는 `.docx`같이 MS 오피스 계열의 결과물이 있습니다. 
+그리고 `Github` 친화적으로는 `.md`와 `.html`을 꼽을 수 있을 것 같습니다.
+
+`.md`는 [GFM][GFM]이란게 있을 정도로 Github이 사랑하는 파일 형식입니다. 
+오픈소스 저장소로써 많이 사용하는 관례인 `README.md`는 파일을 보지 않아도 프로젝트 페이지에서 출력도 해줍니다.
+
+`.html`은 [Github pages][Github pages] 서비스를 통해서 사용할 수 있습니다. 
+아마 다음 포스트를 Github pages를 이용해서 웹페이지를 만들거나 하는 방법을 소개할 수 있을 거라 기대하고 있습니다.
+
+위 두 파일 형식은 Github 친화적이기도 하면서 변환 동작에 다른 외부 의존성이 없어서 작업환경을 만들기 쉽다는 장점이 있습니다. 
+예를 들어 `.pdf`는 [Latex][Latex] 엔진을 추가로 설치해야 합니다. 
+한글을 지원하는 엔진을 선정해야 해서 [KTUG][KTUG]에서 관련 정보를 찾으실 수 있습니다.
+
+서문이 너무 길었네요. Rstudio를 사용해서 Github
 
 
 [Github]: https://github.com/
 [git설치]: http://library1008.tistory.com/51
 [bitbucket]: https://bitbucket.org/
+[주소]: https://github.com/mrchypark/github-with-rstudio/blob/master/docs/github-with-rstudio.pdf
+[rpubs]: https://mrchypark.github.io/post/r%EB%A1%9C%EB%82%98%EB%A7%8C%EC%9D%98-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0/
+[github style]: https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown
+[Github pages]: https://pages.github.com/
+[Latex]: https://ko.wikipedia.org/wiki/LaTeX
+[KTUG]: http://www.ktug.org/xe/
