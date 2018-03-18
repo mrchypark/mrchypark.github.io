@@ -150,7 +150,7 @@ a &lt; b</code></pre>
 <pre class="r"><code>isTRUE</code></pre>
 <pre><code>## function (x) 
 ## identical(TRUE, x)
-## &lt;bytecode: 0x00000000114ce930&gt;
+## &lt;bytecode: 0x0000000011d9e9b8&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p><code>isTRUE()</code>가 어떻게 동작하는 함수인지 궁금해서 코드를 확인해 봤습니다. 여러개가 있지만 눈에 들어오는 것은 <code>identical(TRUE, x)</code>네요. 입력인자인 <code>x</code>가 <code>TRUE</code>와 같은 것인지를 확인하는 것입니다. <code>identical()</code>은 <code>정확하게</code> 같은지를 결과로 줍니다. 예를 들면 같은 숫자인데 자료형이 다르던가, <code>R</code>은 <code>NA</code>를 계산할 수 없음으로 취급해서 <code>==</code>으로 확인하면 <code>NA</code>로 결과를 줍니다. 그래서 rstudio를 사용하시면 <code>== NA</code>를 인식해서 <code>is.ns()</code>를 사용하라고 경고를 주기도 합니다. 아래 코드를 봐주세요.</p>
 <pre class="r"><code>2L == 2</code></pre>
@@ -348,7 +348,7 @@ a &lt;  b</code></pre>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
 <p>똑같이 <code>Recycling Rule</code>이 적용되어 적은 쪽이 많은 쪽 개수 만큼 한번 더 돌아서 사용하여 연산하지만, 쓰다 말기 때문에 경고를 줍니다. 배수관계가 아닌데 너가 지금 잘 사용한 게 맞는거냐라고 물어보는 거죠. 맞다면 무시하시면 됩니다. 결과도 긴 데이터쪽 개수만큼인 5개로 나왔네요. 의도하신거라면 이대로 진행하시면 됩니다.</p>
 <p>이렇게 논리 연산자도 데이터가 여러개일 때 산술 연산자와 같은 동작을 취합니다. 이 부분이 아마 기초를 배운 후에 조합해서 확인해 봐야 하는 부분인 것 같습니다. 그리고 많이 실수하시는 부분이 있습니다. 논리 자료형이라면 특별히 문제되지 않는데, <code>==</code>의 동작을 오해하세요. 사실 이걸 이야기하고 싶어서 위에 저 많은 얘기를 했는데요. 이미 주제 하나 정도 되는 것 같아 포스트를 나누겠습니다.</p>
-<p>다음 포스트는 <a href="https://mrchypark.github.io/r/match/%EC%99%9C-match-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80.html">왜 <code>%in%</code> 연산자를 사용하는가? feat.<code>==</code></a> 입니다.</p>
+<p>다음 포스트는 <a href="https://mrchypark.github.io/post/%EC%99%9C-match-%EC%97%B0%EC%82%B0%EC%9E%90%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80/">왜 <code>%in%</code> 연산자를 사용하는가? feat.<code>==</code></a> 입니다.</p>
 <p>끝까지 읽어주셔서 감사합니다. 질문, 지적 대환영이며 댓글로 부탁드립니다.</p>
 </div>
 </div>
