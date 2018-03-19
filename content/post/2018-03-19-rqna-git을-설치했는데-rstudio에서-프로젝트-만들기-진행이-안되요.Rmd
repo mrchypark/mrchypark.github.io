@@ -47,7 +47,7 @@ Version Control을 선택해서 진행했습니다.
 Git과 Subversion을 선택하는 부분에서 Git을 설치하지 않고 Git을 선택하면 아래와 같은 화면이 나옵니다.
 
 <figure>
-<img width=100% src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/29365844_1818238274905573_7449284401663311872_n.jpg?_nc_eui2=v1%3AAeE-md_Ng58xgROrtb7csLDEa23B6SD6j6vm-o7BvVKWdoCl1t9TDfxDRTWNiRBknBpCyFQeRotFe6LmSUK3yVvP7nIAmdV7oMG6CxDqyQtV9A&oh=c42b9a0d1db68f0bfd81493e15a05eb7&oe=5B4989AE">
+<img src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/29365844_1818238274905573_7449284401663311872_n.jpg?_nc_eui2=v1%3AAeE-md_Ng58xgROrtb7csLDEa23B6SD6j6vm-o7BvVKWdoCl1t9TDfxDRTWNiRBknBpCyFQeRotFe6LmSUK3yVvP7nIAmdV7oMG6CxDqyQtV9A&oh=c42b9a0d1db68f0bfd81493e15a05eb7&oe=5B4989AE">
 <figcaption>캡쳐 협찬해주신 [이부일][이부일]님 감사합니다.</figcaption>
 </figure>
 
