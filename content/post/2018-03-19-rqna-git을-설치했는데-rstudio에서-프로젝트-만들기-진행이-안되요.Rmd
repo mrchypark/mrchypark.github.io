@@ -27,7 +27,7 @@ Rstudio에 github을 연결해 사용하기 위해서는 git을 설치해야 합
 [지난 포스트][github]에서는 다른 블로그의 [포스트][git]를 소개해드렸습니다.
 상세히 설명된 포스트라 소개했는데, 아무래도 Rstudio에 대한 설정 내용이 없어서 추가합니다.
 
-### git이 없습니다 팝업
+### 프로젝트 만들기부터 다시
 
 우선 프로젝트를 만드는 순서를 다시 따라가 볼까요?
 
@@ -41,8 +41,11 @@ Version Control을 선택해서 진행했습니다.
 
 <img width=100% src="https://user-images.githubusercontent.com/6179259/37447856-4eaeac78-2867-11e8-83b7-f4e0e643723d.png">
 
+### git이 없습니다 팝업
+
 이제 이 화면입니다. 
 Git과 Subversion을 선택하는 부분에서 Git을 설치하지 않고 Git을 선택하면 아래와 같은 화면이 나옵니다.
+
 <figure>
 <img width=100% src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/29365844_1818238274905573_7449284401663311872_n.jpg?_nc_eui2=v1%3AAeE-md_Ng58xgROrtb7csLDEa23B6SD6j6vm-o7BvVKWdoCl1t9TDfxDRTWNiRBknBpCyFQeRotFe6LmSUK3yVvP7nIAmdV7oMG6CxDqyQtV9A&oh=c42b9a0d1db68f0bfd81493e15a05eb7&oe=5B4989AE">
 <figcaption>캡쳐 협찬해주신 [이부일][이부일]님 감사합니다.</figcaption>
@@ -55,6 +58,8 @@ Git과 Subversion을 선택하는 부분에서 Git을 설치하지 않고 Git을
 이게 다음화면 인데요.
 잘 안되셔서 재시작도 해봤는데, 여전히 진행이 안되는 문제가 있었습니다.
 그러면 Rstudio의 설정을 확인하여 해결할 수 있습니다.
+
+### git 경로 설정
 
 <img width=100% src="https://user-images.githubusercontent.com/6179259/37573235-fc190e14-2b58-11e8-8be9-c9eab7d54c1b.png">
 

@@ -228,7 +228,6 @@ git과 subversion이 있는데 저희는 git을 사용할껍니다.
 
 > Git을 설치했는데도 진행이 안되시면 [이 포스트][gitpath]를 참고하세요.(업데이트 - 2018.03.19)
 
-
 <img width=100% src="https://user-images.githubusercontent.com/6179259/37447817-1e058ce0-2867-11e8-9d12-1522e78529bd.png">
 
 다시 github으로 돌아와서, 만든 원격 저장소의 URL을 복사합니다. 
