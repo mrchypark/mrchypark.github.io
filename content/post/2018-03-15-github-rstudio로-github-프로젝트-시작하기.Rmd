@@ -228,7 +228,6 @@ git과 subversion이 있는데 저희는 git을 사용할껍니다.
 
 > Git을 설치했는데도 진행이 안되시면 [이 포스트][gitpath]를 참고하세요.(업데이트 - 2018.03.19)
 
-
 <img width=100% src="https://user-images.githubusercontent.com/6179259/37447817-1e058ce0-2867-11e8-9d12-1522e78529bd.png">
 
 다시 github으로 돌아와서, 만든 원격 저장소의 URL을 복사합니다. 
@@ -287,3 +286,4 @@ Rstudio의 오른쪽 아래를 보시면 파일 4개(github에서 만든 3개 + 
 [MIT]: https://ko.wikipedia.org/wiki/MIT_%ED%97%88%EA%B0%80%EC%84%9C
 [도움]: https://mrchypark.github.io/support/
 [gitpath]: https://mrchypark.github.io/post/rqna-git%EC%9D%84-%EC%84%A4%EC%B9%98%ED%96%88%EB%8A%94%EB%8D%B0-rstudio%EC%97%90%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%A7%84%ED%96%89%EC%9D%B4-%EC%95%88%EB%90%98%EC%9A%94/
+
