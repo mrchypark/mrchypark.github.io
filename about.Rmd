@@ -48,7 +48,7 @@ output:
 1. [커피값](https://mrchypark.github.io/donateme/)으로 인사하기    
 
 
-[en]: https://mrchypark.github.io/about_en/
+[en]: https://mrchypark.github.io/about_en.html
 [forkonlp]: https://forkonlp.github.io/
 [repo]: https://github.com/mrchypark?tab=repositories
 [기여]: https://github.com/pulls?utf8=%E2%9C%93&q=author%3Amrchypark+

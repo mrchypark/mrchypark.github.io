@@ -39,7 +39,7 @@ For most of my accounts, contacts and profiles, please see the links on the left
     4. I make and share R related [materials][Materials].
     5. I'm working on [translation][번역] and writing.
 
-[kr]: https://mrchypark.github.io/about/
+[kr]: https://mrchypark.github.io/about.html
 [forkonlp]: https://forkonlp.github.io/
 [repo]: https://github.com/mrchypark?tab=repositories
 [기여]: https://github.com/pulls?utf8=%E2%9C%93&q=author%3Amrchypark+
