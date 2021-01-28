@@ -5,9 +5,9 @@ description: |
 
 output_dir: "docs"
 theme: theme.css
+favicon: images/logo.png
 
 navbar:
-  logo: images/logo.png
   source_url: https://github.com/mrchypark/mrchypark.github.io
   right:
     - text: "Home"

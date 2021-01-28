@@ -12,7 +12,7 @@ links:
     url: "https://twitter.com/mrchypark_"
   - label: Email
     url: "mailto:mrchypark@gmail.com"
-  - label: Site
+  - label: Blog
     url: "https://mrchypark.github.io"
 output:
   postcards::trestles
