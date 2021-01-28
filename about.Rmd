@@ -1,0 +1,62 @@
+---
+title: "Chanyub Park"
+image: "https://media-exp1.licdn.com/dms/image/C5103AQHEnbVyKFc5tQ/profile-displayphoto-shrink_400_400/0/1580143693466?e=1617235200&v=beta&t=zUGCfjK8B_814mdTweoREsyb7nIOI0VGNSN4NbqQVHQ"
+links:
+  - label: LinkedIn
+    url: "https://linkedin.com/in/chanyubpark/"
+  - label: Twitter
+    url: "https://twitter.com/mrchypark_"
+  - label: GitHub
+    url: "https://github.com/mrchypark"
+  - label: Email
+    url: "mailto:mrchypark@gmail.com"
+  - label: Site
+    url: "https://mrchypark.github.io"
+output:
+  postcards::trestles
+---
+ 
+[English Ver.][en]
+
+**R**과 **docker**를 사랑하는 데이터 관련 종사자입니다.    
+**Text**에 관련된 연구에 관심이 많습니다.    
+최근에는 **go**와 **elixir**를 공부하고 있습니다.    
+사람들이 더 쉽게 데이터를 다루어서 결국 데이터 기반의 소통이 활성화되는 것에 관심이 많습니다.    
+저의 대부분의 계정과 연락처, 프로필은 왼쪽의 링크들을 참고해 주세요.    
+
+## 활동
+
+- 한글 연구를 위한 데이터 보급 비영리 단체인 [포크온엘피(ForkonLP)][forkonlp]를 운영하고 있습니다.  
+    - 대표적으로 [N2H4][N2H4], [DNH4][DNH4], [presidentSpeechKr][presidentSpeechKr]를 만들고 관리하고 있습니다.    
+- R에 기여하기 위해 노력하고 있습니다.
+    1. 패키지를 만들어 cran에 [등록][등록]하고 관리합니다([github][repo]에 먼저 올립니다.).    
+    2. 가능한한 다른 패키지에 [기여][기여]하려고 합니다.    
+    3. [데이터 분석 커뮤니티][dc] 등 R과 데이터 분석 관련 그룹에 질문을 하기도 하고, 대답을 하기도 합니다.
+    4. [R 관련 자료][Materials]를 만들어 공유하고 있습니다.
+    5. [번역][번역]과 집필을 노력하고 있습니다.
+
+
+
+블로그가 도움이 되셨나요? 저는 여러 교류에 대해 열린 자세를 지향합니다. 블로그에 도움을 주시는 다양한 방법이 있어서 아래 소개해 드립니다.
+
+1. 도움이 된 글에 댓글 달아주기    
+    1. 오타 지적해주기    
+    1. 도움이 된 내용이 무엇인지 알려주기    
+    1. 이해가 잘 되지 않는 부분 질문하기    
+1. 도움이 된 글의 링크를 주변에 알려주기    
+1. 달려있는 광고 베너를 클릭하기    
+1. [커피값](https://mrchypark.github.io/donateme/)으로 인사하기    
+
+
+[en]: https://mrchypark.github.io/about_en/
+[forkonlp]: https://forkonlp.github.io/
+[repo]: https://github.com/mrchypark?tab=repositories
+[기여]: https://github.com/pulls?utf8=%E2%9C%93&q=author%3Amrchypark+
+[dc]: https://www.facebook.com/groups/datacommunity
+[Materials]: https://mrchypark.github.io/material/
+[번역]: http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=149310215
+[등록]: https://cran.r-project.org/web/packages/ubci/index.html
+[N2H4]: https://forkonlp.github.io/N2H4/
+[DNH4]: https://forkonlp.github.io/DNH4/
+[presidentSpeechKr]: https://forkonlp.github.io/presidentSpeechKr/
+

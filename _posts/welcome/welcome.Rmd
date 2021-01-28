@@ -1,0 +1,48 @@
+---
+title: "distill 로 옮깁니다."
+description: |
+  드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+date: 2021-01-28
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: true
+    highlight: haddock
+    highlight_downlit: false
+    theme: theme.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+# 테스트
+
+안녕하세요
+
+## 테스트
+
+### xptmx
+
+## iejfed
+
+
+# souiehf
+
+
+```{r}
+print("heloe")
+```
