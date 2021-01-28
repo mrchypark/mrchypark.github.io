@@ -2,12 +2,14 @@
 title: "Chanyub Park"
 image: "https://media-exp1.licdn.com/dms/image/C5103AQHEnbVyKFc5tQ/profile-displayphoto-shrink_400_400/0/1580143693466?e=1617235200&v=beta&t=zUGCfjK8B_814mdTweoREsyb7nIOI0VGNSN4NbqQVHQ"
 links:
+  - label: GitHub
+    url: "https://github.com/mrchypark"
+  - label: Facebook
+    url: "https://www.facebook.com/mrchypark/"
   - label: LinkedIn
     url: "https://linkedin.com/in/chanyubpark/"
   - label: Twitter
     url: "https://twitter.com/mrchypark_"
-  - label: GitHub
-    url: "https://github.com/mrchypark"
   - label: Email
     url: "mailto:mrchypark@gmail.com"
   - label: Site
