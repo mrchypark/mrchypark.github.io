@@ -7,6 +7,7 @@ output_dir: "docs"
 theme: theme.css
 
 navbar:
+  logo: images/logo.png
   source_url: https://github.com/mrchypark/mrchypark.github.io
   right:
     - text: "Home"
