@@ -40,7 +40,7 @@ jobs:
 
       - name: Build site
         run: |
-          R -e 'rmarkdown::render_site()'
+          R -e 'rmarkdown::render_site(encoding = "UTF-8")'
 
       - name: Commit results
         run: |
