@@ -6,6 +6,11 @@
     <atom:link href="https://mrchypark.github.io/index.xml" rel="self" type="application/rss+xml"/>
     <description>mrchypark
 </description>
+    <image>
+      <title>mrchypark</title>
+      <url>https://mrchypark.github.io/images/logo.png</url>
+      <link>https://mrchypark.github.io</link>
+    </image>
     <generator>Distill</generator>
     <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate>
     <item>
