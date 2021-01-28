@@ -46,5 +46,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit ${RMD_PATH[*]} -m 'Re-build blog files' || echo "No changes to commit"
+          git add .
+          git commit -m 'Re-build blog files' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
