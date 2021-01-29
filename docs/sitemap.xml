@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://mrchypark.github.io/about.html</loc>
-    <lastmod>2021-01-29T02:05:09+09:00</lastmod>
+    <loc>https://mrchypark.github.io/about_en.html</loc>
+    <lastmod>2021-01-29T13:53:20+00:00</lastmod>
   </url>
   <url>
-    <loc>https://mrchypark.github.io/about_en.html</loc>
-    <lastmod>2021-01-29T20:03:34+09:00</lastmod>
+    <loc>https://mrchypark.github.io/about.html</loc>
+    <lastmod>2021-01-29T13:53:20+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/</loc>
-    <lastmod>2021-01-28T18:04:03+09:00</lastmod>
+    <lastmod>2021-01-29T13:53:20+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/material.html</loc>
-    <lastmod>2021-01-28T22:48:31+09:00</lastmod>
+    <lastmod>2021-01-29T13:53:20+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/posts/welcome/</loc>
-    <lastmod>2021-01-29T22:51:28+09:00</lastmod>
+    <lastmod>2021-01-29T13:53:20+00:00</lastmod>
   </url>
 </urlset>
