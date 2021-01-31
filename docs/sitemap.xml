@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://mrchypark.github.io/about_en.html</loc>
-<<<<<<< HEAD
     <lastmod>2021-01-30T10:19:19+00:00</lastmod>
   </url>
   <url>
@@ -19,25 +18,6 @@
   </url>
   <url>
     <loc>https://mrchypark.github.io/posts/welcome/</loc>
-    <lastmod>2021-01-31T07:53:47+00:00</lastmod>
-=======
-    <lastmod>2021-01-31T07:52:29+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://mrchypark.github.io/about.html</loc>
-    <lastmod>2021-01-31T07:52:29+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://mrchypark.github.io/</loc>
-    <lastmod>2021-01-31T07:52:29+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://mrchypark.github.io/material.html</loc>
-    <lastmod>2021-01-31T07:52:29+00:00</lastmod>
-  </url>
-  <url>
-    <loc>https://mrchypark.github.io/posts/welcome/</loc>
-    <lastmod>2021-01-31T07:52:29+00:00</lastmod>
->>>>>>> 309599fbe79d080654a15e558ac87e20b003f4cd
+    <lastmod>2021-01-31T07:55:55+00:00</lastmod>
   </url>
 </urlset>
