@@ -18,8 +18,6 @@ output:
     code_folding: true
     theme: theme.css
     number_sections: true
-twitter:
-  creator: "@mrchypark_"
 ---
 
 ```{r setup, include=FALSE}

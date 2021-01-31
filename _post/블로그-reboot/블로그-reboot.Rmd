@@ -22,8 +22,6 @@ output:
     number_sections: true
 categories:
   - anounce
-twitter:
-  creator: "@mrchypark_"
 preview: https://user-images.githubusercontent.com/6179259/106381525-aff66100-63fc-11eb-878f-724b1f26b387.png
 ---
 
