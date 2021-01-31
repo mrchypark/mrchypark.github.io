@@ -11,6 +11,5 @@ output:
     toc: true
     toc_depth: 2
     code_folding: true
-    highlight: haddock
-    highlight_downlit: false
     theme: theme.css
+    number_sections: true
