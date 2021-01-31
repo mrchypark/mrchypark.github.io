@@ -22,7 +22,7 @@ navbar:
 base_url: https://mrchypark.github.io
 google_analytics: "UA-47822682-14"
 collections:
-  posts:
+  post:
     categories: true
     disqus: mrchypark
     hidden: false
