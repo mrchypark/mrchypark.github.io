@@ -1,0 +1,82 @@
+---
+title: '[josaplay] Rmd로 만드는 한글 보고서의 친구'
+author: mrchypark
+date: '2019-05-15'
+slug: josaplay-rmd로-만드는-한글-보고서의-친구
+categories:
+  - R
+tags:
+  - josaplay
+  - package
+  - Rmd
+---
+
+<img src="https://user-images.githubusercontent.com/6179259/57720427-cdc9e280-76bc-11e9-996a-5b965341b91a.jpg" width=100%>
+
+### 한줄요약
+
+1. `을(를)` 이 눈에 거슬린다면 `josaplay`가 문제를 해결해 줄 겁니다.
+
+개인적인 일들이 많이 있어서 정신을 못차리고 있는 중입니다.
+데이터홀릭을 계속하는 만큼, R코홀릭도 좀 어떻게 해야할텐데 말이죠.
+그동안 정기 보고서를 만들 때 한글만의 문제를 해결하는 패키지가 없어서 벼르고만 있었습니다만,
+드디어 만들었습니다!
+
+이름하야 [josaplay](https://mrchypark.github.io/josaplay/index.html) 패키지입니다.
+
+혹시 `마우스을(를) 선택하셨습니다.` 같은 멘트를 보신 적이 있으신가요?
+앞의 단어가 어떤 것이 올지 결정나지 않았을 때, 그에 붙을 조사 또한 결정나지 않습니다.
+위와 같이 경우를 다 작성해두는 선택을 한 사람들이 참 많습니다.
+
+[josaplay](https://mrchypark.github.io/josaplay/index.html) 패키지는 이 때, 앞 단어의 마지막이 모음인지 자음인지를 보고 `을/를` 중 선택하여 출력해 줍니다.
+
+설치는 아래 코드를 사용하면 됩니다.
+
+```{r}
+install.packages("josaplay")
+```
+
+코드가 동작하는 것을 살펴볼까요?
+
+```{r}
+library(josaplay)
+
+jsp_gwawa("상품")
+jsp_gwawa("텀블러")
+jsp_eunneun("사랑")
+jsp_eunneun("탁자")
+jsp_iga("고객")
+jsp_iga("모니터")
+jsp_eulleul("패키지")
+jsp_eulleul("컵")
+jsp_iga("145")
+jsp_iga("k146")
+```
+
+그럼 어떻게 쓰면 좋을까요?
+Rmd로 보고서 등을 작성할 때, 위처럼 코드청크를 사용하는 것이 아닌 경우가 있습니다.
+백틱(`)을 하나만 사용하는 형식으로 인라인 코드를 작성할 수 있는데요.
+이때 [josaplay](https://mrchypark.github.io/josaplay/index.html)가 힘을 발휘합니다.
+
+```{r}
+data1 <- "병아리"
+```
+
+> `r data1`이(가) 성장하였습니다.
+
+라고 작성하는 것을
+
+> `r jsp_iga(data1)` 성장하였습니다.
+
+로 고치면 `data1`의 글자에 따라 적절한 `이/가`를 선택해 출력해줍니다.
+
+앞으로 진행할 프로젝트에 적용할 생각을 하니 너무 즐겁네요.
+한글이 들어간 자동화 보고서를 생성할 때 꼭 필요한 인프라 패키지를 만들게 되서 영광입니다.
+
+현재 [josaplay](https://mrchypark.github.io/josaplay/index.html)는 4개의 함수에 완성형 한글과 숫자를 커버합니다.
+자음 모음의 한글이나 영어, 특수문자는 아직 동작하지 않습니다.
+영어 알파벳 발음에 대응하는 것은 필요한 일 같다는 생각이 듭니다.
+
+문의나 질문 사항은 언제나 환영합니다.
+댓글로 문의 주시면 제가 할 수 있는 최대로 답변드리도록 노력하겠습니다.
+감사합니다.

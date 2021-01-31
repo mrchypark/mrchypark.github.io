@@ -1,0 +1,93 @@
+---
+title: '[usehelp] R의 help 글을 포스트에서 활용하기'
+author: mrchypark
+date: '2018-11-26'
+slug: usehelp-r의-help-글을-포스트에서-활용하기
+categories:
+  - R
+tags:
+  - R
+  - usehelp
+  - package
+  - blog
+---
+
+```{r echo = F}
+if (!requireNamespace("htmltools")) install.packages("htmltools")
+library(htmltools)
+tar <- "https://user-images.githubusercontent.com/6179259/48980638-01b14b80-f10f-11e8-8a8e-767b39cd6e66.jpg"
+img(src = tar, width = "100%")
+```
+
+# 업데이트
+
+* 다른 좋은 접근이 많아서 개발을 중지하였습니다.
+
+### 한줄요약
+
+1. 포스트나 발표자료에서 함수를 설명할 일이 많아서 `usehelp`라는 패키지를 만들었습니다.
+
+저는 R 언어를 매우 사랑합니다.
+이미 문법이 익숙해서, 다른 걸 사용하는게 매우 불편하죠.
+이 블로그도 [blogdown][blogdown] 패키지를 이용하고 있고, 발표자료는 [xaringan][xaringan]으로 만들어 공유합니다.
+포스트를 작성할 때 마다 대문 이미지를 계속 넣어왔는데요.
+`img` 태그를 쓰다가 결국, [htmltools][htmltools]로 바꿨습니다.
+아주 마음이 편하네요. ㅎㅎㅎ
+잠시 딴길로 샜는데, 어쩄든 포스트나 발표자료를 R로 만들다 보니, 함수 설명할 일이 매우 많습니다.
+
+매번 제가 직접 작성하고 있었는데...
+생각해보니 설명서에 제목이며, 설명이며 다 있는 겁니다!
+그래서 그 텍스트를 가져와서 출력해주는 패키지를 생각해보게 되었습니다.
+
+### usehelp
+
+당장 가볍게 만들다보니, 설명서의 텍스트를 R 객체로 가져오는 선에서 끝나고 있습니다.
+이제 시작인 셈인데요.
+github 버전만 있어서 우선 `remotes::install_github()` 함수로 설치해야 합니다.
+
+```{r}
+remotes::install_github("mrchypark/usehelp")
+```
+
+그럼 이제 사용해 봅시다.
+
+
+```{r}
+library(usehelp)
+get_help("usehelp","get_help")
+```
+
+`get_help()` 함수는 패키지 이름, 함수 이름을 받아 `help`의 글자를 전부 가져와서, `help` 클래스로 만듭니다.
+`help` 클래스의 출력를 조정해야 하지만, 이제 0.0.0.9000 버전일 뿐이니 우선 넘어가죠.
+`help` 클래스라고 했는데, 지금 모양은 `xml_document` 입니다.
+여러 양식으로 제공해주던데, 제가 다루기 쉬운 `xml`로 처리하기로 했습니다.
+일부 데이터를 가져오는 것은 당연히 [rvest][rvest]를 사용했습니다.
+
+```{r}
+get_help("usehelp","get_help") %>% 
+  get_title()
+```
+
+그래서 필요한 글자를 가져오는 함수들은 전부 [rvest][rvest]를 덮어서 만들었습니다.
+아직은 `title`과 `description`, `usage` 만 있지만 차츰 추가해 나가겠습니다.
+
+### 향후 계획
+
+우선 포스트와 발표자료에 예쁘게 사용하기 위해 `html` 출력을 추가할 계획입니다.
+`help` 클래스의 콘솔 출력도 조정해야 할 것 같구요.
+마지막으로 가능하다면 번역기를 붙여서 한글자료 만들 때 어설픈 채로라도 사용할 수 있게 조정해볼 계획입니다.
+
+마지막은 정말 희망사항이네요 ㅎㅎ
+
+여기까지 [usehelp][usehelp] 패키지 소개였습니다.
+아직 사용할 수준은 아니지만, 사용하시게 되면 이슈나 PR 대환영입니다.
+콘솔 출력과 `html` 형태 삽입만 마무리되면 cran에 등록할 계획입니다.
+
+감사합니다.
+
+
+[blogdown]: https://github.com/rstudio/blogdown
+[xaringan]: https://github.com/yihui/xaringan
+[htmltools]: https://github.com/rstudio/htmltools
+[rvest]: https://github.com/hadley/rvest
+[usehelp]: https://github.com/mrchypark/usehelp

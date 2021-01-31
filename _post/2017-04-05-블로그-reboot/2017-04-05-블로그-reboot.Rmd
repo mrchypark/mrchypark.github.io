@@ -1,0 +1,23 @@
+---
+title: 블로그 reboot
+author: mrchypark
+date: '2017-04-05T00:57:58+09:00'
+slug: 블로그-reboot
+categories:
+  - anounce
+tags:
+  - blog
+  - reboot
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(cache = T)
+```
+
+<img src="https://theautowarehouse.com/wp-content/uploads/2017/05/the-auto-warehouse-car-engine-warm-up.jpg" width=100%>
+
+
+블로그를 찾아주신 모든 분들 반갑습니다! 안녕하세요 박찬엽입니다. 여러 블로그 도구들과 씨름하다 정착하고 싶어 어느 정도 정리했습니다. 가능하면 한 번에 처리할 방법들을 고민하고 사용해보고 하는 기간이 길었던 것 같습니다. reboot라고 제목을 지은 이유는 이런 저런 실험을 하고 OS에 환경을 세팅하고 난 후에는 reboot을 하기 때문입니다. 이제 다시 reboot할 일 없는 열일하는 서버처럼 잘 운영해 보겠습니다.
+
+감사합니다.

@@ -1,0 +1,128 @@
+---
+title: "[패키지 소개] 네이버 뉴스와 다음 뉴스의 댓글 가져오기"
+author: mrchypark
+date: "2018-05-14T01:52:55+09:00"
+slug: 패키지-소개-네이버-뉴스와-다음-뉴스의-댓글-가져오기
+categories:
+  - R
+tags:
+  - N2H4
+  - DNH4
+  - comment
+  - forkonlp
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/39969654-0708de84-571a-11e8-9bc6-71ce927d52e0.jpg">
+
+```{r include=FALSE}
+if (!requireNamespace("N2H4")) remotes::install_github("forkonlp/N2H4")
+if (!requireNamespace("DNH4")) remotes::install_github("forkonlp/DNH4")
+```
+
+### 한줄요약
+
+1. [DNH4][DNH4]가 드디어(!) 댓글 수집을 지원합니다.
+
+처음 [naverNewsParser][nnp]를 습작처럼 시작하고, [N2H4][N2H4] 패키지로 이전하면서 여러 경험을 했습니다.
+[naverNewsParser][nnp]는 기가막히게도 책에 실린 모양이더군요.
+고학력자들에게 석사 논문 낭독이 거대한 괴롭힘이듯 [naverNewsParser][nnp]가 약간 저에게 그런 역할을 해주는 것 같습니다.
+(물론 사용해 주시는 모든 분들 감사드립니다.)
+
+이렇게 저렇게 패키지를 뭐라도 만들어 보고, 그 이후로도 많은 일들이 있었습니다.
+[N2H4][N2H4] 패키지는 저에게 많은 생각을 하게 만들어주었죠.
+
+조금 익숙해지고 난 이후에는 다음 뉴스를 대상으로 하는 비슷한 패키지를 만들어야 겠다는 생각을 했습니다.
+그래서 몇 시간만에 [N2H4][N2H4] 패키지의 골격을 가져와 모양만 갖춘게 [DNH4][DNH4] 패키지입니다.
+날짜를 보니 2016년 11월이네요.
+이것저것 되게 하려고 노력하다가 의외의 장애물이 댓글 수집이었습니다.
+방법을 몰라 방치한지 2년 가까이 된 패키지를 포스트에 올리는 이유는 드디어(!) 댓글 수집을 지원합니다.
+
+### 다음 뉴스 수집 패키지 DNH4
+
+DNH4 패키지는 N2H4처럼 github에서 호스팅하고 있습니다.
+아래의 코드로 설치 & 로드하여 사용할 수 있습니다.
+
+```{r}
+# remotes::install_github("forkonlp/DNH4")
+library(DNH4)
+```
+
+N2H4 패키지와 함수명이 같기 때문에 `library()`는 조심해 주셔야 합니다.
+DNH4 패키지는 6개의 함수를 우선 지원합니다.[참조][참조]
+
+`getContent()` 함수는 역시 기사 url을 입력으로 받아 관련 내용을 크롤링해 옵니다.
+`getMainCategory()` 함수는 기사의 대분류 항목을 가져옵니다.
+`getSubCategory()` 함수는 기사의 소분류 항목을 가져옵니다.
+다음 뉴스는 카테고리가 대분류와 소분류만 있습니다.
+`getUrlListByCategory()` 함수는 뉴스 리스트 페이지에서 기사의 제목과 링크를 가져옵니다.
+`getMaxPageNum()` 함수는 뉴스 리스트 페이지의 마지막 페이지 번호를 가져옵니다.
+`getComment()` 함수는 기사 url을 입력으로 받아 그 기사의 댓글 정보를 가져옵니다.
+
+말씀드린 것처럼, 다음 뉴스의 댓글 수집은 여러 권한 단계를 거쳐 제 짧은 실력으로는 그 동안 가져오지 못했습니다.
+물론 셀레늄을 사용하면 이런 고민을 하지 않습니다만, 역시 속도 문제를 무시할 수 없는 것 같습니다.
+그럼 이제 `getComment()` 함수를 사용해 보겠습니다.
+
+### 댓글 수집 함수
+
+우선 댓글이 많은 뉴스를 하나 골라봅시다.
+제가 작성하는 시점으로 댓글이 3,000개가 넘는 [기사][기사]로 해보겠습니다.
+
+```{r}
+comments <- DNH4::getComment("http://v.media.daum.net/v/20180513202105651")
+comments
+```
+
+`getComment()` 함수는 몇 가지 옵션이 있습니다.
+`limit`은 가져오는 댓글의 갯수로 기본 10개로 설정되어 있습니다.
+전체 댓글수를 가져오는 함수가 필요하다는 것을 확인하는 시점이네요.
+`parentId`는 대댓글등을 가져올 때 사용하는 옵션으로, 기본값 0에서 바꾸실 일이 거의 없을 겁니다.
+`sort`는 역시 추천순와 최신순 두 가지 옵션을 제공합니다.
+`type`은 결과값을 주는 형태를 의미합니다.
+옵션은 `df`와 `list`가 있으며 원래 제공하는 자료형이 `json`이기 때문에 `list`가 익숙하진 분들은 `list` 자료형을 권장합니다.
+기본값은 `df` 입니다.
+댓글의 상황에 따라 `Warning messages`가 나오는데 무시하셔도 좋습니다.
+내용상 신경이 쓰이시면 `list`를 직접 다루어 보시는 것도 좋은 공부가 될 것입니다.
+
+### 네이버 뉴스 댓글 가져오기
+
+네이버 뉴스 수집 패키지 역시 같은 함수를 가지고 있습니다.
+우선 아래 코드로 패키지를 설치하고 로드합니다.
+
+```{r}
+# remotes::install_github("forkonlp/N2H4")
+library(N2H4)
+```
+
+대상이 될만한 기사를 선정하려고 하다보니, 기왕 같은 뉴스면 좋겠다 싶어 가져왔습니다.
+
+```{r}
+comments <- N2H4::getComment("http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=101&oid=214&aid=0000833933")
+comments
+```
+
+~~네이버 뉴스의 댓글은 훨씬 풍부한 정보를 제공하여(구조가 복잡해서...) `df`를 기능상 제공하지 않습니다.
+대신 댓글만 보는 부분을 안내해 드리고 있습니다.~~
+
+```
+comments$result$commentList[[1]]
+```
+그냥 위 모양으로라도 제공하는게 맞는가 싶어 급하게 업데이트 했습니다.
+N2H4 패키지의 `getComment()` 함수도 `type`을 지원하며, 기본값은 `df`이고 모든 데이터를 확인하기 위해서 `list`를 선택하시면 좋을 것 같습니다.
+
+```{r}
+N2H4::getComment("http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=101&oid=214&aid=0000833933",
+                 type = "list")
+```
+
+
+드디어 다음 댓글을 가져올 수 있게 된 만큼, 많은 분들이 [DNH4][DNH4] 패키지도 찾아주시리라 기대합니다.
+[DNH4][DNH4] 패키지는 [ForkonLP][forkonlp] 프로젝트의 일부입니다.
+
+언제나 그렇듯, 잘못된 내용이 있거나 문제가 생기면 언제든지 알려주세요. 감사합니다.
+
+[nnp]: https://github.com/mrchypark/naverNewsParser
+[DNH4]: https://forkonlp.github.io/DNH4/
+[N2H4]: https://forkonlp.github.io/N2H4/
+[참조]: https://forkonlp.github.io/DNH4/reference/index.html
+[기사]: http://v.media.daum.net/v/20180513202105651
+[forkonlp]: https://forkonlp.github.io/

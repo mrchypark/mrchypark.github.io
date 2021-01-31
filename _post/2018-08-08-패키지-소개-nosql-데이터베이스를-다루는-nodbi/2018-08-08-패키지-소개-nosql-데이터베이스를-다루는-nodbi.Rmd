@@ -1,0 +1,67 @@
+---
+title: '[패키지 소개]NoSQL 데이터베이스를 다루는 nodbi'
+author: mrchypark
+date: '2018-08-08'
+slug: 패키지-소개-nosql-데이터베이스를-다루는-nodbi
+categories:
+  - R
+tags:
+  - nosql
+  - dbi
+  - package
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/43807286-bbabb26a-9ae2-11e8-8b05-e96e70de77af.jpg">
+
+### 한줄요약
+
+1. 이제 R로 MongoDB, Redis(server based), CouchDB, Elasticsearch, etcd를 다룰 수 있습니다.
+
+R에는 여러가지 데이터 베이스를 다루는 도구들이 있습니다. 
+MS의 표준 SQL 드라이버인 ODBC를 사용하는 [odbc][odbc] 패키지(r-dbi 팀), java의 표준 SQL 드라이버인 JDBC를 사용하는 [RJDBC][RJDBC] 패키지(rJava 개발자 Simon Urbanek), r-dbi팀이 직접 관리하는 [DBI][DBI] 패키지가 대표적입니다.
+
+이외에도 개인들이 개발하거나 각 데이터베이스에 맞춰 만든 도구들이 있는데요.
+대부분 위의 패키지들을 사용해서 연결 부분을 쉽게하거나, 데이터 베이스가 통신 프로토콜을 지원해서 wrapper를 만든다거나 하는 경우인거 같습니다.
+
+아무튼!
+
+데이터베이스는 관계형이라고 말하는 RDB 계열과 문서형이라고 부르는 NoSQL 계열이 있습니다. 
+특별히 NewSQL 계열이라고 말하는 부류도 있습니다.
+위에서 이야기한 DBI 등등의 드라이버는 표준 SQL 문법을 지원하는 관계형 DB들을 다룰 때 사용합니다.
+이제 그에 대응하는 NoSQL을 다루기 위한 R 패키지가 등장했는데요.
+바로 [nodbi][nodbi] 패키지입니다.
+
+문서에 따르면 [nodbi][nodbi] 패키지는 대표적인 NoSQL 데이터베이스인 mongoDB에서부터 엘라스틱서치까지 총 5개의 NoSQL 데이터베이스를 지원합니다.
+[ropensci][ropensci] 팀이 [r-dbi][r-dbi] 팀이 부러웠는지 공통으로 사용할 수 있는 패키지를 제작하기 시작했네요.
+이제 0.1.0 버전으로 초기 단계라고 볼 수 있습니다.
+그동안 각 디비 api에 맞춰 개별로 관리되고 있는 패키지들이 있었습니다.
+현재 유지관리가 되고 있는 패키지들은
+
+- MongoDB : [mongolite][mongolite]
+- Redis : [redux][redux]
+- CouchDB : [sofa][sofa]
+- Elasticsearch : [elastic][elastic]
+- etcd : [etseed][etseed]
+
+각자 쉬운 문법을 사용하기 위해 노력했지만 가장 큰 문제점은 [dplyr][dplyr] 패키지와의 호환성이었습니다.
+Elasticsearch의 경우는 파이프 연산자를 지원하는 [elasticdsl][elasticdsl] 패키지가 있지만, 자신의 특수한 문법만 사용할 수 있습니다.
+
+위의 개별 패키지들과는 다르게 [nodbi][nodbi]는 [dplyr][dplyr] 패키지와의 호환성을 목표로 개발이 시작되었습니다.
+갈길이 구만리이긴 하겠지만, [dplyr][dplyr]로 대동단결하면 할 수록 R 사용자들는 추가적인 공부없이 많은 패키지들을 다룰 수 있게 되겠지요.
+
+[sparklyr][sparklyr]도 써봐야 하는데, 새로 생기는 것만 늘어가는 군요.
+
+[sparklyr]: https://github.com/rstudio/sparklyr
+[dplyr]: https://github.com/tidyverse/dplyr
+[odbc]: https://github.com/r-dbi/odbc
+[RJDBC]: https://github.com/s-u/RJDBC
+[DBI]: https://github.com/r-dbi/DBI
+[nodbi]: https://github.com/ropensci/nodbi
+[r-dbi]: https://github.com/r-dbi
+[ropensci]: https://github.com/ropensci
+[mongolite]: https://github.com/jeroen/mongolite
+[redux]: https://github.com/richfitz/redux
+[elastic]: https://github.com/ropensci/elastic
+[elasticdsl]: https://github.com/ropensci/elasticdsl
+[sofa]: https://github.com/ropensci/sofa
+[etseed]: https://github.com/ropensci/etseed

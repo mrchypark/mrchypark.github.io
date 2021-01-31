@@ -1,0 +1,170 @@
+---
+title: 한글 띄어쓰기 API 이용하기
+author: mrchypark
+date: '2017-10-09'
+slug: 한글-띄어쓰기-api-이용하기
+categories:
+  - R
+tags:
+  - httr
+  - api
+  - server
+  - POST
+  - GET
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(cache = T)
+knitr::opts_chunk$set(echo = TRUE)
+if(!requireNamespace("xml2")){install.packages("xml2")}
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/37244197-a6b91c8e-24c8-11e8-96ae-30a489c266b2.jpg" width=100%>
+
+# 업데이트
+* 현재 아래 소개하는 api는 동작하지 않으며 [KoSpacing][KoSpacing] 패키지가 새롭게 배포되었습니다.
+* 패키지 사용 환경 설정은 본 블로그의 [다른 포스트][installr]를 참고하세요.
+
+[KoNLP 패키지][1]를 만드신 [고감자][2]님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 [관련 연구][3]를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다.([관련글][4]) 사용법도 함께 공개하셨는데, R에서는 사용이 어색할 수 있는 [reticulate 패키지][5]로 예시를 작성해주셔서 R에서 많이 사용하는 패키지들로 예시코드를 공유하면서 웹 요청에 대한 내용도 함께 공유해볼까 합니다.
+
+## 띄어쓰기 api 요청하기
+
+먼저 공유해주신 코드를 살펴보겠습니다.
+
+```{}
+library(reticulate)
+
+requests <- import('requests')
+
+spaced_sent <- requests$put('http://35.201.156.140:8080/spacing', 
+      data=list(sent="아래와같은방식으로API를사용할수있으며,호출건수에대해서별도의제한은없으나,1회 호출에200글자로글자수를제한하고있다."))$json() 
+
+print(spaced_sent$sent)
+```
+
+reticulate는 파이썬 코드를 R에서 사용할 있게 interface 해주는 패키지로 위 코드를 실행하기 위해서는 reticulate 패키지, 파이썬, 파이썬의 requests 패키지가 필요합니다. 그럼 R에서 웹 요청을 보내기 좋은 [httr 패키지][6]로 코드를 바꿔보겠습니다.
+
+```{}
+if (!requireNamespace("httr")) install.packages("httr")
+library(httr)
+
+body<-list(sent="아래와같은방식으로API를사용할수있으며,호출건수에대해서별도의제한은없으나,1회 호출에200글자로글자수를제한하고있다.")
+res<-PUT(url='http://35.201.156.140:8080/spacing', body=body)
+
+content(res)$sent
+```
+
+```
+## [1] "아래와 같은 방식으로 API를 사용할 수 있으며, 호출 건수에 대해서 별도의 제한은 없으나, 1회 호출에 200글자로 글자수를 제한하고 있다. "
+```
+
+관련 기능을 만드실 때 고감자님에게 도움을 드린 것이 있는데 직접 언급해주셨습니다. 다시 한번 감사드립니다. 아래로는 http란, R에서 간단한 크롤링이나 api를 사용하기 위한 패키지 소개 및 간단한 사용 예시가 작성되어 있습니다.
+
+## http 란
+
+http란 보통 1999년에 발표된 [http/1.1 버전][7]을 뜻합니다. 해당 링크에서 보면 [프로토콜][8]이란 하나의 약속입니다. 브라우저와 서버가 서로 데이터를 주고 받기 위해서 만든 규칙이라고 이해하시면 좋습니다. 그렇다면 웹의 정보를 R에서 가져오기 위해서는 서버에게 브라우저가 요청하는 약속을 그대로 따라하면 좋을 것 같습니다.
+
+## R로 http 요청하기
+
+http로 요청하는 다양한 방법이 있지만, 간단하게는 GET과 POST만 이해하시면 됩니다. 서버에게 요청하는 것은 request, 응답을 받는 것은 response라고 하겠습니다.__(그놈의 영어)__ 우선 GET부터 보겠습니다.
+
+### GET 요청
+
+GET은 서버의 주소만으로 서버에 데이터를 요청하는 방법입니다. 대부분의 브라우저에 주소를 입력하고 엔터를 누르는 것과 같습니다. GET이라는 것을 메소드라고 부릅니다. R에서는 http 요청을 하기 위한 다양항 패키지가 있지만 메소드 이름을 바로 함수로 제공하는 [httr 패키지][6]를 사용하겠습니다.
+
+```{r}
+if (!requireNamespace("httr")) install.packages("httr")
+library(httr)
+res<-GET("https://mrchypark.github.io/")
+content(res)
+```
+
+위의 결과에서 `<html>`이라고 나온 것을 볼 수 있습니다. [html][9]는 css, javascrit와 함께 브라우저가 사람들이 볼 수 있는 그림을 그리도록 만들어진 규칙입니다. GET 요청은 대부분 서버에서 이런 html 문서를 데이터로 받기 위해서 브라우저에서 동작하는 방식입니다. 알고 계신 다른 사이트들을 시도해보시면 더 이해가 좋을 것 같습니다. 이 html 문서에서 필요한 곳의 내용만 추출하는 패키지로 [rvest 패키지][10]가 있습니다. rvest 패키지 사용법은 많은 분들이 소개해주셔서 검색해 보시길 [추천][11]드립니다. 
+
+### POST 요청
+
+POST는 서버에 데이터를 요청할 때 뭔가 값을 함께 요청하는 방식입니다. 대표적으로 로그인이 있습니다. 위 고감자님의 요청은 PUT을 사용했는데, POST와 거의 같습니다. POST를 값을 실어보내는 것을 body라고 합니다. `body`는 R에서는 `list` 자료형으로 처리합니다. 
+
+```{r}
+body<-list(sent="아래와같은방식으로API를사용할수있으며,호출건수에대해서별도의제한은없으나,1회 호출에200글자로글자수를제한하고있다.")
+body
+```
+
+위 띄어쓰기 API 요청을 보면 `body`를 선언하는 부분이 `list`로 되어 있고, 데이터는 띄어쓰기가 필요한 문장, 그 이름을 `sent`로 하였습니다. 이건 서버에 `sent`라는 이름으로 띄어쓰기가 필요한 문장을 함께 전달하기 위해서 선언한 겁니다.
+
+`PUT`은 `POST`와 거의 같다고 했습니다. 여기서는 예시를 `PUT`으로 하겠습니다.
+
+```{}
+res<-PUT(url='http://35.201.156.140:8080/spacing', body=body, verbose())
+```
+
+위는 `PUT`요청을 했을 때 일어나는 일들 전체를 보여줍니다. `httr` 패키지가 다 알아서 해주니 우리는 이제 아래처럼 요청하면 됩니다.
+
+```{}
+res<-PUT(url='http://35.201.156.140:8080/spacing', body=body)
+```
+
+`res`는 `PUT` 요청으로 서버에게 요청을 했을 때 서버가 우리에게 돌려준 결과를 저장하였습니다. 위에서 말한 `response`입니다.
+
+```{}
+res
+```
+
+```
+## Response [http://35.201.156.140:8080/spacing]
+##   Date: 2018-03-05 07:15
+##   Status: 200
+##   Content-Type: application/json
+##   Size: 348 B
+## {"sent": "\uc544\ub798\uc640 \uac19\uc740 \ubc29\uc2dd\uc73c\ub85c API\u...
+```
+
+실제로 값에 `response`라고 하면서 여러 정보를 보여주고 있습니다. 어느 서버 주소에서 받은 것인지, 언제 받았는지, 상태는 얼마인지 받은 데이터가 어떤 것인지, 받은 데이터의 크기가 얼마나 되는지 같은 것들이네요. 하나하나 따져 보시려면 `str(res)`를 수행해보시면 좋을 것 같습니다. `http`가 `response`를 어떻게 정의해 놨는지 알 수 있습니다. 
+
+이 중에서 우리가 궁금한 것은 `content`입니다. `httr` 패키지는 `response` 객체에서 `content`만 보는 기능을 `content()` 함수로 제공하고 있습니다. `content()`함수는 몇몇 유명한 형식에 대해서 자동으로 가져오는 기능을 제공합니다.
+
+```{}
+content(res)
+```
+```
+## $sent
+## [1] "아래와 같은 방식으로 API를 사용할 수 있으며, 호출 건수에 대해서 별도의 제한은 없으나, 1회 호출에 200글자로 글자수를 제한하고 있다. "
+```
+
+`content`에 `json` 방식으로 준 모양입니다. R은 `json` 방식의 데이터를 `list` 자료형으로 해석합니다. [json][12]의 설명을 확인해 보세요. `list` 이름이 `sent`인걸 보니 마지막 단계만이 남았습니다.
+
+```{}
+content(res)$sent
+```
+```
+## [1] "아래와 같은 방식으로 API를 사용할 수 있으며, 호출 건수에 대해서 별도의 제한은 없으나, 1회 호출에 200글자로 글자수를 제한하고 있다. "
+```
+
+```{}
+resData<-content(res)
+resData$sent
+```
+```
+## [1] "아래와 같은 방식으로 API를 사용할 수 있으며, 호출 건수에 대해서 별도의 제한은 없으나, 1회 호출에 200글자로 글자수를 제한하고 있다. "
+```
+
+Open API 라고 되어 있는 서비스들이 위와 같은 방식을 사용하고 있습니다. 보통은 `sent`라고 되어 있는 부분(요청시 body로 선언할 내용과 방법)을 서비스 제공자 쪽에서 설명해줘야 합니다. 다른 API 서비스를 사용하실 때 오늘의 내용이 도움이 되었으면 합니다.
+
+끝까지 읽어주셔서 감사합니다.
+질문, 지적 대환영이며 댓글로 부탁드립니다.
+
+[1]: https://github.com/haven-jeon/KoNLP
+[2]: http://freesearch.pe.kr/
+[3]: http://freesearch.pe.kr/?s=%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0+&op_x=0&op_y=0
+[4]: http://freesearch.pe.kr/archives/4647
+[5]: https://github.com/rstudio/reticulate
+[6]: https://github.com/r-lib/httr
+[7]: https://ko.wikipedia.org/wiki/HTTP
+[8]: https://ko.wikipedia.org/wiki/%ED%86%B5%EC%8B%A0_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C
+[9]: https://ko.wikipedia.org/wiki/HTML
+[10]: https://github.com/hadley/rvest
+[11]: https://www.google.co.kr/search?safe=off&q=rvest&oq=rvest
+[12]: http://www.json.org/json-ko.html
+[KoSpacing]: https://github.com/haven-jeon/KoSpacing
+[installr]: https://mrchypark.github.io/post/kospacing-%ED%95%9C%EA%B8%80-%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90/

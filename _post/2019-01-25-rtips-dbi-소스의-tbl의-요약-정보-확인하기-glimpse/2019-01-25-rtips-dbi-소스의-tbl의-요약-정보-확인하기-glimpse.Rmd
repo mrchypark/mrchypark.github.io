@@ -1,0 +1,93 @@
+---
+title: '[rtips] DBI 소스의 tbl의 요약 정보 확인하기 glimpse()'
+author: mrchypark
+date: '2019-01-25'
+slug: rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse
+categories:
+  - R
+tags:
+  - glimpse
+  - str
+  - tbl
+  - dbi
+  - dplyr
+---
+
+```{r include=FALSE}
+if (!requireNamespace("RSQLite")) {
+  install.packages("RSQLite")
+}
+if (!requireNamespace("nycflights13")) {
+  install.packages("nycflights13")
+}
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/51696466-ebf5cf00-2048-11e9-996c-92e459f3f06e.jpg" width=100%>
+
+### 한줄요약
+
+1. src_dbi인 tbl의 str()을 확인할 때는 dplyr::glimpse() 함수를 사용하세요.
+
+`str()` 함수는 매우 유용합니다. 
+복잡한 데이터의 구조를 한눈에 보여주는 R의 효자 함수지요.
+그런데 DBI을 이용한 table 객체를 사용할 때 문제가 있습니다.
+
+문제상황을 만들기 위해 `sqlite`를 사용해서 테이블을 만들어 보겠습니다.
+
+```{r}
+library(DBI)
+library(dplyr)
+tb <- src_sqlite("tem.sql", create = T)
+tb
+copy_to(tb, mtcars)
+mtcars_sql <- tbl(tb, "mtcars")       
+```
+
+유용한 내장 데이터인 `mtcars` 데이터셋을 sqlite로 저장하고, `dplyr::tbl()` 함수로 테이블 객체를 불러왔습니다.
+이제 데이터를 살펴볼 때 유용한 함수인 `str()`로 데이터를 확인해보겠습니다.
+우선 R 객체인 `mtcars`를 확인해 볼까요?
+
+```{r}
+str(mtcars)
+```
+
+그리고 테이블 객체로 저장한 `mtcars_sql`을 확인해보겠습니다.
+
+```{r}
+str(mtcars_sql)
+```
+
+확실히 기대하는 모양이랑 좀 다릅니다.
+테이블 객체 자체에 대한 정보를 보여주는군요.
+
+제가 다루는 db의 테이블들은 컬럼이 몇 십개씩 있거나 하기도 합니다.
+
+`tibble` 자료형이 매우 좋은 요약정보를 제공합니다만, 컬럼이 많아지면 한눈에 보기 불편한 문제가 있습니다.
+
+```{r}
+library(nycflights13)
+flights
+```
+
+이렇게 화면을 벗어나게 컬럼이 많으면 값들의 일부조차도 요약해서 보여주죠.
+물론 컬럼 출력 옵션을 조정할 수 도 있습니다.
+하지만 그런 커스텀이 많아지는걸 저는 좋아하지 않습니다.
+
+대신 `dplyr::glimpse()` 함수를 제공한다는 사실을 알게되었습니다.
+대체 `dbi src str` 같은 검색을 죽어라 할 때는 없더니...
+등잔밑이 어둡다가 정말 이럴때 쓰는 말인가 싶더군요.
+
+```{r}
+glimpse(mtcars_sql)
+```
+
+db를 소스로 사용하는 테이블 객체를 살펴볼 때 필수 함수가 아닐까 싶습니다.
+`flights` 데이터로 한번 더 비교하면서 글 마무리하겠습니다.
+감사합니다.
+
+```{r}
+copy_to(tb, flights)
+flights_sql <- tbl(tb, "flights")
+str(flights_sql)
+glimpse(flights_sql)
+```

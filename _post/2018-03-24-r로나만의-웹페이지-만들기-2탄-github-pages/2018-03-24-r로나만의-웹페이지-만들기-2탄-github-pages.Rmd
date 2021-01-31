@@ -1,0 +1,314 @@
+---
+title: '[R로나만의] 웹페이지 만들기 2탄 Github pages'
+author: mrchypark
+date: '2018-03-24'
+slug: r로나만의-웹페이지-만들기-2탄-github-pages
+categories:
+  - R
+tags:
+  - github
+  - web
+  - R로나만의
+  - Rmd
+  - github pages
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T, tidy="styler")
+```
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37816379-2ee237d4-2eb6-11e8-920b-82b02b16096d.jpg">
+
+### 세줄요약
+
+1. github pages로 나만의 웹페이지를 만들 수 있다.
+1. `.Rmd` 파일로 웹개발 지식없이 웹페이지를 만들자.
+1. 파일 이름이 곧 주소이고, index는 관례적으로 생략이 가능하다.
+
+드디어 [blogdown][blogdown]을 사용하기 위한 필수 내용을 설명하는 포스트를 작성하네요.
+제 느린 속도를 생각하면 감개가 무량합니다. ㅎㅎㅎ 그럼 시작해 볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37818759-aa96b64a-2ebe-11e8-99a5-90cd4732d255.png">
+
+[Github pages][pages]는 `<계정이름>.github.io`라는 주소를 제공하는 정적 웹 호스팅 서비스입니다.
+[Jekyll][Jekyll]을 기본 엔진으로 하여 마크다운 문서로 블로그나 홈페이지를 운영할 수도 있죠.
+아무튼 오늘은 `.html` 파일과 `.md` 파일로 `<계정이름>.github.io`의 하위주소로 웹에 공개하는 방법을 소개하겠습니다.
+
+설명드릴 내용은 아래 세 가지입니다.
+
+1. `<계정이름>.github.io`의 주소와 `<계정이름>.github.io/<저장소이름>` 주소로 웹페이지를 게시하는 것
+1. `.md` 파일과 `.html` 파일
+1. 파일을 저장해야 하는 위치(root, docs, gh-pages branch)
+
+
+우선, 가장 간단한 조합인 폴더의 root 위치에 `.md` 파일로 `<계정이름>.github.io/<저장소이름>`에 게시를 해보겠습니다.
+[지난 포스트][github시작]에서 만들었던 [myfirestrepo][myfirestrepo]를 사용해 보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835300-3202ff9c-2ef3-11e8-9226-6de9ed8b006c.png">
+
+[지난 포스트][github시작]를 따라 오셨다면 저처럼 `https://github.com/<계정이름>/myfirestrepo`가 있을겁니다.
+이걸로 페이지를 만들 준비가 끝났습니다.
+페이지 설정을 같이 따라가 볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835599-e659bf26-2ef3-11e8-901c-2283a9ca34b8.png">
+
+Code, Issues, Pull requests 가 있는 탭의 오른쪽 마지막에 Settings가 있습니다.
+자신의 저장소에서만 보이는 옵션이니 회원가입하고 저장소를 만드셔야 따라오실 수 있습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835619-eef36862-2ef3-11e8-98b1-f5813b95aae8.png">
+
+스크롤을 조금 내리면 드디어 GitHub Pages가 나옵니다.
+Source와 Theme Chooser가 있는데, Theme Chooser는 나중에 설명하고, Source를 같이 보시죠.
+현재 None으로 되어있는데요, 클릭을 한 번 해볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835633-f663f30a-2ef3-11e8-9bce-c4e2dbbcc3b2.png">
+
+None 말고 다른 옵션이 2개 더 있네요. 
+하나는 master branch, 다른 하나는 master branch /docs folder 입니다.
+각 옵션은 설정이 가능할 때, 즉 호스팅할 파일이 있을 때 선택할 수 있습니다.
+지금 /docs 폴더가 저장소내에 없기 때문에 2번째 옵션은 선택할 수 없어요.
+우선 기본 위치를 사용하는 master branch를 설정해 보겠습니다.
+첫 번째 옵션을 선택하고 오른쪽에 Save 버튼을 클릭해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835666-096880c4-2ef4-11e8-9063-360961e28bd3.png">
+
+설정이 저장되었다는군요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835687-13a88eb2-2ef4-11e8-8730-653b75da6dd5.png">
+
+다시 GitHub Pages로 가보면 많은 것이 변해있습니다.
+우선 <https://mrchypark.github.io/myfirestrepo/> 주소로 사이트가 게시 준비가 되었다네요!
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37836845-ee9cf510-2ef6-11e8-84f6-e4ace1178320.png">
+
+조금 기다려보면 이렇게 사이트가 게시되었다고 변한 녹색 알림을 볼 수 있습니다.
+새로고침을 해서 확인해보세요!
+그럼 주소를 따라 이동해볼까요?
+
+파란색 주소를 클릭하시면 됩니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37835732-299f238e-2ef4-11e8-8fc3-8e02dcfe66cd.png">
+
+와! 드디어 github pages로 웹페이지를 게시했습니다!
+이 간단한 페이지가 뭘로 만들어진거냐 하면...
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37837382-6287fc12-2ef8-11e8-886d-f9ec48419dd1.png">
+
+처음 프로젝트 만들 때 체크로 만들었던 `README.md` 파일로 만들어진 겁니다.
+그렇다면 마크다운 문법으로 `README.md` 파일을 바꾸면 웹 페이지 내용을 바꿀 수 있겠군요.
+그래도 우리는 R로 만들꺼니까, `.Rmd`로 `.md`를 만들어 봅시다.
+
+#### 새로 시작해봅시다.
+
+[이전 포스트][github시작]와 같이 할건데 라이선스는 지정하지 말고, 저장소 이름은 마음대로 해보겠습니다. 
+어떤 보고서를 업로드할 꺼라면, 주소가 그 내용을 반영하고 있으면 좋을 것 같네요.
+저는 `rmdhosting`이라고 해보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157359-2f17c00a-34c1-11e8-9fb7-6aea0ffa06ff.png">
+
+Rstudio로 프로젝트를 시작하면서 위 저장소로 시작해볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157380-5c843c76-34c1-11e8-8432-68fa30253a35.png">
+
+위 화면의 오른쪽 아래처럼 파일이 3개가 있다면 잘 따라오신겁니다.
+혹시 잘 안되시면 댓글로 질문주시거나 [이전 포스트][github시작]를 다시 확인해주세요.
+그럼 이제 [Rpubs 소개 포스트][rpubs]에서 한 것처럼 `.Rmd` 파일을 만들겠습니다.
+대신 선택을 다른걸 할껀데요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157490-4248eda6-34c2-11e8-9d5d-e7bce54771d5.png">
+
+위처럼 `R markdown...`을 만드는 팝업창을 켜고, `From Template` 탭을 확인하겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157518-998b60d0-34c2-11e8-9567-eb9f962ab155.png">
+
+반가운 이름이 보이는군요!
+`GitHub Document (Markdown)`을 선택하고 `OK`를 눌러 만들어보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157544-dc838f3e-34c2-11e8-8689-978fe43d1716.png">
+
+`.Rmd` 파일이 만들어졌습니다.
+저장을 해주세요.
+물론 필요한 내용으로 수정해야겠죠?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157557-09ed0946-34c3-11e8-9282-6540d120e4ba.png">
+
+저는 우선 **index** 라고 저장하겠습니다.
+모두 같은 이름으로 따라해주세요.
+처음에 `.Rmd`로 설정해서 새로 만들었기 때문에 확장자를 지정하지 않아도 됩니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157561-16c447f6-34c3-11e8-8e7f-c2ba9885d4ed.png">
+
+그럼 이제 `Knit` 버튼을 눌러볼까요!?!
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157644-c49b8a6a-34c3-11e8-8f05-ee8f13378842.png">
+
+[Rpubs 소개 포스트][rpubs]에서는 여기서 `Publish` 버튼을 누르는 것으로 진행했었습니다.
+선택도 기본 `html`이었던것 같군요.
+
+이번에는 창을 닫고 다시 파일들을 확인해보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157677-f98b8a9a-34c3-11e8-8738-1844d4f2b4e9.png">
+
+`index.Rmd` 파일은 제가 만든건데, `Knit` 버튼을 누름으로써 `index.md`로 변환이 되었군요.
+`index_files` 폴더도 새로 생겼습니다.
+`index_files` 폴더는 보통 `.md` 파일로 변환하는 과정에서 생기는 그림 파일들을 저장하는 곳입니다.
+자동으로 일이 진행되니 자세히 알고 있을 필요는 없습니다.
+
+#### github에 업로드
+
+이제 git을 이용해서 github에 `push` 해볼껀데요.
+저희 입장에서는 업로드와 같지만, git의 방법을 따라할겁니다.
+
+우선 오른쪽 위 창에서 git 탭을 클릭해보세요. 
+없다면 github 저장소를 이용해서 프로젝트를 만든 것이 아닙니다.
+[이전 포스트][github시작]를 확인해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157717-59274a34-34c4-11e8-9ed3-a3b56b3184d1.png">
+
+저 같이 여러 리스트가 나올 건데요.
+내용은 git에 대한 것이므로 (언제가 될지 모르는) 나중에 다루도록 하구요.
+`Commit` 버튼을 눌러보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157773-f19979a4-34c4-11e8-93e6-671881ccd51d.png">
+
+또 새로운 창이 뜹니다.
+여기는 `Commit`을 하는 곳입니다. 
+파일들이 변경된 *상태*를 저장하는 것이라고 이해하면 좋을 것 같아요.
+전부 저장해 볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157790-3051f3c4-34c5-11e8-84c4-939f4274bf27.png">
+
+파일을 전부 선택합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157792-354f3a58-34c5-11e8-87a7-80d7c417f5c8.png">
+
+그리고 파일 위에 `Stage` 버튼을 눌러 `Staged` 박스를 전부 체크합니다.
+
+> 방금 과정 말고 `Staged` 박스를 하나씩 클릭해도 됩니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157795-440287b2-34c5-11e8-845e-4433d07cd439.png">
+
+오른쪽에 `Commit message` 칸에 지금 저장하는 *상태*에 대해 간단한 설명글을 씁니다.
+이건 `git`의 기능으로 필수이기 때문에 뭐라도 적어주세요.
+
+그리고 `Commit` 버튼을 눌러볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157799-49c40ac2-34c5-11e8-8db7-e76d41abb78e.png">
+
+`Commit`을 어떻게 했다는 이러저러한 설명이 나오네요.
+잘 된거 같으니 확인 버튼을 누르겠습니다.
+
+다음 버튼은 오른쪽 가장 위에 있는 `push` 버튼입니다.
+`push`는 `Commit`된 내용들을 원격 저장소에 보낸다는 뜻입니다.
+업로드랑 비슷하죠?
+그럼 클릭해볼까요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157802-4d7d7b12-34c5-11e8-92af-d4ab5b1a1a2e.png">
+
+뭐라고 뭐라고 하다가...
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157804-53e7615c-34c5-11e8-9da3-cd3238844803.png">
+
+이렇게 `master -> master`라는 메세지가 뜨면 잘 `push`(업로드)가 된 것입니다.
+[github 웹 페이지][rmdhosting]로 가서 잘 진행이 됬는지 확인해보죠.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157806-5f2a6f96-34c5-11e8-8c1a-75b805f5556f.png">
+
+잘 된거 같습니다!
+처음에는 만들지 않았던 파일들이 보이구요.
+다행히도 Rstudio에서 만들어서 push 한 것들이네요!
+
+그럼 위에서 한 것처럼, setting으로 가서 github pages를 설정해볼까요?
+지금 파일들이 `master branch`에 있으니 선택해서 저장해보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157962-506efd26-34c7-11e8-9f4e-4d0dd66c2c7d.png">
+
+사이트가 호스팅할 준비가 되었다고 하네요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157963-587b1694-34c7-11e8-9d6c-0de26223ed95.png">
+
+이제 다 되었습니다!
+
+한번 [주소][주소]를 클릭해서 잘 호스팅되고 있는지 확인해볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157852-f015cbcc-34c5-11e8-8339-39a642de209e.png">
+
+이렇게 허탈한 화면을 볼 수도 있습니다.
+새로고침을 좀 해보셔도 안되면 `README.md` 파일을 한번 지워보세요.
+지우는 방법은 2가지가 있는데, 하나는 Rstudio에서 지운후 `Commit`하고 `Push`하는 것이구요.
+다른 하나는 `Github` 웹 페이지에서 바로 지우는 겁니다.
+간단한 동작들은 `Github` 웹 페이지에서 기능을 제공합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38157806-5f2a6f96-34c5-11e8-8c1a-75b805f5556f.png">
+
+이 창에서 `README.md` 파일을 클릭해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158022-fc3fc2ca-34c7-11e8-9f02-d8186352e2f8.png">
+
+이 화면이면 맞습니다. 오른쪽 끝에 보니 모니터, 펜, 쓰레기통 버튼이 보이는군요.
+더 말하지 않아도 느낌이 오시죠?!
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158027-031326e6-34c8-11e8-9838-258cfc40ec53.png">
+
+역시 쓰레기통 버튼이었습니다.
+클릭해볼께요!
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158027-031326e6-34c8-11e8-9838-258cfc40ec53.png">
+
+역시 `git`의 관리를 받는 파일들이라 파일을 지우는 것도 어떤 *상태*인 모양입니다.
+파일이 지워진 *상태*를 `Commit`하는 창이 나오는군요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158033-0a5f21f2-34c8-11e8-90d4-fdf3483f8195.png">
+
+스크롤을 내려서 초록색 버튼인 `Commit changes`를 클릭합니다.
+`Commit message`는 기본값이 있어서 알아서 저장이 되는데요.
+바꾸고 싶으시면 다르게 작성하셔도 됩니다.
+지금은 기본값으로 `Delete READM.md`가 들어가 있네요.
+저는 마음에 드니까 그냥 두겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158034-0e784462-34c8-11e8-8308-e1bc1d8a736a.png">
+
+파일이 성공적으로 지워졌다고 합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158035-11485290-34c8-11e8-9fc3-a0ca292cf37c.png">
+
+`README.md` 파일은 `Github`에서 관심가지는 것이라고 설명드렸었나요?
+파일이 없으니까 만드는게 어떻겠냐고 제안하네요.
+어쨌든 무시하고 우리의 웹 페이지 주소로 다시 가보겠습니다.
+
+> <https://mrchypark.github.io/rmdhosting/>
+
+각자의 웹 페이지 주소의 구조는 `https://<계정명>.github.io/<저장소명>/` 입니다. 
+제것과 비교해서 어떻게 다른지 한번 확인해보세요.
+
+이제 들어가면 우리가 보고 싶은 화면이 나옵니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158091-186e4b46-34c9-11e8-89ea-40a720e5e454.png">
+
+수고하셨습니다!
+
+앞으로도 설명드릴 내용이 많지만 이번 포스트는 여기서 마무리해야겠네요.ㅎㅎ
+
+P.S 혹시 만약에라도 파일을 만드실 때 `index.Rmd`로 하지 않으셔서 `index.md` 파일이 없으시다면 아직도 이 화면을 보지 못하고 계실겁니다.
+이 때는 `https://<계정명>.github.io/<저장소명>/<파일명>` 주소를 확인해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/38158116-a75e3e2e-34c9-11e8-984a-5a53dc71f261.png">
+
+제가 만든건 `https://<계정명>.github.io/<저장소명>/<파일명>` 으로도 동작하는군요?!?
+`try.md`같은 파일이라면 `<파일명>` 부분을 `try`라고 해주시면 됩니다.
+제 경우라면 <https://mrchypark.github.io/rmdhosting/try>가 되겠죠.
+감사합니다.
+
+P.S2 질문, 오타 지적, 내용 지적, 외모 지적(응?), 와드용 공유 등 모두 모두 환영합니다.
+
+
+[Jekyll]: https://jekyllrb-ko.github.io/
+[pages]: https://pages.github.com/
+[blogdown]: https://bookdown.org/yihui/blogdown/
+[github시작]: https://mrchypark.github.io/post/github-rstudio%EB%A1%9C-github-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/
+[공식문서]: https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/
+[myfirestrepo]: https://github.com/mrchypark/myfirestrepo
+[rpubs]: https://mrchypark.github.io/post/r%EB%A1%9C%EB%82%98%EB%A7%8C%EC%9D%98-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0/
+[rmdhosting]: https://github.com/mrchypark/rmdhosting/
+[주소]: https://mrchypark.github.io/rmdhosting/

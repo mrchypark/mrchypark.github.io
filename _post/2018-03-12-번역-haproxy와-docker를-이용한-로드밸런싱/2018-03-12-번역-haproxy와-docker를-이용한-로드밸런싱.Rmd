@@ -1,0 +1,229 @@
+---
+title: '[번역]Haproxy와 Docker를 이용한 로드밸런싱'
+author: mrchypark
+date: '2018-03-12'
+slug: 번역-haproxy와-docker를-이용한-로드밸런싱
+categories:
+  - Docker
+tags:
+  - docker
+  - haproxy
+  - swarm
+  - load balance
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+> 본 번역은 [원글][원글]을 대상으로 [저자][저자]의 [허락][허락]을 받았습니다. 저와 같은 문제에 직면한 분들에게 도움이 되었으면 좋겠습니다.
+
+> 본 글에서 사용하는 이미지인 [dockercloud-haproxy][haproxy]에서 확인해보면 기능 추가는 없이 유지보수만 하는 이미지인 것을 알 수 있습니다. 제품에 사용할 때는 참고해주세요.
+
+> 요약 : 도커(Docker)와 도커 스웜(Swarm), 스택(Stack)을 이용해서 여러 개의 컨테이너를 추가 설정없이 연결하고 업데이트(컨테이너 갯수 추가/축소, 버전업 등)하는 실전 예제를 수행해봄.
+
+## 실제 도커(Docker) 사용 사례에 대한 예제
+
+최근에 일때문에 Docker, Docker Compose 및 Docker Swarm으로 로드 밸런싱을 하는 글들을 많이 보았습니다. 
+몇백 개의 인스턴스가 있으며 인스턴스를 관리하고 인스턴스간에 로드 밸런싱을 맞춰야하는 일입니다.
+
+이 주제를 다루는 많은 글들이 있지만, 정말 쉽고 간단한 사례만 다루기 때문에 도움이 되지 않았습니다. 실제로 필요한 상황을 몇 가지 예로 살펴보면,
+
+> 1. 수백개의 컨테이너를 수동으로 생성하는 것
+> 1. 그 수백개의 컨테이너 포트를 각각 다르게 수동으로 설정하는 것
+> 1. nginx conf 파일에 각 컨테이너의 ip와 포트를 일일이 작성하는 것
+    
+그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 작성하기로 결정했습니다. 이것이 "올바른" 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*aLJqpovWFITztDq_3WiFpQ.jpeg" width=100%>
+<figcaption>시작해볼까요! :)</figcaption>
+</figure>
+
+### 예시를 위한 간단한 어플리케이션
+
+간단한 Node.js 애플리케이션을 만들어 보겠습니다. 다음 코드를 사용하여 `index.js`라는 파일을 만듭니다.
+
+```
+var http = require('http');
+var os = require('os');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(`<h1>I'm ${os.hostname()}</h1>`);
+}).listen(8080);
+```
+
+이제 `Dockerfile`이라는 이름의 파일을 만들어 아래 코드를 저장합니다. 도커라이즈(Dockerize)^[역자주: 도커파일로 작성하여 이미지화 하는 것]라고 합니다.
+
+```
+FROM node
+RUN mkdir -p /usr/src/app
+COPY index.js /usr/src/app
+EXPOSE 8080
+CMD [ "node", "/usr/src/app/index" ]
+```
+예시로 작성한 간단한 어플리케이션(이하 멋진 Node.js 앱) 도커 이미지를 빌드(build)하기 위해서 터미널에서 `docker build -t awesome .`이라고 입력합니다. 물론 `Dockerfile`과 `index.js` 파일이 한 공간에 있어야 하고 `Dockerfile`이 있는 곳에서 실행해야 합니다.
+
+이제 간단하고 (그리고 멋진) Node.js 앱의 도커 이미지가 생겼습니다. 이미지에서 컨테이너를 만들 수 있습니다. 해당 애플리케이션의 20 개 컨테이너가 필요하다고 가정하면 해당 컨테이너를 만들고 관리하는 자동화 된 방법이 필요합니다. 또한 요청을 라우팅하고 Node.js 컨테이너로 로드 밸런싱하기 위해 HTTP 서버가 있는 컨테이너가 필요합니다.
+
+---
+
+### Docker Compose 사용하기
+
+HTTP 서버는 [HAProxy][haproxy]를 사용합니다. 즉, 포트 80을 수신하고 요청을 포트 8080의 다른 Node.js 컨테이너에 로드 밸런싱하는 HAProxy가 있는 컨테이너를 만들어야 함을 의미합니다. Docker Compose를 사용할 컨테이너 (Node.js 앱 및 HAProxy)를 만들려면 `docker-compose.yml` 파일을 작성해 보겠습니다.
+
+```
+version: '3'
+
+services:
+  awesome:
+   image: awesome
+   ports:
+     - 8080
+   environment:
+     - SERVICE_PORTS=8080
+   deploy:
+     replicas: 20
+     update_config:
+       parallelism: 5
+       delay: 10s
+     restart_policy:
+       condition: on-failure
+       max_attempts: 3
+       window: 120s
+   networks:
+     - web
+
+  proxy:
+    image: dockercloud/haproxy
+    depends_on:
+      - awesome
+    environment:
+      - BALANCE=leastconn
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    networks:
+      - web
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  web:
+    driver: overlay
+```
+
+도대체 무슨 일이 일어나는 건지 설명하겠습니다. 우리는 2 가지 서비스를 만들겁니다.
+
+1. 첫 번째 서비스는 `awesome`으로 부를 멋진 Node.js 앱입니다. 
+조금 전에 빌드한 `awesome` 이미지로 만들겁니다. 
+8080 포트를 외부에 연결하고, 환경 변수로 `SERVICE_PORTS`로 작성해두었습니다.
+HAProxy가 사용하는 설정으로 뒤에서 설명하겠습니다.
+deploy 옵션으로 20개의 리플레카(replicas)^[역자주: 복사본이라는 뜻으로 여기서는 같은 이미지에서 생성된 같은 기능을 하는 컨테이너를 뜻함.]를 만들고 업데이트 설정과 재시작 설정을 추가했습니다.
+파일의 마지막에 작성한 `network`인 `web` 네트워크에 모든 컨테이너를 연결해둔 것이 가장 중요한 포인트입니다.
+1. 두 번째 서비스는 Docker 팀의 haproxy 이미지로 만든 `HAProxy`입니다. 
+이미 Docker 팀에서 만들어 두었기 때문에 우리는 이미지를 빌드할 필요 없이 가져다 사용하면 됩니다. 
+`depends_on` 옵션으로 `awesome` 서비스가 부팅이 완료된 이후에 실행을 시작합니다.
+또한 `volumes` 옵션으로 `docker.sock` 파일을 공유합니다. HAProxy 컨테이너가 네트워크에 이미 있거나 새롭게 들어오는 컨테이너들을 찾고 확인할 수 있어야 하기 때문입니다.
+우리는 80 포트는 외부에 연결했습니다.
+그리고 `web` 네트워크에도 연결했습니다.
+마지막으로 deploy 설정에서 manager node에서 항상 실행하도록 설정하였습니다.
+이건 Docker Swarm의 설정으로, node가 여러 개라면 `volumes` 옵션 때문에 필요합니다.
+1. 마지막으로 `web`이라는 이름의 network를 생성하였습니다.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*pe0FTboUBkXLKwWojt0gdA.jpeg" width=100%>
+<figcaption>진행하고 있는 프로젝트가 점점 멋져지고 있습니다. 그리고 거의 끝나갑니다!</figcaption>
+</figure>
+
+### DockerCloud HAProxy 소개
+
+위에서 언급한대로 HTTP 서버로 HAProxy를 사용할 겁니다. 
+일반적인 버전이 아니라 Docker 팀이 자신들의 클라우드에서 사용하는 [버전][haproxy]을 선택했습니다. 
+`awesome` 서비스에서 `SERVICE_PORTS` 환경변수를 사용한 이유이기도 합니다. 
+`SERVICE_PORTS` 환경변수로 설정한 포트는 `HAProxy`에 연결됩니다. 
+쉼표로 구분하여 여러 포트를 연결할 수도 있습니다. 
+파일을 보면 `BALANCE` 환경변수도 확인할 수 있습니다. 
+이것은 로드 밸런싱 알고리즘을 선택하는 것인데요. 기본값인 `roundrobin`를 선택한 것이 아니라 `leastconn`으로 설정했습니다.
+
+### Docker Swarm 사용하기
+
+이제는 Swarm을 만들어 보겠습니다.
+(지금은 하나의 컴퓨터로 만들었지만 Swarm에 더 많은 컴퓨터를 쉽게 추가 할 수 있음) 
+이렇게 하기 위해 우리는 `docker swarm init`을 입력하고 우리는 Swarm을 만들었습니다!!
+컴퓨터를 Swarm에 추가했으며, 지금 컴퓨터가 처음이기 때문에 Swarm의 관리자이기도 합니다.
+
+네트워크, 서비스, 그리고 모든 컨테이너들을 `스택(stack)`이라고 부릅니다. 
+스택을 생성하기 위해서는 `docker stack` 명령어를 사용해야 하지만 스택을 `docker-compose.yml` 파일로 수행하기를 원합니다. 
+그래야 우리가 설계한대로 진행해줄테니까요.
+`docker stack deploy --compose-file=docker-compose.yml prod` 라고 실행하면 될 것 같습니다.
+`deploy` 명령으로 새로운 스택을 배포하고, `docker-compose.yml`을 사용해 수행하기 위해서 `--compose-file` 플래그(flag)를 사용했습니다.
+물론 이미 있는 스택을 업데이트할 때에도 명령을 사용할 수 있습니다.
+마지막으로 우리는 스택을 `prod`라고 부르기로 했습니다.
+(이걸 작성할 때 겨우 생각한 이름이 이거라서 죄송합니다. :p)
+
+---
+
+`http://localhost` 주소로 요청을 날리면, 우리는 응답으로 컨테이너 ID를 받을 수 있습니다. 그러면 지금 상황에서는 매 요청마다 다른 ID를 받겠죠.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*uHGmKcjX3I8oivAQ_9nLvA.png">
+<figcaption>요청마다 다른 컨테이너 ID를 받음</figcaption>
+</figure>
+
+`docker service ls` 명령으로 우리 서비스들을 확인할 수 있습니다. 어떤 서비스가 동작하고 있는지, 몇개의 복사본이 있는지 등을 확인할 수 있죠.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*4yAhwsleJjva-aScU23dbw.png" width=100%>
+<figcaption>모든 도커 서비스 리스트</figcaption>
+</figure>
+
+이제 두번째 버전의 `awesome` 앱을 작성해보겠습니다. 코드를 약간 바꿔서 응답의 마지막에 느낌표를 추가해보겠습니다.
+
+```
+var http = require('http');
+var os = require('os');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(`<h1>I'm ${os.hostname()}!!!</h1>`);
+}).listen(8080);
+```
+
+이제 다시 빌드를 해야됩니다. 
+이번에 빌드할 때는 `docker build -t awesome:v2 .` 라고 이미지에 태그를 추가해보겠습니다. 
+`awesome` 이미지 이지만 태그가 `v2`인 이미지를 만드는 것이지요.
+서비스의 중단없이 `prod` 스택에 `awesome` 서비스를 `v2`로 교체하기 위해서는 `docker service update --image awesome:v2 prod_awesome` 명령을 사용합니다.
+그러면 `docker-compose.yml`에 명시한 업데이터 설정과 같이 각 5개의 컨테이너가 순차적으로 업데이트를 할 것입니다.
+
+도커가 차근차근 하지만 확실히 오래된 컨테이너를 제거하고 새로운 `v2` 태그의 컨테이너를 실행하는 것을 확인할 수 있습니다.
+그 와중에 `http://localhost`에 요청해도 다운타임 없이 응답을 받을 수 있습니다.
+
+<figure>
+<img src="https://cdn-images-1.medium.com/max/1000/1*GHjEnqDXxQQnWYxAK8IQMQ.png">
+<figcaption>몇몇 컨테이너는 다운타임 없이 두번째 버전을 응답</figcaption>
+</figure>
+
+만약 20개의 컨테이너보다 더 많이 필요하여 스케일을 키우고 싶다면, `docker service scale prod_awesome=50`^[역자가 가장 도움을 많이 받은 부분] 명령을 수행하면 됩니다.
+도커는 `awesome:v2` 이미지로 30개의 컨테이너를 추가로 실행할 것입니다.
+
+---
+
+### 마무리
+
+이제 수백 개의 컨테이너를 수동으로 만들 필요가 없습니다. 
+우리는 앱의 모든 컨테이너를 다른 포트에 둘 필요가 없습니다. 
+컨테이너 ip와 port를 수동으로 ngninx / haproxy conf 파일에 쓸 필요가 없습니다. 
+또한 여러 서버 (docker swarm 포함), 여러 서비스 (docker 작성 포함), 중단 시간없이 응용 프로그램 업데이트, 중단 시간없이 확장 (또는 축소) 등의 작업을 수행 할 수 있습니다.
+
+이번 글이 실용적이었으면 합니다. 그리고 혹시 당신의 회사에서는 어떻게 사용하는지를 알려주시면 매우 기쁘게 듣겠습니다!
+
+
+[저자]: http://nirgn.com/
+[원글]: https://medium.com/@nirgn/load-balancing-applications-with-haproxy-and-docker-d719b7c5b231
+[허락]: https://twitter.com/mrchypark_/status/972681403098808322
+[haproxy]: https://github.com/docker/dockercloud-haproxy
+
+

@@ -1,0 +1,293 @@
+---
+title: '[github] rstudio로 github 프로젝트 시작하기'
+author: mrchypark
+date: '2018-03-15'
+slug: github-rstudio로-github-프로젝트-시작하기
+categories:
+  - R
+tags:
+  - rstudio
+  - github
+  - project
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/37447051-71c9eff0-2863-11e8-840d-ebef25285d34.jpg" width=100%>
+
+### 세줄요약
+
+1. github은 git의 공개 remote repo를 제공하는 서비스다.
+1. 그래서 git 사용법을 알아야 한다.
+1. Rstudio의 project를 사용하면 좀 쉽다.
+
+[Github][Github]은 이제 코드 관리와 공유 플랫폼의 대명사입니다. 
+R도 개발 언어로써 Github을 많이 사용할 기회가 있는데요. 
+코드 공유, 패키지 공유, 분석 결과 공유 정도로 쓰임새를 정리할 수 있을 것 같습니다. 
+이 때 많은 분들의 필요은 아마 분석 결과 공유이지 않을까 싶습니다.
+
+분석 결과를 공유하기 위해서 github을 사용하실 때, R의 IDE로 많이 사용하는 RStudio와 함께 사용하는 법을 소개해드릴까 합니다.
+
+우선 github에 repository를 만들어 시작하는 다양한 방법이 있습니다. 
+단적으로는 웹브라우저에서 파일 만들기나 업로드로 진행하셔도 됩니다. 
+각각의 방법을 설명하기 전에, github의 개념을 간단하게만 짚고 넘어가겠습니다.
+
+코드의 저장 상태 백업과 공유를 위해서 git은 작업하는 나의 컴퓨터 공간인 로컬 저장소(local repository)와 원격 저장소(remote repository)라는 개념으로 구분하여 사용합니다. 
+local을 개인이 일하고 작업하는 공간, remote는 백업하고 공유하는 공간입니다.
+
+<img src="https://github.com/mrchypark/dabrp_classnote3/raw/master/docs/img/localremote.png" width=100%>
+
+그런데 remote를 누가 그냥 주는 것도 아니고, 필요한 사람이 따로 구축해야 합니다. 
+큰일인거죠.
+이걸 SNS처럼 인터넷 서비스로 만든 것이 바로 Github입니다.
+Github은 원격 저장소를 회원 가입한 사람 모두에게 무료로 나눠준거죠.
+조건이 있다면 저장소를 공개(public)해야 합니다.
+비공개(private)로 만들려면 돈을 내야 합니다.
+이런 Github의 유료정책을 파고 들어서 [Gitlab][Gitlab]이나 [Bitbucket][bitbucket]은 무료 비공개 repo를 제공하고 있습니다. 
+사용법이 좀 다르지만 git과 subvesion을 모두 사용할 수 있으니 선택지가 넓은 셈이죠.
+우리는 분석 결과 공유를 목적으로 저장소(repository)를 사용할 계획이니 Github을 사용하겠습니다.
+시작해볼까요?
+
+### 로컬과 원격, 프로젝트의 시작
+
+무언가 작업이 발생하면 아주 작거나 간단한 것이 아니라면 프로젝트라고 정의합니다. 
+원래 분석 프로젝트라고 하면 `문제정의` - `데이터 확보` - `분석` - `결과 공유`의 과정을 거칩니다. 
+각각의 세부항목도 많지만 우선은 넘어갈께요. 
+저 모든 과정을 프로젝트라고 볼 수도 있지만, 우리는 `결과 공유`만 프로젝트라고 합시다.
+더 쉽게 하기 위해서 결과물이 `.Rmd` 파일로 되어 있다고 해보겠습니다. 
+그렇게 하면 해야할 일은
+
+1. github에 새 저장소 만들기
+1. 새 저장소에 결과물 업로드하기
+
+이제 여기서 몇 가지 분기가 발생하는데요.
+
+1. git을 사용할 것인가 말것인가
+1. 결과물을 어떤 파일 형식으로 저장할 것인가
+
+입니다.
+
+git을 사용하지 않는다면 그냥 github에서 제공하는 `upload files` 버튼으로 업로드 하는 방법이 있습니다.
+예를 들어 `.pdf`는 엄청 큰 파일이 아닌 이상 업로드하면 바로 웹에서 보여주기도 합니다.
+
+<figure>
+<img src="https://user-images.githubusercontent.com/6179259/37452898-4d44e20a-2879-11e8-8d56-110d6a6bf412.png" width=100%>
+<figcaption>이 [주소][주소]로 확인하실 수 있습니다. 예쁘지는 않을 수...</figcaption>
+</figure>
+
+우리는 R을 사용하니 파일 형식은 다양할 수 있습니다. 
+`.Rmd`만 사용하면 이론적으로는 [rpubs 포스트][rpubs]에서 보여드린 만큼이나 가능하죠.
+대표적으로 많이 사용하는 형식으로는 `.docx`같이 MS 오피스 계열의 결과물이 있습니다. 
+그리고 `Github` 친화적으로는 `.md`와 `.html`을 꼽을 수 있을 것 같습니다.
+
+`.md`는 [GFM][GFM]이란게 있을 정도로 Github이 사랑하는 파일 형식입니다. 
+오픈소스 저장소로써 많이 사용하는 관례인 `README.md`는 파일을 보지 않아도 프로젝트 페이지에서 출력도 해줍니다.
+
+`.html`은 [Github pages][Github pages] 서비스를 통해서 사용할 수 있습니다. 
+아마 다음 포스트를 Github pages를 이용해서 웹페이지를 만들거나 하는 방법을 소개할 수 있을 거라 기대하고 있습니다.
+
+위 두 파일 형식은 Github 친화적이기도 하면서 변환 동작에 다른 외부 의존성이 없어서 작업환경을 만들기 쉽다는 장점이 있습니다. 
+예를 들어 `.pdf`는 [Latex][Latex] 엔진을 추가로 설치해야 합니다. 
+한글을 지원하는 엔진을 선정해야 해서 [KTUG][KTUG]에서 관련 정보를 찾으실 수 있습니다.
+
+서문이 너무 길었네요. Rstudio를 사용해서 Github 프로젝트를 시작해보겠습니다.
+
+### git의 워크플로우
+
+<figure>
+<img src="https://user-images.githubusercontent.com/6179259/37447579-164aa694-2866-11e8-8e02-04d4fab3ebbb.png" width=100%>
+<figcaption>Github!</figcaption>
+</figure>
+
+위에서 Github이 git의 원격 저장소라는 설명을 드렸습니다. git을 사용해 시작하는 상황은 두 가지입니다.
+
+1. 처음 폴더를 만들어 로컬 저장소를 초기화하며 시작하기
+1. 기존에 있는 프로젝트를 원격 저장소에서 클론하여 시작하기
+
+초기화하면서 시작하면 원격 저장소를 연결하는 과정이 추가로 필요합니다. 
+원격 저장소를 연결하여 파일들을 업로드하는 행위를 **푸쉬(push)**라고 하는데, 천천히 할 것이라면 초기화로 시작하는 것도 좋은 선택입니다.
+원격 저장소를 바로 사용할 것이라면, 원격 저장소를 먼저 만들어 클론하면서 시작하는게 조금 더 제가 생각하는 쉬운 방법입니다.
+저는 원격 저장소를 바로 사용할 것이니 클론으로 시작하는 방법을 소개하겠습니다.
+
+### 클론(git clone)으로 시작하기
+
+클론으로 시작하려면 원격 저장소를 **먼저** 만들어야 한다고 말씀드렸습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447635-5095df4e-2866-11e8-90f9-047a470d31c3.png">
+
+로그인을 하고
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447642-593cb17c-2866-11e8-90e5-5df565a5e27f.png">
+
+메인화면에
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447652-61295278-2866-11e8-8074-9fdb6f05ff0e.png">
+
+오른쪽 위 **+** 버튼을 누르면 메뉴가 나옵니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447685-7de747da-2866-11e8-9468-af968d5bf426.png">
+
+우린 새 저장소 만들어야 하니 `New repository`를 선택해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447699-91f50ed8-2866-11e8-9d17-b74e2ea3da24.png">
+
+저장소 이름을 `myfirstrepo` 라고 했습니다.
+옵션을 좀 살펴볼까요?
+
+#### Owner
+
+계정입니다.
+보통 자기 것만 있는데, 그룹 계정같은 것이 더 있을 수 있습니다.
+
+#### Repository name
+
+저장소 이름입니다.
+자신의 계정 내에만 겹치치 않으면 되니 편하게 만들어 주세요.
+
+#### Description
+
+저장소를 간단히 설명하는 곳입니다.
+한 줄 정도로 설명문을 작성하면 검색같은 곳에 같이 보여집니다.
+
+#### 공개 범위
+
+공개 범위는 Public과 Private이 있습니다.
+우리는 Public은 선택하죠.
+Private은 비용을 사용해야 합니다.
+
+#### README
+
+오픈소스 프로젝트는 관례적으로 root 위치에 README 파일을 두고 있습니다.
+여기서 선택하면 저장소 이름을 작성한 README.md 파일을 같이 만들어줍니다.
+우리는 선택해서 시작하겠습니다.
+
+#### .gitignore
+
+git 시스템이 관리하지 않을 파일들의 리스트를 담고 있는 텍스트 파일입니다.
+파일명 앞에 `.`로만 되어 있는 건 숨김 파일이라는 뜻입니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447716-a0a6e3b6-2866-11e8-8cab-9facdb9324df.png">
+
+github에서는 각 언어에서 관례적으로 필요한 .gitignore 리스트를 템플릿으로 제공합니다.
+우리도 `R`로 선택해 볼까요?
+
+#### license
+
+저장소의 코드들에 대한 라이선스를 지정할 수 있습니다.
+정확히는 `.gitignore` 파일처럼 주요 라이선스들의 템플릿을 제공합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447725-a8b31340-2866-11e8-8070-c2b9bf69bc14.png">
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447731-af9dd7a8-2866-11e8-9a30-2f671533de05.png">
+
+우리는 사용에 제약이 없고 대신 출처만 좀 써달라는  [MIT 라이선스][MIT]로 하겠습니다.
+
+#### 원격 저장소 만들기
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447740-b9d1fc36-2866-11e8-876d-0b624a8862c0.png">
+
+이제 초록 버튼을 눌러 원격 저장소를 만들어 보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447811-17d8f546-2867-11e8-9eaf-904502dc5b00.png">
+
+우리가 설정했던 .gitignore, LICENSE, README.md 파일 3개가 기본으로 만들어지면서 원격 저장소가 생겼습니다. 이제 이 이 원격 저장소를 이용해 로컬 저장소를 만들겠습니다.
+
+#### Rstudio 프로젝트 만들기
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447827-29d0b874-2867-11e8-940d-c3773d805d13.png">
+
+이제 Rstudio를 켜볼까요? 
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447835-327a34f0-2867-11e8-8853-f6021e96b5bc.png">
+
+오른쪽 위에 Project 버튼을 누르면 맨 위에 `New Project` 버튼이 있습니다. File > New Project 로 진행하실 수도 있어요. 
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447839-393c3644-2867-11e8-93e7-060e5bc78a8e.png">
+
+새 프로젝트를 만들면 3가지 버튼이 나옵니다. 
+하나하나 살펴보죠.
+
+1. New Directory : 새 폴더를 만들면서 프로젝트를 시작합니다. 새 폴더를 만들면서 시작하기 때문에 같은 이름의 폴더가 있으면 에러가 납니다.
+1. Exsting Directory : 기존에 있는 폴더를 프로젝트로 만듭니다. 저는 사용할 일이 많이 없었습니다.
+1. Version Control : 버전 관리 시스템으로 프로젝트를 시작합니다. 
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447843-408c984e-2867-11e8-891a-1b9003cafb03.png">
+
+Version Control을 선택하겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447856-4eaeac78-2867-11e8-83b7-f4e0e643723d.png">
+
+git과 subversion이 있는데 저희는 git을 사용할껍니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447859-545ad188-2867-11e8-9d13-f2f101a3986c.png">
+
+아마 git이 설치가 안되어 있는 windows이신 분들은 다음으로 진행이 안됩니다. 
+[링크][git설치]를 참고해서 git을 설치해주세요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447871-61f708c0-2867-11e8-984e-e129574ff910.png">
+
+여기서 다운로드할 수 있습니다.
+
+> Git을 설치했는데도 진행이 안되시면 [이 포스트][gitpath]를 참고하세요.(업데이트 - 2018.03.19)
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447817-1e058ce0-2867-11e8-9d12-1522e78529bd.png">
+
+다시 github으로 돌아와서, 만든 원격 저장소의 URL을 복사합니다. 
+저는 주소창을 애용하는 편인데, 오른쪽에 초록색 버튼을 눌러도 됩니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37563162-f1130a24-2abd-11e8-9c7b-3a00393d6f9d.png">
+
+그러면 주소 오른쪽 버튼이 URL 주소를 복사하는 버튼입니다. 그 버튼을 클릭하고 Rstudio로 돌아오겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447859-545ad188-2867-11e8-9d13-f2f101a3986c.png">
+
+요 장면으로 다시 오시면 되구요.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447919-8fa7991a-2867-11e8-9f59-78ce2004caf9.png">
+
+이렇게 주소를 Reposigory URL에 붙여넣으시면, 알아서 폴더 이름도 설정됩니다. 
+보통 저장소 이름과 같게 설정합니다. 
+생성되는 폴더의 위치를 지정해 줄 수 있는데요.
+`~/`가 문서 폴더를 뜻하구요.
+저 같은 경우는 문서 폴더 밑에 `project` 폴더를 만들어서 그 안에 프로젝트들을 만들어 관리하고 있습니다.
+이제 Create project를 눌러보겠습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37448131-594b5144-2868-11e8-96f0-46a3662f9c03.png">
+
+자 git 명령어를 우리는 모르지만, 저 과정이 `git clone https://github.com/mrchypark/myfirestrepo.git`을 수행한 것과 같습니다. 
+명령을 수행한 폴더 위치에 `myfirestrepo`(오타났네요;;)라는 폴더를 만들고, 그곳에 원격 저장소의 git history와 파일들을 다운로드합니다. 
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37448329-3b009de2-2869-11e8-9752-08328d4fc11b.png">
+
+드디어 과정이 끝났습니다.
+Rstudio의 오른쪽 아래를 보시면 파일 4개(github에서 만든 3개 + .Rproj 파일)가 있는 것을 확인하시면 과정이 잘 끝난겁니다.
+몇 가지가 원래랑 좀 다른데요.
+하나는 콘솔창의 가장 위에 보이는 작업공간(working directory)이 바뀌었구요.
+그냥 프로젝트를 만들 때와 달리 오른쪽 위 패널에 `Git` 탭이 추가된 것입니다.
+
+
+#### github과 연결된 프로젝트
+
+축하합니다! 드디어 github의 원격 저장소와 연결된 Rstudio 프로젝트를 성공적으로 만들었습니다.
+여기까지 따라하셨으면 새로운 프로젝트를 Git으로 관리하면서 원격 저장소로 Github을 사용하는 상태가 되신겁니다.
+이제 git으로 버전관리를 하거나 Github에 관련 내용을 올리는 내용을 포스팅해야겠네요.ㄷㄷㄷ
+따라 오시는 동안 궁금한 점이나 이상한 점, 잘 안되거나 하는 부분이 있으면 댓글로 알려주세요.
+블로그 글이 도움이 되셨다면, 블로그에 [도움][도움]을 주실 많은 방법이 있습니다.
+감사합니다.
+
+
+[Github]: https://github.com/
+[git설치]: http://library1008.tistory.com/51
+[bitbucket]: https://bitbucket.org/
+[주소]: https://github.com/mrchypark/github-with-rstudio/blob/master/docs/github-with-rstudio.pdf
+[rpubs]: https://mrchypark.github.io/post/r%EB%A1%9C%EB%82%98%EB%A7%8C%EC%9D%98-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0/
+[GFM]: https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown
+[Github pages]: https://pages.github.com/
+[Latex]: https://ko.wikipedia.org/wiki/LaTeX
+[KTUG]: http://www.ktug.org/xe/
+[MIT]: https://ko.wikipedia.org/wiki/MIT_%ED%97%88%EA%B0%80%EC%84%9C
+[도움]: https://mrchypark.github.io/support/
+[gitpath]: https://mrchypark.github.io/post/rqna-git%EC%9D%84-%EC%84%A4%EC%B9%98%ED%96%88%EB%8A%94%EB%8D%B0-rstudio%EC%97%90%EC%84%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%A7%84%ED%96%89%EC%9D%B4-%EC%95%88%EB%90%98%EC%9A%94/

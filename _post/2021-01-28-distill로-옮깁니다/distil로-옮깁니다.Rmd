@@ -1,5 +1,5 @@
 ---
-title: "distill 로 옮깁니다."
+title: "distil로 옮깁니다"
 description: |
  드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
 date: 2021-01-28

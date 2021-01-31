@@ -1,0 +1,110 @@
+---
+title: blogdown으로 블로그 이사하기
+author: mrchypark
+date: '2018-03-06'
+categories:
+  - blog
+tags:
+  - blogdown
+  - hugo
+  - minimal
+  - rstudio
+slug: blogdown으로-블로그-이사하기
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/37244232-0bf40b36-24c9-11e8-8e3d-cefc4c972699.jpg" width=100%>
+
+탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. [blogdown](https://github.com/rstudio/blogdown)은 rstudio의 수석 엔지니어인 [Yihui Xie](https://yihui.name/en/)가 [golang](https://golang.org/)으로 작성된 `static site generator` 입니다. `jekyll` 또한 같은 범주의 도구이죠.
+
+
+
+### 그동안 `jekyll`을 사용한 이유
+
+`jekyll`은 간단함, 자유로운 테마 선택, 간단함 때문에 사용했습니다.
+
+
+
+#### `jekyll`의 간단함
+
+`jekyll` 블로그는 Github 계정만 있으면 `아이디.github.io`라는 주소로 쉽게 만들 수 있습니다! [jekyll-now](https://github.com/barryclark/jekyll-now)를 포크하고, pages 설정만 하면 끝납니다.
+
+`jekyll`은 지향점이 *text를 블로그로 바꿔라!* 입니다. 덕분에 *매우 쉬운* 도구가 되었죠. `.md` 파일을 블로그 포스트에 해당하는 형태로 운영할 수 있게 해줍니다.
+
+Github는 [ruby](https://www.ruby-lang.org/ko/)라는 언어로 개발되었다고 합니다. 공교롭게도(!) `jekyll`도 [ruby](https://www.ruby-lang.org/ko/)로 작성되어 있죠. 그래서 Github에서 제공하는 [pages](https://pages.github.com/)라는 서비스에서 `jekyll`를 빌드없이 바로 사용할 수 있습니다. 물론 `.Rmd`를 `.md`로 렌더링하는 과정이 필요하기 때문에 R로 블로깅할 때는 아쉬운 대목입니다.
+
+
+
+#### 자유로운 테마 선택
+
+`jekyll`은 `static site generator`로써 가장 유명한 도구 입니다. [staticgen](https://www.staticgen.com/)을 확인해보면 압도적인 스타수를 확인할 수 있습니다. 다음 인기 있는 도구가 `Hugo`군요. 최근에는 `Gatsby`도 인기있다고 들었습니다. 
+
+아무튼... `jekyll`이 가장 인기있고 역사도 있는 만큼 선택할 수 있는 테마의 범위가 가장 넓습니다. [jekyllthemes](http://jekyllthemes.org/)라는 곳에서 잘 모아져 있는 테마들을 구경할 수 도 있고, 따로 만들어진 테마들을 검색해서 찾을 수도 있습니다. 저는 [Lagrange](https://github.com/LeNPaul/Lagrange)라는 테마를 선택했었습니다. 설명이 매우 잘 되어 있고(물론 영어입니다...), 사진 첨부가 기능으로 들어가 있어서 이름만 정해주면 되었고, 결정적으로 디자인이 너무 마음에 들었습니다.
+
+<img src="https://user-images.githubusercontent.com/8409329/32631384-17107870-c56e-11e7-932f-deeb7c12e4db.png" width=100%>
+
+
+#### `jekyll`의 간단함
+
+특별히 동작과정을 이해하려는 노력을 할 것이 아니라면 공부해야 할 부분은 `_config.yml` 파일입니다. 
+
+```
+# Site Settings
+title:               Mrchypark
+tagline:             log for you & me
+description:
+baseurl:            #"/Lagrange"
+url:                #"https://lenpaul.github.io"
+github:
+  url:               #"https://lenpaul.github.io/Lagrange"
+author:
+  name:              "박찬엽"
+  email:             "mrchypark@gmail.com"
+  twitter:           "mrchypark_"
+  instagram:         "mrchypark"
+  github:            "mrchypark"
+  facebook:          "mrchypark"
+  linkedin:          "chanyub.park"
+navigation:
+- title: Materials
+  url: /materials
+- title: Index
+  url: /index
+- title: About
+  url: /about
+
+
+paginate:            5
+disqus:              "mrchy****"
+ga:                  "UA-478*****-**"
+
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+gems:                [jekyll-paginate]
+encoding:            "UTF-8"
+```
+
+이건 기존의 `jekyll`로 블로그를 만들 때 사용한 `_config.yml` 파일입니다. 테마가 친절한 편이여서 여러 SNS에 대한 링크를 아이디만 넣어주면 바로 예쁘게 사용할 수 있게 설정해 줍니다. 댓글을 위한 [disqus](https://disqus.com/)나 [GA](https://www.google.com/analytics/) 또한 `ID`만으로 연결을 해줍니다.
+
+
+
+### `jekyll`에서 `blogdown`으로
+
+당연히도 `jekyll`은 [R파베틱(Rphabetic)](https://mrchypark.github.io/post/rphabetic-알파베틱-제안)하지 않기 때문입니다. 물론 `Hugo`라고 R파베틱한 것은 아니지만, 패키지화되어 있다는 점이 Rstudio와의 호환성을 많이 올려줍니다.
+
+`blogdown`은 [staticgen](https://www.staticgen.com/)에서 두번째를 차지하고 있는 `Hugo`를 R 패키지화한 도구입니다. `Rstudio`의 `Addin`으로 사이트 구축, 새포스트 쓰기 등의 기능도 지원하고 `build_site()` 명령어 한방으로 `docs` 폴더에 블로그 구축을 완전히 끝내줍니다. `Hugo`가 *빠른* 블로그라는 점도 한 몫했네요.
+
+1. `blogdown`은 설명서가 친절하다 - `blogdown`을 만든 사람은 `bookdown`을 만든 사람이기도 합니다. 덕분에 [자세한 메뉴얼](https://bookdown.org/yihui/blogdown/)이 온라인 책으로 준비되어 있기도 합니다. 
+1. rstudio와 호환이 좋다 - 아무래도 일하는 곳에 도구를 지원하는 방식으로 패키지를 작성한 것 같습니다. Addin 기능 뿐만 아니라 Rstudio를 블로그 글쓰기 에디터로 사용하는데 부족함 없게 지원합니다. 물론 버전이 오르면서 한글 문제(정확하게는 중국어 문제)가 해결된 이유도 있습니다.
+1. 빠르다 - 신기하게 `Hugo`로 넘어간 많은 분들이 `jekyll`가 느려지는 문제를 지적하였습니다. 제 블로그가 글이 많지는 않지만 미래를 대비하고자 하는 마음도 있었습니다.
+
+
+### 다시 도구 이전 신고
+
+네, 블로그를 `blogdown`으로 이전하였습니다. 추후 시간이 되면 `blogdown`으로 블로그를 만드는 법에 대해서 포스팅하도록 하겠습니다.

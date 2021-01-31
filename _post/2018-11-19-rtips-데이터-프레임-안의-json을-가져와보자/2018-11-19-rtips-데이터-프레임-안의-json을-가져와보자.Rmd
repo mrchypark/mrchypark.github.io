@@ -1,0 +1,191 @@
+---
+title: '[Rtips] 데이터 프레임 안의 json을 가져와보자.'
+author: mrchypark
+date: '2018-11-19'
+slug: rtips-데이터-프레임-안의-json을-가져와보자
+categories:
+  - R
+tags:
+  - purrr
+  - json
+  - map
+---
+
+<img src="https://user-images.githubusercontent.com/6179259/48710839-f5c81400-ec4c-11e8-8df7-ce48ca43c49d.jpg" wigth=100%>
+
+```{r include=FALSE}
+if (!requireNamespace("usehelp")) remotes::install_github("mrchypark/usehelp")
+```
+
+### 세줄요약
+
+1. 최근의 noSQL, 웹 기술의 발달로 json을 처리해야 하는 상황이 많아졌다.
+1. 특별히 data.frame의 셀이 json 텍스트인 경우가 있는데, map + fromJSON 으로 해결할 수 있다.
+1. json 이 모두 같은 key를 가지고 있다면, 정리하는데 매우 유용하다.
+
+`json` 자료형은 웹 시대에 교환 표준으로 자리잡고 있습니다.
+여러 장점이 있겠지만, 휴먼 리더블하면서 머신 리더블하다는게 가장 큰 장점이지 않을까 싶네요.
+R도 데이터를 다루는데 `json`을 `list`자료형에 대응시켜서 적극적으로 활용하고 있습니다.
+
+### `json`은 R에서 `list`다
+
+선언하듯 제목을 달았지만, `json`이 무엇인지 먼저 이해하면 조금 더 좋을 것 같습니다.
+`json`은 [공식홈페이지](https://www.json.org/json-ko.html)에서 한국어 정의를 제공하고 있습니다.
+가장 중요한 단어는 **텍스트 형식**인데요.
+맞습니다.
+`json`은 텍스트를 작성하는 규칙입니다.
+그러다보니 다양한 언어에서 `json` 형식에 따라 작성된 텍스트는 자체 자료형으로 잘 변환해서 불러옵니다.
+R에서는 그 자료형이 `list` 입니다.
+매우 많은 패키지가 기능을 제공하지만 가장 유명하게 사용하는 것은 [jsonlite](https://github.com/jeroen/jsonlite)입니다.
+많은 패키지(대표적으로 [httr](https://github.com/r-lib/httr))가 `json`을 다루기 위해 [jsonlite](https://github.com/jeroen/jsonlite)을 사용하고 있습니다.
+그리고 사용자입장에서는 그게 `json`은 `list`가 되는 것으로 보이게 처리되어 있죠.
+`json` 자체에 대해 더 공부하고 싶으시면 [wiki](https://ko.wikipedia.org/wiki/JSON)가 매우 잘 되어 있습니다.
+
+### `json` 양식의 텍스트를 처리해보자
+
+우선 예시를 할만한 텍스트를 가져와보겠습니다.
+```{r}
+json_text <- '{
+    "이름": "홍길동",
+    "나이": 25,
+    "성별": "여",
+    "주소": "서울특별시 양천구 목동",
+    "특기": ["농구", "도술"],
+    "가족관계": {"#": 2, "아버지": "홍판서", "어머니": "춘섬"},
+    "회사": "경기 수원시 팔달구 우만동"
+ }'
+json_text
+```
+
+`\n`는 뉴라인의 표현으로 엔터라고 이해하시면 되겠습니다.
+규칙에 맞게 데이터를 가져오는 것을 파싱이라고 하는데, 이거 스스로 만들려고 하면 아주 골치 아프게 생겼습니다.
+`json`은 매우 광범위하게 사용하는 범용 양식이라, 많은 언어가 미리 파싱하는 패키지를 만들어 관리하고 있습니다.
+R에서는 [jsonlite](https://github.com/jeroen/jsonlite)를 가장 많이 사용한다고 했구요.
+
+```{r}
+library(jsonlite)
+fromJSON(json_text)
+```
+
+`list` 자료형으로 잘 처리되었군요.
+
+그럼 이제 데이터 프레임 내에 있는 `json` 형식의 글자를 처리해봅니다.
+우선 그런 형태로 만들어 볼까요?
+
+```{r}
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+nested_json
+```
+
+### `for`으로 반복해서 하기
+
+예시 데이터 `nested_json` 에는 `b` 컬럼에 같은 `json_text` 5개가 들어간 형태입니다.
+데이터 프레임의 컬럼을 다루려먼 어떤 방식이 가장 좋을까요?
+R이 아직 능숙하지 않으신 분들은 아마도 `for`문으로 컬럼내의 셀 한개씩 접근해서 고치는 방법을 생각해 볼 수 있을 것 같습니다.
+데이터가 적다면 좋은 방법입니다!
+코드가 조금 느리더라도, 코드 작성이 오래 걸리는 것 보다는 훨씬 좋은 방법입니다.
+
+```{r}
+for (i in 1:nrow(nested_json)) {
+    nested_json[i,2] <- fromJSON(nested_json[i,2])
+}
+nested_json
+```
+
+헐... `json`의 첫번째 데이터만 들어왔습니다.
+warnings 잔뜩인거 보니, 그 경고를 주는 것 같네요!
+모든 데이터를 얻기는 힘들 것 같고... 그렇다면 선택적으로 데이터를 취할 수는 있을 것 같습니다.
+
+```{r}
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+result <- nested_json
+for (i in 1:nrow(nested_json)) {
+    result[i,2] <- fromJSON(nested_json[i,2])[["특기"]][1]
+    result[i,3] <- fromJSON(nested_json[i,2])[["특기"]][2]
+}
+result
+```
+
+바로 데이터를 덮지 않고, result 객체를 따로 만들어 결과를 저장했습니다.
+이렇게 하지 않으면, 두 번째 특기를 가져올 때 문제가 생기더라구요.
+어떤 문제가 생기는지는 직접 한번 실행해 보시면 좋을 것 같습니다.
+
+이거 `for`문으로 작성하는게 적당히 효율적일 수 있을 거는 같은데, 좀 더 수월한 방법이 없을까요?
+
+### {dplyr} 패키지의 `mutate()` 함수
+
+`{dplyr}` 패키지의 `mutate()` 함수를 이용해서 `fromJSON()` 함수를 적용해 볼까요?
+`mutate()` 함수는 컬럼 기반의 연산을 지원하기 때문에 좋은 방법인 것 같습니다. 
+
+```r
+library(dplyr)
+nested_json %>% 
+  mutate(b = fromJSON(b))
+```
+```
+## Error in mutate_impl(.data, dots) : 
+##   Evaluation error: parse error: trailing garbage
+##           <U+0090>시 팔달구 우만동"  } {     "이름": "홍길동",   
+##                      (right here) ------^
+```
+
+이런 문제가 있군요?!
+문제가 된다고 하는 곳을 살펴보니, `} {` 사이에 쉼표가 없습니다!
+이름이라고 나오는 걸 보니 새로운 셀의 값인거 같은데, 왜 이게 하나의 데이터인 것처럼 인지하는 걸까요?ㅜㅠ
+
+얼른 떠오르기 좋은 방법이 안되는걸 확인했습니다.
+그럼 어떻게 해야 할까요?
+
+### 현대적인 방법의 apply : `map()`
+
+R 언어는 `vector` 연산을 고려해서 만들었다고 합니다.
+그래서 `for`문의 효율이 매우 떨어지죠.
+`apply()` 계열 함수를 사용하도록 권장하는데요. 
+`map()` 함수는 ``r usehelp::get_title(usehelp::get_help("purrr","map"))`` 라는 제목에 걸맞게 현대적인 방식의 `apply` 계열의 함수입니다.
+`{purrr}` 패키지를 설치해야 사용할 수 있습니다.
+`{tidyverse}` 패키지가 설치되어 있다면, 포함되어 있으니 다시 설치하지 않아도 됩니다.
+
+```r
+install.packages("purrr")
+```
+
+그럼 이제 `mutate()` 함수와 `map()` 함수를 조합해 볼까요?!
+
+```{r include=FALSE}
+library(dplyr)
+```
+
+```{r}
+library(purrr)
+
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+
+nested_json %>% 
+  mutate(b = map(b, fromJSON))
+```
+
+드디어!!
+`,`로 연결된거 같이 표시된 결과물이 나왔습니다.
+보기 불편하니 `tibble` 자료형으로 바꿔서 확인해 볼까요?
+
+```{r}
+nested_json %>% 
+  mutate(b = map(b, fromJSON)) %>% 
+  as_tibble()
+```
+
+무려 `list`랍니다. 휴...
+이게 생각하기 복잡할 수 있지만서도, 익숙해지면 좋은 구조입니다.
+많은 데이터들이 2차원 테이블로만 구성하기가 어려운 구조를 가지고 있기 때문입니다.
+위의 예시 데이터도 `b` 컬럼의 셀 안에 다 담기 어려운 구조이죠.
+
+R 최근 버전부터 이렇게 `data.frame` 자료형의 컬럼에 `list`를 지원하고 있습니다.
+원래는 `vector`만 됬었죠.
+지금의 선택이 `data.frame`의 2차원 테이블형의 직관적인 형태를 유지하면서, `list`의 자유도를 흡수하는 방법인 것 같습니다.
+대신 저는 그동안 `list` 자체를 이해하길 포기하고 있었는데, 지금은 알아야만 하게 됬네요 ㅎㅎ
+
+### 마무리
+
+`map()` 함수를 `mutate()` 함수와 함께 사용할 수도, 단독으로 사용할 수도 있어서 좀더 어떻게 동작하는지 알아야 할 것 같습니다.
+다른 예시가 있을 때 한번 더 파볼께요.
+감사합니다.
