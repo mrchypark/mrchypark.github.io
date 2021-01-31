@@ -10,6 +10,7 @@
     "--security-opt", 
     "seccomp=unconfined" ,
     "-v", "${env:HOME}/.ssh/:/home/rstudio/.ssh",
+    "-v", "${env:HOME}/.local/share/renv:/home/rstudio/.local/share/renv"
   ],
 
 	// Set *default* container specific settings.json values on container create.

@@ -35,6 +35,7 @@ jobs:
       - name: Install distill
         run: |
           R -e 'install.packages("distill")'
+          R -e 'install.packages("fs")'
       - name: Build site
         run: |
           R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_posts", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
