@@ -18,7 +18,7 @@ output:
     toc_depth: 2
     code_folding: true
     theme: theme.css
-
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
