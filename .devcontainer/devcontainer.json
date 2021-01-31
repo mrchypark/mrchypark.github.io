@@ -5,7 +5,12 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 	},
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	"runArgs": [ 
+    "--cap-add=SYS_PTRACE", 
+    "--security-opt", 
+    "seccomp=unconfined" ,
+    "-v", "${env:HOME}/.ssh/:/root/.ssh",
+  ],
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
