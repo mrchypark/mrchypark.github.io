@@ -23,24 +23,27 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
-
 ```
+
+# blogdown의 대안을 찾아서
+
+blogdown은 꽤 오랫동안 사용한 블로그 패키지다.
+여전히 좋은 패키지라고 생각한다.
+blogdown 또한 [rstudio에서 관리][blogdown]하며, 최근 [버전 1.0.0 을 출시][bd1]했다.
+
+대안이 필요한 이유는 blogdown 자체의 문제만은 아니지만, 여전히 문제다.
+
+1. 한글 윈도우 rstudio 에서 빌드시 경로 문제가 발생할 때가 있다.
+1. 캐쉬 동작을 이해하지 못해서 빌드 결과가 다르다.
+1. rstudio가 글 작성 도구로써 매우 좋다고 할 수 없다.
+
+rstudio가 글 작성 도구로써 매우 좋다고 할 수 없는 이유는, 우선 매우 무겁기 때문이다.
+오죽하면 Rmd 전용 글 작성 도구만 따로 만들까 고민하던 적이 있기도 하다.(지금도 유효하다.)
+
 
 # distill 소개
 
 distill 은 rstudio 의 패키지로 
-
-## 테스트
-
-### xptmx
-
-## iejfed
-
-
-# souiehf
 
 
 ```{r}
@@ -52,3 +55,7 @@ mtcars %>%
 
 print("heloe")
 ```
+
+
+[blogdown]: https://github.com/rstudio/blogdown
+[bd1]: https://blog.rstudio.com/2021/01/18/blogdown-v1.0/
