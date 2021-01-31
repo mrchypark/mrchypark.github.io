@@ -19,12 +19,6 @@ navbar:
       href: about.html
     - icon: fa fa-rss
       href: index.xml
-    - icon: fa fa-facebook
-      href: https://www.facebook.com/mrchypark/
-    - icon: fa fa-twitter
-      href: https://twitter.com/mrchypark_
-    - icon: fa fa-linkdin
-      href: https://www.linkedin.com/in/chanyubpark/
 
 base_url: https://mrchypark.github.io
 google_analytics: "UA-47822682-14"
