@@ -1,0 +1,33 @@
+---
+title: '[블로그] Rstudio + github + blogdown = 개인블로그 완성!'
+author: ''
+date: '2018-10-10'
+slug: 블로그-rstudio-github-blogdown-개인블로그-완성
+draft: true
+categories:
+  - R
+tags:
+  - R
+  - Rmd
+  - blogdown
+  - github pages
+---
+
+<img src=https://user-images.githubusercontent.com/6179259/46739603-ee236000-ccdb-11e8-91de-881687aa7a2f.jpg width=100%>
+
+### 세줄요약
+
+1. R로 보고 문서를 만드는 rmd로 블로그를 만들 수 있다.
+1. md 기반의 정적 사이트 생성기가 많지만, R 패키지로 제공되는 blogdown이 좋더라.
+1. 전에 소개한 Github Page로 `https://<user_id>.github.io/blog` 주소의 개인 블로그를 만들어 보자.
+
+본 포스트는 영상으로 진행하였습니다.
+
+<https://youtu.be/zeYn0maX1nQ>
+
+<div class="container">
+<iframe src="http://www.youtube.com/embed/zeYn0maX1nQ" 
+frameborder="0" allowfullscreen class="video"></iframe>
+</div>
+
+구독, 좋아요 모두 감사드립니다. ;)

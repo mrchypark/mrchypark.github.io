@@ -1,0 +1,92 @@
+---
+title: '[RQnA] git을 설치했는데 Rstudio에서 프로젝트 만들기 진행이 안되요'
+author: mrchypark
+date: '2018-03-19'
+slug: rqna-git을-설치했는데-rstudio에서-프로젝트-만들기-진행이-안되요
+categories:
+  - R
+tags:
+  - RQnA
+  - git
+  - github
+  - project
+  - rstudio
+  - setting
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T, tidy="styler")
+```
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573384-9a172636-2b5a-11e8-950a-9d63cca29ca6.jpg">
+
+## 본 포스트는 windows 사용자 중 git 설치에 어려움이 있는 분들을 대상으로 합니다.
+
+### 한줄요약
+
+1. Git을 설치했는데도 안되면 Rstudio의 Tools > Global Options... > Git/SVN의 경로를 확인해라.
+
+[지난 포스트][github]를 작성할 때 간단하게 넘어간 부분에 질문이 있어서 A/S 느낌으로 급하게 포스트를 작성합니다.
+Rstudio에 github을 연결해 사용하기 위해서는 git을 설치해야 합니다.
+[지난 포스트][github]에서는 다른 블로그의 [포스트][git]를 소개해드렸습니다.
+상세히 설명된 포스트라 소개했는데, 아무래도 Rstudio에 대한 설정 내용이 없어서 추가합니다.
+
+### git이 없습니다 팝업
+
+우선 프로젝트를 만드는 순서를 다시 따라가 볼까요?
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447835-327a34f0-2867-11e8-8853-f6021e96b5bc.png">
+
+새 프로젝트를 만들기 위해 시작하면,
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447843-408c984e-2867-11e8-891a-1b9003cafb03.png">
+
+Version Control을 선택해서 진행했습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447856-4eaeac78-2867-11e8-83b7-f4e0e643723d.png">
+
+이제 이 화면입니다. 
+Git과 Subversion을 선택하는 부분에서 Git을 설치하지 않고 Git을 선택하면 아래와 같은 화면이 나옵니다.
+
+<figure>
+<img src="https://user-images.githubusercontent.com/6179259/37574691-143f54dc-2b66-11e8-88e1-042c0112500d.jpg">
+<figcaption>캡쳐 협찬해주신 [이부일][이부일]님 감사합니다.</figcaption>
+</figure>
+
+보통은 위의 [포스트][git]를 따라 설치하시고, 다시 위 프로젝트를 만드는 과정을 진행하면 다음 화면으로 잘 넘어갑니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37447859-545ad188-2867-11e8-9d13-f2f101a3986c.png">
+
+이게 다음화면 인데요.
+잘 안되셔서 재시작도 해봤는데, 여전히 진행이 안되는 문제가 있었습니다.
+그러면 Rstudio의 설정을 확인하여 해결할 수 있습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573235-fc190e14-2b58-11e8-8be9-c9eab7d54c1b.png">
+
+Tools > Global Options... 를 찾아 클릭합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573239-026cb112-2b59-11e8-8735-d3ed88582d1c.png">
+
+옵션화면입니다. 아래에서 세번째에 Git/SVN 탭을 클릭합니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573240-07c30e68-2b59-11e8-8fe2-3f7c346ac438.png">
+
+`Git executable:` 이라고 되어있는 부분을 한 번 볼까요? 
+제 컴퓨터에 설치된 Git은 `C:/Program Files/Git/bin/git.exe`에 위치하고 있고, 그걸 사용한다고 Rstudio에 설정되어 있네요.
+설치를 했는데도 진행이 안되시는 분들은 이 곳의 경로를 확인해보시면 좋을 것 같습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573366-72704f90-2b5a-11e8-9ea0-38291c7be2cd.png">
+
+아마도 이렇게 되어 있을 것 같습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/37573240-07c30e68-2b59-11e8-8fe2-3f7c346ac438.png">
+
+다른 설정 변경 없이 Git을 설치하셨다면 저와 같은 경로를 설정해주시면 됩니다.
+혹시 모르니 탐색기에서 경로에 파일이 있는지 확인해주세요!
+
+경로를 수정해도 진행이 안되시는 분들은 댓글로 알려주세요. 감사합니다!
+
+[github]: https://mrchypark.github.io/post/github-rstudio%EB%A1%9C-github-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/
+[git]: http://library1008.tistory.com/51
+[이부일]: https://www.facebook.com/photo.php?fbid=1818238271572240&set=p.1818238271572240&type=3&theater

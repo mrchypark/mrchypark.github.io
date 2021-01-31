@@ -1,0 +1,349 @@
+---
+title: '[회고] tqk 업데이트 수정 종가 반영 및 param 조정'
+author: mrchypark
+date: '2018-11-22'
+slug: 회고-tqk-업데이트-수정-종가-반영-및-param-조정
+categories:
+  - R
+tags:
+  - tqk
+  - adjusted
+  - announce
+---
+
+<img src="https://user-images.githubusercontent.com/6179259/48877136-325e6000-ee45-11e8-95c5-68cc2fed31b1.jpg" wigth=100%>
+
+```{r include=FALSE}
+# 아카이브 하면서 제거
+# if (!requireNamespace("usehelp")) {
+#   remotes::install_github("mrchypark/usehelp")
+# }
+```
+
+이번 0.1.0 버전 업데이트는 다음 소스 추가로 인한 속도 향상 및 수정주가 반영입니다.
+거기에 `tq_get()`함수를 모방하기로 한 주제에 **param** 설계가 달라서 맞춰주는 작업을 수행했습니다.
+
+### 배운 점
+
+새롭게 json을 처리하면서 `purrr::transpose()`, `dplyr::select_if()`를 알게 되었습니다.
+json을 `tibble::as_tibble()` 로 처리한 후 `tidyr::unnest()` 시 발생하는 문제의 원인을 알게 되었습니다.
+
+#### `tibble`자료형과 `as_tibble()` 함수
+
+`tibble`, `tbl` 자료형은 현대적인 R을 사용하는데 근간이 되는 자료형입니다.
+base R의 `data.frame`의 현대적 버전이라고 할 수 있는데요.
+매우 많은 장점이 있습니다.
+
+우선 `dim()`, `head()`, `class()` 개별 컬럼의 `class()`가 객체를 출력하는 것으로 한번에 해결됩니다.
+출력량도 화면에 기반하여 제한하고 있어서, 많은 출력으로 멈추거나 하는 문제를 사전에 방지하고 있습니다.
+좀 불편하다면, 컬럼도 출력 제한을 한다는 점 정도 인데요.
+
+보통 `matrix` 나 `data.frame`을 `tibble` 자료형으로 바꾸려면 `as_tibble()` 함수를 사용합니다.
+`json`으로 들어온 `list`는 웹 데이터를 다룰 때 많이 겪게 되는데요.
+2단 구조의 `list`일 때 `as_tibble()`이 동작한다면 아주 편할 것 같습니다.
+
+예를 들어 보겠습니다.
+
+```{r}
+col_first_list <- list(a = list(1, 2, 3), b = list(4, 5, 6))
+col_first_list
+```
+
+2단 구조를 만들 때 헷갈리지 않기 위해서 1단은 이름을 지어서, 2단은 이름없이 2단 `list`를 만들었습니다.
+간단히 대응하면 1,2,3 데이터를 가지는 **a** 컬럼과 4,5,6 데이터를 가지는 **b** 컬럼의 table일 수 있을 것 같습니다.
+컬럼 단위로 묶어서 데이터를 보냈으므로, 저는 **col_first_list**라고 이름지어 봤습니다.
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+col_first_list %>% 
+    tibble::as_tibble()
+```
+
+음... `tibble`로는 된거 같은데, 뭔가 이상합니다.
+찾아보니 `tibble`은 컬럼의 자료형이 `list`가 가능하더라구요.
+그럼 평소에 알고 있는 모습으로 바꾸는 작업이 필요할 것 같습니다.
+
+#### 새롭게 배운 함수 1 `tidyr::unnest()`
+
+```
+Nest and unnest
+
+Description
+Nesting creates a list-column of data frames; unnesting flattens it back out into regular columns. Nesting is implicitly a summarising operation: you get one row for each group defined by the non-nested columns. This is useful in conjunction with other summaries that work with whole datasets, most notably models.
+
+Learn more in vignette("nest").
+
+Usage
+nest(.data, ..., .key = deprecated())
+
+unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
+  names_sep = NULL, names_repair = "check_unique",
+  .drop = deprecated(), .id = deprecated(), .sep = deprecated(),
+  .preserve = deprecated())
+```
+
+제목과 설명을 보면 딱 필요한 함수 같아 보입니다.
+한번 사용해 볼까요?
+
+```{r}
+col_first_list %>% 
+  tibble::as_tibble() %>% 
+  tidyr::unnest()
+```
+
+깔끔하게 결과가 나왔습니다.
+
+하지만 보통 json을 웹서비스에서 받을 때 반대로 되어 있는 경우가 많습니다.
+
+```{r}
+row_first_list <- list(list(a = 1, b = 4), list(a = 2, b = 5), list(a = 3, b = 6))
+row_first_list
+```
+
+```{r  error = TRUE}
+row_first_list %>% 
+    tibble::as_tibble()
+```
+
+우선 `tibble::as_tibble()`이 바로 처리 해주지를 못합니다.
+컬럼은 이름이 있어야만 한다는 군요.
+이때 `purrr::transpose()` 가 필요합니다.
+
+#### 새롭게 배운 함수 2 `purrr::transpose()`
+
+```
+Transpose a list.
+
+Description
+Transpose turns a list-of-lists "inside-out"; it turns a pair of lists into a list of pairs, or a list of pairs into pair of lists. For example, if you had a list of length n where each component had values a and b, transpose() would make a list with elements a and b that contained lists of length n. It's called transpose because x[[1]][[2]] is equivalent to transpose(x)[[2]][[1]].
+
+Usage
+transpose(.l, .names = NULL)
+```
+
+```{r}
+row_first_list %>% 
+    purrr::transpose() %>% 
+    tibble::as_tibble() %>% 
+    tidyr::unnest()
+```
+
+이렇게 2단 으로 구성된 json 파일은 쉽게 `tibble` 자료형으로 고쳐서 R에서 다룰수 있습니다.
+
+#### `tidyr::unnest()` 함수의 문제점
+
+이제 얼마든지 `json` 데이터를 사용하기 좋게 `tibble`로 바꿀 수 있게 된 것 같았습니다.
+(2단 구성이라면 말이지요.)
+하지만 어찌된 일인지 상황에 따라 에러가 계속 발생하더군요.
+찾아보니 컬럼에 `null`이 있을 때가 문제였습니다.
+`list` 자료형은 그대로 `null`을 가지고 있는 반면, `tidyr::unnest()`가 동작할 때 `null`이 없어져서 다른 컬럼과 갯수가 맞지 않게 되는 것이었습니다.
+
+```{r}
+includ_null <- list(a = list(1, 2, 3), b = list(4, NULL, 6.5))
+includ_null %>% 
+  tibble::as_tibble()
+```
+
+이렇게 `tibble::as_tibble()` 함수는 `null`을 유지한 채로 동작했습니다.
+하지만 `tidyr::unnest()`은 처리하지 못하고 에러가 발생하네요.
+
+```{r error = T}
+includ_null %>% 
+  tibble::as_tibble() %>% 
+  tidyr::unnest()
+```
+
+또 전체가 `null`인 컬럼도 있으면 안됩니다.
+
+```{r error = T}
+all_null <- list(a = list(1, 2, 3), b = list(NULL, NULL,NULL))
+all_null %>% 
+  tibble::as_tibble()
+all_null %>% 
+  tibble::as_tibble() %>% 
+  tidyr::unnest()
+```
+
+이 두 가지는 다른 처리방법을 사용해야 할 것 같습니다.
+전체가 `null`인 컬럼은 제거하고, 일부가 `null`인 컬럼은 `null`을 다른 값으로 대체해야 겠네요.
+전체가 `null`인 컬럼 이름을 하드코딩할 수도 있겠지만, 찾아서 제거하는 것이 더 좋아보였습니다.
+
+#### 새롭게 배운 함수 3 `dplyr::*_if()`
+
+`dplyr` 패키지에는 `muate()` 함수나 `select()` 함수 뒤에 `_if()`가 붙은 조건 계열의 함수가 있습니다.
+이걸 이용해서 컬럼내 데이터가 전체 `null`인 것을 제외하고 `select()` 하겠다가 가능할 것 같습니다.
+
+```{r}
+nulls_party <- list(a = list(1, 2, 3), 
+                    b = list(NULL, NULL,NULL),
+                    c = list(NULL, 1,2),
+                    d = list(1,NULL,NULL),
+                    e = list(1,NULL,3))
+nulls_party %>% 
+  tibble::as_tibble() %>% 
+  dplyr::select_if( ~ !all(is.null(unlist(.x))))
+```
+
+조금 복잡한데요.
+`~`은 익명 함수를 작성하는 줄임표현입니다.
+`~ sum(.x)`는 `funcion(x) sum(x)`와 같은 표현이죠.
+`!`는 논리형을 반대로 바꿔라는 뜻이구요.
+`all()` 함수는 
+`is.null()` 함수는 데이터가 `null`인지를 확인하는 함수 입니다.
+`select_if()` 함수 내에서 익명 함수 문법을 사용하게 되면, `.x`는 컬럼을 뜻하게 됩니다.
+지금은 컬럼이 리스트기 때문에 `unlist()`로 `vector`로 바꾸었습니다.
+
+그럼 설명해보면
+```r
+... %>% 
+  dplyr::select_if( ~ !all(is.null(unlist(.x))))
+```
+`select_if()`: 조건에 맞는 것만 선택할꺼야.
+`~ `: 함수를 조합해야 하니까 익명함수를 쓸께.
+`!`: 뒤에 논리형 결과가 나오면 반대로 바꿔줘.
+`all()`: 안에 모두가 `TRUE`면 `TRUE`하나를, 하나라도 아니라면 `FALSE`를 반환해.
+`is.null`: 값이 `NULL`이면 `TRUE`를 주세요.
+`unlist()`: `list` 자료형을 `vector`로 풀어줘.
+`.x`: 익명 함수에서 입력을 대표해.
+
+입니다.
+
+그러고 보니...
+
+```r
+... %>% 
+  dplyr::select_if(~ .x %>% unlist() %>% is.null() %>% all() %>% !.)
+```
+
+이렇게 해도 되는군요.
+조금 가독성이 좋아졌습니다.
+
+이제 전체 `NULL`인 컬럼을 제거 했으니, 일부가 `NULL`인 경우 우선 `0`으로 대체 해보겠습니다.
+
+#### map's party
+
+우선 결론 먼저 쓰고 시작해보면,
+
+```{r}
+nulls_party %>% 
+  tibble::as_tibble() %>% 
+  dplyr::select_if(~ .x %>% unlist %>% is.null %>% all %>% !.) %>% 
+  purrr::map_dfc(~ .x %>% purrr::map(is.null) %>% ifelse(0,.x) %>% unlist())
+```
+
+입니다.
+
+새롭게 배우게 된 함수는 `purrr::map_dfc()` 였습니다.
+
+`purrr::map()`함수는 기본적으로 `list`를 인풋으로 받습니다.
+결과도 마찬가지로 `list`를 출력해줍니다.
+
+복잡하게 결과가 나와야 한다면, 전처리를 따로 하기위해서 `list` 아웃풋은 좋은 선택입니다.
+하지만 `vector`로 나올법한 결과(ex> `sum()`같이 개별 리스트당 하나의 결과가 나오거나 하는 등)라면 `vector`로 아웃풋이 나와도 좋을 것 같습니다.
+
+그렇게 해주는 함수가 `purrr::map_*()`계열 함수입니다.
+* 에는 `lgl`, `dbl`, `chr`같이 자료형이 들어가 있죠.
+당연한 설계입니다.
+`vector`는 모든 요소가 같은 자료형이어야 하니까요.
+
+그럼 `data.frame` 형태로 받을수는 없을까요?
+찾아보니 `purrr::map_df*()`가 그 역할을 하더라구요.
+그냥 `df`와 `dfr`, `dfc` 3개의 접미사를 제공합니다.
+`dfr`과 `dfc`는 각각 데이터를 `row` 방향과 `col` 방향으로 합치겠다는 뜻입니다.
+
+`map()`함수는 `data.frame` 자료형에서 기본적으로 `col`을 `list` 처럼 받아서 처리합니다.
+그럼 각 컬럼별로 개별 요소에 `NULL`이 있는지 확인하고 만약 `NULL`이라면 0으로 바꿔라 라고 해보겠습니다.
+
+```r
+... %>% 
+  purrr::map_dfc(~ .x %>% purrr::map(is.null) %>% ifelse(0,.x) %>% unlist())
+```
+
+이것도 조금 어렵네요...
+우선 골치 아파지는 이유가 각 컬럼이 `list`이기 때문입니다.
+`map()`을 이중으로 써야 하는군요.
+
+`purrr::map_dfc()`는 위에서 충분히 설명한 것 같습니다.
+그러면 익명함수 다음부터 확인해 볼 껀데요.
+
+각 컬럼내의 `list`요소가 각각 `NULL`인지 확인합니다.
+이때! `purrr:map()`때문에, `.x`가 각 컬럼을 대표하지 않고, 각 셀을 대표하는 상태로 변합니다.
+
+```{r}
+maps_party <- nulls_party %>% 
+  tibble::as_tibble() %>% 
+  dplyr::select_if(~ .x %>% unlist %>% is.null %>% all %>% !.)
+maps_party
+```
+
+그냥 `purrr:map()`을 사용해서 `.x`가 `NULL`인지 체크해보겠습니다.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% is.null)
+```
+
+4개 컬럼에 `FALSE`라는 결과를 `list`로 출력해줬네요.
+이건 슬프게도 컬럼이 `NULL`이냐 물어본 것이라 당연히 전부 `FALSE`가 나와야 합니다.
+그럼 다시 `map() in map()`으로 작성해서 확인해 보겠습니다.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% purrr::map(is.null))
+```
+
+2단 `list`로 결과를 주는데, 결국 전부 `list`이군요?
+이제 `ifelse()` 함수로 `is.null()` 결과가 `TRUE`면 0을,  `FALSE`면 원래 값 그대로 넣어보겠습니다.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% purrr::map(is.null) %>% ifelse(0,.x))
+```
+
+이렇게 보니 `ifelse()`에 들어가는 `.x`는 처음에 사용한 `.x`가 아니라, 안쪽에 있는 `purrr::map()` 함수에서 사용하는 `.x`인듯합니다.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% purrr::map(~ifelse(is.null(.x),0,.x)))
+```
+
+같은 결과인거 보니 맞네요.
+
+이제 리스트를 `tibble`로 다시 조합해 내야 합니다.
+
+`purrr::map_*()`으로 조합해볼까요.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% purrr::map_dbl(~ifelse(is.null(.x),0,.x)))
+```
+
+컬럼 단위는 잘 진행된 것 같습니다.
+헌데 지금 예시야 숫자만 있지만, 글자인 컬럼이 있거나 하면 에러가 날겁니다.
+`list`를 `vector`로 풀면 될 것 같은데... 우리는 이미 그런 동작을 해주는 함수를 알고 있습니다.
+
+```{r}
+maps_party %>% 
+  purrr::map(~ .x %>% purrr::map(~ifelse(is.null(.x),0,.x)) %>% unlist)
+```
+
+같은 결과가 나왔군요!
+패키지 코드에서는 이미 확인했지만, 컬럼이 여러 자료형이어도 잘 동작합니다.
+그럼 이제 만들어진 개별 `list`를 컬럼으로 합치기만 하면 되군요!
+드디어 처음에 설명했던 `purrr::map_dfc()`함수를 사용할 차례인가 봅니다.
+
+```{r}
+maps_party %>% 
+  purrr::map_dfr(~ .x %>% purrr::map(~ifelse(is.null(.x),0,.x)) %>% unlist)
+```
+
+중간에 `unlist()`를 사용하면서, 이미 개별 컬럼이 `list`가 아니게 되었네요.
+감사하게 여기서는 `tidyr::unnest()` 함수를 사용할 필요가 없어진 것 같습니다.
+
+### 마치며
+
+다시 한 번 {purrr} 패키지의 강력함과 어려움을 동시에 느낄 수 있었던 작업이었습니다.
+`map()`을 이 중으로 사용하면서 `.x`이 대표하는 대상이 달라진다는 점이 재밌었는데요.
+앞으로 복잡한 `list`(`json`)를 다룰 때 더 수월하게 할 수 있을 것 같습니다.
+
+감사합니다.

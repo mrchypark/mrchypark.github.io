@@ -1,0 +1,111 @@
+---
+title: '[KoSpacing] 한글 띄어쓰기 패키지를 사용해보자'
+author: mrchypark
+date: '2018-05-02'
+slug: kospacing-한글-띄어쓰기-패키지를-사용해보자
+categories:
+  - R
+tags:
+  - KoSpacing
+  - installr
+  - keras
+  - conda
+  - reticulate
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/39533498-2b4e7910-4e6a-11e8-9c89-668fad09877f.jpg">
+
+# 업데이트
+
+* 패키지의 설치 문제가 보고되어 확인하였습니다. 새롭게 설치를 진행하시고, 0.1.1 버전인 것을 확인하시면 문제없이 동작할 것입니다. 0.1.1 버전에서는 conda 명령이 실행가능한 상태여야 합니다.
+* `conda`를 설치하는 [conda4r][conda4r] 패키지를 소개하는 [포스트][포스트]를 작성하였습니다.
+
+[conda4r]: https://github.com/mrchypark/conda4r
+[포스트]: https://mrchypark.github.io/post/conda4r-r%EC%9D%84-%EC%9C%84%ED%95%B4%EC%84%9C-conda%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EB%B3%B4%EC%9E%90/
+
+### 세줄요약
+
+1. KoSpacing은 한글 띄어쓰기를 해주는 딥러닝 모델 패키지이다.
+1. python이 함께 필요한 패키지 기반으로 만들어서 python도 설치해야 한다.
+1. windows는 conda만 지원하므로 conda를 설치하여 사용해보자.
+
+한글 띄어쓰기 API 이용하는 [포스트][pastpost]에서 소개했던 API가 R & Python 패키지로 탄생하였습니다. ([R 패키지 바로가기][kosR], [Python 패키지 바로가기][kosPython])
+이같은 멋진 패키지를 개발해주신 [전희원님][havenj]님 감사합니다.
+
+[KoSpacing][kosR] 패키지는 전례가 없는 딥러닝 모델로 결과를 만드는 패키지로 [본인의 포스트][gogo]에서 `Model as a Program` 이라고 소개한바 있습니다.
+R에는 `tensorflow`와 `keras`가 `reticulate` 패키지를 이용해서 python 패키지를 기반으로 최신 딥러닝 프레임워크를 사용할 수 있습니다.
+[KoSpacing][kosR]은 `keras`로 작성된 모델을 사용하기 때문에, 패키지 사용을 위해서 `reticulate` 설치가 필요합니다.
+[KoNLP][KoNLP] 역시 `java` 기반의 라이브러리를 `R`에서 사용하기 위해 `rJava` 설치가 필요했습니다.
+`java`의 경로 설정에 비해 간편하긴 하지만 `python`을 또 설치해야 한다는 압박이 있을 수 있다고 생각이 들었습니다.
+간편하게 `R`에서 사용하는 도구들의 설치를 도와주는 [installr][installr]를 이용해서 [miniconda][conda]를 설치해 보겠습니다.
+
+### installr
+
+`installr` 패키지는 `windows` 환경에서 `R`에서 사용하는 여러 외부 프로그램들(pandoc, latex, 등등)을 콘솔 명령으로 설치해주고, R의 버전 업데이트 등을 할 수 있는 함수를 제공합니다. 
+완전히 [Rphabetic(알파베틱)][Rphabetic]하죠.
+`unix` 계열(mac 포함)은 완전히 같은 기능을 제공하는 패키지가 없다는 점이 조금 아쉽습니다.
+
+Rtools를 설치하지 않으셨다면 아래 두 줄을 콘솔에서 실행해주세요.
+
+```
+install.packages('installr')
+install.Rtools()
+```
+
+이제 `devtools`를 설치하고 최신 버전의 `installr`를 설치하도록 하겠습니다.
+```
+if (!require('devtools')) install.packages('devtools')
+devtools::install_github('talgalili/installr')
+```
+
+최신 버전의 `installr` 패키지는 `install.conda()` 함수를 제공합니다.
+이를 이용해서 `KoSpacing` 환경을 설치해보겠습니다.
+
+```
+library(installr)
+install.conda()
+```
+
+`install.conda()` 함수는 windows 환경에 miniconda의 설치 파일을 다운 받아 실행해 줍니다.
+[다운로드 페이지][conda]에서 자신에게 맞는 설치 파일을 다운로드 받아 실행하셔도 같은 동작을 하는 것입니다.
+기본 옵션들을 유지한 채로 계속 `다음`을 눌러 설치를 완료해 주세요.
+
+이제 [KoSpacing][kosR]을 설치해 보겠습니다.
+
+```
+if (!require('devtools')) install.packages('devtools')
+devtools::install_github('haven-jeon/KoSpacing')
+library(KoSpacing)
+```
+
+잘 되셨나요?
+저와는 조금 다른 메세지들이 보이실 수도 있습니다만, 마지막 `library(KoSpacing)`이 잘 수행되면 성공인 겁니다!
+`loaded KoSpacing model!` 메세지를 확인하셨나요?
+
+이제 패키지를 사용해볼까요?
+
+```
+spacing("김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다.")
+```
+
+R에서 keras를 사용하기 위해서 python이 설치되어 있어야 합니다.
+windows는 conda만 사용할 수 있습니다.
+macOS와 linux 계열은 pip, virtualenvs도 사용할 수 있습니다.
+installr 패키지는 windows 설치용 패키지라는 것을 잊지 마세요.
+
+잘못된 내용이 있거나 문제가 생기면 언제든지 알려주세요. 감사합니다.
+
+[pastpost]: https://mrchypark.github.io/post/%ED%95%9C%EA%B8%80-%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0-api-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0/
+[havenj]: https://github.com/haven-jeon
+[kosPython]: https://github.com/haven-jeon/PyKoSpacing
+[kosR]: https://github.com/haven-jeon/KoSpacing
+[gogo]: http://freesearch.pe.kr/archives/4759
+[KoNLP]: https://github.com/haven-jeon/KoNLP
+[installr]: https://github.com/talgalili/installr
+[Rphabetic]: https://mrchypark.github.io/post/rphabetic-%EC%95%8C%ED%8C%8C%EB%B2%A0%ED%8B%B1-%EC%A0%9C%EC%95%88/
+[conda]: https://conda.io/miniconda.html

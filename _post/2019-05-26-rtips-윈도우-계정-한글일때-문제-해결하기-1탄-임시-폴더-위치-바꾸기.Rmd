@@ -1,0 +1,102 @@
+---
+title: '[Rtips] 윈도우 계정 한글일때 문제 해결하기 1탄 임시 폴더 위치 바꾸기'
+author: mrchypark
+date: '2019-05-26'
+slug: rtips-윈도우-계정-한글일때-문제-해결하기-1탄-임시-폴더-위치-바꾸기
+categories:
+  - R
+tags:
+  - Rtips
+  - temp
+  - tempdir
+---
+
+```{r setup, include=FALSE}
+if(!"emo" %in% rownames(installed.packages())){
+    remotes::install_github("hadley/emo")
+}
+
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/58383372-ec12d500-8010-11e9-9cfb-cc91cba8acbc.jpg" width=100%>
+
+### 한줄요약
+
+1. `Temp(임시 폴더)`의 위치를 `.Renviron` 파일에 써서 바꾸세요.
+
+[KRSG](https://www.facebook.com/groups/krstudy/)에 [질문글](https://www.facebook.com/groups/krstudy/permalink/1260757344098535/)이 올라와서 아는 내에서 해결책을 공유하고자 합니다.
+
+우선 공유해 주신 에러 화면을 보겠습니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/58383615-df43b080-8013-11e9-9d8e-e0b648ea3350.jpg" width=100%>
+
+우선 `hist()` 함수를 사용하는데, 에러가 발생한다고 문제를 공유해주셨습니다.
+그림을 출력하기 위해서는 그림을 저장하고, 화면에 뿌리는 과정을 진행합니다.
+위 과정을 프로그램(rstudio)이 진행해 주기 때문에 과정을 알 필요는 없는데요.
+이 때 그림 저장을 임시 폴더에 합니다.
+프로그램이 기본으로 사용하는 임시 폴더의 위치는 `tempdir()` 함수로 확인할 수 있습니다.
+저의 컴퓨터는 아래 결과를 확인할 수 있었습니다.
+
+```{r eval=F}
+tempdir()
+```
+```
+[1] "C:\\Users\\MRCHYP~1\\AppData\\Local\\Temp\\RtmpkNMIVs"
+```
+이 위치는 윈도우의 사용자 계정 이름(`mrchypark`)의 하위 폴더입니다.
+저는 영어로 계정이름을 만들어서 문제 없이 동작하는데요.
+질문자의 경우 저 경로에 `??????`로 되어 있는 것으로 봐서 윈도우의 사용자 계정이 한글로 되어 있는 것 같습니다.
+
+가장 좋은 해결책은 윈도우 계정을 한글로 바꾸는 것이기는 한데요. `r emo::ji("sad")`
+현실적으로 다시 만들어서 다시 환경을 설정하는 것은 쉬운일이 아닙니다.
+
+그래서 임시 폴더 위치를 변경하는 방법을 소개합니다.
+
+우선 경로에 한글이 없을만한 임시 폴더를 하나 만듭니다.
+저는 `C:/`에 바로 만들려고 합니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/58384152-8aa33400-8019-11e9-9d2e-e3a6dc4448ce.png" width=100%>
+
+<img src="https://user-images.githubusercontent.com/6179259/58384165-9bec4080-8019-11e9-9d52-13f076473f5c.png" width=100%>
+
+<img src="https://user-images.githubusercontent.com/6179259/58384183-cd650c00-8019-11e9-8a9a-6fa6c952b827.png" width=100%>
+
+`C:/rtemp` 라는 폴더를 만들었습니다.
+이제 `usethis` 패키지를 설치합니다.
+
+```{r eval=F}
+install.packages("usethis")
+```
+
+`usethis` 패키지에는 `R`의 환경 변수를 관리하는 `.Renvron` 파일을 수정할 수 있게 열어주는 함수를 제공합니다.
+
+```{r eval=F}
+library(usethis)
+edit_r_environ()
+```
+
+그럼 `.Renvron` 파일을 수정할 수 있게 스크립트 창에서 열어줍니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/58384129-1bc5db00-8019-11e9-87a5-b1f11f74d2f9.png" width=100%>
+
+이제 아래 3줄을 `.Renvron` 파일에 저장합니다.
+
+```
+TMPDIR=C:/rtemp
+TMP=C:/rtemp
+TEMP=C:/rtemp
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/58384144-5d568600-8019-11e9-9ec0-9c1ee090ace7.png" width=100%>
+
+그리고 새션 재시작(`ctrl+shit+F10`)을 한 후 `tempdir()` 함수로 경로가 잘 변경되었는지를 확인합니다.
+
+이제 `hist(iris$Sepal.Length)` 같은 명령어로 동작하는지 확인합니다.
+
+<img src="https://user-images.githubusercontent.com/6179259/58384292-0a7dce00-801b-11e9-8515-76699cedd15a.png" width=100%>
+
+이 방법은 프로그램이 사용하는 임시 폴더의 경로를 바꿈으로써 문제를 해결합니다.
+그렇기 때문에 사용자의 계정 폴더를 사용하는 다른 문제에 대해서 해결하는지 알 수 없습니다.
+혹시 위 방법으로도 비슷한 에러가 나오는 사례를 알려주시면 감사하겠습니다.
+
+감사합니다.

@@ -1,0 +1,29 @@
+---
+title: Rphabetic(알파베틱) 제안
+author: mrchypark
+date: '2018-03-06'
+slug: rphabetic-알파베틱-제안
+categories:
+  - R
+tags:
+  - suggest
+  - R
+  - term
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/37244255-5e1ee318-24c9-11e8-982b-6f583a0cd623.jpg" width=100%>
+
+`Python` 공부를 하면서 재밌으면서도 직관적인 단어를 알게 되었는데, `Pythonic way`입니다. 말하지 않아도 **파이썬스러운 방법**이라는 뜻이라는게 한눈에 들어오더라구요. `Pythonic` 하다, 하지 않다로도 많이 사용하는 것을 봤습니다.
+
+그래서 `R`에서는 비슷한 단어가 없는건가 싶더라구요. 찾아보니 `R's way`가 있었습니다만, 힙하지 않아 보였습니다.(힙이라니...)
+
+아무튼 [한국 R 유저 그룹](https://www.facebook.com/groups/KoreaRUsers/permalink/1242270839238949/)에 글을 올려 의견을 물었습니다. 제가 `R-legant`하다를 먼저 제시하면서 다른 분들도 많은 의견을 주셨습니다. 그러다가 역시 조금은 억지스러운가 라는 생각이 들었는데요. `Rcoholic` 같이 발음으로도 좀 더 자연스러워야하지 않은가 싶더라구요.
+
+고민 끝에 개인적으로는 `Rphabetic`하다고 표현하려 합니다. 
+
+굳이 정의하자면, **사용자 친화적** 혹은 **사용자가 이용하기 쉬운** 이라고 하면 어떨까요. 전에 리디북스의 분석가이신 [하헌철](https://www.facebook.com/Curycu)님께서 언급해주신 [R의 철학](https://www.facebook.com/Curycu/posts/1611859318930013)에 가까운 의미이지 않나 생각이 듭니다.

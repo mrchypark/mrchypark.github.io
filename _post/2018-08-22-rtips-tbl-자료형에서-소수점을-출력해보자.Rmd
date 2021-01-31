@@ -1,0 +1,98 @@
+---
+title: '[Rtips] tbl 자료형에서 소수점을 출력해보자'
+author: mrchypark
+date: '2018-08-22'
+slug: rtips-tbl-자료형에서-소수점을-출력해보자
+categories:
+  - R
+tags:
+  - tbl
+  - tibble
+  - digit
+  - options
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/44436508-90826980-a5f0-11e8-8dde-4b21ef01256c.jpg">
+
+### 한줄요약
+
+1. `options(pillar.sigfig=10)`
+
+*tidyverse* 생태계는 R의 현재 부흥기를 이끌고 있습니다.
+*magrittr* 패키지가 쏘아올린 `%>%(파이프 연산자)`가 이렇게 될꺼라고 상상이나 했을까요.
+[해들리 위컴](http://hadley.nz/)이 발표한 [tidy data][tidydata]와 함께 *tidyverse*에서는 없는게 상상도 할 수 없는 것이 많습니다.
+
+이런 *tidyverse*에서 data를 담당하는 패키지가 [tibble][tibble]입니다.
+
+<img width=100% src="http://www.sthda.com/sthda/RDoc/images/tibble-data-format-tbl_df.png">
+
+[tibble][tibble]은 `tbl`, `tbl_df` 등등의 자료형으로 표현됩니다.
+위에 그림에도 보이는 것처럼 `data.frame`과 같은 역할을 하면서, 더 세련됬다고 할까요.
+
+그 와중에 [tibble][tibble]의 출력을 담당하는 패키지가 [pillar][pillar]입니다.
+
+```{r}
+if(!requireNamespace("pillar")){
+    source("https://install-github.me/r-lib/pillar")
+}
+library(pillar)
+x <- 123456789 * (10 ^ c(-3, -5, NA, -8, -10))
+x
+pillar(x)
+```
+
+마크다운에는 디테일이 표현되지 않아 사진을 첨부합니다.
+![](https://raw.githubusercontent.com/r-lib/pillar/master/man/figures/colours.png)
+
+3자리 마다 쉼표로 표시하는 관행을 출력해주기 위해, [pillar][pillar] 패키지는 밑줄을 사용합니다.
+보기 참 좋아진거 같습니다!
+
+그러다 보니... 소수점 표기의 출력 옵션이 기존의 `data.frame`과 다릅니다.
+찾아보니 `options(pillar.sigfig)`를 조절하면 된다는군요!
+
+```
+options(pillar.sigfig)
+## Error in options(pillar.sigfig) : object 'pillar.sigfig' not found
+```
+
+기본 값이 없는거 같습니다....(;;;)
+패키지에는 3이 기본값이라고 하는데 어떻게 보는지 모르겠네요;;;
+이젠 `tibble`에서 확인해 볼까요?
+```{r}
+my_numbers <-  c(233, 486, 565, 785)
+tbl_num <- tibble::tibble(
+  big = 1000 * my_numbers + 23,
+  stradle = my_numbers / 1000 + 100,
+  small = my_numbers / 100000
+)
+tbl_num
+```
+
+출력을 보면 stradle 컬럼의 첫번째 데이터가 `100.`라고 되어 있습니다.
+`100`이 아니고 `100.`이라고 출력해주면서 소수점 숫자가 있음을 알려주는데요.
+[관련 이슈][comm]도 있으니 읽어보시면 좋을 것 같구요.
+
+```{r}
+options(pillar.sigfig = 7)
+tbl_num
+```
+
+[pillar][pillar]의 **sigfig** 옵션은 사실 소수점에 해당하는 옵션이 아닙니다.
+유효숫자에 대한 옵션이죠.
+유효숫자는 또 큰 주제니까 다음에 다루기로 하구요.
+
+
+pillar에서는 [출력에 대한 옵션][options]을 제공하고 있습니다.
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/44440124-c419bf80-a601-11e8-8fa4-120924950638.png">
+
+
+한번 읽어보시면 취향껏 고치는데 도움이 되지 않을까요?ㅎㅎ
+
+감사합니다.
+
+[tidydata]: http://vita.had.co.nz/papers/tidy-data.html
+[tibble]: https://tibble.tidyverse.org/
+[comm]: https://github.com/r-lib/pillar/issues/40#issuecomment-360152576
+[pillar]: https://github.com/r-lib/pillar
+[options]: https://pillar.r-lib.org/reference/pillar-package.html#package-options

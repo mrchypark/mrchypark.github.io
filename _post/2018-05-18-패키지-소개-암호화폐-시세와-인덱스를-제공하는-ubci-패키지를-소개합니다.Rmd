@@ -1,0 +1,139 @@
+---
+title: '[패키지 소개] 암호화폐 시세와 인덱스를 제공하는 ubci 패키지를 소개합니다'
+author: mrchypark
+date: '2018-05-18'
+slug: 패키지-소개-암호화폐-시세와-인덱스를-제공하는-ubci-패키지를-소개합니다
+categories:
+  - R
+tags:
+  - ubci
+  - crypto
+  - package
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/40222200-bb7756aa-5ab9-11e8-8c87-4ddfd56b7f29.jpg">
+
+```{r include=FALSE}
+if (!requireNamespace("ubci")) remotes::install_github("mrchypark/ubci")
+```
+
+### 세줄요약
+
+1. 암호화폐 관련 시세와 인덱스 정보를 제공하는 `ubci` 패키지를 공개함.
+1. [ubci][ubci]는 [upbit][upbit]에서 제공하는 데이터로 비영리 배포는 자유라고 해서 개발함.
+1. 데이터 라이선스는 또 다른 문제이니 [ubci][ubci] 가서 확인바람.
+
+암호화폐는 2017년의 붐을 기점으로 사회 곳곳에 그 존재감을 드러내고 있습니다. 
+여러 이슈가 있긴 하지만 국내에는 4대 거래소(빗썸, 업비트, 코빗, 코인원)외에도 새로운 거래소들이 속속 나타고 있는 중입니다.
+이외에도 카카오와 라인(네이버)이 각각 암호화폐 전문 자회사를 세우는 등 기업의 관심이 그 어느때보다 높습니다.
+
+아직 이슈가 안정적인 분야가 아니다 보니 이슈 파이팅이 그 어느 분야보다 중요한데요.
+현시간 코인마켓캡 기준 전세계 거래량 6위쯤 되는 upbit가 코인 인텍스를 들고나왔습니다.
+바로 [UBCI][ubci]입니다.
+저도 관심이 가는 내용이라 사이트를 둘러보았는데, 데이터를 깨끗하게 제공하더라구요.
+그래서 간단하게 R 패키지화 해보았습니다.
+놀랍게도 패키지 이름은 [ubci][ubcip]입니다.
+
+```r
+## github에서 패키지 설치
+source("https://install-github.me/mrchypark/ubci")
+```
+
+한글 데이터가 포함되어 있으니 인코딩이 `UTF-8`인지 확인해 주세요.
+
+```{r}
+Sys.getlocale()
+```
+
+## 함수 예
+
+패키지가 리드미와 설명서를 제공하고 있지만 저도 다시 사용해 보겠습니다.
+
+### 인덱스 코드 가져오기
+
+`ubci_index_options()` 함수는 인덱스를 가져오기에 앞서 인덱스의 이름과 설명을 알려줍니다.
+
+```{r}
+library(ubci)
+ubci_index_options()
+```
+
+자료형은 `tbl`로 되어 있네요.
+주식 분석 패키지의 최강자인 [tidyquant][tidyquant]와 상성을 고려한 선택이었습니다.
+`ubci_index_options()` 함수는 lang 인자로 언어를 변경할 수 있습니다.
+
+```{r}
+ubci_index_options(lang="ko")
+```
+
+### 인덱스 데이터
+
+`ubci_index()` 함수는 인덱스의 일별 시가, 고가, 저가, 종가, 거래량을 제공합니다.
+`from`,`to` 인자로 기간을 조절할 수 있습니다.
+
+```{r}
+loi<-ubci_index_options()
+loi$index[1]
+ubci_index(loi$index[1])
+tail(ubci_index(loi$index[1], from="2018-05-15"))
+ubci_index(loi$index[1], to="2018-05-15")
+ubci_index(loi$index[1], from="2018-05-10", to="2018-05-15")
+```
+
+### 암호화폐 코드 
+
+`ubci_get_options()` 함수는 취급하는 암호화폐의 종류를 이름과 코드로 제공합니다.
+
+```{r}
+ubci_get_options()
+```
+
+`ubci_get_options()` 함수 역시 한글 옵션을 제공합니다.
+
+```{r}
+ubci_get_options(lang="ko")
+```
+
+
+### 암호화폐 시세 정보
+
+`ubci_get()` 함수 또한 암호화폐의 일별 시가, 고가, 저가, 종가, 거래량을 제공합니다.
+
+```{r}
+loc<-ubci_get_options()
+loc$code[1]
+ubci_get(loc$code[1])
+tail(ubci_get(loc$code[1], from="2018-05-15"))
+ubci_get(loc$code[1], to="2018-05-15")
+ubci_get(loc$code[1], from="2018-05-10", to="2018-05-15")
+```
+
+## 라이선스 문제
+
+[ubci][ubci]와 시세는 라이선스가 다를텐데요. 
+[ubci][ubci]는 메인 페이지에서 데이터 라이선스와 법적 이슈에 대해 고지하고 있습니다.
+시세는 제가 못찾은건지 데이터관런 라이선스 고지를 찾을 수가 없네요.
+
+[ubci][ubci]는 비영리 배포에 대해 허용하고 있어 마음껏 작성하였구요.
+시세는 하는김에 라는 느낌이라서 업비트에서 뭐라고 하면 내릴 계획입니다.
+
+## 패키지 계획
+
+만들다 보니 [ubci][ubci]의 세부 정보(ex> 구성 화폐시세와 비율, 추가 설명 등)가 함께 있으면 좋겠다 싶어서 추가하려고 계획하고 있습니다.
+시세쪽은 지금은 데일리만 있는데, 분단위 정보를 제공하기는 하더라구요.
+비정상 이용에 대해 막을 가능성이 높긴 하지만, 제한적으로나마 분단위나 15분 단위의 데이터를 제공하는 함수를 만들 수 있을 것 같습니다.
+
+깃헙주소는 <https://github.com/mrchypark/ubci> 입니다.
+재밌게 보신 분들은 별이라도 한번 눌러주시구요.
+설명의 추가나 위에 예정중인 함수 작성, 테스트 케이스 작성등 패키지 개발을 위해서 아직 남은 일이 많은데요.
+도움 주시는 분이 계시면 정말 감사할 것 같습니다.
+
+언제나처럼 문의나 잘못된 점 등 알려주시면 반영하겠습니다.
+감사합니다.
+
+p.s 간단한 분석을 포함한 영문 포스팅을 해주실 용자분을 찾습니다. 해외에서도 관심가질만한 주제라고 생각해서 소개하고 싶은데, 제가 능력이 안되네요. 감사합니다.
+
+[ubci]: https://www.ubcindex.com/indexes
+[upbit]: https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC
+[ubcip]: https://mrchypark.github.io/ubci/
+[tidyquant]: https://github.com/business-science/tidyquant

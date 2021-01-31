@@ -1,0 +1,225 @@
+---
+title: '[tidytext] 텍스트 데이터를 tidy 하게 다뤄보자'
+author: mrchypark
+date: '2018-08-14'
+slug: tidytext-텍스트-데이터를-tidy-하게-다뤄보자
+categories:
+  - R
+tags:
+  - tidytext
+  - text
+  - presidentSpeech
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<img src="https://user-images.githubusercontent.com/6179259/38180839-4ff68d56-366a-11e8-8457-05d244430219.jpg" width=100%>
+
+> * 대부분의 내용을 [패키지 소개 도서][패키지 소개 도서]에서 참고하였음을 알립니다.
+
+### 세줄요약
+ 
+1. tidy한 방법은 데이터를 바라보는 좋은 관점이다.
+1. text도 tidy하게 다룰 수 있는 tidytext 패키지가 유용하다.
+1. 간단하게 저자 분류기를 만들어서 확인하자.
+
+텍스트를 활용한 문제 해결은 최근 많은 분야에서 관심을 가지고 있습니다. 
+비정형 데이터 분석이라고 하더군요.
+그래서 데이터를 다루는 좋은 관점인 **tidy함**을 소개하고, text도 tidy하게 다루어보겠습니다.
+
+#### tidy함이란
+
+중요하면서도 지루한 부분이니 간단하게만 소개하겠습니다. 
+[관련글][관련글]을 첨부하니 자세히 보고 싶으신 분들은 참고해주세요.
+
+tidy함이란 3가지 조건을 충족해야 합니다.
+
+1. 각 변수는 개별 열로 설계해야 한다.
+1. 각 관측치는 개별 행으로 설계해야 한다.
+1. 각 테이블은 단일 기준의 데이터여야 한다.
+
+우선 각 용어를 정의해야 이해하기 좋은데요.
+**변수**와 **관측치**를 보겠습니다.
+**관측치**란 한 개의 데이터를 뜻합니다.
+설문지를 예로 들면 한 건의 설문지를 뜻하죠.
+**변수**란 설문 항목과 같습니다.
+각 **변수**는 각각 하나의 설문 항목을 뜻한다고 볼 수 있습니다.
+이걸 열과 행으로 구성해야 한다는 뜻인데요. 
+당연한걸 설명한다고 하기에는 지키지 않는 경우가 너무 많습니다.
+
+특히 마지막 조건 때문이라고 생각하는데요.
+관측 기준을 하나로 정해서 데이터를 만들어 테이블로 정리한다고 합니다.
+단일 기준의 데이터로 테이블을 구성하면 보고 싶은걸 한번에 보지 못할 수도 있습니다.
+그래서 이리저리 붙인 테이블을 만들고, 그것을 데이터로 가지고 있는 경우가 많습니다.
+저는 이것을 대쉬보드형 데이터라고 부릅니다.
+다루기 위한 데이터가 아니라 눈으로 탐색하기 위한 데이터이기 때문입니다.
+눈으로 보기 좋은 데이터는 다루기 좋은 데이터가 아니라고 하면 이해가 좋으려나요.
+
+여기에 추가해서 알아야 할 개념이 있습니다.
+바로 **long form**, **wide form** 입니다.
+
+#### 롱폼 long form
+
+롱폼`long form`이란 데이터가 길게 아래로 늘어져 있는 형태를 뜻합니다.
+데이터를 보면서 알아볼까요?
+
+```{r}
+# remotes::install_github("mrchypark/krlift")
+library(krlift)
+```
+
+[krlift][krlift]는 한국의 승강기 등록 기록을 데이터 패키지화한 것입니다. 
+~~*`star는 패키지 제작자를 춤추게 합니다. 덩실~`*~~ 
+`lift` 라는 데이터가 내장되어 있네요.
+한번 확인해 볼까요.
+
+```{r}
+lift
+```
+
+데이터를 다루는 [dplyr][dplyr] 패키지를 추가해서 좀 살펴보겠습니다.
+
+```{r}
+library(dplyr)
+```
+
+가장 위에 있는 건물을 확인해보겠습니다. 이름이 `(주)강남강릉호텔`이네요.
+
+```{r}
+lift %>% 
+    filter(`건물명` == "(주)강남강릉호텔")
+```
+
+지금 `lift` 데이터는 tidy하게 잘 정리되어 있습니다. 
+그 증거가 위 3개의 데이터인데요. 
+여기서 이 테이블의 관측 기준은 **승강기**입니다.
+각 관측치가 각각의 승강기를 기준으로 하고 있기 때문입니다.
+
+그럼 건물을 관측 기준으로 생각해볼까요?
+각 건물 하나당 하나의 행을 가지기 위해서는 여러 가지 고민을 해야 합니다.
+건물마다 승강기의 갯수가 다르기 때문에 승강기 정보를 넣는 방법이 제한적입니다.
+혹은 각 건물의 승강기 테이블을 전부 따로 만들어야 할 수도 있습니다.
+
+비슷하게 관측 기준에 대해 생각해봐야 할 예시가 있습니다.
+그것은 영수증인데요.
+관측 기준을 영수증으로 잡을지, 영수증 내의 품목으로 잡을지에 따라 데이터의 모양이 달라집니다.
+보통 품목으로 잡는 걸 권장합니다.
+
+#### 와이드폼 wide form
+
+와이드폼`wide form`이란 데이터가 옆으로 펼쳐져 있는 형태를 뜻합니다.
+위에 데이터로 한번 만들어 보겠습니다.
+롱폼과 와이드폼을 변환하는데 적합한 패키지는 [tidyr][tidyr]입니다.
+
+```{r}
+library(tidyr)
+```
+
+[tidyr][tidyr]은 롱폼 to 와이드폼을 위한 `spread()`함수와 와이드폼 to 롱폼을 위한 `gather()`함수가 있습니다.
+제가 위해서 `lift` 데이터는 승강기 관점의 데이터라고 설명을 드렸습니다.
+그럼 우선 건물명 관점의 데이터로 바꿔볼까요?
+
+```{r}
+lift_sm <- 
+    lift %>% 
+    group_by(`건물명`, `승강기종류`) %>% 
+    summarise(`총대수` = sum(`대수`))
+lift_sm
+```
+`group_by()`함수와 `summarise()`함수를 이용해서 각 건물별로 한개의 관측치(행)만 가지는 `lift_sm` 데이터를 만들었습니다.
+`lift_sm` 데이터는 각 건물이 승강기를 종류별로 총 몇대씩 가지고 있는지를 정리한 데이터입니다.
+그럼 이 데이터를 와이드폼으로 바꿔보겠습니다.
+
+```{r}
+lift_sm %>% 
+    spread(`승강기종류`, `총대수`)
+```
+`spread(사용할 데이터, 컬럼 역할을 할 컬럼, 셀 역할을 할 컬럼)`으로 함수가 동작하는데요.
+이렇게 보니 와이드폼은 한 가지 종류의 데이터(총대수)만 테이블로 확인할 수 있군요.
+
+#### 롱폼과 와이드폼의 개념을 아는 것이 중요한 이유
+
+데이터를 다룰 때 일반적으로 컴퓨터는 행방향으로 데이터를 추가하거나 계산하는 것을 쉽게 할 수 있습니다.
+열방향으로 데이터를 추가하거나 계산하는 것은 매우 어렵게 되어 있는데요.
+정확하게는 많은 데이터를 다루는 도구들이 그렇게 설계되어 있습니다.
+그래서 펼치거나`spread()` 모으는`gather()` 동작을 통해 데이터를 다루기 쉬운 상태`(tidy함)`로 만들어야 합니다.
+
+데이터를 다루는 내용은 [tidyr을 소개하는 자료][data다루기]를 더 확인해보세요.
+
+#### [tidytext][tidytext]
+
+이런 `tidy함`은 여러 사람들에게 인기를 끌었습니다.
+그래서 여러 종류의 데이터를 `tidy하게` 다루는 여러 패키지들이 개발중인데요.
+[tidytext][tidytext] 패키지도 그 일종입니다.
+text 데이터를 `tidy하게` 정의하기 위해서 [tidytext][tidytext] 패키지는 개별행에 들어갈 기준으로 `token`을 제시했습니다.
+`token`이란 text 데이터에서 하나의 단위로 정의할 수 있는 모든 것을 뜻합니다.
+문장, 띄어쓰기를 기준으로 나눈 글자들, 형태소, 글자 등등을 뜻합니다.
+영어에서는 `word`와 `stem`을 많이 사용하죠.
+한글에서는 역시 형태소가 가장 유명한 것 같네요.
+`tokenize`란 텍스트로 되어 있는 원시 데이터를 개별 `token` 단위로 나누어 데이터를 만든다는 뜻입니다.
+그럼 예시 데이터를 소개하겠습니다.
+
+#### [presidentSpeech][presidentSpeech]
+
+[presidentSpeech][presidentSpeech] 패키지는 [대통령 기록 연구실][대통령기록연구실]의 wrapping 패키지입니다.
+`search_speech()` 함수로 연설문 기록을 검색하는데요.
+
+```{r}
+# remotes::install_github("forkonlp/presidentSpeech")
+library(presidentSpeech)
+```
+검색 조건은 `get_president()`, `get_field()`, `get_event()`로 사용할 수 있는 대통령, 분야, 유형 리스트를 확인할 수 있습니다.
+
+```{r}
+get_president()
+tar_pre <- get_president()[7:10]
+```
+
+우선 최근 4분만 봐볼께요.
+
+```{r}
+get_field()
+get_event()
+```
+
+4분이 다르게 나올 만한 분야나 유형이 무엇이 있을까요?
+우선은 전부 데이터를 가져와 보죠.
+
+```{r}
+speech_list <- c()
+for (i in 1:length(tar_pre)){
+  speech_list <- rbind(speech_list,
+                       search_speech(president = tar_pre[i]))
+}
+speech_list %>% 
+  group_by(president) %>% 
+  summarize(count = n())
+
+if(!requireNamespace("ggplot2")){
+    install.packages("ggplot2")
+}
+library(ggplot2)
+
+speech_list %>% 
+  ggplot(aes(field, fill = president))+
+  geom_histogram(stat="count")+
+  facet_wrap(~president)
+
+speech_list %>% 
+  ggplot(aes(event, fill = president))+
+  geom_histogram(stat="count")+
+  facet_wrap(~president)
+```
+
+[대통령기록연구실]: http://www.pa.go.kr/research/contents/speech/index.jsp
+[패키지 소개 도서]: https://www.tidytextmining.com/
+[관련글]: https://mrchypark.github.io/kisa_finR/#(5)
+[krlift]: https://github.com/mrchypark/krlift
+[dplyr]: http://dplyr.tidyverse.org/
+[tidyr]: http://tidyr.tidyverse.org/
+[data다루기]: https://mrchypark.github.io/dabrp_classnote3/class3#75
+[tidytext]: https://github.com/juliasilge/tidytext
+[presidentSpeech]: https://forkonlp.github.io/presidentSpeech/
