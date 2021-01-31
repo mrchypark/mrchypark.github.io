@@ -7,6 +7,6 @@ Distill for R Markdown is a web publishing format optimized for scientific and t
 ## how to
 
 ```R
-rmarkdown::render('./_posts/welcome/welcome.Rmd',  encoding = 'UTF-8')
+purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))
 rmarkdown::render_site('index.Rmd',  encoding = 'UTF-8')
 ```

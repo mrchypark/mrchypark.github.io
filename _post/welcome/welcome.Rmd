@@ -2,7 +2,8 @@
 title: "distill 로 옮깁니다."
 slug: "move-blog-to-distill"
 description: |
-  드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
+ 
+ 드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
 date: 2021-01-28
 author:
   - first_name: "Chanyub"
