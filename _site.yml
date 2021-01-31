@@ -1,7 +1,8 @@
 name: "mrchypark"
 title: "mrchypark"
 description: |
-  mrchypark
+  데이터홀릭 박박사의 블로그입니다. 
+  박박사의 R코홀릭 유튜브를 함께 운영하고 있습니다.
 
 output_dir: "docs"
 theme: theme.css
@@ -22,11 +23,15 @@ navbar:
 base_url: https://mrchypark.github.io
 google_analytics: "UA-47822682-14"
 collections:
-  posts:
+  post:
+    categories: true
     disqus: mrchypark
+    hidden: false
     share: [facebook, twitter, linkedin]
 
 repository_url: https://github.com/mrchypark/mrchypark.github.io
+
+exclude: "README.md"
 
 creative_commons: CC BY-NC-ND
 twitter:
@@ -38,13 +43,11 @@ cookie_consent:
   palette: light
   lang: en
   cookies_policy: url
-
 output:
   distill::distill_article:
     self_contained: true
     toc: true
     toc_depth: 2
     code_folding: true
-    highlight: haddock
-    highlight_downlit: false
-
+    theme: theme.css
+    number_sections: true

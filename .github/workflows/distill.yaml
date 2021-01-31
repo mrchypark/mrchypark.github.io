@@ -21,7 +21,6 @@ jobs:
       - name: Install pandoc
         run: |
           brew install pandoc
-
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
@@ -33,15 +32,14 @@ jobs:
         run: |
           R -e 'install.packages("renv")'
           R -e 'renv::restore()'
-
       - name: Install distill
         run: |
           R -e 'install.packages("distill")'
-
+          R -e 'install.packages("fs")'
       - name: Build site
         run: |
+          R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
           R -e 'rmarkdown::render_site(encoding = "UTF-8")'
-
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
