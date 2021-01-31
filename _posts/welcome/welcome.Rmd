@@ -1,5 +1,5 @@
 ---
-title: "distill 로 옮깁니다."
+title: "distill로 옮깁니다."
 slug: "move-blog-to-distill"
 description: |
   드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
@@ -18,7 +18,7 @@ output:
     toc_depth: 2
     code_folding: true
     theme: theme.css
-
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
