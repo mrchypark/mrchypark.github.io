@@ -26,10 +26,9 @@
       <title>한글 띄어쓰기 API 이용하기</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/한글-띄어쓰기-api-이용하기</link>
-      <description>* 현재 아래 소개하는 api는 동작하지 않으며 [KoSpacing][KoSpacing] 패키지가 새롭게 배포되었습니다.
-* 패키지 사용 환경 설정은 본 블로그의 [다른 포스트][installr]를 참고하세요.
-
-KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 관련 연구를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다. 사용법도 함께 공개하셨는데, R에서는 사용이 어색할 수 있는 reticulate 패키지로 예시를 작성해주셔서 R에서 많이 사용하는 패키지들로 예시코드를 공유하면서 웹 요청에 대한 내용도 함께 공유해볼까 합니다.</description>
+      <description>현재 아래 소개하는 api는 동작하지 않으며 KoSpacing패키지가 새롭게 배포되었습니다.
+패키지 사용 환경 설정은 본 블로그의 다른 포스트를 참고하세요.
+KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 관련 연구를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다....</description>
       <category>R</category>
       <category>httr</category>
       <category>api</category>
