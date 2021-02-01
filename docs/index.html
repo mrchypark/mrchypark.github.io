@@ -24,7 +24,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -2351,15 +2350,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="site_libs/header-attrs/header-attrs.js"></script>
+  <script src="site_libs/popper/popper.min.js"></script>
+  <link href="site_libs/tippy/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor/anchor.min.js"></script>
+  <script src="site_libs/bowser/bowser.min.js"></script>
+  <script src="site_libs/webcomponents/webcomponents.js"></script>
+  <script src="site_libs/distill/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <script type="text/javascript" src="https://www.cookieconsent.com/releases/3.1.0/cookie-consent.js"></script>
   <script type="text/javascript">
@@ -2600,7 +2599,10 @@ function init_posts_list() {
 <div class="dt-tag">POST</div>
 <div class="dt-tag">GET</div>
 </div>
-<p></p>
+<p>* 현재 아래 소개하는 api는 동작하지 않으며 [KoSpacing][KoSpacing] 패키지가 새롭게 배포되었습니다.
+* 패키지 사용 환경 설정은 본 블로그의 [다른 포스트][installr]를 참고하세요.
+
+KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 관련 연구를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다. 사용법도 함께 공개하셨는데, R에서는 사용이 어색할 수 있는 reticulate 패키지로 예시를 작성해주셔서 R에서 많이 사용하는 패키지들로 예시코드를 공유하면서 웹 요청에 대한 내용도 함께 공유해볼까 합니다.</p>
 </div>
 </a>
 <a href="post/논리-연산자-정리/" class="post-preview">
