@@ -20,7 +20,7 @@ output:
     self_contained: true
     toc: true
     toc_depth: 2
-    code_folding: true
+    code_folding: false
     theme: theme.css
     number_sections: true
 preview: https://user-images.githubusercontent.com/6179259/106381525-aff66100-63fc-11eb-878f-724b1f26b387.png

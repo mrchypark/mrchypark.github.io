@@ -116,7 +116,7 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","base_url","date","author","output","categories","preview"]}},"value":[{"type":"character","attributes":{},"value":["한글 띄어쓰기 API 이용하기"]},{"type":"character","attributes":{},"value":["현재 아래 소개하는 api는 동작하지 않으며 KoSpacing패키지가 새롭게 배포되었습니다.\n패키지 사용 환경 설정은 본 블로그의 다른 포스트를 참고하세요.\nKoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 관련 연구를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다....\n"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io"]},{"type":"character","attributes":{},"value":["2017-10-09"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["R","httr","api","server","POST","GET"]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/106461744-8c084d80-64d8-11eb-93a4-ebedf3fb21c7.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","base_url","date","author","output","categories","preview"]}},"value":[{"type":"character","attributes":{},"value":["한글 띄어쓰기 API 이용하기"]},{"type":"character","attributes":{},"value":["현재 아래 소개하는 api는 동작하지 않으며 KoSpacing패키지가 새롭게 배포되었습니다.\n패키지 사용 환경 설정은 본 블로그의 다른 포스트를 참고하세요.\nKoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰기 기능을 추가하시기 위해서 관련 연구를 수행하시고 우선 결과물로 웹 요청으로 결과를 제공하는 API를 우선 공개하셨습니다....\n"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io"]},{"type":"character","attributes":{},"value":["2017-10-09"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["R","httr","api","server","POST","GET"]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/106461744-8c084d80-64d8-11eb-93a4-ebedf3fb21c7.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1539,10 +1539,6 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 <h3 id="get-요청">GET 요청</h3>
 <p>GET은 서버의 주소만으로 서버에 데이터를 요청하는 방법입니다. 대부분의 브라우저에 주소를 입력하고 엔터를 누르는 것과 같습니다. GET이라는 것을 메소드라고 부릅니다. R에서는 http 요청을 하기 위한 다양항 패키지가 있지만 메소드 이름을 바로 함수로 제공하는 <a href="https://github.com/r-lib/httr">httr 패키지</a>를 사용하겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">&quot;httr&quot;</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">&quot;httr&quot;</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span>
@@ -1550,7 +1546,6 @@ Show code
 <span class="fu"><a href="https://httr.r-lib.org/reference/content.html">content</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 </code></pre>
 </div>
-</details>
 <pre><code>{html_document}
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;&quot; xml:lang=&quot;&quot;&gt;
 [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; cha ...
@@ -1560,16 +1555,11 @@ Show code
 <h3 id="post-요청">POST 요청</h3>
 <p>POST는 서버에 데이터를 요청할 때 뭔가 값을 함께 요청하는 방식입니다. 대표적으로 로그인이 있습니다. 위 고감자님의 요청은 PUT을 사용했는데, POST와 거의 같습니다. POST를 값을 실어보내는 것을 body라고 합니다. <code>body</code>는 R에서는 <code>list</code> 자료형으로 처리합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">body</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sent<span class="op">=</span><span class="st">&quot;아래와같은방식으로API를사용할수있으며,호출건수에대해서별도의제한은없으나,1회 호출에200글자로글자수를제한하고있다.&quot;</span><span class="op">)</span>
 <span class="va">body</span>
 </code></pre>
 </div>
-</details>
 <pre><code>$sent
 [1] &quot;아래와같은방식으로API를사용할수있으며,호출건수에대해서별도의제한은없으나,1회 호출에200글자로글자수를제한하고있다.&quot;</code></pre>
 </div>

@@ -18,7 +18,7 @@ output:
     self_contained: true
     toc: true
     toc_depth: 2
-    code_folding: true
+    code_folding: false
     theme: theme.css
     number_sections: true
 categories:
