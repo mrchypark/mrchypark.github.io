@@ -29,7 +29,7 @@ preview: https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-64
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = T, cache = T)
-library(knitr)
+
 if (!requireNamespace("dplyr")) {
   install.packages("dplyr")
 }
