@@ -43,6 +43,7 @@ cookie_consent:
   palette: light
   lang: en
   cookies_policy: url
+
 output:
   distill::distill_article:
     self_contained: true

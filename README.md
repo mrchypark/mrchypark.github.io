@@ -14,6 +14,6 @@ rmarkdown::render_site('index.Rmd',  encoding = 'UTF-8')
 ```R
 library(dplyr)
 grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T) %>%
-  .[39] %>%
+  .[c(1,2,39)] %>%
   purrr::map( ~ rmarkdown::render(.x, encoding = 'UTF-8'))
 ```
