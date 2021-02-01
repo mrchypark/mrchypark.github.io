@@ -3,6 +3,7 @@ title: 블로그 reboot
 description: |
  blogdown으로 옮겨서 시작합니다.
 base_url: https://mrchypark.github.io
+date: "2017-04-05"
 categories:
   - anounce
   - blog
