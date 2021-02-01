@@ -1,23 +1,35 @@
 ---
 title: 한글 띄어쓰기 API 이용하기
-author: mrchypark
-date: '2017-10-09'
-slug: 한글-띄어쓰기-api-이용하기
+date: "2017-10-09"
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: true
+    theme: theme.css
+    number_sections: true
 categories:
   - R
-tags:
   - httr
   - api
   - server
   - POST
   - GET
+preview: https://user-images.githubusercontent.com/6179259/106461744-8c084d80-64d8-11eb-93a4-ebedf3fb21c7.png
 ---
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(cache = T)
 knitr::opts_chunk$set(echo = TRUE)
-if(!requireNamespace("xml2")){install.packages("xml2")}
 ```
 
 <img src="https://user-images.githubusercontent.com/6179259/37244197-a6b91c8e-24c8-11e8-96ae-30a489c266b2.jpg" width=100%>
