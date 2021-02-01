@@ -1,15 +1,31 @@
 ---
 title: blogdown으로 블로그 이사하기
-author: mrchypark
 date: '2018-03-06'
 categories:
   - blog
-tags:
   - blogdown
   - hugo
   - minimal
   - rstudio
-slug: blogdown으로-블로그-이사하기
+description: |
+ 탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. ...
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png
 ---
 
 ```{r setup, include=FALSE}
@@ -17,7 +33,7 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = T, cache = T)
 ```
 
-<img src="https://user-images.githubusercontent.com/6179259/37244232-0bf40b36-24c9-11e8-8e3d-cefc4c972699.jpg" width=100%>
+<img src="https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png" width=100%>
 
 탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. [blogdown](https://github.com/rstudio/blogdown)은 rstudio의 수석 엔지니어인 [Yihui Xie](https://yihui.name/en/)가 [golang](https://golang.org/)으로 작성된 `static site generator` 입니다. `jekyll` 또한 같은 범주의 도구이죠.
 
