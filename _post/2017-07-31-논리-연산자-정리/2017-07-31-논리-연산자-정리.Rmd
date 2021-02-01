@@ -20,7 +20,7 @@ output:
     self_contained: true
     toc: true
     toc_depth: 2
-    code_folding: true
+    code_folding: false
     theme: theme.css
     number_sections: true
 preview: https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-6448-11eb-9836-f3f8449a472b.png
@@ -29,15 +29,7 @@ preview: https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-64
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = T, cache = T)
-library(knitr)
-if (!requireNamespace("dplyr")) {
-  install.packages("dplyr")
-}
 library(dplyr)
-if (!requireNamespace("kableExtra")) {
-  remotes::install_github("haozhu233/kableExtra")
-}
-library(kableExtra)
 ```
 
 <img src="https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-6448-11eb-9836-f3f8449a472b.png" wigth=100%>
@@ -56,6 +48,9 @@ library(kableExtra)
 - x, y: 논리 데이터 1개
 
 ```{r, echo=F}
+
+library(dplyr)
+library(kableExtra)
 
 연산자 <- c("a <  b","a <= b","a >  b","a >= b", "a == b","a !=",
          "!x","x | y","x & y", "isTRUE(x)")
@@ -141,25 +136,18 @@ a != b
 a <- c(10,20,30,40,50)
 b <- 30
 
-# 더하기
 a + b
 
-# 빼기
 a - b
 
-# 곱하기
 a * b
 
-# 나누기
 a / b
 
-# 제곱
 a ** b
 
-# 나머지
 a %% b
 
-# 몫
 a %/% b
 ```
 

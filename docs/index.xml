@@ -13,26 +13,28 @@
       <link>https://mrchypark.github.io</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>distill로 옮깁니다.</title>
+      <title>논리 연산자 정리</title>
       <dc:creator>Chanyub Park</dc:creator>
-      <link>https://mrchypark.github.io/post/welcome</link>
+      <link>https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리</link>
       <description>드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.</description>
-      <guid>https://mrchypark.github.io/post/welcome</guid>
-      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      <category>operator</category>
+      <category>logical</category>
+      <category>Boolean</category>
+      <category>R</category>
+      <category>rlang</category>
+      <guid>https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리</guid>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-6448-11eb-9836-f3f8449a472b.png" medium="image" type="image/png"/>
     </item>
     <item>
-      <title>블로그 reboot</title>
+      <title>distill 로 옮깁니다.</title>
       <dc:creator>Chanyub Park</dc:creator>
-      <link>https://mrchypark.github.io/post/블로그-reboot</link>
-      <description>블로그를 찾아주신 모든 분들 반갑습니다! 안녕하세요 박찬엽입니다. 
-reboot라고 제목을 지은 이유는 이런 저런 실험을 하고 OS에 환경을 세팅하고 난 후에는 reboot을 하기 때문입니다. 
-이제 다시 reboot할 일 없는 열일하는 서버처럼 잘 운영해 보겠습니다.</description>
-      <category>anounce</category>
-      <guid>https://mrchypark.github.io/post/블로그-reboot</guid>
-      <pubDate>Wed, 05 Apr 2017 00:00:00 +0000</pubDate>
-      <media:content url="https://user-images.githubusercontent.com/6179259/106381525-aff66100-63fc-11eb-878f-724b1f26b387.png" medium="image" type="image/png"/>
+      <link>https://mrchypark.github.io/post/2021-01-28-distill로-옮깁니다</link>
+      <description>드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.</description>
+      <guid>https://mrchypark.github.io/post/2021-01-28-distill로-옮깁니다</guid>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
