@@ -23,6 +23,18 @@
       <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>Materials 페이지 업데이트</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/materials-페이지-업데이트</link>
+      <description>제 블로그 왼쪽 위에 Materials라는 메뉴를 추가하였습니다.</description>
+      <category>news</category>
+      <category>blog</category>
+      <category>materials</category>
+      <guid>https://mrchypark.github.io/post/materials-페이지-업데이트</guid>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/106466661-f9b77800-64de-11eb-807d-fcedbfbc1df0.png" medium="image" type="image/png"/>
+    </item>
+    <item>
       <title>한글 띄어쓰기 API 이용하기</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/한글-띄어쓰기-api-이용하기</link>
