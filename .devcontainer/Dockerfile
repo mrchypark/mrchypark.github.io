@@ -15,6 +15,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install libzip-dev libxml2-dev libssl-dev \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
+RUN Rscript -e 'install.packages("renv");renv::restore()'
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update \
 #     && export DEBIAN_FRONTEND=noninteractive \
