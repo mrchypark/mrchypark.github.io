@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://mrchypark.github.io/about_en.html</loc>
-    <lastmod>2021-02-01T13:37:45+00:00</lastmod>
+    <lastmod>2021-01-31T17:51:27+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/about.html</loc>
-    <lastmod>2021-02-01T13:37:45+00:00</lastmod>
+    <lastmod>2021-01-31T17:51:27+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/</loc>
-    <lastmod>2021-02-01T13:37:45+00:00</lastmod>
+    <lastmod>2021-02-01T12:10:07+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/material.html</loc>
-    <lastmod>2021-02-01T13:37:45+00:00</lastmod>
+    <lastmod>2021-01-31T17:51:27+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/distill로-옮깁니다/</loc>
-    <lastmod>2021-02-01T13:45:53+00:00</lastmod>
+    <lastmod>2021-02-01T13:51:22+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://mrchypark.github.io/post/구글-광고-추가/</loc>
+    <lastmod>2021-02-01T13:51:29+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/materials-페이지-업데이트/</loc>
-    <lastmod>2021-02-01T13:45:57+00:00</lastmod>
+    <lastmod>2021-02-01T13:51:26+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/한글-띄어쓰기-api-이용하기/</loc>
-    <lastmod>2021-02-01T13:46:06+00:00</lastmod>
+    <lastmod>2021-02-01T13:51:37+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/논리-연산자-정리/</loc>
-    <lastmod>2021-02-01T13:46:01+00:00</lastmod>
+    <lastmod>2021-02-01T13:51:31+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/블로그-reboot/</loc>
-    <lastmod>2021-02-01T13:46:04+00:00</lastmod>
+    <lastmod>2021-02-01T13:51:34+00:00</lastmod>
   </url>
 </urlset>
