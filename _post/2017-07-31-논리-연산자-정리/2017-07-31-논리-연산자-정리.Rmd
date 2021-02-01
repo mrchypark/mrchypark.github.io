@@ -2,6 +2,7 @@
 title: 논리 연산자 정리
 description: |
  드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
+base_url: https://mrchypark.github.io
 categories:
   - operator
   - logical
