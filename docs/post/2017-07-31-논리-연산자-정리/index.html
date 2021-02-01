@@ -125,7 +125,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","categories","author","output","preview","date","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-NC-ND"]},{"type":"character","attributes":{},"value":["논리 연산자 정리"]},{"type":"character","attributes":{},"value":["드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다."]},{"type":"character","attributes":{},"value":["operator","logical","Boolean","R","rlang"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-6448-11eb-9836-f3f8449a472b.png"]},{"type":"character","attributes":{},"value":["02-01-2021"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리/"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","categories","author","output","preview","date","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-NC-ND"]},{"type":"character","attributes":{},"value":["논리 연산자 정리"]},{"type":"character","attributes":{},"value":["드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다."]},{"type":"character","attributes":{},"value":["operator","logical","Boolean","R","rlang"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/106395892-0e94fc80-6448-11eb-9836-f3f8449a472b.png"]},{"type":"character","attributes":{},"value":["02-01-2021"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리/"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/post/2017-07-31-논리-연산자-정리/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2486,29 +2486,6 @@ gtag('config', 'UA-47822682-14');
 <li>x, y: 논리 데이터 1개</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">연산자</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;a &lt;  b&quot;</span>,<span class="st">&quot;a &lt;= b&quot;</span>,<span class="st">&quot;a &gt;  b&quot;</span>,<span class="st">&quot;a &gt;= b&quot;</span>, <span class="st">&quot;a == b&quot;</span>,<span class="st">&quot;a !=&quot;</span>,
-         <span class="st">&quot;!x&quot;</span>,<span class="st">&quot;x | y&quot;</span>,<span class="st">&quot;x &amp; y&quot;</span>, <span class="st">&quot;isTRUE(x)&quot;</span><span class="op">)</span>
-<span class="va">설명</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;a가 b보다 작다&quot;</span>
-        , <span class="st">&quot;a가 b보다 작거나 같다&quot;</span>
-        , <span class="st">&quot;a가 b보다 크다&quot;</span>
-        , <span class="st">&quot;a가 b보다 크거나 같다&quot;</span>
-        , <span class="st">&quot;a와 b가 같다&quot;</span>
-        , <span class="st">&quot;a와 b가 같지 않다&quot;</span>
-        , <span class="st">&quot;x가 아니다&quot;</span>
-        , <span class="st">&quot;x이거나 y이다&quot;</span>
-        , <span class="st">&quot;x이고 y이다&quot;</span>
-        , <span class="st">&quot;x가 TRUE이다&quot;</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">연산자</span>, <span class="va">설명</span>, stringsAsFactors<span class="op">=</span><span class="cn">F</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">&quot;html&quot;</span><span class="op">)</span> 
-</code></pre>
-</div>
-</details>
 <table>
 <thead>
 <tr>
@@ -2609,10 +2586,6 @@ x가 TRUE이다
 <h2 id="논리-연산자-왼쪽의-데이터가-1개-일때">논리 연산자 왼쪽의 데이터가 1개 일때</h2>
 <p>데이터가 1개인 경우는 매우 간단하고, 모두 상상하는 처음 예시이기도 합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">10</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">30</span>
@@ -2620,72 +2593,41 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
 </div>
 <p>위에는 모두 상상하시는 대로 결과가 나왔으리라 생각합니다. 맨 아래만 짚어보면 <code>=</code>는 <code>&lt;-</code>와 같은 뜻이어서, 수학적인 등호의 역할을 하길 기대해야 하는 기호는 <code>==</code>입니다. <code>==</code>는 <code>왼쪽과 오른쪽이 같다</code>라는 뜻입니다. 그리고 맨 위에 <code>!x</code>에 <code>x가 아니다</code>라는 설명을 해두었습니다. <code>x</code>는 논리 데이터 1개라는 설명도 했죠. 그러다 보니 <code>!=</code>는 <code>!(a == b)</code>와 의미가 같습니다. 작성하기 편하게 하기위해서 약어처럼 정의를 해둔 것이지요. 보통은 논리 자료형 앞에 붙어서 <code>원래 결과의 부정</code>을 뜻합니다. <code>|</code>나 <code>&amp;</code>는 잘 아시리라 생각하고, <code>isTRUE()</code>를 좀 확인해 보겠습니다.</p>
 <h3 id="istrue"><code>isTRUE()</code></h3>
 <p><code>R</code>에서 몇 가지 요령이 있는데, <code>?함수이름</code>, <code>help(함수이름)</code>이라고 하면 설명이 나오고, <code>()</code>를 붙이지 않고 <code>함수이름</code>만 콘솔에 입력하면 그 함수를 구성하는 코드가 출력됩니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">isTRUE</span>
 </code></pre>
 </div>
-</details>
 <pre><code>function (x) 
 is.logical(x) &amp;&amp; length(x) == 1L &amp;&amp; !is.na(x) &amp;&amp; x
 &lt;bytecode: 0x558ded2612f0&gt;
@@ -2693,75 +2635,41 @@ is.logical(x) &amp;&amp; length(x) == 1L &amp;&amp; !is.na(x) &amp;&amp; x
 </div>
 <p><code>isTRUE()</code>가 어떻게 동작하는 함수인지 궁금해서 코드를 확인해 봤습니다. 여러개가 있지만 눈에 들어오는 것은 <code>identical(TRUE, x)</code>네요. 입력인자인 <code>x</code>가 <code>TRUE</code>와 같은 것인지를 확인하는 것입니다. <code>identical()</code>은 <code>정확하게</code> 같은지를 결과로 줍니다. 예를 들면 같은 숫자인데 자료형이 다르던가, <code>R</code>은 <code>NA</code>를 계산할 수 없음으로 취급해서 <code>==</code>으로 확인하면 <code>NA</code>로 결과를 줍니다. 그래서 rstudio를 사용하시면 <code>== NA</code>를 인식해서 <code>is.ns()</code>를 사용하라고 경고를 주기도 합니다. 아래 코드를 봐주세요.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2L</span> <span class="op">==</span> <span class="fl">2</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fl">2L</span>,<span class="fl">2</span><span class="op">)</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fl">10</span> <span class="op">==</span> <span class="cn">NA</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] NA</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fl">10</span> <span class="op">!=</span> <span class="cn">NA</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] NA</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fl">10</span> <span class="op">&gt;</span> <span class="cn">NA</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] NA</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fl">10</span>,<span class="cn">NA</span><span class="op">)</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>그래서 <code>isTRUE(x)</code>는 x가 <code>TRUE</code>와 완전히 같은지를 확인해서 같으면 <code>TRUE</code>, 다르면 <code>FALSE</code>를 결과로 주는 함수입니다. 조건문 안에 <code>identical()</code>은 익숙해지면 자주 사용하는 함수이니 확인해주세요.</p>
 <h2 id="논리-연산자-왼쪽의-데이터가-여러개-일때">논리 연산자 왼쪽의 데이터가 여러개 일때</h2>
 <p>데이터가 여러개라는 것은 벡터(<code>vector</code>)로 구성한다는 뜻입니다. 우선 결과를 확인해 보겠습니다. 일반적으로 벡터를 만들 때는 <code>c()</code>를 사용합니다. <code>?c</code>로 설명서를 확인해 보세요.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span><span class="op">)</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">30</span>
@@ -2769,148 +2677,76 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span>  <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
 </div>
 <p>결과를 확인해 보면 모두 <code>a</code> 데이터의 개수인 5개 만큼 결과 또한 출력된 것을 확인할 수 있습니다. 이것은 산술 연산자에서도 확인할 수 있는 동작인데요.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span><span class="op">)</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">30</span>
 
-<span class="co"># 더하기</span>
 <span class="va">a</span> <span class="op">+</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] 40 50 60 70 80</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 빼기</span>
-<span class="va">a</span> <span class="op">-</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">-</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] -20 -10   0  10  20</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 곱하기</span>
-<span class="va">a</span> <span class="op">*</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">*</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  300  600  900 1200 1500</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 나누기</span>
-<span class="va">a</span> <span class="op">/</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">/</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 제곱</span>
-<span class="va">a</span> <span class="op">**</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">**</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] 1.000000e+30 1.073742e+39 2.058911e+44 1.152922e+48 9.313226e+50</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 나머지</span>
-<span class="va">a</span> <span class="op">%%</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">%%</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] 10 20  0 10 20</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 몫</span>
-<span class="va">a</span> <span class="op">%/%</span> <span class="va">b</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">%/%</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] 0 0 1 1 1</code></pre>
 </div>
 <p>이렇게 연산자의 왼쪽이 여러개의 데이터인 벡터이고, 오른쪽이 데이터 1개 일때(데이터가 1개 일때도 벡터라고 합니다.) 연산자는 왼쪽 데이터를 기준으로 각각 연산을 수행해서 왼쪽 데이터의 개수만큼 결과를 보여줍니다. 그렇다면, 논리 연산자 오른쪽의 데이터가 여러개면 어떻게 될까요? 예상되실 겁니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">30</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span><span class="op">)</span>
@@ -2918,57 +2754,31 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span>  <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
 </div>
 <h2 id="논리-연산자-데이터가-모두-여러개-일때">논리 연산자 데이터가 모두 여러개 일때</h2>
@@ -2976,10 +2786,6 @@ Show code
 <h3 id="데이터의-개수가-같은-경우">데이터의 개수가 같은 경우</h3>
 <p>먼저 결과부터 보시죠</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span><span class="op">)</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>
@@ -2987,65 +2793,35 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span>  <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
 </div>
 <p>개수가 같으니 결과도 같은 개수만큼 나왔고, 그 의미는 각각의 위치에 것들이 각각 연산되었다는 뜻입니다. <code>|</code>나 <code>&amp;</code>도 같이 동작하는지 보시죠</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
@@ -3053,25 +2829,15 @@ Show code
 <span class="va">x</span> <span class="op">&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">|</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE</code></pre>
 </div>
 <p><code>|</code>나 <code>&amp;</code>도 똑같이 결과가 데이터의 갯수와 같이 3개로 나오는 것을 볼 수 있습니다. 그런데, 논리 자료형의 연산 결과가 여러 개인 경우는 사실 조건문을 사용하는데 좋은 결과가 아닙니다. 그래서 논리 자료형의 연산 결과를 1개로 정리하는 방법들이 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
@@ -3079,129 +2845,73 @@ Show code
 <span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&amp;&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">||</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
 </div>
 <p>첫번째 방법은 <code>any()</code>, <code>all()</code>함수를 사용하는 방법입니다. 두 함수 모두 인자로 논리 자료형의 벡터를 사용하는데요, <code>any()</code>는 뭐라도 하나 <code>TRUE</code>라면 <code>TRUE</code>를 결과로 줍니다. <code>any</code>라는 이름에 걸맞죠. <code>all()</code>은 전부 <code>TRUE</code>여야 <code>TRUE</code>를 줍니다. 역시 <code>all</code>이라는 이름에 걸맞습니다. 여러개의 논리 데이터를 하나의 결과로 정리한다는 점에서 조건문에 사용하기 좋습니다.</p>
 <p>그 아래 <code>||</code>와 <code>&amp;&amp;</code>도 결과를 한개만 준다는 점에서는 같습니다만 연산 방식이 다릅니다. 이 두 연산자는 양쪽에 데이터가 여러개가 온다고 하더라도 첫번째 데이터만 사용합니다. 조건문의 <code>()</code>에 논리 데이터가 여러개이면 경고를 주고 첫번째 데이터만 사용한다고 합니다. <code>||</code>와 <code>&amp;&amp;</code>은 의도적으로 모두 첫번째 데이터만 연산에 사용한다는 것을 명시적으로 표현하는 것입니다. 한번 확인해 보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&amp;&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">||</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">F</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&amp;&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">||</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">T</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">F</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&amp;&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">||</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">F</span>,<span class="cn">T</span>,<span class="cn">T</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">F</span>,<span class="cn">F</span>,<span class="cn">F</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&amp;&amp;</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">x</span> <span class="op">||</span> <span class="va">y</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>지금은 앞에만 달리하며 출력했는데, 뒤에 데이터를 변경해서 결과가 달라지지 않는 것을 직접 확인해 보시면 좋을 것 같습니다. 더 자세한 정보는 <code>?&quot;|&quot;</code>로 확인하실 수 있습니다. 한 문장만 가져와서 보여드리면</p>
@@ -3213,10 +2923,6 @@ Show code
 <p>데이터의 개수가 다른 경우는 또 두 가지 경우로 나뉩니다. 두 데이터의 개수가 배수 관계에 있는 경우와 아닌 경우입니다. 배수인 경우 먼저 보시죠</p>
 <h4 id="데이터의-개수가-배수-관계인-경우">데이터의 개수가 배수 관계인 경우</h4>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span>,<span class="fl">60</span><span class="op">)</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span><span class="op">)</span>
@@ -3224,66 +2930,36 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span>  <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 </div>
 <p>우선 결과가 경고 없이 잘 나왔고, 총 6개입니다. 이때는 개수가 부족한 쪽이 개수가 많은 쪽 만큼 한번 더 돌아서(<code>Recycle</code>) 연산에 사용된 것을 알 수 있습니다. 이것을 <code>Recycling Rule</code>이라고 합니다. 배수관계에 있다보니 특별히 잘못했다고 경고를 주지도 않습니다. 그럼 배수 관계가 아닐 떈 어떻게 될까요?</p>
 <h4 id="데이터의-개수가-배수-관계가-아닌-경우">데이터의 개수가 배수 관계가 아닌 경우</h4>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span>,<span class="fl">40</span>,<span class="fl">50</span><span class="op">)</span>
 <span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">30</span><span class="op">)</span>
@@ -3291,57 +2967,31 @@ Show code
 <span class="va">a</span> <span class="op">&lt;</span>  <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&lt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">&gt;=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">==</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<details>
-<summary>
-Show code
-</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">a</span> <span class="op">!=</span> <span class="va">b</span>
 </code></pre>
 </div>
-</details>
 <pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
 </div>
 <p>똑같이 <code>Recycling Rule</code>이 적용되어 적은 쪽이 많은 쪽 개수 만큼 한번 더 돌아서 사용하여 연산하지만, 쓰다 말기 때문에 경고를 줍니다. 배수관계가 아닌데 너가 지금 잘 사용한 게 맞는거냐라고 물어보는 거죠. 맞다면 무시하시면 됩니다. 결과도 긴 데이터쪽 개수만큼인 5개로 나왔네요. 의도하신거라면 이대로 진행하시면 됩니다.</p>
