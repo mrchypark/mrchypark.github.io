@@ -378,6 +378,19 @@
       <media:content url="https://user-images.githubusercontent.com/6179259/106487787-61c58880-64f6-11eb-8ec6-e210d8403e71.png" medium="image" type="image/png"/>
     </item>
     <item>
+      <title>[번역]Haproxy와 Docker를 이용한 로드밸런싱</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/번역-haproxy와-docker를-이용한-로드밸런싱</link>
+      <description>load-balancing-applications-with-haproxy-and-docker 라는 제목의 글을 저자의 허락하에 번역하였습니다.</description>
+      <category>docker</category>
+      <category>haproxy</category>
+      <category>swarm</category>
+      <category>load balance</category>
+      <guid>https://mrchypark.github.io/post/번역-haproxy와-docker를-이용한-로드밸런싱</guid>
+      <pubDate>Mon, 12 Mar 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://mrchypark.github.io/post/번역-haproxy와-docker를-이용한-로드밸런싱/distill-preview.png" medium="image" type="image/png" width="780" height="520"/>
+    </item>
+    <item>
       <title>[R로나만의] 웹페이지 만들기 1탄 Rpubs</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/r로나만의-웹페이지-만들기</link>
@@ -407,17 +420,6 @@
       <media:content url="https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png" medium="image" type="image/png"/>
     </item>
     <item>
-      <title>구글 광고 추가</title>
-      <dc:creator>Chanyub Park</dc:creator>
-      <link>https://mrchypark.github.io/post/구글-광고-추가</link>
-      <description>블로그 하단에 구글 광고를 추가하였습니다. 처음 붙여보는 것이라 하단 이외에 다른 곳에서도 광고가 나올 수 있습니다.</description>
-      <category>anounce</category>
-      <category>ad</category>
-      <guid>https://mrchypark.github.io/post/구글-광고-추가</guid>
-      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
-      <media:content url="https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png" medium="image" type="image/png"/>
-    </item>
-    <item>
       <title>Rphabetic(알파베틱) 제안</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/rphabetic-알파베틱-제안</link>
@@ -428,6 +430,17 @@
       <guid>https://mrchypark.github.io/post/rphabetic-알파베틱-제안</guid>
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/106484489-0219ae00-64f3-11eb-8312-f4f6f8907adb.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>구글 광고 추가</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/구글-광고-추가</link>
+      <description>블로그 하단에 구글 광고를 추가하였습니다. 처음 붙여보는 것이라 하단 이외에 다른 곳에서도 광고가 나올 수 있습니다.</description>
+      <category>anounce</category>
+      <category>ad</category>
+      <guid>https://mrchypark.github.io/post/구글-광고-추가</guid>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png" medium="image" type="image/png"/>
     </item>
     <item>
       <title>Materials 페이지 업데이트</title>

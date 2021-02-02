@@ -24,7 +24,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -2351,15 +2350,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="site_libs/header-attrs/header-attrs.js"></script>
+  <script src="site_libs/popper/popper.min.js"></script>
+  <link href="site_libs/tippy/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor/anchor.min.js"></script>
+  <script src="site_libs/bowser/bowser.min.js"></script>
+  <script src="site_libs/webcomponents/webcomponents.js"></script>
+  <script src="site_libs/distill/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <script type="text/javascript" src="https://www.cookieconsent.com/releases/3.1.0/cookie-consent.js"></script>
   <script type="text/javascript">
@@ -3169,6 +3168,28 @@ function init_posts_list() {
 <p>github은 git의 공개 remote repo를 제공하는 서비스다. 그래서 git 사용법을 알아야 한다. Rstudio의 project를 사용하면 좀 쉽다.</p>
 </div>
 </a>
+<a href="post/번역-haproxy와-docker를-이용한-로드밸런싱/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["docker","haproxy","swarm","load balance"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 12, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Chanyub Park</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="post/번역-haproxy와-docker를-이용한-로드밸런싱/distill-preview.png"/>
+</div>
+<div class="description">
+<h2>[번역]Haproxy와 Docker를 이용한 로드밸런싱</h2>
+<div class="dt-tags">
+<div class="dt-tag">docker</div>
+<div class="dt-tag">haproxy</div>
+<div class="dt-tag">swarm</div>
+<div class="dt-tag">load balance</div>
+</div>
+<p>load-balancing-applications-with-haproxy-and-docker 라는 제목의 글을 저자의 허락하에 번역하였습니다.</p>
+</div>
+</a>
 <a href="post/r로나만의-웹페이지-만들기/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["R","rpubs","web","html","Rmd","R로나만의"]}</script>
 <div class="metadata">
@@ -3216,26 +3237,6 @@ function init_posts_list() {
 <p>탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. ...</p>
 </div>
 </a>
-<a href="post/구글-광고-추가/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["anounce","ad"]}</script>
-<div class="metadata">
-<div class="publishedDate">March 6, 2018</div>
-<div class="dt-authors">
-<div class="dt-author">Chanyub Park</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png"/>
-</div>
-<div class="description">
-<h2>구글 광고 추가</h2>
-<div class="dt-tags">
-<div class="dt-tag">anounce</div>
-<div class="dt-tag">ad</div>
-</div>
-<p>블로그 하단에 구글 광고를 추가하였습니다. 처음 붙여보는 것이라 하단 이외에 다른 곳에서도 광고가 나올 수 있습니다.</p>
-</div>
-</a>
 <a href="post/rphabetic-알파베틱-제안/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["suggest","R","term"]}</script>
 <div class="metadata">
@@ -3255,6 +3256,26 @@ function init_posts_list() {
 <div class="dt-tag">term</div>
 </div>
 <p>사용자 친화적 혹은 사용자가 이용하기 쉬운 을 개인적으로는 `Rphabetic`하다고 표현하려 합니다.</p>
+</div>
+</a>
+<a href="post/구글-광고-추가/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["anounce","ad"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 6, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Chanyub Park</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png"/>
+</div>
+<div class="description">
+<h2>구글 광고 추가</h2>
+<div class="dt-tags">
+<div class="dt-tag">anounce</div>
+<div class="dt-tag">ad</div>
+</div>
+<p>블로그 하단에 구글 광고를 추가하였습니다. 처음 붙여보는 것이라 하단 이외에 다른 곳에서도 광고가 나올 수 있습니다.</p>
 </div>
 </a>
 <a href="post/materials-페이지-업데이트/" class="post-preview">
@@ -3355,7 +3376,7 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 <ul>
 <li>
 <a href="#category:Articles">Articles</a>
-<span class="category-count">(35)</span>
+<span class="category-count">(36)</span>
 </li>
 <li>
 <a href="#category:ad">ad</a>
@@ -3434,6 +3455,10 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 <span class="category-count">(1)</span>
 </li>
 <li>
+<a href="#category:docker">docker</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
 <a href="#category:dplyr">dplyr</a>
 <span class="category-count">(2)</span>
 </li>
@@ -3467,6 +3492,10 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 </li>
 <li>
 <a href="#category:gmail">gmail</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:haproxy">haproxy</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
@@ -3511,6 +3540,10 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 </li>
 <li>
 <a href="#category:library">library</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:load_balance">load balance</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
@@ -3671,6 +3704,10 @@ KoNLP 패키지를 만드신 고감자님께서 KoNLP에 한글 자동 띄어쓰
 </li>
 <li>
 <a href="#category:suggest">suggest</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:swarm">swarm</a>
 <span class="category-count">(1)</span>
 </li>
 <li>

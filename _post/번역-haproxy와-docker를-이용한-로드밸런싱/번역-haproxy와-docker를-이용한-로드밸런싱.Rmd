@@ -1,7 +1,6 @@
 ---
 title: '[번역]Haproxy와 Docker를 이용한 로드밸런싱'
 date: '2018-03-12'
-draft: true
 categories:
   - docker
   - haproxy
@@ -52,7 +51,7 @@ knitr::opts_chunk$set(echo = T, cache = T)
 그래서 우리가 현재 사용하고 있는 방법으로 예시 포스트를 작성하기로 결정했습니다. 이것이 "올바른" 방법이나 유일한 방법은 아니지만, 지금 당장 우리가 일하는 방법입니다. 포스트 작성은 Docker, Docker Compose 및 Docker Swarm을 알고 있다고 가정했습니다.
 
 <figure>
-<img src="https://cdn-images-1.medium.com/max/1000/1*aLJqpovWFITztDq_3WiFpQ.jpeg" width=100%>
+<img src="https://user-images.githubusercontent.com/6179259/106568995-5cf4e900-6577-11eb-9440-f1dd52dafeb8.png" width=100%>
 <figcaption>시작해볼까요! :)</figcaption>
 </figure>
 
@@ -150,7 +149,7 @@ deploy 옵션으로 20개의 리플레카(replicas)^[역자주: 복사본이라�
 1. 마지막으로 `web`이라는 이름의 network를 생성하였습니다.
 
 <figure>
-<img src="https://cdn-images-1.medium.com/max/1000/1*pe0FTboUBkXLKwWojt0gdA.jpeg" width=100%>
+<img src="https://user-images.githubusercontent.com/6179259/106569061-71d17c80-6577-11eb-835f-a2b48dd7eaec.png" width=100%>
 <figcaption>진행하고 있는 프로젝트가 점점 멋져지고 있습니다. 그리고 거의 끝나갑니다!</figcaption>
 </figure>
 
