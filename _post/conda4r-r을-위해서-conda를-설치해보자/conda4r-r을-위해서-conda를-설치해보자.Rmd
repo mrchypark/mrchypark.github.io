@@ -1,0 +1,149 @@
+---
+title: '[conda4r] R을 위해서 conda를 설치해보자'
+date: '2019-07-31'
+categories:
+  - R
+  - python
+  - reticulate
+  - conda
+  - conda4r
+  - package
+description: |
+   `multilinguer::install_conda()`를 쓰세요. (응?)
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/106564003-fe783c80-656f-11eb-948f-7896c100b4db.png
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/106564003-fe783c80-656f-11eb-948f-7896c100b4db.png">
+
+## conda4r 패키지 개발을 중단합니다.
+
+[reticulate][reticulate] 패키지에 `install_miniconda()` 함수가 포함되기로 결정되어서 패키지 개발을 중단합니다.
+
+[multilinguer][multilinguer] 패키지의 `install_conda()` 함수는 [reticulate][reticulate] 패키지의 함수를 사용하는 것으로 변경 중입니다.
+
+블로그 내의 함수 동작도 우선은 전부 멈춰두었습니다.
+이후 [reticulate][reticulate] 패키지의 cran 버전에 포함되면 위 이야기대로 동작하도록 하겠습니다.
+
+### 한줄요약
+
+1. `multilinguer::install_conda()`를 쓰세요. (응?)
+
+[conda][conda]는 다양한 언어를 위한 패키지 매니저로 개발중입니다.
+[anaconda][anaconda]로 익히 알려지면서 python 배포판의 일종으로 쓰이고 있습니다.
+최근 파이썬은 딥러닝 프레임워크들의 인기에 힘입어 많은 사람들의 관심을 받고 있습니다.
+개발과 연구라는 두 마리 토끼를 잡기 위해서 많은 프레임워크가 파이썬으로 개발되었습니다.
+
+이런 환경에서 R은 취약한 자체적인 프레임워크를 해결하기 위해 python을 품는 결정을 합니다.
+그 결과로 나온 부산물이 [reticulate][reticulate] 패키지입니다.
+Rstudio 팀은 [tensorflow][tensorflow]와 [keras][keras]를 이용하기 위해서 [reticulate][reticulate] 패키지를 개발합니다.
+이는 놀라운 생산성으로 이어졌습니다. R 패키지는 python 패키지에서 api 변경만 따라가면 되는 상황이 되었습니다.
+내부 로직을 전부 python 패키지에 위임함으로써 R 패키지의 유지보수관리에 혁신적인 효율성을 확보한 셈이죠.
+
+이 때 중요하게 권장하는 사항이 [conda][conda] 패키지 매니저를 사용하는 것입니다.
+헌데 R 사용자에게 다른 개발 언어를 설치하는 것은 어려운 일일 수 있습니다.
+그 중에 [conda][conda] 패키지 매니저는 매우 쉬운 축에 속합니다...만,
+뭔가 화면 하나하나, 옵션 하나하나 어떤 것인지 아는 것은 확실히 어려운 일입니다.
+그런거 다 알꺼면 왜 R로 스크립팅하나요...
+
+__그래서 [conda4r][conda4r] 패키지를 준비했습니다.
+[conda4r][conda4r] 패키지는 Windows 32bit, 64bit, MacOS, Linux를 지원하는 [miniconda][miniconda]를 설치하는 함수를 제공합니다.__
+
+### 설치 방법
+
+[conda4r][conda4r] 패키지는 R 사용자를 위한 다른 개발 언어 설치를 지원하는 프로젝트인 [multilinguer][multilinguer] 패키지군의 일원입니다.
+[conda4r][conda4r] 패키지는 인프라로써 설치를 위한 개별 함수들을 제공합니다.
+[multilinguer][multilinguer] 패키지는 `has_conda()` 함수를 제공합니다.
+`has_conda()` 함수는 제가 할 수 있는 한의 테스트를 통해서 `conda`가 동작하는 상태를 만드는 것을 목표로 합니다.
+
+```{r eval=F}
+# install.packages("remotes")
+remotes::install_github("mrchypark/multilinguer")
+```
+
+### 사용법
+
+위에 설명드린 대로 `has_conda()` 함수를 실행하면 끝입니다.
+
+```{r eval=F}
+library(multilinguer)
+has_conda()
+```
+
+그럼 기존에 설치된 `conda`가 있는지 확인합니다.
+있으면 그대로 종료, 아니라면 `conda` 설치를 시작합니다.
+우선 다운로드 받고, 표준 경로에 `miniconda`를 설치합니다.
+Windows에서 `ssl` 관련된 문제가 있어 수정합니다.
+그리고 `conda` 버전을 업데이트 합니다.
+버전 업데이트를 진행하고 싶지 않다면 `update` 옵션을 `FALSE`를 주면 됩니다.
+잘 됬는지 확인하기 위해 `conda`를 사용하는 패키지를 설치, 실행해 보겠습니다.
+
+```{r eval=F}
+remotes::install_github("haven-jeon/KoSpacing")
+```
+
+[KoSpacing][KoSpacing] 패키지는 `KoNLP` 패키지의 개발자이신 [고감자][고감자]님이 만든 띄어쓰기 패키지입니다.
+`python`의 `keras` 패키지를 사용하기 때문에, 패키지를 사용하기 위해서 [reticulate][reticulate] 패키지와 [conda][conda]가 필요합니다.
+
+```{r eval=F}
+library(KoSpacing)
+```
+
+[KoSpacing][KoSpacing] 패키지는 버전이 0.1.1 이상인지 꼭 확인하셔야 합니다.
+이전 버전은 설치에 문제가 있어서 동작하지 않습니다.
+
+```{r eval=F}
+packageVersion("KoSpacing")
+```
+
+[KoSpacing][KoSpacing] 패키지의 설치에서는 `conda`가 필요하지 않습니다만,
+`library(KoSpacing)`을 실행시 나오는 안내 문구처럼 `set_env()` 함수를 실행할 때 필요합니다.
+앞서 `has_conda()`를 잘 실행하셨다면 이제 `set_env()` 실행할 때 문제가 생기지 않으면 좋을 것 같습니다.(응?)
+
+```{r eval=F}
+set_env()
+```
+
+아마 위에 함수가 잘 끝나면 세션을 재시작할 것입니다.
+이제 동작을 확인해보겠습니다.
+
+```{r eval=F}
+library(KoSpacing)
+spacing("김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다.")
+```
+```
+2019-08-10 03:28:32.102292: I T:\src\github\tensorflow\tensorflow\core\platform\cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+loaded KoSpacing model!
+[1] "김형호 영화시장 분석가는 '1987'의 네이버 영화 정보 네티즌 10점 평에서 언급된 단어들을 지난해 12월 27일부터 올해 1월 10일까지 통계 프로그램 R과 KoNLP 패키지로 텍스트마이닝하여 분석했다."
+```
+
+첫 실행 이후에는 위 메세지 없이 결과만 출력합니다.
+
+잘 동작하시나요?
+혹시라도 안되시는 분들은 댓글로 남겨주시면 감사하겠습니다.
+
+[conda]: https://docs.conda.io/en/latest/
+[anaconda]: https://www.anaconda.com/
+[reticulate]: https://rstudio.github.io/reticulate/
+[keras]: https://tensorflow.rstudio.com/keras/
+[tensorflow]: https://tensorflow.rstudio.com/
+[conda4r]: https://github.com/mrchypark/conda4r
+[miniconda]: https://docs.conda.io/en/latest/miniconda.html
+[multilinguer]: https://mrchypark.github.io/multilinguer/
+[KoSpacing]: https://github.com/haven-jeon/KoSpacing
+[고감자]: http://freesearch.pe.kr/

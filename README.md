@@ -13,7 +13,7 @@ rmarkdown::render_site(encoding = 'UTF-8')
 
 ```R
 library(dplyr)
-grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T) %>%
-  .[c(33,34,35,36,37,38,39)] %>%
-  purrr::map( ~ rmarkdown::render(.x, encoding = 'UTF-8'))
+grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T) %>% .[c(1:24, 26:28, 30:37)] %>% purrr::map( ~ rmarkdown::render(.x, encoding = 'UTF-8'))
 ```
+## remain
+25, 29

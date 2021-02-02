@@ -1,7 +1,6 @@
 description: |
- blogdown으로 옮겨서 시작합니다.
+  blogdown으로 옮겨서 시작합니다.
 base_url: https://mrchypark.github.io
-date:
 author:
   - first_name: "Chanyub"
     last_name: "Park"
@@ -18,3 +17,4 @@ output:
     theme: theme.css
     number_sections: true
 preview: 
+date: 
