@@ -24,6 +24,7 @@ output:
     code_folding: false
     theme: theme.css
     number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/106568995-5cf4e900-6577-11eb-9440-f1dd52dafeb8.png
 ---
 
 ```{r setup, include=FALSE}
