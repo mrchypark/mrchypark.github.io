@@ -38,7 +38,7 @@ jobs:
           R -e 'install.packages("fs")'
       - name: Build site
         run: |
-          # R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
+          R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
           R -e 'rmarkdown::render_site(encoding = "UTF-8")'
       - name: Commit results
         run: |
