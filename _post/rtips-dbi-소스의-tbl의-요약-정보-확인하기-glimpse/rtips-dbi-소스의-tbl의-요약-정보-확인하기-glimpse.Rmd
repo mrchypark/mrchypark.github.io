@@ -43,7 +43,6 @@ preview: https://user-images.githubusercontent.com/6179259/106563142-b1e03180-65
 
 ```{r}
 library(DBI)
-library(crayon)
 library(RSQLite)
 library(dplyr)
 tb <- dbConnect(SQLite(), ":memory:")
