@@ -19,6 +19,8 @@ output:
     code_folding: false
     theme: theme.css
     number_sections: true
+    includes:
+      in_header: assets/headers.html
 preview: https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png
 categories:
   - anounce
