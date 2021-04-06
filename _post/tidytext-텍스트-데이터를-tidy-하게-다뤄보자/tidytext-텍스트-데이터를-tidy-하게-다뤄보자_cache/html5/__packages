@@ -16,3 +16,4 @@ jsonlite
 purrr
 htmltools
 ggplot2
+RSQLite
