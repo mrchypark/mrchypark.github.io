@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -1508,14 +1509,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>       &lt;dbl&gt;
- 1.234568e+5
- 1.234568e+3
-NA          
- 1.234568e+0
- 1.234568e-2</code></pre>
+<pre><code>      &lt;dbl&gt;
+123457.    
+  1235.    
+    NA     
+     1.23  
+     0.0123</code></pre>
 </div>
-<p>마크다운에는 디테일이 표현되지 않아 사진을 첨부합니다. <img src="data:image/png;base64,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" /></p>
+<p>마크다운에는 디테일이 표현되지 않아 사진을 첨부합니다. <img src="data:text/plain; charset=utf-8;charset=utf-8,404%3A%20Not%20Found" /></p>
 <p>3자리 마다 쉼표로 표시하는 관행을 출력해주기 위해, <a href="https://github.com/r-lib/pillar">pillar</a> 패키지는 밑줄을 사용합니다. 보기 참 좋아진거 같습니다!</p>
 <p>그러다 보니… 소수점 표기의 출력 옵션이 기존의 <code>data.frame</code>과 다릅니다. 찾아보니 <code>options(pillar.sigfig)</code>를 조절하면 된다는군요!</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(pillar.sigfig)</span>
@@ -1533,12 +1534,12 @@ NA
 </code></pre>
 </div>
 <pre><code># A tibble: 4 x 3
-     big stradle       small
-   &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
-1 233023 100.233 0.00233    
-2 486023 100.486 0.00486    
-3 565023 100.565 0.00565    
-4 785023 100.785 0.007850000</code></pre>
+     big stradle   small
+   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 233023    100. 0.00233
+2 486023    100. 0.00486
+3 565023    101. 0.00565
+4 785023    101. 0.00785</code></pre>
 </div>
 <p>출력을 보면 stradle 컬럼의 첫번째 데이터가 <code>100.</code>라고 되어 있습니다. <code>100</code>이 아니고 <code>100.</code>이라고 출력해주면서 소수점 숫자가 있음을 알려주는데요. <a href="https://github.com/r-lib/pillar/issues/40#issuecomment-360152576">관련 이슈</a>도 있으니 읽어보시면 좋을 것 같구요.</p>
 <div class="layout-chunk" data-layout="l-body">

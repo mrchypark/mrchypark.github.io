@@ -43,8 +43,9 @@ preview: https://user-images.githubusercontent.com/6179259/106563142-b1e03180-65
 
 ```{r}
 library(DBI)
+library(RSQLite)
 library(dplyr)
-tb <- src_sqlite("tem.sql", create = T)
+tb <- dbConnect(SQLite(), ":memory:")
 tb
 copy_to(tb, mtcars)
 mtcars_sql <- tbl(tb, "mtcars")       

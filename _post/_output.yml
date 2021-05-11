@@ -16,5 +16,7 @@ output:
     code_folding: false
     theme: theme.css
     number_sections: true
-preview: 
-date: 
+    includes:
+      in_header: assets/headers.html
+preview:
+date:

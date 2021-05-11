@@ -29,10 +29,7 @@ preview: https://user-images.githubusercontent.com/6179259/106500112-c851a300-65
 ---
 
 ```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = T, cache = T)
-library(httr)
-set_config(config(ssl_verifypeer = 0L))
 ```
 
 <img src="https://user-images.githubusercontent.com/6179259/106500112-c851a300-6504-11eb-89c3-ab33f5795b2b.png" width=100%>
@@ -200,7 +197,6 @@ tar_pre <- get_president()[7:10]
 우선 최근 4분만 봐볼께요.
 
 ```{r}
-get_field()
 get_event()
 ```
 
@@ -217,9 +213,6 @@ speech_list %>%
   group_by(president) %>% 
   summarize(count = n())
 
-if(!requireNamespace("ggplot2")){
-    install.packages("ggplot2")
-}
 library(ggplot2)
 
 speech_list %>% 

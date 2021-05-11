@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -1496,13 +1497,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/src_dbi.html">src_sqlite</a></span><span class="op">(</span><span class="st">&quot;tem.sql&quot;</span>, create <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">&quot;:memory:&quot;</span><span class="op">)</span>
 <span class="va">tb</span>
 </code></pre>
 </div>
-<pre><code>src:  sqlite 3.34.1 [/workspaces/mrchypark.github.io/_post/rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse/tem.sql]
-tbls:</code></pre>
+<pre><code>&lt;SQLiteConnection&gt;
+  Path: :memory:
+  Extensions: TRUE</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/copy_to.html">copy_to</a></span><span class="op">(</span><span class="va">tb</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="va">mtcars_sql</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">tb</span>, <span class="st">&quot;mtcars&quot;</span><span class="op">)</span>       
@@ -1538,14 +1541,14 @@ tbls:</code></pre>
  $ src:List of 2
   ..$ con  :Formal class &#39;SQLiteConnection&#39; [package &quot;RSQLite&quot;] with 8 slots
   .. .. ..@ ptr                :&lt;externalptr&gt; 
-  .. .. ..@ dbname             : chr &quot;/workspaces/mrchypark.github.io/_post/rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse/tem.sql&quot;
+  .. .. ..@ dbname             : chr &quot;:memory:&quot;
   .. .. ..@ loadable.extensions: logi TRUE
   .. .. ..@ flags              : int 70
   .. .. ..@ vfs                : chr &quot;&quot;
-  .. .. ..@ ref                :&lt;environment: 0x55bee2a5ada8&gt; 
+  .. .. ..@ ref                :&lt;environment: 0x7fce05e003d0&gt; 
   .. .. ..@ bigint             : chr &quot;integer64&quot;
   .. .. ..@ extended_types     : logi FALSE
-  ..$ disco:&lt;environment: 0x55bee0097ec0&gt; 
+  ..$ disco: NULL
   ..- attr(*, &quot;class&quot;)= chr [1:4] &quot;src_SQLiteConnection&quot; &quot;src_dbi&quot; &quot;src_sql&quot; &quot;src&quot;
  $ ops:List of 2
   ..$ x   : &#39;ident&#39; chr &quot;mtcars&quot;
@@ -1590,7 +1593,7 @@ tbls:</code></pre>
 </div>
 <pre><code>Rows: ??
 Columns: 11
-Database: sqlite 3.34.1 [/workspaces/mrchypark.github.io/_post/rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse/tem.sql]
+Database: sqlite 3.35.2 [:memory:]
 $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, …
 $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, …
 $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7…
@@ -1615,14 +1618,14 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, …</co
  $ src:List of 2
   ..$ con  :Formal class &#39;SQLiteConnection&#39; [package &quot;RSQLite&quot;] with 8 slots
   .. .. ..@ ptr                :&lt;externalptr&gt; 
-  .. .. ..@ dbname             : chr &quot;/workspaces/mrchypark.github.io/_post/rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse/tem.sql&quot;
+  .. .. ..@ dbname             : chr &quot;:memory:&quot;
   .. .. ..@ loadable.extensions: logi TRUE
   .. .. ..@ flags              : int 70
   .. .. ..@ vfs                : chr &quot;&quot;
-  .. .. ..@ ref                :&lt;environment: 0x55bee2a5ada8&gt; 
+  .. .. ..@ ref                :&lt;environment: 0x7fce05e003d0&gt; 
   .. .. ..@ bigint             : chr &quot;integer64&quot;
   .. .. ..@ extended_types     : logi FALSE
-  ..$ disco:&lt;environment: 0x55bee0097ec0&gt; 
+  ..$ disco: NULL
   ..- attr(*, &quot;class&quot;)= chr [1:4] &quot;src_SQLiteConnection&quot; &quot;src_dbi&quot; &quot;src_sql&quot; &quot;src&quot;
  $ ops:List of 2
   ..$ x   : &#39;ident&#39; chr &quot;flights&quot;
@@ -1635,7 +1638,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, …</co
 </div>
 <pre><code>Rows: ??
 Columns: 19
-Database: sqlite 3.34.1 [/workspaces/mrchypark.github.io/_post/rtips-dbi-소스의-tbl의-요약-정보-확인하기-glimpse/tem.sql]
+Database: sqlite 3.35.2 [:memory:]
 $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 20…
 $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
 $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…

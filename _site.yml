@@ -1,7 +1,7 @@
 name: "mrchypark"
 title: "mrchypark"
 description: |
-  데이터홀릭 박박사의 블로그입니다. 
+  데이터홀릭 박박사의 블로그입니다.
   박박사의 R코홀릭 유튜브를 함께 운영하고 있습니다.
 
 output_dir: "docs"
@@ -40,7 +40,7 @@ collections:
 
 repository_url: https://github.com/mrchypark/mrchypark.github.io
 
-exclude: ["README.md", "migration.R", "*.Rproj"]
+exclude: ["README.md", "migration.R", "*.Rproj", "assets/*"]
 
 creative_commons: CC BY-NC-ND
 
@@ -58,3 +58,5 @@ output:
     code_folding: true
     theme: theme.css
     number_sections: true
+    includes:
+      in_header: assets/headers.html

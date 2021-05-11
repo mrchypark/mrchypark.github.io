@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -1500,23 +1501,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>distill 은 rstudio 의 패키지로</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code># A tibble: 14 x 11
-     mpg   cyl    disp    hp  drat       wt   qsec    vs    am  gear
-   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1  21       6 160       110  3.9  2.62     16.46      0     1     4
- 2  21       6 160       110  3.9  2.875    17.02      0     1     4
- 3  22.8     4 108        93  3.85 2.320000 18.61      1     1     4
- 4  21.4     6 258       110  3.08 3.215    19.44      1     0     3
- 5  24.4     4 146.700    62  3.69 3.19     20         1     0     4
- 6  22.8     4 140.8      95  3.92 3.15     22.9       1     0     4
- 7  32.4     4  78.7      66  4.08 2.2      19.47      1     1     4
- 8  30.4     4  75.7      52  4.93 1.615    18.52      1     1     4
- 9  33.9     4  71.100    65  4.22 1.835    19.900     1     1     4
-10  21.5     4 120.1      97  3.7  2.465    20.01      1     0     3
-11  27.3     4  79        66  4.08 1.935    18.900     1     1     4
-12  26       4 120.3      91  4.43 2.14     16.7       0     1     5
-13  30.4     4  95.1     113  3.77 1.51300  16.900     1     1     5
-14  21.4     4 121       109  4.11 2.78000  18.6       1     1     4
-# … with 1 more variable: carb &lt;dbl&gt;</code></pre>
+     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  21       6 160     110  3.9   2.62  16.5     0     1     4     4
+ 2  21       6 160     110  3.9   2.88  17.0     0     1     4     4
+ 3  22.8     4 108      93  3.85  2.32  18.6     1     1     4     1
+ 4  21.4     6 258     110  3.08  3.22  19.4     1     0     3     1
+ 5  24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+ 6  22.8     4 141.     95  3.92  3.15  22.9     1     0     4     2
+ 7  32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+ 8  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+ 9  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+10  21.5     4 120.     97  3.7   2.46  20.0     1     0     3     1
+11  27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+12  26       4 120.     91  4.43  2.14  16.7     0     1     5     2
+13  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2
+14  21.4     4 121     109  4.11  2.78  18.6     1     1     4     2</code></pre>
 <pre><code>[1] &quot;heloe&quot;</code></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
