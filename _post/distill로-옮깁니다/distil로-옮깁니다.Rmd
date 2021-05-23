@@ -19,7 +19,10 @@ output:
     code_folding: false
     theme: theme.css
     number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/119273060-17524e00-bc44-11eb-9d8a-e7feb5063005.png
 ---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/119273060-17524e00-bc44-11eb-9d8a-e7feb5063005.png">
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
