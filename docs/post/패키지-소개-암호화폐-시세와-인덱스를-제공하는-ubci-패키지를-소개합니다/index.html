@@ -2564,7 +2564,7 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 1,000 x 6
    index date            open      high       low     close
    &lt;chr&gt; &lt;date&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
- 1 UBMI  2021-05-23  8853.990  9112.108  8654.504  8716.555
+ 1 UBMI  2021-05-23  8853.990  9112.108  7453.664  7536.119
  2 UBMI  2021-05-22  9342.442  9368.438  8106.656  8780.995
  3 UBMI  2021-05-21 10013.61  10361.63   8582.625  9350.996
  4 UBMI  2021-05-20  9678.324 10453.23   9011.410 10009.72 
@@ -2660,18 +2660,18 @@ gtag('config', 'UA-47822682-14');
 </code></pre>
 </div>
 <pre><code># A tibble: 400 x 7
-   code       date           open     high      low    close    volume
-   &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 UPBIT.KRW… 2021-05-23 47444000 48592000 46501000 46750000  3048.733
- 2 UPBIT.KRW… 2021-05-22 49080000 49260000 43957000 47460000 16597.85 
- 3 UPBIT.KRW… 2021-05-21 51318000 52726000 45701000 49112000 22198.52 
- 4 UPBIT.KRW… 2021-05-20 50477000 53070000 48328000 51320000 21350.74 
- 5 UPBIT.KRW… 2021-05-19 53404000 53992000 42595000 50379000 40112.81 
- 6 UPBIT.KRW… 2021-05-18 54057000 56366000 53001000 53419000 15075.11 
- 7 UPBIT.KRW… 2021-05-17 57655000 58000000 51381000 54057000 27456.36 
- 8 UPBIT.KRW… 2021-05-16 58814000 60721000 55500000 57649000 16552.59 
- 9 UPBIT.KRW… 2021-05-15 61795000 62118000 57900000 58807000 17507.51 
-10 UPBIT.KRW… 2021-05-14 63080000 63656000 61001000 61797000 13221.58 
+   code        date           open     high      low    close   volume
+   &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 UPBIT.KRW-… 2021-05-23 47444000 48592000 41632000 41830000 16308.43
+ 2 UPBIT.KRW-… 2021-05-22 49080000 49260000 43957000 47460000 16597.85
+ 3 UPBIT.KRW-… 2021-05-21 51318000 52726000 45701000 49112000 22198.52
+ 4 UPBIT.KRW-… 2021-05-20 50477000 53070000 48328000 51320000 21350.74
+ 5 UPBIT.KRW-… 2021-05-19 53404000 53992000 42595000 50379000 40112.81
+ 6 UPBIT.KRW-… 2021-05-18 54057000 56366000 53001000 53419000 15075.11
+ 7 UPBIT.KRW-… 2021-05-17 57655000 58000000 51381000 54057000 27456.36
+ 8 UPBIT.KRW-… 2021-05-16 58814000 60721000 55500000 57649000 16552.59
+ 9 UPBIT.KRW-… 2021-05-15 61795000 62118000 57900000 58807000 17507.51
+10 UPBIT.KRW-… 2021-05-14 63080000 63656000 61001000 61797000 13221.58
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ubci/man/ubci_get.html">ubci_get</a></span><span class="op">(</span><span class="va">loc</span><span class="op">$</span><span class="va">code</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, from<span class="op">=</span><span class="st">&quot;2018-05-15&quot;</span><span class="op">)</span><span class="op">)</span>
