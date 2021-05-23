@@ -43,18 +43,24 @@ rstudio가 글 작성 도구로써 매우 좋다고 할 수 없는 이유는, �
 
 # distill 소개
 
-distill 은 rstudio 의 패키지로 
+distill 은 rstudio 의 패키지로 동명의 논문 사이트인 [distill](https://distill.pub/)의 출력 포멧을 기준으로 만든 블로그 패키지다.
 
+> Distill for R Markdown is based on the Distill web framework, which was originally created for use in the Distill Machine Learning Journal. Distill for R Markdown combines the technical authoring features of Distill with R Markdown, enabling a fully reproducible workflow based on literate programming.
 
-```{r}
-library("dplyr")
+패키지에서 소개하는 강점은 아래와 같다.
 
-mtcars %>% 
-  tibble() %>% 
-  filter(mpg >20)
+* 모바일 최적화
+* 기술 문서 작성을 위한 기술들(ex> LaTeX, footnotes)
+* 유연한 그림 출력
+* 유연한 테이블 출력
+* 블로그와 웹사이트 구조 지원
 
-print("heloe")
-```
+사용하면서 느낀 장점은 많은 표준 도구를 도입하여 편리하다.
+
+댓글, google analytic 붙이기, 쿠키 허용 팝업, 라이선스 명시가 설정으로 해결된다.
+아주아주아주아주 좋았다.
+
+아직 해결해야 하는 건 에드센스 붙이는거다. 얼마 되지도 않는 광고 수입이 들어오지도 않고 있는 상태다.
 
 
 [blogdown]: https://github.com/rstudio/blogdown
