@@ -1,4 +1,4 @@
-FROM rocker/verse:4.0.5
+FROM rocker/verse:4.1.0
 
 # [Option] Install zsh
 ARG INSTALL_ZSH="true"
@@ -21,4 +21,4 @@ RUN apt-get update \
     && apt-get -y install --no-install-recommends ca-certificates \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
-RUN Rscript -e 'install.packages("renv");renv::restore()'
+RUN Rscript -e 'install.packages("renv")'

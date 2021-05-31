@@ -1,0 +1,129 @@
+---
+title: KoNLP 설치 방법
+date: '2021-06-01'
+categories:
+  - blog
+  - retrospect
+description: |
+  options(repos = c(
+    forkonlp = 'https://forkonlp.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org')
+  )
+  install.packages("KoNLP")
+  library("KoNLP")
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg
+---
+
+<img src="https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg" width=100%>
+
+KoNLP가 2020년 2월 1일부로 [cran][cran]에서 내려갔습니다. 흑흑.
+
+![](https://user-images.githubusercontent.com/6179259/120212847-7a0f9f00-c26d-11eb-8069-8f1af6bef23e.png)
+
+그래서 설치 방법을 [공유][facebook-share]하였습니다. 
+
+![](https://user-images.githubusercontent.com/6179259/120216673-4aaf6100-c272-11eb-93fe-1f2d68e9072c.png)
+
+많은 분들이 문제를 겪고 있어서 또! 많은 분들이 정보를 공유해주시고 계십니다.
+
+![](https://user-images.githubusercontent.com/6179259/120217067-c6111280-c272-11eb-8648-1ba969bdfa60.png)
+
+그럼에도 불구하고, 해결 방법들이 따라하기 다 어렵거나 복잡하지 않나 싶었습니다.
+조금 더 쉬운 방법을 찾다보니 [R-universe project][runi]를 알게 되었습니다.
+
+![](https://user-images.githubusercontent.com/6179259/120214815-ee4b4200-c26f-11eb-864a-55a2fbc887d6.png)
+
+[R-universe project][runi]는 사설 패키지 저장소를 만들어 줍니다.
+개인이 혼자 운영하는 CRAN을 대신 만들어준달까요? 
+forkonlp 조직의 패키지들을 올리면서 KoNLP 포크해서 올렸습니다.
+
+![](https://user-images.githubusercontent.com/6179259/120219041-91528a80-c275-11eb-90dc-4c61f1f06e04.png)
+
+그럼 어떻게 사용하면 될까요?
+`options()` 함수에서 패키지 저장소를 추가합니다.
+이후에 그냥 보통 cran 패키지 설치하듯 하시면 됩니다.
+
+```r
+options(repos = c(
+  forkonlp = 'https://forkonlp.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org')
+)
+install.packages("KoNLP")
+library("KoNLP")
+```
+
+물론 `jdk`는 미리 설치하셔야 합니다.
+저는 아래 방법을 추천합니다만, 어떻게든 `jdk`를 설치하셔서 동작하는지 확인하셔야 합니다. 
+
+```r
+install.packages("multilinguer")
+library("multilinguer")
+install_java()
+```
+
+`jdk` 설치 확인은 간단합니다.
+
+```r
+install.packages("rJava")
+library("rJava")
+.jinit()
+```
+```
+[1] 0
+```
+
+이 확인이 끝나신 후에, 첫 코드를 실행하시면 됩니다.
+
+전체 실행코드를 작성해보면 아래와 같습니다.
+
+```r
+## jdk 설치
+## 각자 편한 방법으로 설치해주세요.
+## 
+install.packages("multilinguer")
+library("multilinguer")
+install_java()
+
+## jdk가 설치되어 있는지 확인
+## install.packages("rJava")
+library("rJava")
+.jinit()
+
+## forkonlp 저장소 설정
+options(repos = c(
+  forkonlp = 'https://forkonlp.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org')
+)
+
+## konlp 설치
+install.packages("KoNLP")
+library("KoNLP")
+SimplePos09("안녕하신가요?")
+```
+```
+$안녕하신가요
+[1] "안녕/N+하/X+시ㄴ가/E+요/J"
+
+$`?`
+[1] "?/S"
+```
+
+[cran]: https://cran.r-project.org/web/packages/KoNLP/index.html
+[facebook-share]: https://www.facebook.com/notes/r-korea-krugkorean-r-user-group/konlp-%EC%84%A4%EC%B9%98-%EC%9D%B4%EC%8A%88-%EA%B3%B5%EC%9C%A0/1847510068715020/
+[runi]: https://ropensci.org/r-universe/
