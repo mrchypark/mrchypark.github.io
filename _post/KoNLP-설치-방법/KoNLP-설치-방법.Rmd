@@ -2,8 +2,10 @@
 title: KoNLP 설치 방법
 date: '2021-06-01'
 categories:
-  - blog
-  - retrospect
+  - KoNLP
+  - install
+  - install.packages
+  - R-universe
 description: |
   options(repos = c(
     forkonlp = 'https://forkonlp.r-universe.dev',
