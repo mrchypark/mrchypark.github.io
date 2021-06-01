@@ -18,14 +18,11 @@
       <title>KoNLP 설치 방법</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/KoNLP-설치-방법</link>
-      <description>options(repos = c(
-  forkonlp = 'https://forkonlp.r-universe.dev',
-  CRAN = 'https://cloud.r-project.org')
-)
-install.packages("KoNLP")
-library("KoNLP")</description>
-      <category>blog</category>
-      <category>retrospect</category>
+      <description>그냥 install.packages("KoNLP") 명령으로 설치하는 방법을 소개합니다.</description>
+      <category>KoNLP</category>
+      <category>install</category>
+      <category>install.packages</category>
+      <category>R-universe</category>
       <guid>https://mrchypark.github.io/post/KoNLP-설치-방법</guid>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg" medium="image" type="image/jpeg"/>
