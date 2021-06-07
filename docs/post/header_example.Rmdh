@@ -1,0 +1,30 @@
+---
+title: 좋은 코드라는 블로그 글을 읽고
+date: '2021-06-01'
+categories:
+  - thoughts
+  - OOP
+  - goocode
+  - english
+description: |
+  좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg">
