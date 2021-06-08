@@ -18,7 +18,7 @@
       <title>KoNLP 설치 방법</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/KoNLP-설치-방법</link>
-      <description>그냥 install.packages("KoNLP") 명령으로 설치하는 방법을 소개합니다.</description>
+      <description>install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')</description>
       <category>KoNLP</category>
       <category>install</category>
       <category>install.packages</category>
