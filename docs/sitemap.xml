@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://mrchypark.github.io/about_en.html</loc>
-    <lastmod>2021-06-08T16:26:31+00:00</lastmod>
+    <lastmod>2021-06-08T16:20:03+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/about.html</loc>
-    <lastmod>2021-06-08T16:26:31+00:00</lastmod>
+    <lastmod>2021-01-31T17:51:27+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/</loc>
-    <lastmod>2021-06-08T16:26:37+00:00</lastmod>
+    <lastmod>2021-05-11T18:14:26+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/material.html</loc>
-    <lastmod>2021-06-08T16:26:37+00:00</lastmod>
+    <lastmod>2021-01-31T17:51:27+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://mrchypark.github.io/post/클하-데이터-팔아서-먹고-살-수-있나요/</loc>
+    <lastmod>2021-06-08T20:01:49+00:00</lastmod>
   </url>
   <url>
     <loc>https://mrchypark.github.io/post/KoNLP-설치-방법/</loc>
