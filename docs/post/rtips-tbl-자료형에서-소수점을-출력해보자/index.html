@@ -2497,12 +2497,12 @@ gtag('config', 'UA-47822682-14');
 <pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/pillar/man/pillar.html">pillar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 </code></pre>
 </div>
-<pre><code>       &lt;dbl&gt;
- 1.234568e+5
- 1.234568e+3
-NA          
- 1.234568e+0
- 1.234568e-2</code></pre>
+<pre><code>      &lt;dbl&gt;
+123457.    
+  1235.    
+    NA     
+     1.23  
+     0.0123</code></pre>
 </div>
 <p>마크다운에는 디테일이 표현되지 않아 사진을 첨부합니다. <img src="data:text/plain; charset=utf-8;charset=utf-8,404%3A%20Not%20Found" /></p>
 <p>3자리 마다 쉼표로 표시하는 관행을 출력해주기 위해, <a href="https://github.com/r-lib/pillar">pillar</a> 패키지는 밑줄을 사용합니다. 보기 참 좋아진거 같습니다!</p>
@@ -2522,12 +2522,12 @@ NA
 </code></pre>
 </div>
 <pre><code># A tibble: 4 x 3
-     big stradle       small
-   &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
-1 233023 100.233 0.00233    
-2 486023 100.486 0.00486    
-3 565023 100.565 0.00565    
-4 785023 100.785 0.007850000</code></pre>
+     big stradle   small
+   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 233023    100. 0.00233
+2 486023    100. 0.00486
+3 565023    101. 0.00565
+4 785023    101. 0.00785</code></pre>
 </div>
 <p>출력을 보면 stradle 컬럼의 첫번째 데이터가 <code>100.</code>라고 되어 있습니다. <code>100</code>이 아니고 <code>100.</code>이라고 출력해주면서 소수점 숫자가 있음을 알려주는데요. <a href="https://github.com/r-lib/pillar/issues/40#issuecomment-360152576">관련 이슈</a>도 있으니 읽어보시면 좋을 것 같구요.</p>
 <div class="layout-chunk" data-layout="l-body">

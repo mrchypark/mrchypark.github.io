@@ -1,0 +1,70 @@
+---
+title: '[클하] 데이터 팔아서 먹고 살 수 있나요'
+date: '2021-06-01'
+categories:
+  - 클럽하우스
+  - 박박사
+  - 데이터
+  - data
+description: |
+  클럽하우스 요약: 데이터로 먹고 사는 방법들을 이야기해봤습니다. 
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/120314187-ee058200-c315-11eb-8043-de1e53e78958.jpg
+draft: true
+---
+
+<figure>
+  <img width=100% src="https://user-images.githubusercontent.com/6179259/120314187-ee058200-c315-11eb-8043-de1e53e78958.jpg">
+  <figcaption>Photo by <a href="https://unsplash.com/@emilymorter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Emily Morter</a> on <a href="https://unsplash.com/s/photos/sell-data?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></figcaption>
+</figure>
+
+클럽하우스에서 모더레이터를 조금씩 해보고 있다.
+정기적으로 
+
+데이터 팔아서 먹고 살 수 있나요?
+
+날씨 데이터 > 히스토리컬 데이터 저장 때문에 돈이 된다.
+딥러닝용 학습 데이터 > 방산은 법적인 이슈가 더 커서 비싸다
+리뷰 텍스트 데이터 >
+
+연합 학습 > 
+
+GAN으로 합성 데이터 만들어 판매
+
+개인정보 보호 우회
+
+GAN으로 pre train 하고 실 데이터로 fine tuning
+
+설문 데이터
+패널을 통해 데이터를 사서 통합하여 판매한다.
+
+사람 취득 + 기계 데이터 가 정확도 중요함
+
+마이데이터 실증 사업 과제 + 블록체인 
+
+유전체 데이터 익명화 후 판매
+
+상권 분석
+
+가게의 이름으로 업종을 추천함 > 마이데이터 때문에 
+
+영수증 > 지금 판다
+
+
+
+  

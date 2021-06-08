@@ -89,7 +89,7 @@ fromJSON(json_text)
 우선 그런 형태로 만들어 볼까요?
 
 ```{r}
-nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5))
 nested_json
 ```
 
@@ -113,7 +113,7 @@ warnings 잔뜩인거 보니, 그 경고를 주는 것 같네요!
 모든 데이터를 얻기는 힘들 것 같고... 그렇다면 선택적으로 데이터를 취할 수는 있을 것 같습니다.
 
 ```{r}
-nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5))
 result <- nested_json
 for (i in 1:nrow(nested_json)) {
     result[i,2] <- fromJSON(nested_json[i,2])[["특기"]][1]

@@ -15,7 +15,7 @@ links:
   - label: Blog
     url: "https://mrchypark.github.io"
 output:
-  postcards::trestles:
+  postcards::trestles
     # includes:
     #   in_header: header.html
 ---
