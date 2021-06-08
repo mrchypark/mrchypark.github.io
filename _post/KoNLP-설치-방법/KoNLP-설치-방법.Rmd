@@ -7,7 +7,7 @@ categories:
   - install.packages
   - R-universe
 description: |
-  그냥 install.packages("KoNLP") 명령으로 설치하는 방법을 소개합니다.
+  install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
