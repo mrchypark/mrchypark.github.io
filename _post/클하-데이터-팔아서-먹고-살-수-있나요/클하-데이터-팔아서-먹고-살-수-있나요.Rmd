@@ -26,7 +26,7 @@ output:
     theme: theme.css
     number_sections: true
 preview: https://user-images.githubusercontent.com/6179259/120314187-ee058200-c315-11eb-8043-de1e53e78958.jpg
-drift: true
+draft: true
 ---
 
 <figure>
