@@ -20,6 +20,8 @@ navbar:
       href: index.xml
     - icon: fa fa-github
       href: https://github.com/mrchypark
+    - icon: fa fa-hand-wave
+      href: https://www.clubhouse.com/@mrchypark
     - icon: fa fa-linkedin
       href: https://www.linkedin.com/in/chanyubpark/
     - icon: fa fa-instagram
