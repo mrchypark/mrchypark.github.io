@@ -73,4 +73,5 @@ learning-go와 ci-cd에 아는 내용을 피드백하고 있습니다.
 [pr12er]: https://github.com/codingpot/pr12er
 [디스코드]: https://support.discord.com/hc/ko
 [박찬성]: https://www.facebook.com/Thomas.CS.Park
-[코딩맛집]: https://discord.gg/43wkwMYs
+[코딩맛집]: https://discord.gg/HGPnfzDdkG
+
