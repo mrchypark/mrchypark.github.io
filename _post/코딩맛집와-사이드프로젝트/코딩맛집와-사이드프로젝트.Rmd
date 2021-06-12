@@ -51,9 +51,15 @@ learning-go와 ci-cd에 아는 내용을 피드백하고 있습니다.
 덕분에 정말 많은 공부를 하고 있습니다.
 찬성님과 경모님이 활동하시는 걸 보면 반성도 많이 하게 됩니다.(ㅎㅎ)
 
+벌써 [코딩냄비][코딩냄비] 조직이 생기더니 프로젝트 저장소가 마구마구 만들어지고 있습니다.
+어느새 블로그까지 생겼네요.
+[첫블로그][첫블로그] 글인 go의 도커파일에 대한 분석내용과 okteto 서비스 소개가 인상적입니다.
+
 이런 멋진 커뮤니티에 참여하고 싶으시면 [코딩맛집][코딩맛집] 링크를 클릭해주세요.
 <https://discord.gg/43wkwMYs>
 
+[첫블로그]: https://codingpot.github.io/posts/2021-06-11-okteto-pipeline-build/
+[코딩냄비]: https://github.com/codingpot
 [권경모]: https://www.facebook.com/kkweon
 [pr12er]: https://github.com/codingpot/pr12er
 [디스코드]: https://support.discord.com/hc/ko
