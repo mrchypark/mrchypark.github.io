@@ -2,12 +2,13 @@
 title: 쿠버네티스 리소스가 삭제 안될 때
 date: '2021-06-15'
 categories:
-  - thoughts
-  - OOP
-  - goocode
-  - english
+  - k8s
+  - kubernetes
+  - resource
+  - delete
+  - terminating
 description: |
-  좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.
+  쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
