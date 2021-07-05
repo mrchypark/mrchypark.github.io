@@ -88,7 +88,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>쿠버네티스 리소스가 삭제 안될 때</title>
 
-  <meta property="description" itemprop="description" content="좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다."/>
+  <meta property="description" itemprop="description" content="쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다."/>
 
 
   <!--  https://schema.org/Article -->
@@ -99,19 +99,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="쿠버네티스 리소스가 삭제 안될 때"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다."/>
+  <meta property="og:description" content="쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="쿠버네티스 리소스가 삭제 안될 때"/>
-  <meta property="twitter:description" content="좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다."/>
+  <meta property="twitter:description" content="쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","categories","description","base_url","author","output","preview","draft"]}},"value":[{"type":"character","attributes":{},"value":["쿠버네티스 리소스가 삭제 안될 때"]},{"type":"character","attributes":{},"value":["2021-06-15"]},{"type":"character","attributes":{},"value":["thoughts","OOP","goocode","english"]},{"type":"character","attributes":{},"value":["좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.\n"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg"]},{"type":"logical","attributes":{},"value":[true]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","categories","description","base_url","author","output","preview","draft"]}},"value":[{"type":"character","attributes":{},"value":["쿠버네티스 리소스가 삭제 안될 때"]},{"type":"character","attributes":{},"value":["2021-06-15"]},{"type":"character","attributes":{},"value":["k8s","kubernetes","resource","delete","terminating"]},{"type":"character","attributes":{},"value":["쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다.\n"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["first_name","last_name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Chanyub"]},{"type":"character","attributes":{},"value":["Park"]},{"type":"character","attributes":{},"value":["https://mrchypark.github.io/about"]},{"type":"character","attributes":{},"value":["Forkonlp"]},{"type":"character","attributes":{},"value":["https://forkonlp.github.io/"]},{"type":"character","attributes":{},"value":["0000-0001-6474-2570"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth","code_folding","theme","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg"]},{"type":"logical","attributes":{},"value":[true]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1455,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"쿠버네티스 리소스가 삭제 안될 때","description":"좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.","authors":[{"author":"Chanyub Park","authorURL":"https://mrchypark.github.io/about","affiliation":"Forkonlp","affiliationURL":"https://forkonlp.github.io/","orcidID":"0000-0001-6474-2570"}],"publishedDate":"2021-06-15T00:00:00.000+00:00","citationText":"Park, 2021"}
+{"title":"쿠버네티스 리소스가 삭제 안될 때","description":"쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다.","authors":[{"author":"Chanyub Park","authorURL":"https://mrchypark.github.io/about","affiliation":"Forkonlp","affiliationURL":"https://forkonlp.github.io/","orcidID":"0000-0001-6474-2570"}],"publishedDate":"2021-06-15T00:00:00.000+00:00","citationText":"Park, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1468,13 +1468,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>쿠버네티스 리소스가 삭제 안될 때</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-<div class="dt=tag">thoughts</div>
-<div class="dt=tag">OOP</div>
-<div class="dt=tag">goocode</div>
-<div class="dt=tag">english</div>
+<div class="dt=tag">k8s</div>
+<div class="dt=tag">kubernetes</div>
+<div class="dt=tag">resource</div>
+<div class="dt=tag">delete</div>
+<div class="dt=tag">terminating</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.</p></p>
+<p><p>쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다.</p></p>
 </div>
 
 <div class="d-byline">

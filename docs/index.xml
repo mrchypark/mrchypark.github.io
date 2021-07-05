@@ -44,7 +44,10 @@
       <title>KoNLP 설치 방법</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/KoNLP-설치-방법</link>
-      <description>install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')</description>
+      <description>install.packages("KoNLP", 
+  repos = c("https://forkonlp.r-universe.dev","https://cloud.r-project.org"),
+  INSTALL_opts = c("--no-multiarch")
+)</description>
       <category>KoNLP</category>
       <category>install</category>
       <category>install.packages</category>

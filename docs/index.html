@@ -2633,7 +2633,10 @@ function init_posts_list() {
 <div class="dt-tag">install.packages</div>
 <div class="dt-tag">R-universe</div>
 </div>
-<p>install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')</p>
+<p>install.packages("KoNLP", 
+  repos = c("https://forkonlp.r-universe.dev","https://cloud.r-project.org"),
+  INSTALL_opts = c("--no-multiarch")
+)</p>
 </div>
 </a>
 <a href="post/좋은-코드라는-블로그-글을-읽고/" class="post-preview">
