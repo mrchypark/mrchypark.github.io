@@ -2570,16 +2570,16 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 1,000 x 6
    index date           open     high      low    close
    &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UBMI  2021-07-10 7272.263 7373.112 7197.804 7239.582
- 2 UBMI  2021-07-09 7166.267 7324.508 6927.467 7273.728
- 3 UBMI  2021-07-08 7430.634 7460.180 7071.997 7165.262
- 4 UBMI  2021-07-07 7428.736 7611.793 7376.308 7432.811
- 5 UBMI  2021-07-06 7289.696 7551.216 7274.593 7428.265
- 6 UBMI  2021-07-05 7564.580 7576.089 7183.049 7286.007
- 7 UBMI  2021-07-04 7405.059 7719.644 7351.393 7570.940
- 8 UBMI  2021-07-03 7243.624 7444.015 7146.605 7402.516
- 9 UBMI  2021-07-02 7204.278 7292.910 6960.100 7240.112
-10 UBMI  2021-07-01 7510.542 7514.101 7089.179 7199.434
+ 1 UBMI  2021-07-11 7214.686 7268.052 7124.975 7183.868
+ 2 UBMI  2021-07-10 7272.263 7373.112 7140.091 7213.881
+ 3 UBMI  2021-07-09 7166.267 7324.508 6927.467 7273.728
+ 4 UBMI  2021-07-08 7430.634 7460.180 7071.997 7165.262
+ 5 UBMI  2021-07-07 7428.736 7611.793 7376.308 7432.811
+ 6 UBMI  2021-07-06 7289.696 7551.216 7274.593 7428.265
+ 7 UBMI  2021-07-05 7564.580 7576.089 7183.049 7286.007
+ 8 UBMI  2021-07-04 7405.059 7719.644 7351.393 7570.940
+ 9 UBMI  2021-07-03 7243.624 7444.015 7146.605 7402.516
+10 UBMI  2021-07-02 7204.278 7292.910 6960.100 7240.112
 # … with 990 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2588,12 +2588,12 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 6 x 6
   index date           open     high      low    close
   &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UBMI  2018-10-20 1290.631 1298.566 1285.163 1296.685
-2 UBMI  2018-10-19 1295.525 1300.121 1281.728 1290.603
-3 UBMI  2018-10-18 1299.591 1308.336 1287.338 1295.128
-4 UBMI  2018-10-17 1300.730 1306.647 1286.040 1299.046
-5 UBMI  2018-10-16 1304.751 1315.232 1289.774 1301.094
-6 UBMI  2018-10-15 1257.002 1380.890 1246.870 1304.463</code></pre>
+1 UBMI  2018-10-21 1296.064 1307.453 1295.026 1296.870
+2 UBMI  2018-10-20 1290.631 1298.566 1285.163 1296.685
+3 UBMI  2018-10-19 1295.525 1300.121 1281.728 1290.603
+4 UBMI  2018-10-18 1299.591 1308.336 1287.338 1295.128
+5 UBMI  2018-10-17 1300.730 1306.647 1286.040 1299.046
+6 UBMI  2018-10-16 1304.751 1315.232 1289.774 1301.094</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
@@ -2668,16 +2668,16 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 400 x 7
    code        date           open     high      low    close   volume
    &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UPBIT.KRW-… 2021-07-10 39801000 40257000 39564000 39832000 1259.221
- 2 UPBIT.KRW-… 2021-07-09 39069000 40070000 38123000 39820000 6163.102
- 3 UPBIT.KRW-… 2021-07-08 39743000 39953000 38200000 39082000 8178.527
- 4 UPBIT.KRW-… 2021-07-07 39814000 40727000 39637000 39743000 5761.287
- 5 UPBIT.KRW-… 2021-07-06 39509000 40650000 39340000 39814000 6292.894
- 6 UPBIT.KRW-… 2021-07-05 40915000 40948000 38957000 39506000 8680.723
- 7 UPBIT.KRW-… 2021-07-04 40299000 41643000 40088000 40948000 4981.477
- 8 UPBIT.KRW-… 2021-07-03 39440000 40578000 38951000 40299000 4933.230
- 9 UPBIT.KRW-… 2021-07-02 39320000 39834000 38288000 39442000 6427.326
-10 UPBIT.KRW-… 2021-07-01 40663000 40683000 38668000 39320000 9129.832
+ 1 UPBIT.KRW-… 2021-07-11 39633000 39930000 39250000 39513000 1330.381
+ 2 UPBIT.KRW-… 2021-07-10 39801000 40302000 39124000 39626000 4161.716
+ 3 UPBIT.KRW-… 2021-07-09 39069000 40070000 38123000 39820000 6163.102
+ 4 UPBIT.KRW-… 2021-07-08 39743000 39953000 38200000 39082000 8178.527
+ 5 UPBIT.KRW-… 2021-07-07 39814000 40727000 39637000 39743000 5761.287
+ 6 UPBIT.KRW-… 2021-07-06 39509000 40650000 39340000 39814000 6292.894
+ 7 UPBIT.KRW-… 2021-07-05 40915000 40948000 38957000 39506000 8680.723
+ 8 UPBIT.KRW-… 2021-07-04 40299000 41643000 40088000 40948000 4981.477
+ 9 UPBIT.KRW-… 2021-07-03 39440000 40578000 38951000 40299000 4933.230
+10 UPBIT.KRW-… 2021-07-02 39320000 39834000 38288000 39442000 6427.326
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2686,12 +2686,12 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 6 x 7
   code         date           open     high      low    close   volume
   &lt;chr&gt;        &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UPBIT.KRW-B… 2020-06-11 11732000 11799000 11058000 11090000 4545.215
-2 UPBIT.KRW-B… 2020-06-10 11688000 11847000 11590000 11737000 2283.586
-3 UPBIT.KRW-B… 2020-06-09 11690000 11777000 11550000 11688000 2610.125
-4 UPBIT.KRW-B… 2020-06-08 11680000 11719000 11560000 11690000 1728.383
-5 UPBIT.KRW-B… 2020-06-07 11641000 11786000 11373000 11687000 2655.732
-6 UPBIT.KRW-B… 2020-06-06 11601000 11699000 11512000 11641000 1459.868</code></pre>
+1 UPBIT.KRW-B… 2020-06-12 11090000 11449000 11062000 11380000 2651.817
+2 UPBIT.KRW-B… 2020-06-11 11732000 11799000 11058000 11090000 4545.215
+3 UPBIT.KRW-B… 2020-06-10 11688000 11847000 11590000 11737000 2283.586
+4 UPBIT.KRW-B… 2020-06-09 11690000 11777000 11550000 11688000 2610.125
+5 UPBIT.KRW-B… 2020-06-08 11680000 11719000 11560000 11690000 1728.383
+6 UPBIT.KRW-B… 2020-06-07 11641000 11786000 11373000 11687000 2655.732</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
