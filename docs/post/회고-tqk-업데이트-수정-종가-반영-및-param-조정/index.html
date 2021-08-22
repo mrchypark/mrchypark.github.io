@@ -2523,7 +2523,7 @@ $b[[3]]
     <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   a         b        
   &lt;list&gt;    &lt;list&gt;   
 1 &lt;dbl [1]&gt; &lt;dbl [1]&gt;
@@ -2554,7 +2554,7 @@ unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
   <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
       a     b
   &lt;dbl&gt; &lt;dbl&gt;
 1     1     4
@@ -2598,7 +2598,8 @@ unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
     <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>Error: Columns 1, 2, and 3 must be named.</code></pre>
+<pre><code>Error: Columns 1, 2, and 3 must be named.
+Use .name_repair to specify repair.</code></pre>
 </div>
 <p>우선 <code>tibble::as_tibble()</code>이 바로 처리 해주지를 못합니다. 컬럼은 이름이 있어야만 한다는 군요. 이때 <code>purrr::transpose()</code> 가 필요합니다.</p>
 <h4 id="새롭게-배운-함수-2-purrrtranspose">새롭게 배운 함수 2 <code>purrr::transpose()</code></h4>
@@ -2617,7 +2618,7 @@ transpose(.l, .names = NULL)</code></pre>
     <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
       a     b
   &lt;dbl&gt; &lt;dbl&gt;
 1     1     4
@@ -2634,7 +2635,7 @@ transpose(.l, .names = NULL)</code></pre>
   <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   a         b        
   &lt;list&gt;    &lt;list&gt;   
 1 &lt;dbl [1]&gt; &lt;dbl [1]&gt;
@@ -2649,7 +2650,7 @@ transpose(.l, .names = NULL)</code></pre>
   <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>unnest</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
       a     b
   &lt;dbl&gt; &lt;dbl&gt;
 1     1   4  
@@ -2664,7 +2665,7 @@ transpose(.l, .names = NULL)</code></pre>
   <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   a         b     
   &lt;list&gt;    &lt;list&gt;
 1 &lt;dbl [1]&gt; &lt;NULL&gt;
@@ -2693,7 +2694,7 @@ transpose(.l, .names = NULL)</code></pre>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select_all.html'>select_if</a></span><span class='op'>(</span> <span class='op'>~</span> <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 4
+<pre><code># A tibble: 3 × 4
   a         c         d         e        
   &lt;list&gt;    &lt;list&gt;    &lt;list&gt;    &lt;list&gt;   
 1 &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt; &lt;dbl [1]&gt;
@@ -2721,7 +2722,7 @@ transpose(.l, .names = NULL)</code></pre>
   <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_dfc</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>.x</span> <span class='op'>%&gt;%</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='va'>is.null</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='va'>.x</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 4
+<pre><code># A tibble: 3 × 4
       a     c     d     e
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1     1     0     1     1
@@ -2748,7 +2749,7 @@ transpose(.l, .names = NULL)</code></pre>
 <span class='va'>maps_party</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 4
+<pre><code># A tibble: 3 × 4
   a         c         d         e        
   &lt;list&gt;    &lt;list&gt;    &lt;list&gt;    &lt;list&gt;   
 1 &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt; &lt;dbl [1]&gt;
@@ -2971,7 +2972,7 @@ $e
   <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_dfr</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>.x</span> <span class='op'>%&gt;%</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span>,<span class='fl'>0</span>,<span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='va'>unlist</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 4
+<pre><code># A tibble: 3 × 4
       a     c     d     e
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1     1     0     1     1

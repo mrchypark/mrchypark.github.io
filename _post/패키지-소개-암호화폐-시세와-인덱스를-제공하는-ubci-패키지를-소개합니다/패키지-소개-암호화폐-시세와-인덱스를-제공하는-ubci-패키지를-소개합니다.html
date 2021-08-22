@@ -1524,19 +1524,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index_options.html'>ubci_index_options</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 26 x 4
-   index   name               cate     smry                           
-   &lt;chr&gt;   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;                          
- 1 UBMI    UBMI(Upbit Market… Market … &quot;It is calculated for all digi…
- 2 UBMI_ST UBMI BTC quote(Up… Market … &quot;It is the index that is conve…
- 3 UBAI    UBAI(Upbit Altcoi… Market … &quot;It is calculated for all digi…
- 4 UBAI_ST UBAI BTC quote(Up… Market … &quot;It is the index that is conve…
- 5 UTTI    UBMI 10(Upbit Top… Market … &quot;It is an index that comprises…
- 6 UTHI    UBMI 30(Upbit Top… Market … &quot;It is an index that comprises…
- 7 THMIDX… NFT &amp; Collectibles Theme I… &quot;&quot;                             
- 8 THMIDX… Oracles            Theme I… &quot;&quot;                             
- 9 THMIDX… IoT                Theme I… &quot;&quot;                             
-10 THMIDX… Smart Contracts    Theme I… &quot;&quot;                             
+<pre><code># A tibble: 26 × 4
+   index    name                                cate           smry   
+   &lt;chr&gt;    &lt;chr&gt;                               &lt;chr&gt;          &lt;chr&gt;  
+ 1 UBMI     UBMI(Upbit Market Index)            Market Indexes &quot;It is…
+ 2 UBMI_ST  UBMI BTC quote(Upbit Market Index)  Market Indexes &quot;It is…
+ 3 UBAI     UBAI(Upbit Altcoin Index)           Market Indexes &quot;It is…
+ 4 UBAI_ST  UBAI BTC quote(Upbit Altcoin Index) Market Indexes &quot;It is…
+ 5 UTTI     UBMI 10(Upbit Top 10)               Market Indexes &quot;It is…
+ 6 UTHI     UBMI 30(Upbit Top 30)               Market Indexes &quot;It is…
+ 7 THMIDX20 NFT &amp; Collectibles                  Theme Indexes  &quot;&quot;     
+ 8 THMIDX21 Oracles                             Theme Indexes  &quot;&quot;     
+ 9 THMIDX22 IoT                                 Theme Indexes  &quot;&quot;     
+10 THMIDX23 Smart Contracts                     Theme Indexes  &quot;&quot;     
 # … with 16 more rows</code></pre>
 </div>
 <p>자료형은 <code>tbl</code>로 되어 있네요. 주식 분석 패키지의 최강자인 <a href="https://github.com/business-science/tidyquant">tidyquant</a>와 상성을 고려한 선택이었습니다. <code>ubci_index_options()</code> 함수는 lang 인자로 언어를 변경할 수 있습니다.</p>
@@ -1545,19 +1545,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index_options.html'>ubci_index_options</a></span><span class='op'>(</span>lang<span class='op'>=</span><span class='st'>"ko"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 26 x 4
-   index   name               cate    smry                            
-   &lt;chr&gt;   &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt;                           
- 1 UBMI    UBMI(Upbit Market… 시장 인덱스… 업비트 거래소에 상장된 모든 디지털 자산을 대상으로 산출…
- 2 UBMI_ST UBMI BTC quote(Up… 시장 인덱스… UBMI 인덱스를 비트코인 기준으로 환산한 인덱스…
- 3 UBAI    UBAI(Upbit Altcoi… 시장 인덱스… 업비트 거래소에 상장된 모든 디지털 자산에서 비트코인을 …
- 4 UBAI_ST UBAI BTC quote(Up… 시장 인덱스… UBAI 인덱스를 비트코인 기준으로 환산한 인덱스…
- 5 UTTI    UBMI 10(Upbit Top… 시장 인덱스… 업비트에 상장된 디지털 자산 중, 시가총액 상위 10개 …
- 6 UTHI    UBMI 30(Upbit Top… 시장 인덱스… 업비트에 상장된 디지털 자산 중, 시가총액 상위 30개 …
- 7 THMIDX… 대체불가능 토큰    테마 인덱스… NFT 자산을 생성, 탐색 및 거래 등이 가능한 플랫폼을…
- 8 THMIDX… 오라클             테마 인덱스… 오라클을 활용하는 디지털 자산으로 구성된 테마 인덱스…
- 9 THMIDX… 아이오티           테마 인덱스… 사물인터넷 기술을 활용하여 시간 단축 및 정보의 보안성을…
-10 THMIDX… 스마트컨트랙       테마 인덱스… 스마트컨트랙을 활용하는 디지털 자산으로 구성된 테마 인덱…
+<pre><code># A tibble: 26 × 4
+   index    name                                cate        smry      
+   &lt;chr&gt;    &lt;chr&gt;                               &lt;chr&gt;       &lt;chr&gt;     
+ 1 UBMI     UBMI(Upbit Market Index)            시장 인덱스 업비트 거…
+ 2 UBMI_ST  UBMI BTC quote(Upbit Market Index)  시장 인덱스 UBMI 인덱…
+ 3 UBAI     UBAI(Upbit Altcoin Index)           시장 인덱스 업비트 거…
+ 4 UBAI_ST  UBAI BTC quote(Upbit Altcoin Index) 시장 인덱스 UBAI 인덱…
+ 5 UTTI     UBMI 10(Upbit Top 10)               시장 인덱스 업비트에 …
+ 6 UTHI     UBMI 30(Upbit Top 30)               시장 인덱스 업비트에 …
+ 7 THMIDX20 대체불가능 토큰                     테마 인덱스 NFT 자산… 
+ 8 THMIDX21 오라클                              테마 인덱스 오라클을 …
+ 9 THMIDX22 아이오티                            테마 인덱스 사물인터… 
+10 THMIDX23 스마트컨트랙                        테마 인덱스 스마트컨… 
 # … with 16 more rows</code></pre>
 </div>
 <h3 id="인덱스-데이터">인덱스 데이터</h3>
@@ -1573,45 +1573,45 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 1,000 x 6
-   index date           open     high      low    close
-   &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UBMI  2021-08-08 9450.666 9544.690 9278.255 9390.020
- 2 UBMI  2021-08-07 8980.855 9475.973 8918.218 9452.891
- 3 UBMI  2021-08-06 8671.036 9047.470 8512.858 8979.709
- 4 UBMI  2021-08-05 8421.299 8716.400 8090.577 8669.196
- 5 UBMI  2021-08-04 8196.004 8464.162 8010.813 8416.451
- 6 UBMI  2021-08-03 8295.850 8401.048 8037.886 8198.838
- 7 UBMI  2021-08-02 8325.335 8486.294 8167.856 8292.628
- 8 UBMI  2021-08-01 8520.188 8797.486 8274.326 8323.876
- 9 UBMI  2021-07-31 8480.048 8588.261 8343.146 8497.772
-10 UBMI  2021-07-30 8084.812 8488.372 7842.517 8473.014
+<pre><code># A tibble: 1,000 × 6
+   index date            open     high       low     close
+   &lt;chr&gt; &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+ 1 UBMI  2021-08-22 10898.39  10973.96 10835.43  10954.07 
+ 2 UBMI  2021-08-21 10961.19  11032.26 10774.32  10896.53 
+ 3 UBMI  2021-08-20 10566.36  11011.67 10513.21  10952.94 
+ 4 UBMI  2021-08-19 10040.31  10564.58  9872.555 10562.22 
+ 5 UBMI  2021-08-18  9955.090 10221.84  9717.398 10023.92 
+ 6 UBMI  2021-08-17 10306.07  10500.50  9913.328  9954.925
+ 7 UBMI  2021-08-16 10556.76  10684.52 10288.78  10305.39 
+ 8 UBMI  2021-08-15 10493.97  10591.59 10186.20  10552.09 
+ 9 UBMI  2021-08-14 10420.53  10578.87 10162.79  10486.62 
+10 UBMI  2021-08-13  9752.361 10421.85  9683.321 10418.50 
 # … with 990 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 6 x 6
+<pre><code># A tibble: 6 × 6
   index date           open     high      low    close
   &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UBMI  2018-11-18 1149.663 1175.889 1149.663 1162.913
-2 UBMI  2018-11-17 1153.893 1154.542 1133.584 1148.921
-3 UBMI  2018-11-16 1183.314 1193.047 1137.609 1150.597
-4 UBMI  2018-11-15 1223.104 1229.119 1120.587 1182.529
-5 UBMI  2018-11-14 1316.516 1318.867 1167.507 1222.928
-6 UBMI  2018-11-13 1326.616 1329.144 1316.160 1316.285</code></pre>
+1 UBMI  2018-12-02 830.0556 847.6159 810.5371 829.1588
+2 UBMI  2018-12-01 802.6257 845.4575 787.1938 828.2200
+3 UBMI  2018-11-30 847.4277 854.2219 780.3396 802.3192
+4 UBMI  2018-11-29 849.5834 879.5691 820.4099 845.6707
+5 UBMI  2018-11-28 777.4342 872.5267 776.7503 849.1207
+6 UBMI  2018-11-27 773.6458 790.5325 734.8958 777.0290</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 0 x 6
+<pre><code># A tibble: 0 × 6
 # … with 6 variables: index &lt;chr&gt;, date &lt;date&gt;, open &lt;dbl&gt;,
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-10"</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 0 x 6
+<pre><code># A tibble: 0 × 6
 # … with 6 variables: index &lt;chr&gt;, date &lt;date&gt;, open &lt;dbl&gt;,
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;</code></pre>
 </div>
@@ -1622,7 +1622,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get_options.html'>ubci_get_options</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 785 x 5
+<pre><code># A tibble: 785 × 5
    code           name             exchange tradeStatus marketState
    &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;      
  1 UPBIT.KRW-BTC  Bitcoin          UPBIT    ACTIVE      ACTIVE     
@@ -1643,7 +1643,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get_options.html'>ubci_get_options</a></span><span class='op'>(</span>lang<span class='op'>=</span><span class='st'>"ko"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 785 x 5
+<pre><code># A tibble: 785 × 5
    code           name           exchange tradeStatus marketState
    &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;      
  1 UPBIT.KRW-BTC  비트코인       UPBIT    ACTIVE      ACTIVE     
@@ -1671,45 +1671,45 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 400 x 7
-   code       date           open     high      low    close    volume
-   &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 UPBIT.KRW… 2021-08-08 50956000 51301000 50110000 50820000  2841.315
- 2 UPBIT.KRW… 2021-08-07 49342000 51300000 49000000 50956000 10988.79 
- 3 UPBIT.KRW… 2021-08-06 47099000 49898000 46250000 49349000  9456.968
- 4 UPBIT.KRW… 2021-08-05 45718000 47650000 43841000 47139000 10399.68 
- 5 UPBIT.KRW… 2021-08-04 44950000 46038000 44000000 45718000  6481.945
- 6 UPBIT.KRW… 2021-08-03 45451000 46150000 44440000 44969000  7445.820
- 7 UPBIT.KRW… 2021-08-02 46263000 46788000 45150000 45451000  7121.292
- 8 UPBIT.KRW… 2021-08-01 47979000 49471000 46003000 46274000  6806.083
- 9 UPBIT.KRW… 2021-07-31 48570000 48768000 47650000 47979000  5158.394
-10 UPBIT.KRW… 2021-07-30 45936000 48661000 44450000 48555000  9277.503
+<pre><code># A tibble: 400 × 7
+   code          date           open     high      low    close    volume
+   &lt;chr&gt;         &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1 UPBIT.KRW-BTC 2021-08-22 57576000 57777000 57102000 57621000  1750.881
+ 2 UPBIT.KRW-BTC 2021-08-21 57690000 58280000 56557000 57553000  9176.836
+ 3 UPBIT.KRW-BTC 2021-08-20 55030000 57910000 54824000 57683000 12560.47 
+ 4 UPBIT.KRW-BTC 2021-08-19 52815000 55050000 52002000 55017000 13997.12 
+ 5 UPBIT.KRW-BTC 2021-08-18 52674000 53874000 51938000 52812000 14256.34 
+ 6 UPBIT.KRW-BTC 2021-08-17 53863000 54649000 52500000 52660000  9398.222
+ 7 UPBIT.KRW-BTC 2021-08-16 54638000 55704000 53700000 53863000  8599.292
+ 8 UPBIT.KRW-BTC 2021-08-15 54817000 55166000 53349000 54636000  8686.547
+ 9 UPBIT.KRW-BTC 2021-08-14 55145000 55742000 53573000 54812000 10406.46 
+10 UPBIT.KRW-BTC 2021-08-13 52078000 55313000 51767000 55146000 11542.18 
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 6 x 7
-  code         date           open     high      low    close   volume
-  &lt;chr&gt;        &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UPBIT.KRW-B… 2020-07-10 10961000 11062000 10880000 11043000 2044.037
-2 UPBIT.KRW-B… 2020-07-09 11135000 11149000 10906000 10961000 2625.432
-3 UPBIT.KRW-B… 2020-07-08 10988000 11208000 10968000 11138000 3274.770
-4 UPBIT.KRW-B… 2020-07-07 11065000 11097000 10952000 10988000 1828.517
-5 UPBIT.KRW-B… 2020-07-06 10831000 11102000 10796000 11065000 2834.356
-6 UPBIT.KRW-B… 2020-07-05 10883000 10900000 10700000 10831000 1232.810</code></pre>
+<pre><code># A tibble: 6 × 7
+  code          date           open     high      low    close    volume
+  &lt;chr&gt;         &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 UPBIT.KRW-BTC 2020-07-24 11322000 11438000 11238000 11346000 2160.087 
+2 UPBIT.KRW-BTC 2020-07-23 11258000 11418000 11183000 11331000 3090.335 
+3 UPBIT.KRW-BTC 2020-07-22 11117000 11280000 11066000 11269000 2474.643 
+4 UPBIT.KRW-BTC 2020-07-21 10940000 11220000 10930000 11123000 3235.468 
+5 UPBIT.KRW-BTC 2020-07-20 10943000 10981000 10908000 10950000 1677.889 
+6 UPBIT.KRW-BTC 2020-07-19 10908000 10971000 10869000 10943000  976.0133</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 0 x 7
+<pre><code># A tibble: 0 × 7
 # … with 7 variables: code &lt;chr&gt;, date &lt;date&gt;, open &lt;dbl&gt;,
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;, volume &lt;dbl&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-10"</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 0 x 7
+<pre><code># A tibble: 0 × 7
 # … with 7 variables: code &lt;chr&gt;, date &lt;date&gt;, open &lt;dbl&gt;,
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;, volume &lt;dbl&gt;</code></pre>
 </div>
