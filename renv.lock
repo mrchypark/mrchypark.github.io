@@ -25,7 +25,7 @@
     },
     "DNH4": {
       "Package": "DNH4",
-      "Version": "0.1.7",
+      "Version": "0.1.8",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
