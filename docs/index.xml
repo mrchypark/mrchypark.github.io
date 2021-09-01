@@ -13,7 +13,22 @@
       <link>https://mrchypark.github.io</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 12 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>패키지 버전은 어떻게 작성해야할까</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/패키지-버전은-어떻게-작성해야할까</link>
+      <description>시멘틱 버전의 의미와 현대적인 방식의 버전 관리 방식을 소개합니다.</description>
+      <category>semver</category>
+      <category>headver</category>
+      <category>package</category>
+      <category>version</category>
+      <category>develop</category>
+      <category>semantic-release</category>
+      <guid>https://mrchypark.github.io/post/패키지-버전은-어떻게-작성해야할까</guid>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/131734519-de76f53d-30c4-4bd5-9e9b-9fc46f6614e8.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>코딩냄비와 사이드프로젝트</title>
       <dc:creator>Chanyub Park</dc:creator>
