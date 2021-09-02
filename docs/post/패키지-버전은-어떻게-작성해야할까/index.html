@@ -130,7 +130,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["패키지-버전은-어떻게-작성해야할까_files/anchor/anchor.min.js","패키지-버전은-어떻게-작성해야할까_files/bowser/bowser.min.js","패키지-버전은-어떻게-작성해야할까_files/distill/template.v2.js","패키지-버전은-어떻게-작성해야할까_files/header-attrs/header-attrs.js","패키지-버전은-어떻게-작성해야할까_files/jquery/jquery.min.js","패키지-버전은-어떻게-작성해야할까_files/popper/popper.min.js","패키지-버전은-어떻게-작성해야할까_files/tippy/tippy-bundle.umd.min.js","패키지-버전은-어떻게-작성해야할까_files/tippy/tippy-light-border.css","패키지-버전은-어떻게-작성해야할까_files/tippy/tippy.css","패키지-버전은-어떻게-작성해야할까_files/tippy/tippy.umd.min.js","패키지-버전은-어떻게-작성해야할까_files/webcomponents/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2511,11 +2511,27 @@ Photo by <a href="https://unsplash.com/@jimmydean?utm_source=unsplash&utm_medium
 <h3 id="semver의-문제점">semver의 문제점</h3>
 <p>semver의 문제점은 여러 faq나 각 버전을 올리는 규칙을 공유함에도 불구하고, 각 개발자가 판단하는 버전업의 경계가 다르다는 것입니다. 특히 버전을 올리는 것을 각 개발자가 수동으로 수행하기 때문에 생기는 어려움도 발생하였습니다. 저의 경우, 주 버전을 기간에 맞추고 나머지 버전은 무시한채 식별자 변경으로 개발하는 것을 경험하기도 했습니다. 그만큼 변경점에 대한 판단과 버전 변경의 고민을 개발자에게 주면 생기는 문제가 발생하는 것이지요.</p>
 <p>주변 분들에게 질문해보니, 듣기 좋은 규칙을 하나 얻었습니다. 버그 수정은 수버전, 기능 추가는 부버전, 제거는 주버전을 올립니다. 큰 변경으로 주버전을 올리는 것은 논란이 되지 않으니 신경쓰지 않아도 되구요. * 관련 아이디어를 공유해주신 <a href="https://mrchypark.github.io/post/%EC%BD%94%EB%94%A9%EB%83%84%EB%B9%84%EC%99%80-%EC%82%AC%EC%9D%B4%EB%93%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">코딩맛집</a>의 <a href="https://github.com/snowmerak">yongmin</a>님 감사합니다.</p>
+<p>그럼에도 불구하고, 버전을 보는 사람으로 하여금 정보를 전달할 수 있는 방법을 찾는 것이 중요할 것입니다.</p>
 <h3 id="headver">headver</h3>
 <p>이런 문제를 해결하기 위해 <a href="https://github.com/line">line</a>에서는 자체적으로 사용하는 <a href="https://github.com/line/headver">headver</a>를 구성하여 발표하기도 했습니다. <a href="https://github.com/line/headver">headver</a>는 수동 버전 관리의 문제와 여러 버전 체계의 혼란을 최소화하기 위해 주 버전 이외의 버전을 다른 자동화된 정보로 처리하였습니다. <code>{주버전}.{년주}.{빌드번호}</code>로 구성된 <a href="https://semver.org/lang/ko/">semver</a>와 문법 호환하는 정책을 제안한 것인데요. 주 버전의 의미는 그대로 같고, yyww의 2자리 년도와 해당 주를 2자리수로 표현한 날짜, 같은 기간내 실행된 증가하는 빌드 번호로 구성합니다. 이렇게 하면 주 버전만 수동으로 관리하고, 나머지는 기간과 순서의 의미를 전달함으로써 버전이 일정 기간과 비슷하게 연결되는 점을 활용합니다. yyyyMMdd 가 아닌 이유는 자동증가하는 빌드 번호 덕분에 중간 기간 표현은 yyww로 충분하다고 합니다. 특히 스프린트를 진행하는 경우, 주단위 혹은 2주단위를 많이 사용하므로 개별 스프린트 단위를 표현할 수 있기도 합니다.</p>
 <p>주버전 조차도 공개 단위로 제안하고 있기도 합니다. 사용자에게 전달하는 타이밍에 주버전을 올림으로써 적극적으로 주 버전을 올리는 것은 제안합니다. 버전 변경의 고민을 최소화하려는 결정을 느낄 수 있었습니다.</p>
 <p>이렇게 하면 버전을 올리는 것에 대해 논의하는 시간을 줄일 수 있으며 충분히 소통하는 사람들 간에 정보를 전달할 수 있습니다.</p>
 <p>제가 가진 고민과 비슷한 문제를 해결하려는 노력을 확인할 수 있어서 매우 좋았습니다. 버전 관리의 자동화라는 아이디어를 얻을 수 있었던 점도 저에게 매력적이었구요.</p>
+<h3 id="calver">calver</h3>
+<p>최근 <a href="https://www.rstudio.com/">Rstudio</a> 에서는 자사 사용 제품의 버전 체계를 calver(<code>calendar-version</code>)으로 전환한다고 <a href="https://blog.rstudio.com/2021/08/30/calendar-versioning-for-commercial-rstudio-products/">공유</a>하였습니다. <code>calver</code>는 <code>{4자리년(yyyy)}.{2자리월(MM)}.{patch}</code>로 구성합니다. 이 전환으로 <a href="https://blog.rstudio.com/2021/08/30/calendar-versioning-for-commercial-rstudio-products/">블로그</a>에서는</p>
+<ol type="1">
+<li>바로 버전의 나이(?)를 확인할 수 있다.</li>
+<li>고객이 지원 서비스를 받는 기간을 이해하기 쉽다.</li>
+<li>새로운 기능을 추가할 것인지를 정하기 쉽다.</li>
+</ol>
+<p>는 장점을 내세웠습니다.</p>
+<p>이 버전 체계 변경의 목적을 고객 지원 기간을 정리하기 위해서라고 합니다.</p>
+<p>지원 기간은 리눅스나 nodejs에서의 정책때문에 익숙한 단어일텐데요. <code>lts</code>라는 장기 지원 버전과 단기 지원 버전을 번갈아 출시하는 정책을 가지고 있습니다.</p>
+<p>rust는 특이하게 년도별 edition을 제공하기도 합니다. 메인 버전은 장기 지원 체계를 유지하고, 매년 실험적인 기능을 년도별 edition에 담아 그 기간만 지원하는 정책입니다.</p>
+<p>두 지원 정책 모두 정기적인 릴리즈 계획과 더불어 정해진 기간동안 유지보수 및 지원하는 정책을 취함으로써 새로운 기능 테스트와 더불어 유지보수 리소스를 합리적으로 가져가기 위해 설계되었습니다.</p>
+<p>Rstudio에서는 이번 버전 체계의 변화를 통해 아래와 같은 지원 정책을 취합니다. <code>latest</code> 버전은 기간과 상관없이 지원하고, 과거 버전의 경우 <code>calver</code> 기준 18개월 까지만 지원합니다. 지원 정책 문서에 이러한 내용이 업데이트되었고, 관련한 공유를 블로그로 한 것 같습니다.</p>
+<p>이렇게 지원 정책과 버전을 이해하기 쉽게 일치시킴으로써 버전에 노출되는 사람에게 전달하는 정보가 강조되는 효과가 있습니다. 다른 버전 체계와 비교하자면, <code>년.월</code> 정보의 주버전과 <code>patch</code>의 자동화 가능한 수버전이 특징이라 볼 수 있습니다. <a href="https://github.com/line/headver">headver</a>와 같이 주버전을 하나만 관리하되 그것 조차 년월로 취급하여 배포 타이밍을 이름으로 사용하였습니다.</p>
+<p>특히 많은 프로젝트가 릴리즈 주기를 가지고 있다는 점에서, 그리고 주기 단위로 주, 부 버전을 올리는 계획을 세운다는 점에서 <code>calver</code>는 더욱 사용자 지향적 버전 체계라는 생각이 들었습니다.</p>
 <h3 id="bnver">bnver</h3>
 <p>저 나름대로 새로운 버전 체계를 생각해보게 되었습니다. 물론 <a href="https://github.com/line/headver">headver</a>처럼 <a href="https://semver.org/lang/ko/">semver</a> 호환까지는 고려하지 못했지만, 버전에 개발자와 운영자에게 유용한 정보를 담으면 좋겠다고 생각했습니다. <code>bnver</code>는 <code>Branch Name Version</code> 이란 뜻입니다. 구성은 <code>{Branch Name}.{yyyyMMdd}.{git short hash}</code> 입니다. 이렇게 하면 브랜치 이름으로 개발 버전인지, 새로운 관리 버전인지, <code>main</code> 버전인지를 전달할 수 있습니다. yyyyMMdd는 보시는 바와같이 날짜입니다. yyww는 개인적인 감상으로는 가독성이 떨어진다 느꼈습니다. 지금이 몇째주 이지? 라는 걸 주단위 스프린트 같이 사용해야지만 쉬운 방식이라 생각했거든요. 더 범용으로 사용하기에는 <code>년월일</code> 방식이 효과적이라 생각했습니다. git short hash는 아직 고민이 많습니다. 빌드 시스템들이 파이프라인이 트리거링된 git hash 정보를 전달하는 경우가 많기 때문에 쓸모가 없다 싶다가도, 운영자 입장에선 현재 배포된 서비스가 기대하는 버전이 맞는지 확인하는데 중요한 정보라고 생각합니다.</p>
 <p>bnver의 장점이라면 모든 버전이 자동으로 동작하며, 개발자가 신경써야 할 부분은 빌드 파이프라인이 어떤 브랜치를 받아서 동작하는지 입니다. 이미 브랜치를 분리하여 작업하는 워크플로우가 광범위하게 사용되고 있기 때문에 변경없이 사용할 수 있습니다.</p>
