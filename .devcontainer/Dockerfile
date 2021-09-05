@@ -1,4 +1,4 @@
-FROM rocker/verse:4.1.0
+FROM rocker/verse:4.1.1
 
 # [Option] Install zsh
 ARG INSTALL_ZSH="true"
