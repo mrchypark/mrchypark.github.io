@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>mrchypark: [Rtips] 윈도우 계정 한글일때 문제 해결하기 1탄 임시 폴더 위치 바꾸기</title>
@@ -476,7 +477,7 @@ d-title {
 
 </style>
 
-<script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
 <link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
 <script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1883,7 +1884,10 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
       window.tippy(this, {
         allowHTML: true,
         content: refHtml,
@@ -2373,7 +2377,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 }</style>
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs/header-attrs.js"></script>
-  <script src="../../site_libs/jquery/jquery.min.js"></script>
+  <script src="../../site_libs/jquery/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper/popper.min.js"></script>
   <link href="../../site_libs/tippy/tippy.css" rel="stylesheet" />
   <link href="../../site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
@@ -2496,7 +2500,7 @@ gtag('config', 'UA-47822682-14');
 </div>
 <pre><code>[1] &quot;C:\\Users\\MRCHYP~1\\AppData\\Local\\Temp\\RtmpkNMIVs&quot;</code></pre>
 <p>이 위치는 윈도우의 사용자 계정 이름(<code>mrchypark</code>)의 하위 폴더입니다. 저는 영어로 계정이름을 만들어서 문제 없이 동작하는데요. 질문자의 경우 저 경로에 <code>??????</code>로 되어 있는 것으로 봐서 윈도우의 사용자 계정이 한글로 되어 있는 것 같습니다.</p>
-<p>가장 좋은 해결책은 윈도우 계정을 한글로 바꾸는 것이기는 한데요. 😞 현실적으로 다시 만들어서 다시 환경을 설정하는 것은 쉬운일이 아닙니다.</p>
+<p>가장 좋은 해결책은 윈도우 계정을 한글로 바꾸는 것이기는 한데요. 😿 현실적으로 다시 만들어서 다시 환경을 설정하는 것은 쉬운일이 아닙니다.</p>
 <p>그래서 임시 폴더 위치를 변경하는 방법을 소개합니다.</p>
 <p>우선 경로에 한글이 없을만한 임시 폴더를 하나 만듭니다. 저는 <code>C:/</code>에 바로 만들려고 합니다.</p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384152-8aa33400-8019-11e9-9d2e-e3a6dc4448ce.png" width=100%></p>
