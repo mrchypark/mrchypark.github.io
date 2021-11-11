@@ -2526,11 +2526,11 @@ gtag('config', 'UA-47822682-14');
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">end</span>(<span class="vs">`&lt;h1&gt;I&#39;m </span><span class="sc">${</span>os<span class="op">.</span><span class="fu">hostname</span>()<span class="sc">}</span><span class="vs">&lt;/h1&gt;`</span>)<span class="op">;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">listen</span>(<span class="dv">8080</span>)<span class="op">;</span></span></code></pre></div>
 <p>이제 <code>Dockerfile</code>이라는 이름의 파일을 만들어 아래 코드를 저장합니다. 도커라이즈(Dockerize)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>라고 합니다.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> mkdir -p /usr/src/app</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> index.js /usr/src/app</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 8080</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [ <span class="st">&quot;node&quot;</span>, <span class="st">&quot;/usr/src/app/index&quot;</span> ]</span></code></pre></div>
+<pre class="dockerfile"><code>FROM node
+RUN mkdir -p /usr/src/app
+COPY index.js /usr/src/app
+EXPOSE 8080
+CMD [ &quot;node&quot;, &quot;/usr/src/app/index&quot; ]</code></pre>
 <p>예시로 작성한 간단한 어플리케이션(이하 멋진 Node.js 앱) 도커 이미지를 빌드(build)하기 위해서 터미널에서 <code>docker build -t awesome .</code>이라고 입력합니다. 물론 <code>Dockerfile</code>과 <code>index.js</code> 파일이 한 공간에 있어야 하고 <code>Dockerfile</code>이 있는 곳에서 실행해야 합니다.</p>
 <p>이제 간단하고 (그리고 멋진) Node.js 앱의 도커 이미지가 생겼습니다. 이미지에서 컨테이너를 만들 수 있습니다. 해당 애플리케이션의 20 개 컨테이너가 필요하다고 가정하면 해당 컨테이너를 만들고 관리하는 자동화 된 방법이 필요합니다. 또한 요청을 라우팅하고 Node.js 컨테이너로 로드 밸런싱하기 위해 HTTP 서버가 있는 컨테이너가 필요합니다.</p>
 <hr />
