@@ -2472,7 +2472,8 @@ gtag('config', 'UA-47822682-14');
   <a href="../../index.html#category:tempdir" class="dt-tag">tempdir</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>임시 폴더의 위치를 조정해서 윈도우 계정이 한글일때 생기는 문제를 해결합니다.</p></p>
+<p><p>임시 폴더의 위치를 조정해서 윈도우 계정이 한글일때 생기는 문제를
+해결합니다.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2486,12 +2487,21 @@ gtag('config', 'UA-47822682-14');
 <p><img src="https://user-images.githubusercontent.com/6179259/106563781-a17c8680-656f-11eb-8578-fe866238dc8e.png" width=100%></p>
 <h3 id="한줄요약">한줄요약</h3>
 <ol type="1">
-<li><code>Temp(임시 폴더)</code>의 위치를 <code>.Renviron</code> 파일에 써서 바꾸세요.</li>
+<li><code>Temp(임시 폴더)</code>의 위치를 <code>.Renviron</code> 파일에
+써서 바꾸세요.</li>
 </ol>
-<p><a href="https://www.facebook.com/groups/krstudy/">KRSG</a>에 <a href="https://www.facebook.com/groups/krstudy/permalink/1260757344098535/">질문글</a>이 올라와서 아는 내에서 해결책을 공유하고자 합니다.</p>
+<p><a href="https://www.facebook.com/groups/krstudy/">KRSG</a>에 <a
+href="https://www.facebook.com/groups/krstudy/permalink/1260757344098535/">질문글</a>이
+올라와서 아는 내에서 해결책을 공유하고자 합니다.</p>
 <p>우선 공유해 주신 에러 화면을 보겠습니다.</p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58383615-df43b080-8013-11e9-9d8e-e0b648ea3350.jpg" width=100%></p>
-<p>우선 <code>hist()</code> 함수를 사용하는데, 에러가 발생한다고 문제를 공유해주셨습니다. 그림을 출력하기 위해서는 그림을 저장하고, 화면에 뿌리는 과정을 진행합니다. 위 과정을 프로그램(rstudio)이 진행해 주기 때문에 과정을 알 필요는 없는데요. 이 때 그림 저장을 임시 폴더에 합니다. 프로그램이 기본으로 사용하는 임시 폴더의 위치는 <code>tempdir()</code> 함수로 확인할 수 있습니다. 저의 컴퓨터는 아래 결과를 확인할 수 있었습니다.</p>
+<p>우선 <code>hist()</code> 함수를 사용하는데, 에러가 발생한다고 문제를
+공유해주셨습니다. 그림을 출력하기 위해서는 그림을 저장하고, 화면에
+뿌리는 과정을 진행합니다. 위 과정을 프로그램(rstudio)이 진행해 주기
+때문에 과정을 알 필요는 없는데요. 이 때 그림 저장을 임시 폴더에 합니다.
+프로그램이 기본으로 사용하는 임시 폴더의 위치는 <code>tempdir()</code>
+함수로 확인할 수 있습니다. 저의 컴퓨터는 아래 결과를 확인할 수
+있었습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2499,16 +2509,25 @@ gtag('config', 'UA-47822682-14');
 </div>
 </div>
 <pre><code>[1] &quot;C:\\Users\\MRCHYP~1\\AppData\\Local\\Temp\\RtmpkNMIVs&quot;</code></pre>
-<p>이 위치는 윈도우의 사용자 계정 이름(<code>mrchypark</code>)의 하위 폴더입니다. 저는 영어로 계정이름을 만들어서 문제 없이 동작하는데요. 질문자의 경우 저 경로에 <code>??????</code>로 되어 있는 것으로 봐서 윈도우의 사용자 계정이 한글로 되어 있는 것 같습니다.</p>
-<p>가장 좋은 해결책은 윈도우 계정을 한글로 바꾸는 것이기는 한데요. 😢 현실적으로 다시 만들어서 다시 환경을 설정하는 것은 쉬운일이 아닙니다.</p>
+<p>이 위치는 윈도우의 사용자 계정 이름(<code>mrchypark</code>)의 하위
+폴더입니다. 저는 영어로 계정이름을 만들어서 문제 없이 동작하는데요.
+질문자의 경우 저 경로에 <code>??????</code>로 되어 있는 것으로 봐서
+윈도우의 사용자 계정이 한글로 되어 있는 것 같습니다.</p>
+<p>가장 좋은 해결책은 윈도우 계정을 한글로 바꾸는 것이기는 한데요. 🙍
+현실적으로 다시 만들어서 다시 환경을 설정하는 것은 쉬운일이
+아닙니다.</p>
 <p>그래서 임시 폴더 위치를 변경하는 방법을 소개합니다.</p>
-<p>우선 경로에 한글이 없을만한 임시 폴더를 하나 만듭니다. 저는 <code>C:/</code>에 바로 만들려고 합니다.</p>
+<p>우선 경로에 한글이 없을만한 임시 폴더를 하나 만듭니다. 저는
+<code>C:/</code>에 바로 만들려고 합니다.</p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384152-8aa33400-8019-11e9-9d2e-e3a6dc4448ce.png" width=100%></p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384165-9bec4080-8019-11e9-9d52-13f076473f5c.png" width=100%></p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384183-cd650c00-8019-11e9-8a9a-6fa6c952b827.png" width=100%></p>
-<p><code>C:/rtemp</code> 라는 폴더를 만들었습니다. 이제 <code>usethis</code> 패키지를 설치합니다.</p>
+<p><code>C:/rtemp</code> 라는 폴더를 만들었습니다. 이제
+<code>usethis</code> 패키지를 설치합니다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)</span></code></pre></div>
-<p><code>usethis</code> 패키지에는 <code>R</code>의 환경 변수를 관리하는 <code>.Renvron</code> 파일을 수정할 수 있게 열어주는 함수를 제공합니다.</p>
+<p><code>usethis</code> 패키지에는 <code>R</code>의 환경 변수를 관리하는
+<code>.Renvron</code> 파일을 수정할 수 있게 열어주는 함수를
+제공합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://usethis.r-lib.org'>usethis</a></span><span class='op'>)</span>
@@ -2516,19 +2535,26 @@ gtag('config', 'UA-47822682-14');
 </code></pre>
 </div>
 </div>
-<p>그럼 <code>.Renvron</code> 파일을 수정할 수 있게 스크립트 창에서 열어줍니다.</p>
+<p>그럼 <code>.Renvron</code> 파일을 수정할 수 있게 스크립트 창에서
+열어줍니다.</p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384129-1bc5db00-8019-11e9-87a5-b1f11f74d2f9.png" width=100%></p>
 <p>이제 아래 3줄을 <code>.Renvron</code> 파일에 저장합니다.</p>
 <pre><code>TMPDIR=C:/rtemp
 TMP=C:/rtemp
 TEMP=C:/rtemp</code></pre>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384144-5d568600-8019-11e9-9ec0-9c1ee090ace7.png" width=100%></p>
-<p>그리고 새션 재시작(<code>ctrl+shit+F10</code>)을 한 후 <code>tempdir()</code> 함수로 경로가 잘 변경되었는지를 확인합니다.</p>
-<p>이제 <code>hist(iris$Sepal.Length)</code> 같은 명령어로 동작하는지 확인합니다.</p>
+<p>그리고 새션 재시작(<code>ctrl+shit+F10</code>)을 한 후
+<code>tempdir()</code> 함수로 경로가 잘 변경되었는지를 확인합니다.</p>
+<p>이제 <code>hist(iris$Sepal.Length)</code> 같은 명령어로 동작하는지
+확인합니다.</p>
 <p><img src="https://user-images.githubusercontent.com/6179259/58384292-0a7dce00-801b-11e9-8515-76699cedd15a.png" width=100%></p>
-<p>이 방법은 프로그램이 사용하는 임시 폴더의 경로를 바꿈으로써 문제를 해결합니다. 그렇기 때문에 사용자의 계정 폴더를 사용하는 다른 문제에 대해서 해결하는지 알 수 없습니다. 혹시 위 방법으로도 비슷한 에러가 나오는 사례를 알려주시면 감사하겠습니다.</p>
+<p>이 방법은 프로그램이 사용하는 임시 폴더의 경로를 바꿈으로써 문제를
+해결합니다. 그렇기 때문에 사용자의 계정 폴더를 사용하는 다른 문제에
+대해서 해결하는지 알 수 없습니다. 혹시 위 방법으로도 비슷한 에러가
+나오는 사례를 알려주시면 감사하겠습니다.</p>
 <p>감사합니다.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

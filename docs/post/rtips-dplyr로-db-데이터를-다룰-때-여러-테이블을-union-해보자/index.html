@@ -2475,7 +2475,12 @@ gtag('config', 'UA-47822682-14');
   <a href="../../index.html#category:union" class="dt-tag">union</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>{dplyr}의 함수들은 <code>tbl()</code>과 <code>DBI::dbConnect()</code>를 사용해서 db table을 소스로 사용할 수 있다. 여러 테이블로 분산되어 있는 것을 <code>union()</code> 하는 것은 자주, 하지만 번거로운 일이다. table 이름을 받아와서 <code>map</code> 함수와 엮으면 짧은 코드로 한번에 많은 테이블들을 <code>union()</code> 해서 사용할 수 있다.</p></p>
+<p><p>{dplyr}의 함수들은 <code>tbl()</code>과
+<code>DBI::dbConnect()</code>를 사용해서 db table을 소스로 사용할 수
+있다. 여러 테이블로 분산되어 있는 것을 <code>union()</code> 하는 것은
+자주, 하지만 번거로운 일이다. table 이름을 받아와서 <code>map</code>
+함수와 엮으면 짧은 코드로 한번에 많은 테이블들을 <code>union()</code>
+해서 사용할 수 있다.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2491,10 +2496,13 @@ gtag('config', 'UA-47822682-14');
 <h3>Contents</h3>
 <ul>
 <li><a href="#dbi-dplyr">{DBI} + {dplyr}</a></li>
-<li><a href="#db내에서-테이블들을-rbind-하려면">db내에서 테이블들을 rbind 하려면</a></li>
+<li><a href="#db내에서-테이블들을-rbind-하려면">db내에서 테이블들을
+rbind 하려면</a></li>
 <li><a href="#여러-테이블의-union">여러 테이블의 union</a></li>
-<li><a href="#여러-테이블의-union-with-reduce">여러 테이블의 union with reduce</a></li>
-<li><a href="#여러-테이블의-union-with-map-and-reduce">여러 테이블의 union with map and reduce</a></li>
+<li><a href="#여러-테이블의-union-with-reduce">여러 테이블의 union with
+reduce</a></li>
+<li><a href="#여러-테이블의-union-with-map-and-reduce">여러 테이블의
+union with map and reduce</a></li>
 <li><a href="#마치며">마치며</a></li>
 </ul>
 </nav>
@@ -2502,13 +2510,25 @@ gtag('config', 'UA-47822682-14');
 <p><img src="https://user-images.githubusercontent.com/6179259/106561491-1ea5fc80-656c-11eb-8b86-055653bef9f7.png" wigth=100%></p>
 <h3 id="세줄요약">세줄요약</h3>
 <ol type="1">
-<li>{dplyr}의 함수들은 <code>tbl()</code>과 <code>DBI::dbConnect()</code>를 사용해서 db table을 소스로 사용할 수 있다.</li>
-<li>여러 테이블로 분산되어 있는 것을 <code>union()</code> 하는 것은 자주, 하지만 번거로운 일이다.</li>
-<li>table 이름을 받아와서 <code>map</code> 함수와 엮으면 짧은 코드로 한번에 많은 테이블들을 <code>union()</code> 해서 사용할 수 있다.</li>
+<li>{dplyr}의 함수들은 <code>tbl()</code>과
+<code>DBI::dbConnect()</code>를 사용해서 db table을 소스로 사용할 수
+있다.</li>
+<li>여러 테이블로 분산되어 있는 것을 <code>union()</code> 하는 것은
+자주, 하지만 번거로운 일이다.</li>
+<li>table 이름을 받아와서 <code>map</code> 함수와 엮으면 짧은 코드로
+한번에 많은 테이블들을 <code>union()</code> 해서 사용할 수 있다.</li>
 </ol>
-<p>데이터를 다루는데 있어 기업 환경에서는 데이터베이스에 접근하는 것을 피할 수 없을 것입니다. R로 접근하여 다루는 것에 대해 자료가 많지 않아서, 제가 찾은 요령을 공유할 겸 글을 작성해보겠습니다. 이미 {tidyverse}에 길들여져 있다면, 좋아하실 만한 내용입니다.</p>
+<p>데이터를 다루는데 있어 기업 환경에서는 데이터베이스에 접근하는 것을
+피할 수 없을 것입니다. R로 접근하여 다루는 것에 대해 자료가 많지 않아서,
+제가 찾은 요령을 공유할 겸 글을 작성해보겠습니다. 이미 {tidyverse}에
+길들여져 있다면, 좋아하실 만한 내용입니다.</p>
 <h3 id="dbi-패키지">{DBI} 패키지</h3>
-<p>{DBI} 패키지는 <code>database interface</code> 라는 뜻으로, perl의 DBI나 python의 DB-API 같은 db를 연결하기 위한 기반 패키지입니다. R의 {DBI} 패키지는 <a href="https://www.r-dbi.org/">r-DBI</a> 팀이 관리하고 있습니다. {DBI} 뿐만 아니라 여타 DB들의 드라이버 패키지들을 포함해 {odbc} 등도 제작, 관리하고 있죠. 제가 postgres 를 많이 쓰니까, 우선 R로 postgres db와 연결하는 방법을 소개해 보겠습니다.</p>
+<p>{DBI} 패키지는 <code>database interface</code> 라는 뜻으로, perl의
+DBI나 python의 DB-API 같은 db를 연결하기 위한 기반 패키지입니다. R의
+{DBI} 패키지는 <a href="https://www.r-dbi.org/">r-DBI</a> 팀이 관리하고
+있습니다. {DBI} 뿐만 아니라 여타 DB들의 드라이버 패키지들을 포함해
+{odbc} 등도 제작, 관리하고 있죠. 제가 postgres 를 많이 쓰니까, 우선 R로
+postgres db와 연결하는 방법을 소개해 보겠습니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2523,40 +2543,78 @@ gtag('config', 'UA-47822682-14');
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>conn</span></code></pre></div>
 <pre><code>&lt;PqConnection&gt; ec2-54-83-201-96.compute-1.amazonaws.com:5439</code></pre>
-<p>이제 db에 연결하는 작업이 끝났습니다. R로, 정확히는 {dplyr} 패키지로 db의 테이블들을 소스로 사용하기 위해서는 한가지 작업을 추가해야 합니다.</p>
+<p>이제 db에 연결하는 작업이 끝났습니다. R로, 정확히는 {dplyr} 패키지로
+db의 테이블들을 소스로 사용하기 위해서는 한가지 작업을 추가해야
+합니다.</p>
 <h2 id="dbi-dplyr">{DBI} + {dplyr}</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tar <span class="ot">&lt;-</span> <span class="fu">tbl</span>(conn, <span class="st">&quot;table 이름&quot;</span>)</span></code></pre></div>
-<p>{dplyr} 패키지의 <code>tbl()</code> 함수는 <code>conn</code>의 db 연결 정보를 바탕으로 db 내의 테이블을 R 객체처럼 다룰 수 있게 해줍니다. 예를 들어 위의 <code>tar</code>객체는 이제 R의 <code>data.frame</code>이나 <code>tibble</code>처럼 {dplyr} 문법으로 이리저리 처리 할 수 있죠.</p>
+<p>{dplyr} 패키지의 <code>tbl()</code> 함수는 <code>conn</code>의 db
+연결 정보를 바탕으로 db 내의 테이블을 R 객체처럼 다룰 수 있게 해줍니다.
+예를 들어 위의 <code>tar</code>객체는 이제 R의
+<code>data.frame</code>이나 <code>tibble</code>처럼 {dplyr} 문법으로
+이리저리 처리 할 수 있죠.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tar <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(col_name1)</span></code></pre></div>
-<p>신경 써야 할 차이라면, tar는 <code>collect()</code> 함수를 사용하지 않는 이상 DB에 있는 집계 결과 중 첫 몆줄만 보여주게 설계되어 있습니다. 연산을 local R에서 하는 것이 아니라 DB에서 진행하죠. 그러다 보니 지금 명령이 db에서 실행되는 것인지, R로 가져와서 실행하는 것인지 신경쓸 필요가 있습니다. 대부분의 명령이 호환되지만 db에서 지원하지 않는 함수는 동작하지 않기 때문에 잘 살펴봐야 합니다. 반대로 mutate나 summarise에서 R에는 없지만 db에서 지원하는 함수를 사용할 수도 있습니다. 이 문제는 다음 포스트에서 다루기로 하겠습니다.</p>
-<h2 id="db내에서-테이블들을-rbind-하려면">db내에서 테이블들을 rbind 하려면</h2>
-<p><code>rbind()</code>는 R에서 <code>data.frame</code>을 행방향으로 합치는 기능을 수행합니다. {dplyr}에서는 <code>bind_rows()</code>함수로 제공합니다. db src인 상황에서는 둘다 동작하지 않습니다. 아래와 같은 에러를 뿜죠.</p>
+<p>신경 써야 할 차이라면, tar는 <code>collect()</code> 함수를 사용하지
+않는 이상 DB에 있는 집계 결과 중 첫 몆줄만 보여주게 설계되어 있습니다.
+연산을 local R에서 하는 것이 아니라 DB에서 진행하죠. 그러다 보니 지금
+명령이 db에서 실행되는 것인지, R로 가져와서 실행하는 것인지 신경쓸
+필요가 있습니다. 대부분의 명령이 호환되지만 db에서 지원하지 않는 함수는
+동작하지 않기 때문에 잘 살펴봐야 합니다. 반대로 mutate나 summarise에서
+R에는 없지만 db에서 지원하는 함수를 사용할 수도 있습니다. 이 문제는 다음
+포스트에서 다루기로 하겠습니다.</p>
+<h2 id="db내에서-테이블들을-rbind-하려면">db내에서 테이블들을 rbind
+하려면</h2>
+<p><code>rbind()</code>는 R에서 <code>data.frame</code>을 행방향으로
+합치는 기능을 수행합니다. {dplyr}에서는 <code>bind_rows()</code>함수로
+제공합니다. db src인 상황에서는 둘다 동작하지 않습니다. 아래와 같은
+에러를 뿜죠.</p>
 <pre><code>Error in bind_rows_(x, .id) : 
   Argument 1 must be a data frame or a named atomic vector, not a tbl_dbi/tbl_sql/tbl_lazy/tbl</code></pre>
-<p>사실 <code>bind_rows()</code>함수는 데이터를 판단하지 않고, 겹치는 값에 상관없이 두 테이블을 위-아래 방향으로 합쳐줍니다. 반면에 <code>union()</code>함수는 겹치는 행이 있을 때 유일한 값만 두고 합칩니다.</p>
+<p>사실 <code>bind_rows()</code>함수는 데이터를 판단하지 않고, 겹치는
+값에 상관없이 두 테이블을 위-아래 방향으로 합쳐줍니다. 반면에
+<code>union()</code>함수는 겹치는 행이 있을 때 유일한 값만 두고
+합칩니다.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span></code></pre></div>
-<p>이렇게가 같은 동작이라고 이해하면 좋을까요? {dplyr}에서 <code>union()</code> 함수를 지원하고 있습니다만, db에서도 같은 동작을 지원합니다. 그래서 db src 일때는 <code>union()</code> 함수를 사용해하죠.</p>
+<p>이렇게가 같은 동작이라고 이해하면 좋을까요? {dplyr}에서
+<code>union()</code> 함수를 지원하고 있습니다만, db에서도 같은 동작을
+지원합니다. 그래서 db src 일때는 <code>union()</code> 함수를
+사용해하죠.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tar1 <span class="ot">&lt;-</span> <span class="fu">tbl</span>(conn, <span class="st">&quot;table1&quot;</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tar2 <span class="ot">&lt;-</span> <span class="fu">tbl</span>(conn, <span class="st">&quot;table2&quot;</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tarAll <span class="ot">&lt;-</span> <span class="fu">union</span>(tar1, tar2)</span></code></pre></div>
-<p>테이블 구조가 다르면 에러가 나는 걸로 알고 있습니다만, 확인해봐야 할 것 같습니다. 그래도 구조가 같다고 알고 있는 여러 테이블을 합치려면, <code>union()</code>함수가 꼭 필요합니다. 이때 그럼 테이블 갯수가 많아지면 어떻게 해야 할까요?</p>
+<p>테이블 구조가 다르면 에러가 나는 걸로 알고 있습니다만, 확인해봐야 할
+것 같습니다. 그래도 구조가 같다고 알고 있는 여러 테이블을 합치려면,
+<code>union()</code>함수가 꼭 필요합니다. 이때 그럼 테이블 갯수가
+많아지면 어떻게 해야 할까요?</p>
 <h2 id="여러-테이블의-union">여러 테이블의 union</h2>
-<p>{DBI} 패키지에서는 <code>dbListTables()</code>라는 함수를 제공하기 때문에 테이블 이름을 가져올 수 있습니다. schema에 들어가 있는 테이블 리스트는 제가 방법을 찾지 못해 쿼리로 해결하였습니다.</p>
+<p>{DBI} 패키지에서는 <code>dbListTables()</code>라는 함수를 제공하기
+때문에 테이블 이름을 가져올 수 있습니다. schema에 들어가 있는 테이블
+리스트는 제가 방법을 찾지 못해 쿼리로 해결하였습니다.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;SELECT table_name FROM information_schema.tables&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(table_name)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>tables</span></code></pre></div>
-<p>위 쿼리에 <code>WHERE table_schema = "schema_name"</code>를 추가하여 특정 스키마 내의 테이블만 확인할 수 도 있습니다. 아무튼 테이블 이름을 전부 가져왔다면, 필요한 테이블만 골라 봅시다. 같은 종류의 테이블을 합쳐야 하니 보통은 네이밍 규칙에 따라 같은 이름으로 작성된 부분이 있을 것 입니다. 예를 들어 커머스라면 판매 테이블이 거대한 한가지 일 수도 있지만, 카테고리나 여러 의미 단위로 잘라져 여러 테이블로 되어 있기도 합니다. 아마 <code>category_name1_sales_recodes</code> 같은 식이겠죠? 그럼 <code>_sales_recodes</code>로 끝나는 이름의 테이블들을 전부 가져오도록 합시다.</p>
+<p>위 쿼리에 <code>WHERE table_schema = "schema_name"</code>를 추가하여
+특정 스키마 내의 테이블만 확인할 수 도 있습니다. 아무튼 테이블 이름을
+전부 가져왔다면, 필요한 테이블만 골라 봅시다. 같은 종류의 테이블을
+합쳐야 하니 보통은 네이밍 규칙에 따라 같은 이름으로 작성된 부분이 있을
+것 입니다. 예를 들어 커머스라면 판매 테이블이 거대한 한가지 일 수도
+있지만, 카테고리나 여러 의미 단위로 잘라져 여러 테이블로 되어 있기도
+합니다. 아마 <code>category_name1_sales_recodes</code> 같은 식이겠죠?
+그럼 <code>_sales_recodes</code>로 끝나는 이름의 테이블들을 전부
+가져오도록 합시다.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tar_tables <span class="ot">&lt;-</span> tables <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;_sales_recodes$&quot;</span>, table_name))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tar_tables</span></code></pre></div>
-<p>이제 이 테이블들을 연결해 보겠습니다. 간단히 생각해보면 for 문을 돌리면 되겠네요? 여기서 전략이 여러 가지로 갈리겠습니다만, 저는 리스트에 넣는 방식으로 진행해 보겠습니다.</p>
+<p>이제 이 테이블들을 연결해 보겠습니다. 간단히 생각해보면 for 문을
+돌리면 되겠네요? 여기서 전략이 여러 가지로 갈리겠습니다만, 저는 리스트에
+넣는 방식으로 진행해 보겠습니다.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tar_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>num_of_tables <span class="ot">&lt;-</span> <span class="fu">nrow</span>(tar_tables)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_of_tables) {</span>
@@ -2566,7 +2624,10 @@ gtag('config', 'UA-47822682-14');
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(tar)</span></code></pre></div>
 <pre><code>Error in base::union(x, y, ...) : 
   argument &quot;y&quot; is missing, with no default</code></pre>
-<p>아 이런! <code>union()</code> 함수가 리스트 내의 db src 들을 인지하지 못하는군요. 저는 처음에 그래서 최대한 필터링, 전처리 하고 <code>collect()</code> 함수로 불러온 결과를 <code>tar_list</code>에 저장한 후 <code>bind_row()</code>하는 선택을 했었습니다.</p>
+<p>아 이런! <code>union()</code> 함수가 리스트 내의 db src 들을 인지하지
+못하는군요. 저는 처음에 그래서 최대한 필터링, 전처리 하고
+<code>collect()</code> 함수로 불러온 결과를 <code>tar_list</code>에
+저장한 후 <code>bind_row()</code>하는 선택을 했었습니다.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tar_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>num_of_tables <span class="ot">&lt;-</span> <span class="fu">nrow</span>(tar_tables)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_of_tables) {</span>
@@ -2578,9 +2639,18 @@ gtag('config', 'UA-47822682-14');
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect</span>()</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(tar)</span></code></pre></div>
-<p>이러면 동작은 잘 하는데, <code>collect()</code> 할 때 연산 시간이 너무 많이 걸린다는 문제가 있습니다. 이미 거대 데이터를 다루는 건 db에게 넘기기로 한 이상, 최대한 db에서 연산하도록 하고 한번만 가져오는 것이 효율적이죠. 그럼 아예 전부 <code>union()</code>하고 그 db src 객체를 다뤄서 가져오면 좋겠군요?!</p>
-<h2 id="여러-테이블의-union-with-reduce">여러 테이블의 union with reduce</h2>
-<p><code>reduce()</code> 함수는 <code>list</code> 자료형의 데이터를 다음에 지정하는 함수로 합쳐주는 기능을 합니다. {<a href="https://purrr.tidyverse.org/">purrr</a>}라는 패키지에 속해있죠. <code>list</code> 자료형을 다루는데 매우 효과적이며 익명 함수 같은 방식으로 작성하기 좋게 되어 있습니다.</p>
+<p>이러면 동작은 잘 하는데, <code>collect()</code> 할 때 연산 시간이
+너무 많이 걸린다는 문제가 있습니다. 이미 거대 데이터를 다루는 건 db에게
+넘기기로 한 이상, 최대한 db에서 연산하도록 하고 한번만 가져오는 것이
+효율적이죠. 그럼 아예 전부 <code>union()</code>하고 그 db src 객체를
+다뤄서 가져오면 좋겠군요?!</p>
+<h2 id="여러-테이블의-union-with-reduce">여러 테이블의 union with
+reduce</h2>
+<p><code>reduce()</code> 함수는 <code>list</code> 자료형의 데이터를
+다음에 지정하는 함수로 합쳐주는 기능을 합니다. {<a
+href="https://purrr.tidyverse.org/">purrr</a>}라는 패키지에 속해있죠.
+<code>list</code> 자료형을 다루는데 매우 효과적이며 익명 함수 같은
+방식으로 작성하기 좋게 되어 있습니다.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tar_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>num_of_tables <span class="ot">&lt;-</span> <span class="fu">nrow</span>(tar_tables)</span>
@@ -2593,10 +2663,20 @@ gtag('config', 'UA-47822682-14');
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(col_1) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code></pre></div>
-<p>저도 찾아서 작성한 코드라 왜 익명 함수로 작성해야 동작하는지 아직 이해하지 못했습니다만, 어쨌든 합치고 한번만 <code>collect()</code> 할 수 있게 되었습니다! 물론 저렇게 다 합치고 연산을 했을 때 기대한 결과물이 나오는 것인지는 세심히 확인해야 할 것 같습니다.</p>
-<p>그런데 {<a href="https://purrr.tidyverse.org/">purrr</a>} package는 <code>map()</code>이라는 함수도 제공합니다.</p>
-<h2 id="여러-테이블의-union-with-map-and-reduce">여러 테이블의 union with map and reduce</h2>
-<p><code>map()</code> 함수는 base R 에서 apply가 담당하는 벡터 연산의 현대적인 부분을 담당합니다. {purrr}가 {tidyverse}에 속해 있는 걸로 충분한 설명이 되는 것 같네요. 제가 <code>map()</code> 함수 이야기를 꺼내는 이유는 <code>for</code>를 없애고 싶기 때문입니다. 리스트 자료형에 저장하고, <code>i</code> 신경 쓰고 하는 일련의 것들을 버리고 싶은거죠.</p>
+<p>저도 찾아서 작성한 코드라 왜 익명 함수로 작성해야 동작하는지 아직
+이해하지 못했습니다만, 어쨌든 합치고 한번만 <code>collect()</code> 할 수
+있게 되었습니다! 물론 저렇게 다 합치고 연산을 했을 때 기대한 결과물이
+나오는 것인지는 세심히 확인해야 할 것 같습니다.</p>
+<p>그런데 {<a href="https://purrr.tidyverse.org/">purrr</a>} package는
+<code>map()</code>이라는 함수도 제공합니다.</p>
+<h2 id="여러-테이블의-union-with-map-and-reduce">여러 테이블의 union
+with map and reduce</h2>
+<p><code>map()</code> 함수는 base R 에서 apply가 담당하는 벡터 연산의
+현대적인 부분을 담당합니다. {purrr}가 {tidyverse}에 속해 있는 걸로
+충분한 설명이 되는 것 같네요. 제가 <code>map()</code> 함수 이야기를
+꺼내는 이유는 <code>for</code>를 없애고 싶기 때문입니다. 리스트 자료형에
+저장하고, <code>i</code> 신경 쓰고 하는 일련의 것들을 버리고
+싶은거죠.</p>
 <p>우선 코드를 작성하고 살펴볼까요?</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tar_tables <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>table_name <span class="sc">%&gt;%</span> </span>
@@ -2606,12 +2686,30 @@ gtag('config', 'UA-47822682-14');
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(col_1) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code></pre></div>
-<p>음? 아까 <code>for</code>로 짜던 부분이 한줄(???!??!!?)이 되었군요? (물론 <code>map()</code>이 받을 수 있게 character vector로 변환한 줄까지 하면 2줄입니다.) 이렇게 하면 테이블 이름을 <code>map()</code>함수가 받아서 <code>tbl()</code>로 연결 객체를 만들고, <code>reduce()</code> + <code>union()</code>으로 하나의 테이블로 합쳤습니다. 이제 필요한 테이블 전체를 하나의 테이블로 합친 후 필요한 작업을 하고, <code>collect()</code>하면 끝입니다.</p>
+<p>음? 아까 <code>for</code>로 짜던 부분이 한줄(???!??!!?)이 되었군요?
+(물론 <code>map()</code>이 받을 수 있게 character vector로 변환한 줄까지
+하면 2줄입니다.) 이렇게 하면 테이블 이름을 <code>map()</code>함수가
+받아서 <code>tbl()</code>로 연결 객체를 만들고, <code>reduce()</code> +
+<code>union()</code>으로 하나의 테이블로 합쳤습니다. 이제 필요한 테이블
+전체를 하나의 테이블로 합친 후 필요한 작업을 하고,
+<code>collect()</code>하면 끝입니다.</p>
 <h2 id="마치며">마치며</h2>
-<p>R에서 <code>for</code> 가 느리기 때문에 사용을 자제하며, dplyr의 column-wise mutate나 apply 계열 함수들을 추천해왔는데요. 이제 <code>purrr::map()</code>로 더 다양한 조건에서 <code>for</code>를 배제하고 코드를 작성할 수 있게 되었습니다. 물론 처음 시작할 때부터 이렇게 작성하는 것은 매우 위험합니다. 자신이 보고 읽어서 이해할 수 있는 코드가 좋은 코드인 것이죠. 극단적으로 저는 namespace 문제와 여러 함수가 패키지의 겹침 문제가 있어서 가능하면 namespace를 지정하는 방식으로 코드를 짭니다. 물론 제가 skimming 할때는 아니지만, 스크립트를 저장할 때 말이죠.</p>
-<p>마지막 코드의 장점은 같은 구조의 테이블이 얼마나 늘어나던지 상황하지 않고 전부 합쳐준다는 점입니다. 구조의 변경이 없다는 가정하에 매우 강건한 코드라고 할 수 있죠.</p>
-<p>그럼 모두 {purrr}의 세계에 한번 깊게 빠져보시기 바랍니다. 감사합니다.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>R에서 <code>for</code> 가 느리기 때문에 사용을 자제하며, dplyr의
+column-wise mutate나 apply 계열 함수들을 추천해왔는데요. 이제
+<code>purrr::map()</code>로 더 다양한 조건에서 <code>for</code>를
+배제하고 코드를 작성할 수 있게 되었습니다. 물론 처음 시작할 때부터
+이렇게 작성하는 것은 매우 위험합니다. 자신이 보고 읽어서 이해할 수 있는
+코드가 좋은 코드인 것이죠. 극단적으로 저는 namespace 문제와 여러 함수가
+패키지의 겹침 문제가 있어서 가능하면 namespace를 지정하는 방식으로
+코드를 짭니다. 물론 제가 skimming 할때는 아니지만, 스크립트를 저장할 때
+말이죠.</p>
+<p>마지막 코드의 장점은 같은 구조의 테이블이 얼마나 늘어나던지 상황하지
+않고 전부 합쳐준다는 점입니다. 구조의 변경이 없다는 가정하에 매우 강건한
+코드라고 할 수 있죠.</p>
+<p>그럼 모두 {purrr}의 세계에 한번 깊게 빠져보시기 바랍니다.
+감사합니다.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
