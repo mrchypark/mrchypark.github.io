@@ -2550,16 +2550,17 @@ Swarm을 알고 있다고 가정했습니다.</p>
 <p>이제 <code>Dockerfile</code>이라는 이름의 파일을 만들어 아래 코드를
 저장합니다. 도커라이즈(Dockerize)<a href="#fn1" class="footnote-ref"
 id="fnref1" role="doc-noteref"><sup>1</sup></a>라고 합니다.</p>
-<pre class="dockerfile"><code>FROM node
-RUN mkdir -p /usr/src/app
-COPY index.js /usr/src/app
-EXPOSE 8080
-CMD [ &quot;node&quot;, &quot;/usr/src/app/index&quot; ]</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">mkdir</span> <span class="at">-p</span> /usr/src/app</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> index.js /usr/src/app</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 8080</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [ <span class="st">&quot;node&quot;</span>, <span class="st">&quot;/usr/src/app/index&quot;</span> ]</span></code></pre></div>
 <p>예시로 작성한 간단한 어플리케이션(이하 멋진 Node.js 앱) 도커 이미지를
-빌드(build)하기 위해서 터미널에서 <code>docker build -t awesome
-.</code>이라고 입력합니다. 물론 <code>Dockerfile</code>과
-<code>index.js</code> 파일이 한 공간에 있어야 하고
-<code>Dockerfile</code>이 있는 곳에서 실행해야 합니다.</p>
+빌드(build)하기 위해서 터미널에서
+<code>docker build -t awesome .</code>이라고 입력합니다. 물론
+<code>Dockerfile</code>과 <code>index.js</code> 파일이 한 공간에 있어야
+하고 <code>Dockerfile</code>이 있는 곳에서 실행해야 합니다.</p>
 <p>이제 간단하고 (그리고 멋진) Node.js 앱의 도커 이미지가 생겼습니다.
 이미지에서 컨테이너를 만들 수 있습니다. 해당 애플리케이션의 20 개
 컨테이너가 필요하다고 가정하면 해당 컨테이너를 만들고 관리하는 자동화 된
@@ -2668,10 +2669,10 @@ Swarm에 더 많은 컴퓨터를 쉽게 추가 할 수 있음) 이렇게 하기 
 <code>스택(stack)</code>이라고 부릅니다. 스택을 생성하기 위해서는
 <code>docker stack</code> 명령어를 사용해야 하지만 스택을
 <code>docker-compose.yml</code> 파일로 수행하기를 원합니다. 그래야
-우리가 설계한대로 진행해줄테니까요. <code>docker stack deploy
---compose-file=docker-compose.yml prod</code> 라고 실행하면 될 것
-같습니다. <code>deploy</code> 명령으로 새로운 스택을 배포하고,
-<code>docker-compose.yml</code>을 사용해 수행하기 위해서
+우리가 설계한대로 진행해줄테니까요.
+<code>docker stack deploy --compose-file=docker-compose.yml prod</code>
+라고 실행하면 될 것 같습니다. <code>deploy</code> 명령으로 새로운 스택을
+배포하고, <code>docker-compose.yml</code>을 사용해 수행하기 위해서
 <code>--compose-file</code> 플래그(flag)를 사용했습니다. 물론 이미 있는
 스택을 업데이트할 때에도 명령을 사용할 수 있습니다. 마지막으로 우리는
 스택을 <code>prod</code>라고 부르기로 했습니다. (이걸 작성할 때 겨우
@@ -2703,11 +2704,12 @@ ID를 받겠죠.</p>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">writeHead</span>(<span class="dv">200</span><span class="op">,</span> {<span class="st">&#39;Content-Type&#39;</span><span class="op">:</span> <span class="st">&#39;text/html&#39;</span>})<span class="op">;</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">end</span>(<span class="vs">`&lt;h1&gt;I&#39;m </span><span class="sc">${</span>os<span class="op">.</span><span class="fu">hostname</span>()<span class="sc">}</span><span class="vs">!!!&lt;/h1&gt;`</span>)<span class="op">;</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">listen</span>(<span class="dv">8080</span>)<span class="op">;</span></span></code></pre></div>
-<p>이제 다시 빌드를 해야됩니다. 이번에 빌드할 때는 <code>docker build -t
-awesome:v2 .</code> 라고 이미지에 태그를 추가해보겠습니다.
-<code>awesome</code> 이미지 이지만 태그가 <code>v2</code>인 이미지를
-만드는 것이지요. 서비스의 중단없이 <code>prod</code> 스택에
-<code>awesome</code> 서비스를 <code>v2</code>로 교체하기 위해서는
+<p>이제 다시 빌드를 해야됩니다. 이번에 빌드할 때는
+<code>docker build -t awesome:v2 .</code> 라고 이미지에 태그를
+추가해보겠습니다. <code>awesome</code> 이미지 이지만 태그가
+<code>v2</code>인 이미지를 만드는 것이지요. 서비스의 중단없이
+<code>prod</code> 스택에 <code>awesome</code> 서비스를 <code>v2</code>로
+교체하기 위해서는
 <code>docker service update --image awesome:v2 prod_awesome</code>
 명령을 사용합니다. 그러면 <code>docker-compose.yml</code>에 명시한
 업데이터 설정과 같이 각 5개의 컨테이너가 순차적으로 업데이트를 할

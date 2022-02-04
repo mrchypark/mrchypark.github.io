@@ -1762,13 +1762,14 @@ transpose(.l, .names = NULL)</code></pre>
 3 &lt;dbl [1]&gt; &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt;</code></pre>
 </div>
 <p>조금 복잡한데요. <code>~</code>은 익명 함수를 작성하는
-줄임표현입니다. <code>~ sum(.x)</code>는 <code>funcion(x)
-sum(x)</code>와 같은 표현이죠. <code>!</code>는 논리형을 반대로 바꿔라는
-뜻이구요. <code>all()</code> 함수는 <code>is.null()</code> 함수는
-데이터가 <code>null</code>인지를 확인하는 함수 입니다.
-<code>select_if()</code> 함수 내에서 익명 함수 문법을 사용하게 되면,
-<code>.x</code>는 컬럼을 뜻하게 됩니다. 지금은 컬럼이 리스트기 때문에
-<code>unlist()</code>로 <code>vector</code>로 바꾸었습니다.</p>
+줄임표현입니다. <code>~ sum(.x)</code>는
+<code>funcion(x) sum(x)</code>와 같은 표현이죠. <code>!</code>는
+논리형을 반대로 바꿔라는 뜻이구요. <code>all()</code> 함수는
+<code>is.null()</code> 함수는 데이터가 <code>null</code>인지를 확인하는
+함수 입니다. <code>select_if()</code> 함수 내에서 익명 함수 문법을
+사용하게 되면, <code>.x</code>는 컬럼을 뜻하게 됩니다. 지금은 컬럼이
+리스트기 때문에 <code>unlist()</code>로 <code>vector</code>로
+바꾸었습니다.</p>
 <p>그럼 설명해보면</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select_if</span>( <span class="sc">~</span> <span class="sc">!</span><span class="fu">all</span>(<span class="fu">is.null</span>(<span class="fu">unlist</span>(.x))))</span></code></pre></div>
@@ -1875,8 +1876,8 @@ $e
 </div>
 <p>4개 컬럼에 <code>FALSE</code>라는 결과를 <code>list</code>로
 출력해줬네요. 이건 슬프게도 컬럼이 <code>NULL</code>이냐 물어본 것이라
-당연히 전부 <code>FALSE</code>가 나와야 합니다. 그럼 다시 <code>map() in
-map()</code>으로 작성해서 확인해 보겠습니다.</p>
+당연히 전부 <code>FALSE</code>가 나와야 합니다. 그럼 다시
+<code>map() in map()</code>으로 작성해서 확인해 보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
