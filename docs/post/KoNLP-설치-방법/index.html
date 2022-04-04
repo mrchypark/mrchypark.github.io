@@ -2376,7 +2376,7 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -2418,7 +2418,7 @@ gtag('config', 'UA-47822682-14');
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"KoNLP 설치 방법","description":"install.packages(\"KoNLP\", \n  repos = c(\"https://forkonlp.r-universe.dev\",\"https://cloud.r-project.org\"),\n  INSTALL_opts = c(\"--no-multiarch\")\n)","authors":[{"author":"Chanyub Park","authorURL":"https://mrchypark.github.io/about","affiliation":"Forkonlp","affiliationURL":"https://forkonlp.github.io/","orcidID":"0000-0001-6474-2570"}],"publishedDate":"2021-06-01T00:00:00.000+00:00","citationText":"Park, 2021"}
+{"title":"KoNLP 설치 방법","description":"install.packages(\"KoNLP\", \n  repos = c(\"https://forkonlp.r-universe.dev\",\"https://cloud.r-project.org\"),\n  INSTALL_opts = c(\"--no-multiarch\")\n)","authors":[{"author":"Chanyub Park","authorURL":"https://mrchypark.github.io/about","affiliation":"Forkonlp","affiliationURL":"https://forkonlp.github.io/","orcidID":"0000-0001-6474-2570"}],"publishedDate":"2021-06-01T00:00:00.000+09:00","citationText":"Park, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2472,7 +2472,12 @@ gtag('config', 'UA-47822682-14');
   <a href="../../index.html#category:R-universe" class="dt-tag">R-universe</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>install.packages(“KoNLP”, repos = c(“<a href="https://forkonlp.r-universe.dev" class="uri">https://forkonlp.r-universe.dev</a>”,“<a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>”), INSTALL_opts = c(“–no-multiarch”) )</p></p>
+<p><p>install.packages(“KoNLP”, repos = c(“<a
+href="https://forkonlp.r-universe.dev"
+class="uri">https://forkonlp.r-universe.dev</a>”,“<a
+href="https://cloud.r-project.org"
+class="uri">https://cloud.r-project.org</a>”), INSTALL_opts =
+c(“–no-multiarch”) )</p></p>
 </div>
 
 <div class="d-byline">
@@ -2495,32 +2500,50 @@ gtag('config', 'UA-47822682-14');
 </nav>
 </div>
 <p><img src="https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg" width=100%></p>
-<p><code>KoNLP</code>는 한국어 형태소 분석 R 패키지입니다. KoNLP 패키지는 java로 제작된 한나눔 형태소 분석기를 사용합니다. java를 사용하기 때문에 크게 2가지 단계로 패키지 설치를 진행합니다. jdk란 자바 개발 킷의 줄임 표현으로 자바 언어를 사용하기 위해 설치하는 프로그램입니다.</p>
+<p><code>KoNLP</code>는 한국어 형태소 분석 R 패키지입니다. KoNLP
+패키지는 java로 제작된 한나눔 형태소 분석기를 사용합니다. java를
+사용하기 때문에 크게 2가지 단계로 패키지 설치를 진행합니다. jdk란 자바
+개발 킷의 줄임 표현으로 자바 언어를 사용하기 위해 설치하는
+프로그램입니다.</p>
 <ol type="1">
 <li>jdk 설치</li>
 <li>KoNLP 패키지 설치</li>
 </ol>
-<p>jdk의 설치는 원래 어려웠습니다. KoNLP 패키지가 2020년 2월 1일부로 cran에서 내려가서 설치가 어려워졌습니다. 두 단계 모두 접근하기 좋은 방법을 소개합니다.</p>
+<p>jdk의 설치는 원래 어려웠습니다. KoNLP 패키지가 2020년 2월 1일부로
+cran에서 내려가서 설치가 어려워졌습니다. 두 단계 모두 접근하기 좋은
+방법을 소개합니다.</p>
 <h2 id="jdk-설치">1. jdk 설치</h2>
 <p>jdk 설치는 확인과 설치 단계로 진행합니다.</p>
 <h3 id="jdk-설치-확인">1.1 jdk 설치 확인</h3>
-<p>기존에 잘 동작하는 jdk가 설치되어 있는지 확인합니다. 확인은 <a href="https://github.com/s-u/rJava">rJava</a> 패키지의 초기화 함수를 사용합니다. <a href="https://github.com/s-u/rJava">rJava</a> 패키지는 R에서 자바 프로그램을 사용하기 위한 패키지입니다.</p>
+<p>기존에 잘 동작하는 jdk가 설치되어 있는지 확인합니다. 확인은 <a
+href="https://github.com/s-u/rJava">rJava</a> 패키지의 초기화 함수를
+사용합니다. <a href="https://github.com/s-u/rJava">rJava</a> 패키지는
+R에서 자바 프로그램을 사용하기 위한 패키지입니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rJava&quot;</span>)</span></code></pre></div>
 <p>초기화 함수로 설치되어 있는지 확인합니다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rJava<span class="sc">::</span><span class="fu">.jinit</span>()</span></code></pre></div>
 <pre><code>[1] 0</code></pre>
-<p><code>0</code> 이라는 출력이 없을 수도 있습니다. 위 함수를 실행하고 에러가 없다면, jdk가 잘 설치되어 있는 것입니다. 그러니 jdk 설치 단계를 건너서 2. KoNLP 설치 단계로 가세요.</p>
+<p><code>0</code> 이라는 출력이 없을 수도 있습니다. 위 함수를 실행하고
+에러가 없다면, jdk가 잘 설치되어 있는 것입니다. 그러니 jdk 설치 단계를
+건너서 2. KoNLP 설치 단계로 가세요.</p>
 <h3 id="jdk-설치하기">1.2 jdk 설치하기</h3>
-<p>jdk를 설치하기 위해 <a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지를 사용합니다. jdk는 다운로드하고, 설치하고, 실행 경로를 등록하는 과정으로 설치합니다. <a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지는 jdk를 설치하는 복잡한 과정을 대신해줍니다.</p>
+<p>jdk를 설치하기 위해 <a
+href="https://github.com/mrchypark/multilinguer">multilinguer</a>
+패키지를 사용합니다. jdk는 다운로드하고, 설치하고, 실행 경로를 등록하는
+과정으로 설치합니다. <a
+href="https://github.com/mrchypark/multilinguer">multilinguer</a>
+패키지는 jdk를 설치하는 복잡한 과정을 대신해줍니다.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;multilinguer&quot;</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>multilinguer<span class="sc">::</span><span class="fu">install_jdk</span>()</span></code></pre></div>
 <blockquote>
 <p>multilinguer::install_jdk() 을 실행하면 R 새션을 재시작합니다.</p>
 </blockquote>
 <blockquote>
-<p>mac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고 합니다.</p>
+<p>mac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고
+합니다.</p>
 </blockquote>
-<p>jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로 넘어갑니다.</p>
+<p>jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로
+넘어갑니다.</p>
 <h2 id="konlp-설치">2. KoNLP 설치</h2>
 <p>아래 코드로 <code>KoNLP</code> 패키지를 설치하세요.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;KoNLP&quot;</span>, </span>
@@ -2537,10 +2560,20 @@ gtag('config', 'UA-47822682-14');
 $`?`
 [1] &quot;?/S&quot;</code></pre>
 <h3 id="설명">설명</h3>
-<p>현재 <code>KoNLP</code> 패키지는 <a href="https://cran.r-project.org/">CRAN</a>에서 내려가 있는 상태입니다. 그래서 다른 패키지 저장소인 <code>r-universe.dev</code>에 빌드에서 업로드를 해둔 상태입니다. <code>r-universe.dev</code>는 사설 패키지 저장소라고 보시면 될 것 같습니다.</p>
-<p>그래서 <code>install.packages()</code> 명령에 추가 저장소 주소를 더하는 줄을 추가하였습니다. 다른 패키지들은 기본 <a href="https://cran.r-project.org/">CRAN</a>을 사용하므로 함께 작성하였습니다. 패키지 설치시 32비트와 64비트를 모두 설치하는 것이 기본 동작인 듯합니다. 현재 java 64bit 만 설치되어 있으므로 기본 64bit 패키지만 설치하라는 옵션을 추가했습니다.</p>
+<p>현재 <code>KoNLP</code> 패키지는 <a
+href="https://cran.r-project.org/">CRAN</a>에서 내려가 있는 상태입니다.
+그래서 다른 패키지 저장소인 <code>r-universe.dev</code>에 빌드에서
+업로드를 해둔 상태입니다. <code>r-universe.dev</code>는 사설 패키지
+저장소라고 보시면 될 것 같습니다.</p>
+<p>그래서 <code>install.packages()</code> 명령에 추가 저장소 주소를
+더하는 줄을 추가하였습니다. 다른 패키지들은 기본 <a
+href="https://cran.r-project.org/">CRAN</a>을 사용하므로 함께
+작성하였습니다. 패키지 설치시 32비트와 64비트를 모두 설치하는 것이 기본
+동작인 듯합니다. 현재 java 64bit 만 설치되어 있으므로 기본 64bit
+패키지만 설치하라는 옵션을 추가했습니다.</p>
 <h2 id="전체-코드">전체 코드</h2>
-<p>설치만 진행하는 전체 코드를 정리합니다. 꼭 <strong>한 줄 씩</strong> 실행해주세요.</p>
+<p>설치만 진행하는 전체 코드를 정리합니다. 꼭 <strong>한 줄 씩</strong>
+실행해주세요.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;multilinguer&quot;</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>multilinguer<span class="sc">::</span><span class="fu">install_jdk</span>()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;KoNLP&quot;</span>, </span>
@@ -2549,8 +2582,14 @@ $`?`
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">INSTALL_opts =</span> <span class="fu">c</span>(<span class="st">&quot;--no-multiarch&quot;</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <h2 id="조심해야-할-점">조심해야 할 점</h2>
-<p><a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지의 <code>install_jdk()</code> 함수는 기존에 jdk가 설치되어 있는지 등을 확인하지 않습니다. 환경 변수를 건드리는 동작이 있기 때문에 기존에 설치된 부분이 꼬여서 동작하지 않을 수 있습니다. 혹시 문제가 발생하면 <a href="https://github.com/mrchypark/multilinguer/issues">패키지 이슈</a>에 알려주세요.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p><a href="https://github.com/mrchypark/multilinguer">multilinguer</a>
+패키지의 <code>install_jdk()</code> 함수는 기존에 jdk가 설치되어 있는지
+등을 확인하지 않습니다. 환경 변수를 건드리는 동작이 있기 때문에 기존에
+설치된 부분이 꼬여서 동작하지 않을 수 있습니다. 혹시 문제가 발생하면 <a
+href="https://github.com/mrchypark/multilinguer/issues">패키지
+이슈</a>에 알려주세요.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

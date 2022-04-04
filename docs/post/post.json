@@ -68,28 +68,6 @@
     "input_file": {}
   },
   {
-    "path": "post/KoNLP-설치-방법/",
-    "title": "KoNLP 설치 방법",
-    "description": "install.packages(\"KoNLP\", \n  repos = c(\"https://forkonlp.r-universe.dev\",\"https://cloud.r-project.org\"),\n  INSTALL_opts = c(\"--no-multiarch\")\n)",
-    "author": [
-      {
-        "name": "Chanyub Park",
-        "url": "https://mrchypark.github.io/about"
-      }
-    ],
-    "date": "2021-06-01",
-    "categories": [
-      "KoNLP",
-      "install",
-      "install.packages",
-      "R-universe"
-    ],
-    "contents": "\n\nContents\n1. jdk 설치\n2. KoNLP 설치\n전체 코드\n조심해야 할 점\n\n\nKoNLP는 한국어 형태소 분석 R 패키지입니다. KoNLP 패키지는 java로 제작된 한나눔 형태소 분석기를 사용합니다. java를 사용하기 때문에 크게 2가지 단계로 패키지 설치를 진행합니다. jdk란 자바 개발 킷의 줄임 표현으로 자바 언어를 사용하기 위해 설치하는 프로그램입니다.\njdk 설치\nKoNLP 패키지 설치\njdk의 설치는 원래 어려웠습니다. KoNLP 패키지가 2020년 2월 1일부로 cran에서 내려가서 설치가 어려워졌습니다. 두 단계 모두 접근하기 좋은 방법을 소개합니다.\n1. jdk 설치\njdk 설치는 확인과 설치 단계로 진행합니다.\n1.1 jdk 설치 확인\n기존에 잘 동작하는 jdk가 설치되어 있는지 확인합니다. 확인은 rJava 패키지의 초기화 함수를 사용합니다. rJava 패키지는 R에서 자바 프로그램을 사용하기 위한 패키지입니다.\ninstall.packages(\"rJava\")\n초기화 함수로 설치되어 있는지 확인합니다.\nrJava::.jinit()\n[1] 0\n0 이라는 출력이 없을 수도 있습니다. 위 함수를 실행하고 에러가 없다면, jdk가 잘 설치되어 있는 것입니다. 그러니 jdk 설치 단계를 건너서 2. KoNLP 설치 단계로 가세요.\n1.2 jdk 설치하기\njdk를 설치하기 위해 multilinguer 패키지를 사용합니다. jdk는 다운로드하고, 설치하고, 실행 경로를 등록하는 과정으로 설치합니다. multilinguer 패키지는 jdk를 설치하는 복잡한 과정을 대신해줍니다.\ninstall.packages(\"multilinguer\")\nmultilinguer::install_jdk()\n\nmultilinguer::install_jdk() 을 실행하면 R 새션을 재시작합니다.\n\n\nmac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고 합니다.\n\njdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로 넘어갑니다.\n2. KoNLP 설치\n아래 코드로 KoNLP 패키지를 설치하세요.\ninstall.packages(\"KoNLP\", \n    repos = c(\"https://forkonlp.r-universe.dev\",\n              \"https://cloud.r-project.org\"),\n    INSTALL_opts = c(\"--no-multiarch\")\n  )\n이제 사용해서 잘 동작하는지 확인하겠습니다.\nlibrary(\"KoNLP\")\nSimplePos09(\"안녕하신가요?\")\n$안녕하신가요\n[1] \"안녕/N+하/X+시ㄴ가/E+요/J\"\n\n$`?`\n[1] \"?/S\"\n설명\n현재 KoNLP 패키지는 CRAN에서 내려가 있는 상태입니다. 그래서 다른 패키지 저장소인 r-universe.dev에 빌드에서 업로드를 해둔 상태입니다. r-universe.dev는 사설 패키지 저장소라고 보시면 될 것 같습니다.\n그래서 install.packages() 명령에 추가 저장소 주소를 더하는 줄을 추가하였습니다. 다른 패키지들은 기본 CRAN을 사용하므로 함께 작성하였습니다. 패키지 설치시 32비트와 64비트를 모두 설치하는 것이 기본 동작인 듯합니다. 현재 java 64bit 만 설치되어 있으므로 기본 64bit 패키지만 설치하라는 옵션을 추가했습니다.\n전체 코드\n설치만 진행하는 전체 코드를 정리합니다. 꼭 한 줄 씩 실행해주세요.\ninstall.packages(\"multilinguer\")\nmultilinguer::install_jdk()\ninstall.packages(\"KoNLP\", \n    repos = c(\"https://forkonlp.r-universe.dev\",\n              \"https://cloud.r-project.org\"),\n    INSTALL_opts = c(\"--no-multiarch\")\n  )\n조심해야 할 점\nmultilinguer 패키지의 install_jdk() 함수는 기존에 jdk가 설치되어 있는지 등을 확인하지 않습니다. 환경 변수를 건드리는 동작이 있기 때문에 기존에 설치된 부분이 꼬여서 동작하지 않을 수 있습니다. 혹시 문제가 발생하면 패키지 이슈에 알려주세요.\n\n\n\n",
-    "preview": "https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg",
-    "last_modified": "2021-10-21T05:21:47+00:00",
-    "input_file": {}
-  },
-  {
     "path": "post/좋은-코드라는-블로그-글을-읽고/",
     "title": "좋은 코드라는 블로그 글을 읽고",
     "description": "좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.",
@@ -110,6 +88,28 @@
     "preview": "https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg",
     "last_modified": "2021-10-21T05:22:47+00:00",
     "input_file": {}
+  },
+  {
+    "path": "post/KoNLP-설치-방법/",
+    "title": "KoNLP 설치 방법",
+    "description": "install.packages(\"KoNLP\", \n  repos = c(\"https://forkonlp.r-universe.dev\",\"https://cloud.r-project.org\"),\n  INSTALL_opts = c(\"--no-multiarch\")\n)",
+    "author": [
+      {
+        "name": "Chanyub Park",
+        "url": "https://mrchypark.github.io/about"
+      }
+    ],
+    "date": "2021-06-01",
+    "categories": [
+      "KoNLP",
+      "install",
+      "install.packages",
+      "R-universe"
+    ],
+    "contents": "\n\nContents\n1. jdk 설치\n2. KoNLP 설치\n전체 코드\n조심해야 할 점\n\n\nKoNLP는 한국어 형태소 분석 R 패키지입니다. KoNLP\n패키지는 java로 제작된 한나눔 형태소 분석기를 사용합니다. java를\n사용하기 때문에 크게 2가지 단계로 패키지 설치를 진행합니다. jdk란 자바\n개발 킷의 줄임 표현으로 자바 언어를 사용하기 위해 설치하는\n프로그램입니다.\njdk 설치\nKoNLP 패키지 설치\njdk의 설치는 원래 어려웠습니다. KoNLP 패키지가 2020년 2월 1일부로\ncran에서 내려가서 설치가 어려워졌습니다. 두 단계 모두 접근하기 좋은\n방법을 소개합니다.\n1. jdk 설치\njdk 설치는 확인과 설치 단계로 진행합니다.\n1.1 jdk 설치 확인\n기존에 잘 동작하는 jdk가 설치되어 있는지 확인합니다. 확인은 rJava 패키지의 초기화 함수를\n사용합니다. rJava 패키지는\nR에서 자바 프로그램을 사용하기 위한 패키지입니다.\ninstall.packages(\"rJava\")\n초기화 함수로 설치되어 있는지 확인합니다.\nrJava::.jinit()\n[1] 0\n0 이라는 출력이 없을 수도 있습니다. 위 함수를 실행하고\n에러가 없다면, jdk가 잘 설치되어 있는 것입니다. 그러니 jdk 설치 단계를\n건너서 2. KoNLP 설치 단계로 가세요.\n1.2 jdk 설치하기\njdk를 설치하기 위해 multilinguer\n패키지를 사용합니다. jdk는 다운로드하고, 설치하고, 실행 경로를 등록하는\n과정으로 설치합니다. multilinguer\n패키지는 jdk를 설치하는 복잡한 과정을 대신해줍니다.\ninstall.packages(\"multilinguer\")\nmultilinguer::install_jdk()\n\nmultilinguer::install_jdk() 을 실행하면 R 새션을 재시작합니다.\n\n\nmac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고\n합니다.\n\njdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로\n넘어갑니다.\n2. KoNLP 설치\n아래 코드로 KoNLP 패키지를 설치하세요.\ninstall.packages(\"KoNLP\", \n    repos = c(\"https://forkonlp.r-universe.dev\",\n              \"https://cloud.r-project.org\"),\n    INSTALL_opts = c(\"--no-multiarch\")\n  )\n이제 사용해서 잘 동작하는지 확인하겠습니다.\nlibrary(\"KoNLP\")\nSimplePos09(\"안녕하신가요?\")\n$안녕하신가요\n[1] \"안녕/N+하/X+시ㄴ가/E+요/J\"\n\n$`?`\n[1] \"?/S\"\n설명\n현재 KoNLP 패키지는 CRAN에서 내려가 있는 상태입니다.\n그래서 다른 패키지 저장소인 r-universe.dev에 빌드에서\n업로드를 해둔 상태입니다. r-universe.dev는 사설 패키지\n저장소라고 보시면 될 것 같습니다.\n그래서 install.packages() 명령에 추가 저장소 주소를\n더하는 줄을 추가하였습니다. 다른 패키지들은 기본 CRAN을 사용하므로 함께\n작성하였습니다. 패키지 설치시 32비트와 64비트를 모두 설치하는 것이 기본\n동작인 듯합니다. 현재 java 64bit 만 설치되어 있으므로 기본 64bit\n패키지만 설치하라는 옵션을 추가했습니다.\n전체 코드\n설치만 진행하는 전체 코드를 정리합니다. 꼭 한 줄 씩\n실행해주세요.\ninstall.packages(\"multilinguer\")\nmultilinguer::install_jdk()\ninstall.packages(\"KoNLP\", \n    repos = c(\"https://forkonlp.r-universe.dev\",\n              \"https://cloud.r-project.org\"),\n    INSTALL_opts = c(\"--no-multiarch\")\n  )\n조심해야 할 점\nmultilinguer\n패키지의 install_jdk() 함수는 기존에 jdk가 설치되어 있는지\n등을 확인하지 않습니다. 환경 변수를 건드리는 동작이 있기 때문에 기존에\n설치된 부분이 꼬여서 동작하지 않을 수 있습니다. 혹시 문제가 발생하면 패키지\n이슈에 알려주세요.\n\n\n\n",
+    "preview": "https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg",
+    "last_modified": "2022-03-11T01:38:46+09:00",
+    "input_file": "KoNLP-설치-방법.knit.md"
   },
   {
     "path": "post/distill로-옮깁니다/",
@@ -301,10 +301,10 @@
       "blog",
       "retrospect"
     ],
-    "contents": "\n\n벌써 1월이 되어 2019년입니다. 회고라는 걸 해봐야지 라고 생각하고 시간이 이렇게나 지나버렸네요. 2018년을 정리하고 되돌아보는 것이 중요한 시점이 되어서 늦게라도 작성해 보려고 합니다.\n원래 2018년 계획\n원래 2018년 계획은 건강이었습니다. 2017년 능력에 차지도 않은 강의를 진행하면서 무리한다는 생각을 많이 했었거든요. 그래서 2018년 계획은 엄청 단순하게 건강이었습니다. 헌데…\n일어난 일\n결혼 1년차와 아이, 이사\n결혼 1년차와 아이, 이사는 정말 많은 시간이 필요했습니다. 물론 제가 시간을 썼다기 보단, 정신없이 지나가 버렸다고나 할까요?\n이직\n이직이 있었습니다. 이직을 하는 바람에 원래 1년 계획이었던 음성 인식은 안드로메다로…(눈물) 챗봇으로 좋은 제안이 왔었는데, 이리저리 재보다가 지금의 회사로 결정했습니다. 회사에서 R을 사용하고 싶다는 욕구와, 챗봇에서 도망치고 싶은 마음이 겹쳤죠. 독특하게 재무팀에서 일을 하는 중입니다. 재무팀이 필요한 데이터를 찾고, 만들고, 사용하기 좋은 환경을 갖추려고 노력하고 있습니다. 물론 놀랍게도 감사를 경험하고 있는 중인데, 저에게 득인지 실인지 잘 모르겠네요.\n번역\n\n책을 하나 번역했습니다. 이건 17년에 벌린 일이니 최대한 빨리 마무리해보자는 생각에 결국 끝낼 수 있었습니다. 물론 5명이나 진행했고, 일을 벌린 것 이외에는 저는 한게 없는 활동이었습니다만. 덕분에 너무 좋은 분들과 협업하는 경험을 해보게 되었습니다. 제가 처음 코드 리뷰 프로세스를 코드가 아닌걸로 겪어보게 된 것이기도 하구요.\n기업 강의\n강의도 하나 했네요. 영우님이 너무 좋은 기회를 만들어 주셨습니다. 부족한 능력에 과분한 대접도 받아보고, 값진 경험이었습니다. 전업을 충분히 고민할만 하면서도, 여전히 부족하구나 라는 생각을 하게 되었습니다.\nAI 대회 참여\n\n네이버 ai 해커톤 2018(와… 레포를 날렸어?!)에 참가했습니다. 어떻게 딱 이직 타이밍이라 예선을 할 시간이 있었군요. 다행히 결선 범위에 들어갈 수 있게 되어서 춘천의 커넥트원도 구경할 수 있었습니다. 제 기억에 지식인 질문 유사도 문제에서 한 9등쯤 했던거 같은데…. 제가 무식하게 제꺼 기록 해둔 레포도 날렸네요. 덕분에 이런저런 고민을 했던 이벤트이기도 합니다. keras도 많이 쓰고, 그때 멘토셨던 경호님이 좋게 봐주셨던 기분좋은 일도 있었죠.\n블로그\n어영부영 블로그를 열심히 했습니다. blogdown이란 신박한 패키지가 드디어 불을 질렀다고나 할까요. 버려진 워드프레스, 텀플러 등등을 거쳐 드디어 안착하고 18년엔 26개 포스트를 작성했네요.\n\n1년 동안 방문자는 17,466명 입니다. 재방문자 비율이 33% 쯤 되는군요.\n\n블로그에 붙어 있는 광고로 총 16.16 달러를 벌었군요. 압도적인 1등 컨텐츠는 R 크롤링에 대한 발표자료입니다. 아마 검색에 잘 걸려서지 않을까 싶습니다. 2번째는 번역이고, 개발 관련 글이다 보니 독자층이 좀더 넓은 편이었던 것 같습니다. 상위에 실제 18년 포스트는 4건이 있군요.\n\n쓰면서 느꼈던 점은, 최대한 원소스 멀티유즈 하자였습니다. 새롭게 컨텐츠를 기획하지 말고 있는 컨텐츠를 발산해야 컨텐츠 생산성이 좋다 느껴졌습니다.\n패키지\n관리하는 패키지에 변화도 좀 있었고, 새로 만든 것들도 있었습니다. 우선 드디어 DNH4에 댓글 수집 기능이 들어갔습니다. 덕분에 서비스에서 키를 관리하는 다른 방법을 배울 수 있었구요. 이 배움은 뭔가 기록을 남기고 싶은데, 그냥 삽질한거라 잘 모르겠네요. 아마 최근 시작한 유튜브로 한번 리마인드해보면 좋겠다는 생각이 듭니다. (네이버(N2H4)와 다음 뉴스의 댓글은 이제 셀레늄 쓰지 않고 빠르게 수집할 수 있으니 많이 사랑해주세요.)\npresidentSpeechKr 패키지는 한글 설명을 제거한 presidentSpeech 패키지로 우선 변환하였습니다. 윈도우에서 나는 경고와 같은 에러는 역시 사용하는데 많이 불편하더라구요. 우선 이 문제를 Rstudio 1.3 버전 마일스톤으로 이슈를 제기한 것으로 만족하려고 합니다. 참고로 Rstduio 현재 안정화 버전은 1.1.463입니다. (네.. 언제 될지 알 수 없단 뜻이죠…)\n나머지는 대부분 데이터 패키지이고, 야심차게 시작한 건 DBF입니다. 물론 개념만 겨우 확인한 패키지이지만, 개인적인 쓸모에 의해 만들어서 그런가 아주 애정이 갑니다. 이제 잘 다듬고, 워크플로우에 잘 녹여 사용해야겠죠.\n또 메일 서버가 세팅되어 있으면 좋겠지만, 없는 곳에서 사용하려고 sendgridr를 만들었습니다. 최초로 클래스 개념으로 패키지를 작성해봤는데, 많은 공부를 할 수 있었어요. 잘 활용하면 if 지옥을 좀 벗어날 수 있을 것 같은 가능성을 봤습니다.\n발표자료\n18년은 건강! 쉬자! 라고 생각한 만큼 발표는 전혀 생각하고 있지 않았습니다. 헌데 어영부영 2번이나 하고 말았습니다.\n데이터야 놀자에서 R과 redshift를 항해할 때 알아야할 상식사전(+협업) 라는 제목으로 한번 했구요. IBM 개발자 컨퍼런스에서 R로 만든 머신러닝 모델을 api로 제공하기 라는 제목으로 다른 한번을 했습니다. 무슨 부귀영화를 누리겠다고, 내용을 두개나 만들었는지… 덕분에 둘 다 부실부실해서 안타깝기만 합니다.\n유튜브\n\n여름쯤 시작하려고 했던 유튜브를 기어이 시작했습니다. 12월 18일에 첫 영상를 촬영하고, 오늘 1월 4일 기준 구독자 100명이 되었습니다. 데이터 패키지를 만드는 영상은 여러분이 도와주셔서 100건이 넘는 조회수를 기록했습니다. 7건의 동영상을 업로드했고, 4건을 한시간씩 하는 무서운 짓을 해버렸습니다. 시작하자마자 어디 아프고 해서 매일하겠다는 다짐을 지키질 못했네요.\n회사일\n뭔가 프로젝트스럽게 딱 끝낸게 있으면 좋을텐데 아쉽게도 그렇게 하지 못했습니다. 전부 다 진행 중이기만 하고, 속시원히 마무리한게 아직 없네요. 새해에는 상상하고 있는 그림이 잘 구현되었으면 좋겠습니다.\n새해 다짐\n우선 크게 3가지 정도 생각하고 있는데요.\n첫째는 역시 건강입니다. 지난 한해는 건강을 생각만 했다면, 올해는 구체적인 계획을 세워볼까 해요. 운동 계획과 치과 진료 계획을 세우고 실행하는 것이 목표입니다.\n둘째는 유튜브 입니다. 광고수익을 나눌 수 있는 최소 기준이 구독자 1,000명입니다. 구독자를 1,000명 모으는 것. 아마도 중요한 목표가 될 것 같습니다.\n셋째는 다시 회사 일입니다. 역시 업으로 삼고 해야 스스로의 성장에도 도움이 되는 법입니다. 현실적인 계획으로 작고, 빠르게 실행하는 걸 새롭게 다짐해보려고 합니다. 기왕하는거 다시 기록도 좀 잘 해서, 일마다 분석하고 회고할 수 있게 하려구요.\n+알파를 추가하자면 go를 공부하는 겁니다. 이번엔 좀 진짜 해서 손에 익으면 좋겠다 생각하고 있습니다.\n이렇게 회고글을 써보니 19년은 회고를 위해서 기록을 좀 열심히 해야 겠다는 생각이 들었습니다. 페이스북 글 분석 같은거로 거창하게 해볼까 하다가, 뭐든 시간이 걸리면 될 것도 안된다는 마음으로 임하고 있습니다.\n\n더 작고 더 빠르게\n\n아무리 되뇌어도 적응하기 쉽지 않네요.\n\n\n\n",
+    "contents": "\n\n벌써 1월이 되어 2019년입니다. 회고라는 걸 해봐야지 라고\n생각하고 시간이 이렇게나 지나버렸네요. 2018년을 정리하고 되돌아보는 것이\n중요한 시점이 되어서 늦게라도 작성해 보려고 합니다.\n원래 2018년 계획\n원래 2018년 계획은 건강이었습니다. 2017년 능력에 차지도 않은 강의를\n진행하면서 무리한다는 생각을 많이 했었거든요. 그래서 2018년 계획은 엄청\n단순하게 건강이었습니다. 헌데…\n일어난 일\n결혼 1년차와 아이, 이사\n결혼 1년차와 아이, 이사는 정말 많은 시간이 필요했습니다. 물론 제가\n시간을 썼다기 보단, 정신없이 지나가 버렸다고나 할까요?\n이직\n이직이 있었습니다. 이직을 하는 바람에 원래 1년 계획이었던 음성 인식은\n안드로메다로…(눈물) 챗봇으로 좋은 제안이 왔었는데, 이리저리 재보다가\n지금의 회사로 결정했습니다. 회사에서 R을 사용하고 싶다는 욕구와,\n챗봇에서 도망치고 싶은 마음이 겹쳤죠. 독특하게 재무팀에서 일을 하는\n중입니다. 재무팀이 필요한 데이터를 찾고, 만들고, 사용하기 좋은 환경을\n갖추려고 노력하고 있습니다. 물론 놀랍게도 감사를 경험하고 있는 중인데,\n저에게 득인지 실인지 잘 모르겠네요.\n번역\n\n책을\n하나 번역했습니다. 이건 17년에 벌린 일이니 최대한 빨리 마무리해보자는\n생각에 결국 끝낼 수 있었습니다. 물론 5명이나 진행했고, 일을 벌린 것\n이외에는 저는 한게 없는 활동이었습니다만. 덕분에 너무 좋은 분들과\n협업하는 경험을 해보게 되었습니다. 제가 처음 코드 리뷰 프로세스를 코드가\n아닌걸로 겪어보게 된 것이기도 하구요.\n기업 강의\n강의도 하나 했네요. 영우님이 너무 좋은 기회를 만들어 주셨습니다.\n부족한 능력에 과분한 대접도 받아보고, 값진 경험이었습니다. 전업을 충분히\n고민할만 하면서도, 여전히 부족하구나 라는 생각을 하게 되었습니다.\nAI 대회 참여\n\n네이버 ai\n해커톤 2018(와… 레포를 날렸어?!)에 참가했습니다. 어떻게 딱 이직\n타이밍이라 예선을 할 시간이 있었군요. 다행히 결선 범위에 들어갈 수 있게\n되어서 춘천의 커넥트원도 구경할 수 있었습니다. 제 기억에 지식인 질문\n유사도 문제에서 한 9등쯤 했던거 같은데…. 제가 무식하게 제꺼 기록 해둔\n레포도 날렸네요. 덕분에 이런저런 고민을 했던 이벤트이기도 합니다.\nkeras도 많이 쓰고, 그때 멘토셨던 경호님이 좋게 봐주셨던 기분좋은 일도\n있었죠.\n블로그\n어영부영 블로그를 열심히 했습니다. blogdown이란 신박한\n패키지가 드디어 불을 질렀다고나 할까요. 버려진 워드프레스, 텀플러 등등을\n거쳐 드디어 안착하고 18년엔 26개 포스트를 작성했네요.\n\n1년 동안 방문자는 17,466명 입니다. 재방문자 비율이 33% 쯤\n되는군요.\n\n블로그에 붙어 있는 광고로 총 16.16 달러를 벌었군요. 압도적인 1등\n컨텐츠는 R 크롤링에 대한 발표자료입니다. 아마 검색에 잘 걸려서지 않을까\n싶습니다. 2번째는 번역이고, 개발 관련 글이다 보니 독자층이 좀더 넓은\n편이었던 것 같습니다. 상위에 실제 18년 포스트는 4건이 있군요.\n\n쓰면서 느꼈던 점은, 최대한 원소스 멀티유즈 하자였습니다. 새롭게\n컨텐츠를 기획하지 말고 있는 컨텐츠를 발산해야 컨텐츠 생산성이 좋다\n느껴졌습니다.\n패키지\n관리하는 패키지에 변화도 좀 있었고, 새로 만든 것들도 있었습니다. 우선\n드디어 DNH4에 댓글 수집\n기능이 들어갔습니다. 덕분에 서비스에서 키를 관리하는 다른 방법을 배울 수\n있었구요. 이 배움은 뭔가 기록을 남기고 싶은데, 그냥 삽질한거라 잘\n모르겠네요. 아마 최근 시작한 유튜브로 한번 리마인드해보면 좋겠다는\n생각이 듭니다. (네이버(N2H4)와 다음 뉴스의 댓글은\n이제 셀레늄 쓰지 않고 빠르게 수집할 수 있으니 많이 사랑해주세요.)\npresidentSpeechKr\n패키지는 한글 설명을 제거한 presidentSpeech\n패키지로 우선 변환하였습니다. 윈도우에서 나는 경고와 같은 에러는 역시\n사용하는데 많이 불편하더라구요. 우선 이 문제를 Rstudio 1.3 버전\n마일스톤으로 이슈를 제기한\n것으로 만족하려고 합니다. 참고로 Rstduio 현재 안정화 버전은\n1.1.463입니다. (네.. 언제 될지 알 수 없단 뜻이죠…)\n나머지는 대부분 데이터 패키지이고, 야심차게 시작한 건 DBF입니다. 물론 개념만 겨우\n확인한 패키지이지만, 개인적인 쓸모에 의해 만들어서 그런가 아주 애정이\n갑니다. 이제 잘 다듬고, 워크플로우에 잘 녹여 사용해야겠죠.\n또 메일 서버가 세팅되어 있으면 좋겠지만, 없는 곳에서 사용하려고 sendgridr를\n만들었습니다. 최초로 클래스 개념으로 패키지를 작성해봤는데, 많은 공부를\n할 수 있었어요. 잘 활용하면 if 지옥을 좀 벗어날 수 있을 것 같은 가능성을\n봤습니다.\n발표자료\n18년은 건강! 쉬자! 라고 생각한 만큼 발표는 전혀 생각하고 있지\n않았습니다. 헌데 어영부영 2번이나 하고 말았습니다.\n데이터야 놀자에서 R과 redshift를\n항해할 때 알아야할 상식사전(+협업) 라는 제목으로 한번 했구요. IBM\n개발자 컨퍼런스에서 R로 만든\n머신러닝 모델을 api로 제공하기 라는 제목으로 다른 한번을 했습니다.\n무슨 부귀영화를 누리겠다고, 내용을 두개나 만들었는지… 덕분에 둘 다\n부실부실해서 안타깝기만 합니다.\n유튜브\n\n여름쯤 시작하려고 했던 유튜브를\n기어이 시작했습니다. 12월 18일에 첫 영상를 촬영하고, 오늘 1월 4일 기준\n구독자 100명이 되었습니다. 데이터 패키지를 만드는 영상은 여러분이\n도와주셔서 100건이 넘는 조회수를 기록했습니다. 7건의 동영상을\n업로드했고, 4건을 한시간씩 하는 무서운 짓을 해버렸습니다. 시작하자마자\n어디 아프고 해서 매일하겠다는 다짐을 지키질 못했네요.\n회사일\n뭔가 프로젝트스럽게 딱 끝낸게 있으면 좋을텐데 아쉽게도 그렇게 하지\n못했습니다. 전부 다 진행 중이기만 하고, 속시원히 마무리한게 아직 없네요.\n새해에는 상상하고 있는 그림이 잘 구현되었으면 좋겠습니다.\n새해 다짐\n우선 크게 3가지 정도 생각하고 있는데요.\n첫째는 역시 건강입니다. 지난 한해는 건강을 생각만\n했다면, 올해는 구체적인 계획을 세워볼까 해요. 운동 계획과 치과 진료\n계획을 세우고 실행하는 것이 목표입니다.\n둘째는 유튜브 입니다. 광고수익을 나눌 수 있는 최소 기준이 구독자\n1,000명입니다. 구독자를 1,000명 모으는 것. 아마도 중요한 목표가 될 것\n같습니다.\n셋째는 다시 회사 일입니다. 역시 업으로 삼고 해야 스스로의 성장에도\n도움이 되는 법입니다. 현실적인 계획으로 작고, 빠르게 실행하는 걸 새롭게\n다짐해보려고 합니다. 기왕하는거 다시 기록도 좀 잘 해서, 일마다 분석하고\n회고할 수 있게 하려구요.\n+알파를 추가하자면 go를 공부하는 겁니다. 이번엔 좀 진짜 해서 손에\n익으면 좋겠다 생각하고 있습니다.\n이렇게 회고글을 써보니 19년은 회고를 위해서 기록을 좀 열심히 해야\n겠다는 생각이 들었습니다. 페이스북 글 분석 같은거로 거창하게 해볼까\n하다가, 뭐든 시간이 걸리면 될 것도 안된다는 마음으로 임하고\n있습니다.\n\n더 작고 더 빠르게\n\n아무리 되뇌어도 적응하기 쉽지 않네요.\n\n\n\n",
     "preview": "https://user-images.githubusercontent.com/6179259/106562771-24044680-656e-11eb-8576-052a795b24c4.png",
-    "last_modified": "2021-10-21T05:21:45+00:00",
-    "input_file": {}
+    "last_modified": "2022-03-11T01:38:45+09:00",
+    "input_file": "2018년-회고.knit.md"
   },
   {
     "path": "post/rtips-사륜안-패키지로-rmd-실시간-결과-preview-확인하기/",
@@ -765,29 +765,6 @@
     "input_file": {}
   },
   {
-    "path": "post/blogdown으로-블로그-이사하기/",
-    "title": "blogdown으로 블로그 이사하기",
-    "description": "탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. ...",
-    "author": [
-      {
-        "name": "Chanyub Park",
-        "url": "https://mrchypark.github.io/about"
-      }
-    ],
-    "date": "2018-03-06",
-    "categories": [
-      "blog",
-      "blogdown",
-      "hugo",
-      "minimal",
-      "rstudio"
-    ],
-    "contents": "\n\n탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 jekyll로 작성한 블로그에서 blogdown(Hugo)으로 변경하였는데요. blogdown은 rstudio의 수석 엔지니어인 Yihui Xie가 golang으로 작성된 static site generator 입니다. jekyll 또한 같은 범주의 도구이죠.\n그동안 jekyll을 사용한 이유\njekyll은 간단함, 자유로운 테마 선택, 간단함 때문에 사용했습니다.\njekyll의 간단함\njekyll 블로그는 Github 계정만 있으면 아이디.github.io라는 주소로 쉽게 만들 수 있습니다! jekyll-now를 포크하고, pages 설정만 하면 끝납니다.\njekyll은 지향점이 text를 블로그로 바꿔라! 입니다. 덕분에 매우 쉬운 도구가 되었죠. .md 파일을 블로그 포스트에 해당하는 형태로 운영할 수 있게 해줍니다.\nGithub는 ruby라는 언어로 개발되었다고 합니다. 공교롭게도(!) jekyll도 ruby로 작성되어 있죠. 그래서 Github에서 제공하는 pages라는 서비스에서 jekyll를 빌드없이 바로 사용할 수 있습니다. 물론 .Rmd를 .md로 렌더링하는 과정이 필요하기 때문에 R로 블로깅할 때는 아쉬운 대목입니다.\n자유로운 테마 선택\njekyll은 static site generator로써 가장 유명한 도구 입니다. staticgen을 확인해보면 압도적인 스타수를 확인할 수 있습니다. 다음 인기 있는 도구가 Hugo군요. 최근에는 Gatsby도 인기있다고 들었습니다.\n아무튼… jekyll이 가장 인기있고 역사도 있는 만큼 선택할 수 있는 테마의 범위가 가장 넓습니다. jekyllthemes라는 곳에서 잘 모아져 있는 테마들을 구경할 수 도 있고, 따로 만들어진 테마들을 검색해서 찾을 수도 있습니다. 저는 Lagrange라는 테마를 선택했었습니다. 설명이 매우 잘 되어 있고(물론 영어입니다…), 사진 첨부가 기능으로 들어가 있어서 이름만 정해주면 되었고, 결정적으로 디자인이 너무 마음에 들었습니다.\n\njekyll의 간단함\n특별히 동작과정을 이해하려는 노력을 할 것이 아니라면 공부해야 할 부분은 _config.yml 파일입니다.\n# Site Settings\ntitle:               Mrchypark\ntagline:             log for you & me\ndescription:\nbaseurl:            #\"/Lagrange\"\nurl:                #\"https://lenpaul.github.io\"\ngithub:\n  url:               #\"https://lenpaul.github.io/Lagrange\"\nauthor:\n  name:              \"박찬엽\"\n  email:             \"mrchypark@gmail.com\"\n  twitter:           \"mrchypark_\"\n  instagram:         \"mrchypark\"\n  github:            \"mrchypark\"\n  facebook:          \"mrchypark\"\n  linkedin:          \"chanyub.park\"\nnavigation:\n- title: Materials\n  url: /materials\n- title: Index\n  url: /index\n- title: About\n  url: /about\n\n\npaginate:            5\ndisqus:              \"mrchy****\"\nga:                  \"UA-478*****-**\"\n\n# Build settings\nmarkdown:            kramdown\nhighlighter:         rouge\npermalink:           none\ngems:                [jekyll-paginate]\nencoding:            \"UTF-8\"\n이건 기존의 jekyll로 블로그를 만들 때 사용한 _config.yml 파일입니다. 테마가 친절한 편이여서 여러 SNS에 대한 링크를 아이디만 넣어주면 바로 예쁘게 사용할 수 있게 설정해 줍니다. 댓글을 위한 disqus나 GA 또한 ID만으로 연결을 해줍니다.\njekyll에서 blogdown으로\n당연히도 jekyll은 R파베틱(Rphabetic)하지 않기 때문입니다. 물론 Hugo라고 R파베틱한 것은 아니지만, 패키지화되어 있다는 점이 Rstudio와의 호환성을 많이 올려줍니다.\nblogdown은 staticgen에서 두번째를 차지하고 있는 Hugo를 R 패키지화한 도구입니다. Rstudio의 Addin으로 사이트 구축, 새포스트 쓰기 등의 기능도 지원하고 build_site() 명령어 한방으로 docs 폴더에 블로그 구축을 완전히 끝내줍니다. Hugo가 빠른 블로그라는 점도 한 몫했네요.\nblogdown은 설명서가 친절하다 - blogdown을 만든 사람은 bookdown을 만든 사람이기도 합니다. 덕분에 자세한 메뉴얼이 온라인 책으로 준비되어 있기도 합니다.\nrstudio와 호환이 좋다 - 아무래도 일하는 곳에 도구를 지원하는 방식으로 패키지를 작성한 것 같습니다. Addin 기능 뿐만 아니라 Rstudio를 블로그 글쓰기 에디터로 사용하는데 부족함 없게 지원합니다. 물론 버전이 오르면서 한글 문제(정확하게는 중국어 문제)가 해결된 이유도 있습니다.\n빠르다 - 신기하게 Hugo로 넘어간 많은 분들이 jekyll가 느려지는 문제를 지적하였습니다. 제 블로그가 글이 많지는 않지만 미래를 대비하고자 하는 마음도 있었습니다.\n다시 도구 이전 신고\n네, 블로그를 blogdown으로 이전하였습니다. 추후 시간이 되면 blogdown으로 블로그를 만드는 법에 대해서 포스팅하도록 하겠습니다.\n\n\n\n",
-    "preview": "https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png",
-    "last_modified": "2021-10-21T05:21:49+00:00",
-    "input_file": {}
-  },
-  {
     "path": "post/rphabetic-알파베틱-제안/",
     "title": "Rphabetic(알파베틱) 제안",
     "description": "사용자 친화적 혹은 사용자가 이용하기 쉬운 을 개인적으로는 `Rphabetic`하다고 표현하려 합니다.",
@@ -827,6 +804,29 @@
     "preview": "https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png",
     "last_modified": "2021-10-21T05:22:34+00:00",
     "input_file": {}
+  },
+  {
+    "path": "post/blogdown으로-블로그-이사하기/",
+    "title": "blogdown으로 블로그 이사하기",
+    "description": "탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. ...",
+    "author": [
+      {
+        "name": "Chanyub Park",
+        "url": "https://mrchypark.github.io/about"
+      }
+    ],
+    "date": "2018-03-06",
+    "categories": [
+      "blog",
+      "blogdown",
+      "hugo",
+      "minimal",
+      "rstudio"
+    ],
+    "contents": "\n\n탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가\n바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게\n되었습니다. 원래 jekyll로 작성한 블로그에서\nblogdown(Hugo)으로 변경하였는데요. blogdown은 rstudio의 수석\n엔지니어인 Yihui Xie가 golang으로 작성된\nstatic site generator 입니다. jekyll 또한 같은\n범주의 도구이죠.\n그동안 jekyll을 사용한\n이유\njekyll은 간단함, 자유로운 테마 선택, 간단함 때문에\n사용했습니다.\njekyll의 간단함\njekyll 블로그는 Github 계정만 있으면\n아이디.github.io라는 주소로 쉽게 만들 수 있습니다! jekyll-now를\n포크하고, pages 설정만 하면 끝납니다.\njekyll은 지향점이 text를 블로그로 바꿔라!\n입니다. 덕분에 매우 쉬운 도구가 되었죠. .md 파일을\n블로그 포스트에 해당하는 형태로 운영할 수 있게 해줍니다.\nGithub는 ruby라는 언어로\n개발되었다고 합니다. 공교롭게도(!) jekyll도 ruby로 작성되어 있죠. 그래서\nGithub에서 제공하는 pages라는\n서비스에서 jekyll를 빌드없이 바로 사용할 수 있습니다. 물론\n.Rmd를 .md로 렌더링하는 과정이 필요하기 때문에\nR로 블로깅할 때는 아쉬운 대목입니다.\n자유로운 테마 선택\njekyll은 static site generator로써 가장\n유명한 도구 입니다. staticgen을\n확인해보면 압도적인 스타수를 확인할 수 있습니다. 다음 인기 있는 도구가\nHugo군요. 최근에는 Gatsby도 인기있다고\n들었습니다.\n아무튼… jekyll이 가장 인기있고 역사도 있는 만큼 선택할\n수 있는 테마의 범위가 가장 넓습니다. jekyllthemes라는 곳에서 잘 모아져\n있는 테마들을 구경할 수 도 있고, 따로 만들어진 테마들을 검색해서 찾을\n수도 있습니다. 저는 Lagrange라는 테마를\n선택했었습니다. 설명이 매우 잘 되어 있고(물론 영어입니다…), 사진 첨부가\n기능으로 들어가 있어서 이름만 정해주면 되었고, 결정적으로 디자인이 너무\n마음에 들었습니다.\n\njekyll의 간단함\n특별히 동작과정을 이해하려는 노력을 할 것이 아니라면 공부해야 할\n부분은 _config.yml 파일입니다.\n# Site Settings\ntitle:               Mrchypark\ntagline:             log for you & me\ndescription:\nbaseurl:            #\"/Lagrange\"\nurl:                #\"https://lenpaul.github.io\"\ngithub:\n  url:               #\"https://lenpaul.github.io/Lagrange\"\nauthor:\n  name:              \"박찬엽\"\n  email:             \"mrchypark@gmail.com\"\n  twitter:           \"mrchypark_\"\n  instagram:         \"mrchypark\"\n  github:            \"mrchypark\"\n  facebook:          \"mrchypark\"\n  linkedin:          \"chanyub.park\"\nnavigation:\n- title: Materials\n  url: /materials\n- title: Index\n  url: /index\n- title: About\n  url: /about\n\n\npaginate:            5\ndisqus:              \"mrchy****\"\nga:                  \"UA-478*****-**\"\n\n# Build settings\nmarkdown:            kramdown\nhighlighter:         rouge\npermalink:           none\ngems:                [jekyll-paginate]\nencoding:            \"UTF-8\"\n이건 기존의 jekyll로 블로그를 만들 때 사용한\n_config.yml 파일입니다. 테마가 친절한 편이여서 여러 SNS에\n대한 링크를 아이디만 넣어주면 바로 예쁘게 사용할 수 있게 설정해 줍니다.\n댓글을 위한 disqus나 GA 또한\nID만으로 연결을 해줍니다.\njekyll에서\nblogdown으로\n당연히도 jekyll은 R파베틱(Rphabetic)하지\n않기 때문입니다. 물론 Hugo라고 R파베틱한 것은 아니지만,\n패키지화되어 있다는 점이 Rstudio와의 호환성을 많이 올려줍니다.\nblogdown은 staticgen에서 두번째를 차지하고\n있는 Hugo를 R 패키지화한 도구입니다. Rstudio의\nAddin으로 사이트 구축, 새포스트 쓰기 등의 기능도 지원하고\nbuild_site() 명령어 한방으로 docs 폴더에\n블로그 구축을 완전히 끝내줍니다. Hugo가 빠른\n블로그라는 점도 한 몫했네요.\nblogdown은 설명서가 친절하다 - blogdown을\n만든 사람은 bookdown을 만든 사람이기도 합니다. 덕분에 자세한 메뉴얼이 온라인\n책으로 준비되어 있기도 합니다.\nrstudio와 호환이 좋다 - 아무래도 일하는 곳에 도구를 지원하는\n방식으로 패키지를 작성한 것 같습니다. Addin 기능 뿐만 아니라 Rstudio를\n블로그 글쓰기 에디터로 사용하는데 부족함 없게 지원합니다. 물론 버전이\n오르면서 한글 문제(정확하게는 중국어 문제)가 해결된 이유도\n있습니다.\n빠르다 - 신기하게 Hugo로 넘어간 많은 분들이\njekyll가 느려지는 문제를 지적하였습니다. 제 블로그가 글이\n많지는 않지만 미래를 대비하고자 하는 마음도 있었습니다.\n다시 도구 이전 신고\n네, 블로그를 blogdown으로 이전하였습니다. 추후 시간이\n되면 blogdown으로 블로그를 만드는 법에 대해서 포스팅하도록\n하겠습니다.\n\n\n\n",
+    "preview": "https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png",
+    "last_modified": "2022-03-11T01:38:48+09:00",
+    "input_file": "blogdown으로-블로그-이사하기.knit.md"
   },
   {
     "path": "post/materials-페이지-업데이트/",
