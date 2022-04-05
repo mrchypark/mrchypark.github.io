@@ -56,19 +56,6 @@
       <media:content url="https://user-images.githubusercontent.com/6179259/120314187-ee058200-c315-11eb-8043-de1e53e78958.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
-      <title>좋은 코드라는 블로그 글을 읽고</title>
-      <dc:creator>Chanyub Park</dc:creator>
-      <link>https://mrchypark.github.io/post/좋은-코드라는-블로그-글을-읽고</link>
-      <description>좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.</description>
-      <category>thoughts</category>
-      <category>OOP</category>
-      <category>goocode</category>
-      <category>english</category>
-      <guid>https://mrchypark.github.io/post/좋은-코드라는-블로그-글을-읽고</guid>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg" medium="image" type="image/jpeg"/>
-    </item>
-    <item>
       <title>KoNLP 설치 방법</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/KoNLP-설치-방법</link>
@@ -83,6 +70,19 @@
       <guid>https://mrchypark.github.io/post/KoNLP-설치-방법</guid>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/120210866-3a47b800-c26b-11eb-928e-f980c286a03d.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>좋은 코드라는 블로그 글을 읽고</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/좋은-코드라는-블로그-글을-읽고</link>
+      <description>좋은 코드는 잘 읽히는 코드라는 다른 블로그 글을 봤는데, 아마 그럼 영어 네이티브가 유리하려나 라는 생각이 들었습니다.</description>
+      <category>thoughts</category>
+      <category>OOP</category>
+      <category>goocode</category>
+      <category>english</category>
+      <guid>https://mrchypark.github.io/post/좋은-코드라는-블로그-글을-읽고</guid>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>distil로 옮깁니다</title>
@@ -514,6 +514,7 @@
       <media:content url="https://user-images.githubusercontent.com/6179259/106467282-c32e2d00-64df-11eb-9435-7ed1cc5bf3e0.png" medium="image" type="image/png"/>
     </item>
     <item>
+<<<<<<< HEAD
       <title>blogdown으로 블로그 이사하기</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/blogdown으로-블로그-이사하기</link>
@@ -528,6 +529,8 @@
       <media:content url="https://user-images.githubusercontent.com/6179259/106467983-b52cdc00-64e0-11eb-9f46-1f97f8abf56b.png" medium="image" type="image/png"/>
     </item>
     <item>
+=======
+>>>>>>> 9bed6d853c3acf66b03709d93ffdf542556e9725
       <title>Materials 페이지 업데이트</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/materials-페이지-업데이트</link>

@@ -2534,7 +2534,7 @@ gtag('config', 'UA-47822682-14');
 <p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지는 <code>KoNLP</code> 패키지의 개발자이신 <a href="http://freesearch.pe.kr/">고감자</a>님이 만든 띄어쓰기 패키지입니다. <code>python</code>의 <code>keras</code> 패키지를 사용하기 때문에, 패키지를 사용하기 위해서 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지와 <a href="https://docs.conda.io/en/latest/">conda</a>가 필요합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>KoSpacing</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2548,15 +2548,15 @@ gtag('config', 'UA-47822682-14');
 <p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지의 설치에서는 <code>conda</code>가 필요하지 않습니다만, <code>library(KoSpacing)</code>을 실행시 나오는 안내 문구처럼 <code>set_env()</code> 함수를 실행할 때 필요합니다. 앞서 <code>has_conda()</code>를 잘 실행하셨다면 이제 <code>set_env()</code> 실행할 때 문제가 생기지 않으면 좋을 것 같습니다.(응?)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/KoSpacing/man/set_env.html'>set_env</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>set_env</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>아마 위에 함수가 잘 끝나면 세션을 재시작할 것입니다. 이제 동작을 확인해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/KoSpacing/man/spacing.html'>spacing</a></span><span class='op'>(</span><span class='st'>"김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>KoSpacing</span><span class='op'>)</span>
+<span class='fu'>spacing</span><span class='op'>(</span><span class='st'>"김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
