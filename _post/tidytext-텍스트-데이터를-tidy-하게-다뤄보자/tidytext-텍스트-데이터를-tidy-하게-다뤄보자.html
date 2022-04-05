@@ -1492,7 +1492,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="https://user-images.githubusercontent.com/6179259/106500112-c851a300-6504-11eb-89c3-ab33f5795b2b.png" width=100%></p>
 <blockquote>
 <ul>
-<li>대부분의 내용을 <a href="https://www.tidytextmining.com/">패키지 소개 도서</a>에서 참고하였음을 알립니다.</li>
+<li>대부분의 내용을 <a href="https://www.tidytextmining.com/">패키지
+소개 도서</a>에서 참고하였음을 알립니다.</li>
 </ul>
 </blockquote>
 <h3 id="세줄요약">세줄요약</h3>
@@ -1501,20 +1502,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>text도 tidy하게 다룰 수 있는 tidytext 패키지가 유용하다.</li>
 <li>간단하게 저자 분류기를 만들어서 확인하자.</li>
 </ol>
-<p>텍스트를 활용한 문제 해결은 최근 많은 분야에서 관심을 가지고 있습니다. 비정형 데이터 분석이라고 하더군요. 그래서 데이터를 다루는 좋은 관점인 <strong>tidy함</strong>을 소개하고, text도 tidy하게 다루어보겠습니다.</p>
+<p>텍스트를 활용한 문제 해결은 최근 많은 분야에서 관심을 가지고
+있습니다. 비정형 데이터 분석이라고 하더군요. 그래서 데이터를 다루는 좋은
+관점인 <strong>tidy함</strong>을 소개하고, text도 tidy하게
+다루어보겠습니다.</p>
 <h4 id="tidy함이란">tidy함이란</h4>
-<p>중요하면서도 지루한 부분이니 간단하게만 소개하겠습니다. <a href="https://mrchypark.github.io/kisa_finR/#(5)">관련글</a>을 첨부하니 자세히 보고 싶으신 분들은 참고해주세요.</p>
+<p>중요하면서도 지루한 부분이니 간단하게만 소개하겠습니다. <a
+href="https://mrchypark.github.io/kisa_finR/#(5)">관련글</a>을 첨부하니
+자세히 보고 싶으신 분들은 참고해주세요.</p>
 <p>tidy함이란 3가지 조건을 충족해야 합니다.</p>
 <ol type="1">
 <li>각 변수는 개별 열로 설계해야 한다.</li>
 <li>각 관측치는 개별 행으로 설계해야 한다.</li>
 <li>각 테이블은 단일 기준의 데이터여야 한다.</li>
 </ol>
-<p>우선 각 용어를 정의해야 이해하기 좋은데요. <strong>변수</strong>와 <strong>관측치</strong>를 보겠습니다. <strong>관측치</strong>란 한 개의 데이터를 뜻합니다. 설문지를 예로 들면 한 건의 설문지를 뜻하죠. <strong>변수</strong>란 설문 항목과 같습니다. 각 <strong>변수</strong>는 각각 하나의 설문 항목을 뜻한다고 볼 수 있습니다. 이걸 열과 행으로 구성해야 한다는 뜻인데요. 당연한걸 설명한다고 하기에는 지키지 않는 경우가 너무 많습니다.</p>
-<p>특히 마지막 조건 때문이라고 생각하는데요. 관측 기준을 하나로 정해서 데이터를 만들어 테이블로 정리한다고 합니다. 단일 기준의 데이터로 테이블을 구성하면 보고 싶은걸 한번에 보지 못할 수도 있습니다. 그래서 이리저리 붙인 테이블을 만들고, 그것을 데이터로 가지고 있는 경우가 많습니다. 저는 이것을 대쉬보드형 데이터라고 부릅니다. 다루기 위한 데이터가 아니라 눈으로 탐색하기 위한 데이터이기 때문입니다. 눈으로 보기 좋은 데이터는 다루기 좋은 데이터가 아니라고 하면 이해가 좋으려나요.</p>
-<p>여기에 추가해서 알아야 할 개념이 있습니다. 바로 <strong>long form</strong>, <strong>wide form</strong> 입니다.</p>
+<p>우선 각 용어를 정의해야 이해하기 좋은데요. <strong>변수</strong>와
+<strong>관측치</strong>를 보겠습니다. <strong>관측치</strong>란 한 개의
+데이터를 뜻합니다. 설문지를 예로 들면 한 건의 설문지를 뜻하죠.
+<strong>변수</strong>란 설문 항목과 같습니다. 각 <strong>변수</strong>는
+각각 하나의 설문 항목을 뜻한다고 볼 수 있습니다. 이걸 열과 행으로
+구성해야 한다는 뜻인데요. 당연한걸 설명한다고 하기에는 지키지 않는
+경우가 너무 많습니다.</p>
+<p>특히 마지막 조건 때문이라고 생각하는데요. 관측 기준을 하나로 정해서
+데이터를 만들어 테이블로 정리한다고 합니다. 단일 기준의 데이터로
+테이블을 구성하면 보고 싶은걸 한번에 보지 못할 수도 있습니다. 그래서
+이리저리 붙인 테이블을 만들고, 그것을 데이터로 가지고 있는 경우가
+많습니다. 저는 이것을 대쉬보드형 데이터라고 부릅니다. 다루기 위한
+데이터가 아니라 눈으로 탐색하기 위한 데이터이기 때문입니다. 눈으로 보기
+좋은 데이터는 다루기 좋은 데이터가 아니라고 하면 이해가 좋으려나요.</p>
+<p>여기에 추가해서 알아야 할 개념이 있습니다. 바로 <strong>long
+form</strong>, <strong>wide form</strong> 입니다.</p>
 <h4 id="롱폼-long-form">롱폼 long form</h4>
-<p>롱폼<code>long form</code>이란 데이터가 길게 아래로 늘어져 있는 형태를 뜻합니다. 데이터를 보면서 알아볼까요?</p>
+<p>롱폼<code>long form</code>이란 데이터가 길게 아래로 늘어져 있는
+형태를 뜻합니다. 데이터를 보면서 알아볼까요?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># remotes::install_github("mrchypark/krlift")</span>
@@ -1522,7 +1542,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p><a href="https://github.com/mrchypark/krlift">krlift</a>는 한국의 승강기 등록 기록을 데이터 패키지화한 것입니다. <del><em><code>star는 패키지 제작자를 춤추게 합니다. 덩실~</code></em></del> <code>lift</code> 라는 데이터가 내장되어 있네요. 한번 확인해 볼까요.</p>
+<p><a href="https://github.com/mrchypark/krlift">krlift</a>는 한국의
+승강기 등록 기록을 데이터 패키지화한 것입니다.
+<del><em><code>star는 패키지 제작자를 춤추게 합니다. 덩실~</code></em></del>
+<code>lift</code> 라는 데이터가 내장되어 있네요. 한번 확인해 볼까요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift</span>
@@ -1544,14 +1567,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 # … with 352,580 more rows, and 2 more variables:
 #   `정격속도(m/s)` &lt;dbl&gt;, 대수 &lt;int&gt;</code></pre>
 </div>
-<p>데이터를 다루는 <a href="http://dplyr.tidyverse.org/">dplyr</a> 패키지를 추가해서 좀 살펴보겠습니다.</p>
+<p>데이터를 다루는 <a href="http://dplyr.tidyverse.org/">dplyr</a>
+패키지를 추가해서 좀 살펴보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>가장 위에 있는 건물을 확인해보겠습니다. 이름이 <code>(주)강남강릉호텔</code>이네요.</p>
+<p>가장 위에 있는 건물을 확인해보겠습니다. 이름이
+<code>(주)강남강릉호텔</code>이네요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift</span> <span class='op'>%&gt;%</span> 
@@ -1566,18 +1591,34 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 3 강원 강… (주)강남…        7        8 승객용     숙박시설      
 # … with 2 more variables: `정격속도(m/s)` &lt;dbl&gt;, 대수 &lt;int&gt;</code></pre>
 </div>
-<p>지금 <code>lift</code> 데이터는 tidy하게 잘 정리되어 있습니다. 그 증거가 위 3개의 데이터인데요. 여기서 이 테이블의 관측 기준은 <strong>승강기</strong>입니다. 각 관측치가 각각의 승강기를 기준으로 하고 있기 때문입니다.</p>
-<p>그럼 건물을 관측 기준으로 생각해볼까요? 각 건물 하나당 하나의 행을 가지기 위해서는 여러 가지 고민을 해야 합니다. 건물마다 승강기의 갯수가 다르기 때문에 승강기 정보를 넣는 방법이 제한적입니다. 혹은 각 건물의 승강기 테이블을 전부 따로 만들어야 할 수도 있습니다.</p>
-<p>비슷하게 관측 기준에 대해 생각해봐야 할 예시가 있습니다. 그것은 영수증인데요. 관측 기준을 영수증으로 잡을지, 영수증 내의 품목으로 잡을지에 따라 데이터의 모양이 달라집니다. 보통 품목으로 잡는 걸 권장합니다.</p>
+<p>지금 <code>lift</code> 데이터는 tidy하게 잘 정리되어 있습니다. 그
+증거가 위 3개의 데이터인데요. 여기서 이 테이블의 관측 기준은
+<strong>승강기</strong>입니다. 각 관측치가 각각의 승강기를 기준으로 하고
+있기 때문입니다.</p>
+<p>그럼 건물을 관측 기준으로 생각해볼까요? 각 건물 하나당 하나의 행을
+가지기 위해서는 여러 가지 고민을 해야 합니다. 건물마다 승강기의 갯수가
+다르기 때문에 승강기 정보를 넣는 방법이 제한적입니다. 혹은 각 건물의
+승강기 테이블을 전부 따로 만들어야 할 수도 있습니다.</p>
+<p>비슷하게 관측 기준에 대해 생각해봐야 할 예시가 있습니다. 그것은
+영수증인데요. 관측 기준을 영수증으로 잡을지, 영수증 내의 품목으로
+잡을지에 따라 데이터의 모양이 달라집니다. 보통 품목으로 잡는 걸
+권장합니다.</p>
 <h4 id="와이드폼-wide-form">와이드폼 wide form</h4>
-<p>와이드폼<code>wide form</code>이란 데이터가 옆으로 펼쳐져 있는 형태를 뜻합니다. 위에 데이터로 한번 만들어 보겠습니다. 롱폼과 와이드폼을 변환하는데 적합한 패키지는 <a href="http://tidyr.tidyverse.org/">tidyr</a>입니다.</p>
+<p>와이드폼<code>wide form</code>이란 데이터가 옆으로 펼쳐져 있는 형태를
+뜻합니다. 위에 데이터로 한번 만들어 보겠습니다. 롱폼과 와이드폼을
+변환하는데 적합한 패키지는 <a
+href="http://tidyr.tidyverse.org/">tidyr</a>입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><a href="http://tidyr.tidyverse.org/">tidyr</a>은 롱폼 to 와이드폼을 위한 <code>spread()</code>함수와 와이드폼 to 롱폼을 위한 <code>gather()</code>함수가 있습니다. 제가 위해서 <code>lift</code> 데이터는 승강기 관점의 데이터라고 설명을 드렸습니다. 그럼 우선 건물명 관점의 데이터로 바꿔볼까요?</p>
+<p><a href="http://tidyr.tidyverse.org/">tidyr</a>은 롱폼 to 와이드폼을
+위한 <code>spread()</code>함수와 와이드폼 to 롱폼을 위한
+<code>gather()</code>함수가 있습니다. 제가 위해서 <code>lift</code>
+데이터는 승강기 관점의 데이터라고 설명을 드렸습니다. 그럼 우선 건물명
+관점의 데이터로 바꿔볼까요?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift_sm</span> <span class='op'>&lt;-</span> 
@@ -1603,7 +1644,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 10 .유진프라자                  승객용             1
 # … with 231,918 more rows</code></pre>
 </div>
-<p><code>group_by()</code>함수와 <code>summarise()</code>함수를 이용해서 각 건물별로 한개의 관측치(행)만 가지는 <code>lift_sm</code> 데이터를 만들었습니다. <code>lift_sm</code> 데이터는 각 건물이 승강기를 종류별로 총 몇대씩 가지고 있는지를 정리한 데이터입니다. 그럼 이 데이터를 와이드폼으로 바꿔보겠습니다.</p>
+<p><code>group_by()</code>함수와 <code>summarise()</code>함수를 이용해서
+각 건물별로 한개의 관측치(행)만 가지는 <code>lift_sm</code> 데이터를
+만들었습니다. <code>lift_sm</code> 데이터는 각 건물이 승강기를 종류별로
+총 몇대씩 가지고 있는지를 정리한 데이터입니다. 그럼 이 데이터를
+와이드폼으로 바꿔보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift_sm</span> <span class='op'>%&gt;%</span> 
@@ -1635,14 +1680,44 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   전망용 &lt;int&gt;, 침대용 &lt;int&gt;, `피난/장애인용` &lt;int&gt;, 피난용 &lt;int&gt;,
 #   `화물/자동차용` &lt;int&gt;, 화물용 &lt;int&gt;, `화물용(DW)` &lt;int&gt;</code></pre>
 </div>
-<p><code>spread(사용할 데이터, 컬럼 역할을 할 컬럼, 셀 역할을 할 컬럼)</code>으로 함수가 동작하는데요. 이렇게 보니 와이드폼은 한 가지 종류의 데이터(총대수)만 테이블로 확인할 수 있군요.</p>
-<h4 id="롱폼과-와이드폼의-개념을-아는-것이-중요한-이유">롱폼과 와이드폼의 개념을 아는 것이 중요한 이유</h4>
-<p>데이터를 다룰 때 일반적으로 컴퓨터는 행방향으로 데이터를 추가하거나 계산하는 것을 쉽게 할 수 있습니다. 열방향으로 데이터를 추가하거나 계산하는 것은 매우 어렵게 되어 있는데요. 정확하게는 많은 데이터를 다루는 도구들이 그렇게 설계되어 있습니다. 그래서 펼치거나<code>spread()</code> 모으는<code>gather()</code> 동작을 통해 데이터를 다루기 쉬운 상태<code>(tidy함)</code>로 만들어야 합니다.</p>
-<p>데이터를 다루는 내용은 <a href="https://mrchypark.github.io/dabrp_classnote3/class3#75">tidyr을 소개하는 자료</a>를 더 확인해보세요.</p>
-<h4 id="tidytexttidytext"><a href="https://github.com/juliasilge/tidytext">tidytext</a></h4>
-<p>이런 <code>tidy함</code>은 여러 사람들에게 인기를 끌었습니다. 그래서 여러 종류의 데이터를 <code>tidy하게</code> 다루는 여러 패키지들이 개발중인데요. <a href="https://github.com/juliasilge/tidytext">tidytext</a> 패키지도 그 일종입니다. text 데이터를 <code>tidy하게</code> 정의하기 위해서 <a href="https://github.com/juliasilge/tidytext">tidytext</a> 패키지는 개별행에 들어갈 기준으로 <code>token</code>을 제시했습니다. <code>token</code>이란 text 데이터에서 하나의 단위로 정의할 수 있는 모든 것을 뜻합니다. 문장, 띄어쓰기를 기준으로 나눈 글자들, 형태소, 글자 등등을 뜻합니다. 영어에서는 <code>word</code>와 <code>stem</code>을 많이 사용하죠. 한글에서는 역시 형태소가 가장 유명한 것 같네요. <code>tokenize</code>란 텍스트로 되어 있는 원시 데이터를 개별 <code>token</code> 단위로 나누어 데이터를 만든다는 뜻입니다. 그럼 예시 데이터를 소개하겠습니다.</p>
-<h4 id="presidentspeechpresidentspeech"><a href="https://forkonlp.github.io/presidentSpeech/">presidentSpeech</a></h4>
-<p><a href="https://forkonlp.github.io/presidentSpeech/">presidentSpeech</a> 패키지는 <a href="http://www.pa.go.kr/research/contents/speech/index.jsp">대통령 기록 연구실</a>의 wrapping 패키지입니다. <code>search_speech()</code> 함수로 연설문 기록을 검색하는데요.</p>
+<p><code>spread(사용할 데이터, 컬럼 역할을 할 컬럼, 셀 역할을 할 컬럼)</code>으로
+함수가 동작하는데요. 이렇게 보니 와이드폼은 한 가지 종류의
+데이터(총대수)만 테이블로 확인할 수 있군요.</p>
+<h4 id="롱폼과-와이드폼의-개념을-아는-것이-중요한-이유">롱폼과
+와이드폼의 개념을 아는 것이 중요한 이유</h4>
+<p>데이터를 다룰 때 일반적으로 컴퓨터는 행방향으로 데이터를 추가하거나
+계산하는 것을 쉽게 할 수 있습니다. 열방향으로 데이터를 추가하거나
+계산하는 것은 매우 어렵게 되어 있는데요. 정확하게는 많은 데이터를 다루는
+도구들이 그렇게 설계되어 있습니다. 그래서 펼치거나<code>spread()</code>
+모으는<code>gather()</code> 동작을 통해 데이터를 다루기 쉬운
+상태<code>(tidy함)</code>로 만들어야 합니다.</p>
+<p>데이터를 다루는 내용은 <a
+href="https://mrchypark.github.io/dabrp_classnote3/class3#75">tidyr을
+소개하는 자료</a>를 더 확인해보세요.</p>
+<h4 id="tidytexttidytext"><a
+href="https://github.com/juliasilge/tidytext">tidytext</a></h4>
+<p>이런 <code>tidy함</code>은 여러 사람들에게 인기를 끌었습니다. 그래서
+여러 종류의 데이터를 <code>tidy하게</code> 다루는 여러 패키지들이
+개발중인데요. <a
+href="https://github.com/juliasilge/tidytext">tidytext</a> 패키지도 그
+일종입니다. text 데이터를 <code>tidy하게</code> 정의하기 위해서 <a
+href="https://github.com/juliasilge/tidytext">tidytext</a> 패키지는
+개별행에 들어갈 기준으로 <code>token</code>을 제시했습니다.
+<code>token</code>이란 text 데이터에서 하나의 단위로 정의할 수 있는 모든
+것을 뜻합니다. 문장, 띄어쓰기를 기준으로 나눈 글자들, 형태소, 글자
+등등을 뜻합니다. 영어에서는 <code>word</code>와 <code>stem</code>을 많이
+사용하죠. 한글에서는 역시 형태소가 가장 유명한 것 같네요.
+<code>tokenize</code>란 텍스트로 되어 있는 원시 데이터를 개별
+<code>token</code> 단위로 나누어 데이터를 만든다는 뜻입니다. 그럼 예시
+데이터를 소개하겠습니다.</p>
+<h4 id="presidentspeechpresidentspeech"><a
+href="https://forkonlp.github.io/presidentSpeech/">presidentSpeech</a></h4>
+<p><a
+href="https://forkonlp.github.io/presidentSpeech/">presidentSpeech</a>
+패키지는 <a
+href="http://www.pa.go.kr/research/contents/speech/index.jsp">대통령
+기록 연구실</a>의 wrapping 패키지입니다. <code>search_speech()</code>
+함수로 연설문 기록을 검색하는데요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># remotes::install_github("forkonlp/presidentSpeech")</span>
@@ -1650,7 +1725,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>검색 조건은 <code>get_president()</code>, <code>get_field()</code>, <code>get_event()</code>로 사용할 수 있는 대통령, 분야, 유형 리스트를 확인할 수 있습니다.</p>
+<p>검색 조건은 <code>get_president()</code>, <code>get_field()</code>,
+<code>get_event()</code>로 사용할 수 있는 대통령, 분야, 유형 리스트를
+확인할 수 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/presidentSpeech/man/get_president.html'>get_president</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -1672,7 +1749,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code>[1] &quot;환영사&quot;      &quot;국회연설&quot;    &quot;성명/담화문&quot; &quot;기타&quot;       
 [5] &quot;신년사&quot;      &quot;기념사&quot;      &quot;취임사&quot;     </code></pre>
 </div>
-<p>4분이 다르게 나올 만한 분야나 유형이 무엇이 있을까요? 우선은 전부 데이터를 가져와 보죠.</p>
+<p>4분이 다르게 나올 만한 분야나 유형이 무엇이 있을까요? 우선은 전부
+데이터를 가져와 보죠.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>speech_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -1711,7 +1789,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="tidytext-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-tidy-%ED%95%98%EA%B2%8C-%EB%8B%A4%EB%A4%84%EB%B3%B4%EC%9E%90_files/figure-html5/unnamed-chunk-11-2.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1480,7 +1480,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">reticulate</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>KoSpacing은 한글 띄어쓰기를 해주는 딥러닝 모델 패키지이다. python이 함께 필요한 패키지 기반으로 만들어서 python도 설치해야 한다. windows는 conda만 지원하므로 conda를 설치하여 사용해보자.</p></p>
+<p><p>KoSpacing은 한글 띄어쓰기를 해주는 딥러닝 모델 패키지이다.
+python이 함께 필요한 패키지 기반으로 만들어서 python도 설치해야 한다.
+windows는 conda만 지원하므로 conda를 설치하여 사용해보자.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1502,39 +1504,93 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img width=100% src="https://user-images.githubusercontent.com/6179259/106488771-6474ad80-64f7-11eb-8ef2-6c3d41e24898.png"></p>
 <h1 id="업데이트">업데이트</h1>
 <ul>
-<li>패키지의 설치 문제가 보고되어 확인하였습니다. 새롭게 설치를 진행하시고, 0.1.1 버전인 것을 확인하시면 문제없이 동작할 것입니다. 0.1.1 버전에서는 conda 명령이 실행가능한 상태여야 합니다.</li>
-<li><code>conda</code>를 설치하는 <a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지를 소개하는 <a href="https://mrchypark.github.io/post/conda4r-r%EC%9D%84-%EC%9C%84%ED%95%B4%EC%84%9C-conda%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EB%B3%B4%EC%9E%90/">포스트</a>를 작성하였습니다.</li>
+<li>패키지의 설치 문제가 보고되어 확인하였습니다. 새롭게 설치를
+진행하시고, 0.1.1 버전인 것을 확인하시면 문제없이 동작할 것입니다. 0.1.1
+버전에서는 conda 명령이 실행가능한 상태여야 합니다.</li>
+<li><code>conda</code>를 설치하는 <a
+href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지를
+소개하는 <a
+href="https://mrchypark.github.io/post/conda4r-r%EC%9D%84-%EC%9C%84%ED%95%B4%EC%84%9C-conda%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%B4%EB%B3%B4%EC%9E%90/">포스트</a>를
+작성하였습니다.</li>
 </ul>
 <h3 id="세줄요약">세줄요약</h3>
 <ol type="1">
 <li>KoSpacing은 한글 띄어쓰기를 해주는 딥러닝 모델 패키지이다.</li>
-<li>python이 함께 필요한 패키지 기반으로 만들어서 python도 설치해야 한다.</li>
+<li>python이 함께 필요한 패키지 기반으로 만들어서 python도 설치해야
+한다.</li>
 <li>windows는 conda만 지원하므로 conda를 설치하여 사용해보자.</li>
 </ol>
-<p>한글 띄어쓰기 API 이용하는 <a href="https://mrchypark.github.io/post/%ED%95%9C%EA%B8%80-%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0-api-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0/">포스트</a>에서 소개했던 API가 R &amp; Python 패키지로 탄생하였습니다. (<a href="https://github.com/haven-jeon/KoSpacing">R 패키지 바로가기</a>, <a href="https://github.com/haven-jeon/PyKoSpacing">Python 패키지 바로가기</a>) 이같은 멋진 패키지를 개발해주신 <a href="https://github.com/haven-jeon">전희원님</a>님 감사합니다.</p>
-<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지는 전례가 없는 딥러닝 모델로 결과를 만드는 패키지로 <a href="http://freesearch.pe.kr/archives/4759">본인의 포스트</a>에서 <code>Model as a Program</code> 이라고 소개한바 있습니다. R에는 <code>tensorflow</code>와 <code>keras</code>가 <code>reticulate</code> 패키지를 이용해서 python 패키지를 기반으로 최신 딥러닝 프레임워크를 사용할 수 있습니다. <a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>은 <code>keras</code>로 작성된 모델을 사용하기 때문에, 패키지 사용을 위해서 <code>reticulate</code> 설치가 필요합니다. <a href="https://github.com/haven-jeon/KoNLP">KoNLP</a> 역시 <code>java</code> 기반의 라이브러리를 <code>R</code>에서 사용하기 위해 <code>rJava</code> 설치가 필요했습니다. <code>java</code>의 경로 설정에 비해 간편하긴 하지만 <code>python</code>을 또 설치해야 한다는 압박이 있을 수 있다고 생각이 들었습니다. 간편하게 <code>R</code>에서 사용하는 도구들의 설치를 도와주는 <a href="https://github.com/talgalili/installr">installr</a>를 이용해서 <a href="https://conda.io/miniconda.html">miniconda</a>를 설치해 보겠습니다.</p>
+<p>한글 띄어쓰기 API 이용하는 <a
+href="https://mrchypark.github.io/post/%ED%95%9C%EA%B8%80-%EB%9D%84%EC%96%B4%EC%93%B0%EA%B8%B0-api-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0/">포스트</a>에서
+소개했던 API가 R &amp; Python 패키지로 탄생하였습니다. (<a
+href="https://github.com/haven-jeon/KoSpacing">R 패키지 바로가기</a>, <a
+href="https://github.com/haven-jeon/PyKoSpacing">Python 패키지
+바로가기</a>) 이같은 멋진 패키지를 개발해주신 <a
+href="https://github.com/haven-jeon">전희원님</a>님 감사합니다.</p>
+<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>
+패키지는 전례가 없는 딥러닝 모델로 결과를 만드는 패키지로 <a
+href="http://freesearch.pe.kr/archives/4759">본인의 포스트</a>에서
+<code>Model as a Program</code> 이라고 소개한바 있습니다. R에는
+<code>tensorflow</code>와 <code>keras</code>가 <code>reticulate</code>
+패키지를 이용해서 python 패키지를 기반으로 최신 딥러닝 프레임워크를
+사용할 수 있습니다. <a
+href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>은
+<code>keras</code>로 작성된 모델을 사용하기 때문에, 패키지 사용을 위해서
+<code>reticulate</code> 설치가 필요합니다. <a
+href="https://github.com/haven-jeon/KoNLP">KoNLP</a> 역시
+<code>java</code> 기반의 라이브러리를 <code>R</code>에서 사용하기 위해
+<code>rJava</code> 설치가 필요했습니다. <code>java</code>의 경로 설정에
+비해 간편하긴 하지만 <code>python</code>을 또 설치해야 한다는 압박이
+있을 수 있다고 생각이 들었습니다. 간편하게 <code>R</code>에서 사용하는
+도구들의 설치를 도와주는 <a
+href="https://github.com/talgalili/installr">installr</a>를 이용해서 <a
+href="https://conda.io/miniconda.html">miniconda</a>를 설치해
+보겠습니다.</p>
 <h3 id="installr">installr</h3>
-<p><code>installr</code> 패키지는 <code>windows</code> 환경에서 <code>R</code>에서 사용하는 여러 외부 프로그램들(pandoc, latex, 등등)을 콘솔 명령으로 설치해주고, R의 버전 업데이트 등을 할 수 있는 함수를 제공합니다. 완전히 <a href="https://mrchypark.github.io/post/rphabetic-%EC%95%8C%ED%8C%8C%EB%B2%A0%ED%8B%B1-%EC%A0%9C%EC%95%88/">Rphabetic(알파베틱)</a>하죠. <code>unix</code> 계열(mac 포함)은 완전히 같은 기능을 제공하는 패키지가 없다는 점이 조금 아쉽습니다.</p>
+<p><code>installr</code> 패키지는 <code>windows</code> 환경에서
+<code>R</code>에서 사용하는 여러 외부 프로그램들(pandoc, latex, 등등)을
+콘솔 명령으로 설치해주고, R의 버전 업데이트 등을 할 수 있는 함수를
+제공합니다. 완전히 <a
+href="https://mrchypark.github.io/post/rphabetic-%EC%95%8C%ED%8C%8C%EB%B2%A0%ED%8B%B1-%EC%A0%9C%EC%95%88/">Rphabetic(알파베틱)</a>하죠.
+<code>unix</code> 계열(mac 포함)은 완전히 같은 기능을 제공하는 패키지가
+없다는 점이 조금 아쉽습니다.</p>
 <p>Rtools를 설치하지 않으셨다면 아래 두 줄을 콘솔에서 실행해주세요.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;installr&#39;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.Rtools</span>()</span></code></pre></div>
-<p>이제 <code>devtools</code>를 설치하고 최신 버전의 <code>installr</code>를 설치하도록 하겠습니다.</p>
+<p>이제 <code>devtools</code>를 설치하고 최신 버전의
+<code>installr</code>를 설치하도록 하겠습니다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;devtools&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;devtools&#39;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;talgalili/installr&#39;</span>)</span></code></pre></div>
-<p>최신 버전의 <code>installr</code> 패키지는 <code>install.conda()</code> 함수를 제공합니다. 이를 이용해서 <code>KoSpacing</code> 환경을 설치해보겠습니다.</p>
+<p>최신 버전의 <code>installr</code> 패키지는
+<code>install.conda()</code> 함수를 제공합니다. 이를 이용해서
+<code>KoSpacing</code> 환경을 설치해보겠습니다.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(installr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.conda</span>()</span></code></pre></div>
-<p><code>install.conda()</code> 함수는 windows 환경에 miniconda의 설치 파일을 다운 받아 실행해 줍니다. <a href="https://conda.io/miniconda.html">다운로드 페이지</a>에서 자신에게 맞는 설치 파일을 다운로드 받아 실행하셔도 같은 동작을 하는 것입니다. 기본 옵션들을 유지한 채로 계속 <code>다음</code>을 눌러 설치를 완료해 주세요.</p>
-<p>이제 <a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>을 설치해 보겠습니다.</p>
+<p><code>install.conda()</code> 함수는 windows 환경에 miniconda의 설치
+파일을 다운 받아 실행해 줍니다. <a
+href="https://conda.io/miniconda.html">다운로드 페이지</a>에서 자신에게
+맞는 설치 파일을 다운로드 받아 실행하셔도 같은 동작을 하는 것입니다.
+기본 옵션들을 유지한 채로 계속 <code>다음</code>을 눌러 설치를 완료해
+주세요.</p>
+<p>이제 <a
+href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>을 설치해
+보겠습니다.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&#39;remotes&#39;</span>)) <span class="fu">install.packages</span>(<span class="st">&#39;remotes&#39;</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;haven-jeon/KoSpacing&#39;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(KoSpacing)</span></code></pre></div>
-<p>잘 되셨나요? 저와는 조금 다른 메세지들이 보이실 수도 있습니다만, 마지막 <code>library(KoSpacing)</code>이 잘 수행되면 성공인 겁니다! <code>loaded KoSpacing model!</code> 메세지를 확인하셨나요?</p>
+<p>잘 되셨나요? 저와는 조금 다른 메세지들이 보이실 수도 있습니다만,
+마지막 <code>library(KoSpacing)</code>이 잘 수행되면 성공인 겁니다!
+<code>loaded KoSpacing model!</code> 메세지를 확인하셨나요?</p>
 <p>이제 패키지를 사용해볼까요?</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spacing</span>(<span class="st">&quot;김형호영화시장분석가는&#39;1987&#39;의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다.&quot;</span>)</span></code></pre></div>
-<p>R에서 keras를 사용하기 위해서 python이 설치되어 있어야 합니다. windows는 conda만 사용할 수 있습니다. macOS와 linux 계열은 pip, virtualenvs도 사용할 수 있습니다. installr 패키지는 windows 설치용 패키지라는 것을 잊지 마세요.</p>
-<p>잘못된 내용이 있거나 문제가 생기면 언제든지 알려주세요. 감사합니다.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>R에서 keras를 사용하기 위해서 python이 설치되어 있어야 합니다.
+windows는 conda만 사용할 수 있습니다. macOS와 linux 계열은 pip,
+virtualenvs도 사용할 수 있습니다. installr 패키지는 windows 설치용
+패키지라는 것을 잊지 마세요.</p>
+<p>잘못된 내용이 있거나 문제가 생기면 언제든지 알려주세요.
+감사합니다.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1490,13 +1490,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <p><img src="https://user-images.githubusercontent.com/6179259/106561891-dc30ef80-656c-11eb-8f14-e25c99bc7f5a.png" wigth=100%></p>
-<p>이번 0.1.0 버전 업데이트는 다음 소스 추가로 인한 속도 향상 및 수정주가 반영입니다. 거기에 <code>tq_get()</code>함수를 모방하기로 한 주제에 <strong>param</strong> 설계가 달라서 맞춰주는 작업을 수행했습니다.</p>
+<p>이번 0.1.0 버전 업데이트는 다음 소스 추가로 인한 속도 향상 및
+수정주가 반영입니다. 거기에 <code>tq_get()</code>함수를 모방하기로 한
+주제에 <strong>param</strong> 설계가 달라서 맞춰주는 작업을
+수행했습니다.</p>
 <h3 id="배운-점">배운 점</h3>
-<p>새롭게 json을 처리하면서 <code>purrr::transpose()</code>, <code>dplyr::select_if()</code>를 알게 되었습니다. json을 <code>tibble::as_tibble()</code> 로 처리한 후 <code>tidyr::unnest()</code> 시 발생하는 문제의 원인을 알게 되었습니다.</p>
-<h4 id="tibble자료형과-as_tibble-함수"><code>tibble</code>자료형과 <code>as_tibble()</code> 함수</h4>
-<p><code>tibble</code>, <code>tbl</code> 자료형은 현대적인 R을 사용하는데 근간이 되는 자료형입니다. base R의 <code>data.frame</code>의 현대적 버전이라고 할 수 있는데요. 매우 많은 장점이 있습니다.</p>
-<p>우선 <code>dim()</code>, <code>head()</code>, <code>class()</code> 개별 컬럼의 <code>class()</code>가 객체를 출력하는 것으로 한번에 해결됩니다. 출력량도 화면에 기반하여 제한하고 있어서, 많은 출력으로 멈추거나 하는 문제를 사전에 방지하고 있습니다. 좀 불편하다면, 컬럼도 출력 제한을 한다는 점 정도 인데요.</p>
-<p>보통 <code>matrix</code> 나 <code>data.frame</code>을 <code>tibble</code> 자료형으로 바꾸려면 <code>as_tibble()</code> 함수를 사용합니다. <code>json</code>으로 들어온 <code>list</code>는 웹 데이터를 다룰 때 많이 겪게 되는데요. 2단 구조의 <code>list</code>일 때 <code>as_tibble()</code>이 동작한다면 아주 편할 것 같습니다.</p>
+<p>새롭게 json을 처리하면서 <code>purrr::transpose()</code>,
+<code>dplyr::select_if()</code>를 알게 되었습니다. json을
+<code>tibble::as_tibble()</code> 로 처리한 후
+<code>tidyr::unnest()</code> 시 발생하는 문제의 원인을 알게
+되었습니다.</p>
+<h4 id="tibble자료형과-as_tibble-함수"><code>tibble</code>자료형과
+<code>as_tibble()</code> 함수</h4>
+<p><code>tibble</code>, <code>tbl</code> 자료형은 현대적인 R을
+사용하는데 근간이 되는 자료형입니다. base R의 <code>data.frame</code>의
+현대적 버전이라고 할 수 있는데요. 매우 많은 장점이 있습니다.</p>
+<p>우선 <code>dim()</code>, <code>head()</code>, <code>class()</code>
+개별 컬럼의 <code>class()</code>가 객체를 출력하는 것으로 한번에
+해결됩니다. 출력량도 화면에 기반하여 제한하고 있어서, 많은 출력으로
+멈추거나 하는 문제를 사전에 방지하고 있습니다. 좀 불편하다면, 컬럼도
+출력 제한을 한다는 점 정도 인데요.</p>
+<p>보통 <code>matrix</code> 나 <code>data.frame</code>을
+<code>tibble</code> 자료형으로 바꾸려면 <code>as_tibble()</code> 함수를
+사용합니다. <code>json</code>으로 들어온 <code>list</code>는 웹 데이터를
+다룰 때 많이 겪게 되는데요. 2단 구조의 <code>list</code>일 때
+<code>as_tibble()</code>이 동작한다면 아주 편할 것 같습니다.</p>
 <p>예를 들어 보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1525,7 +1543,12 @@ $b[[2]]
 $b[[3]]
 [1] 6</code></pre>
 </div>
-<p>2단 구조를 만들 때 헷갈리지 않기 위해서 1단은 이름을 지어서, 2단은 이름없이 2단 <code>list</code>를 만들었습니다. 간단히 대응하면 1,2,3 데이터를 가지는 <strong>a</strong> 컬럼과 4,5,6 데이터를 가지는 <strong>b</strong> 컬럼의 table일 수 있을 것 같습니다. 컬럼 단위로 묶어서 데이터를 보냈으므로, 저는 <strong>col_first_list</strong>라고 이름지어 봤습니다.</p>
+<p>2단 구조를 만들 때 헷갈리지 않기 위해서 1단은 이름을 지어서, 2단은
+이름없이 2단 <code>list</code>를 만들었습니다. 간단히 대응하면 1,2,3
+데이터를 가지는 <strong>a</strong> 컬럼과 4,5,6 데이터를 가지는
+<strong>b</strong> 컬럼의 table일 수 있을 것 같습니다. 컬럼 단위로
+묶어서 데이터를 보냈으므로, 저는 <strong>col_first_list</strong>라고
+이름지어 봤습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -1540,8 +1563,12 @@ $b[[3]]
 2 &lt;dbl [1]&gt; &lt;dbl [1]&gt;
 3 &lt;dbl [1]&gt; &lt;dbl [1]&gt;</code></pre>
 </div>
-<p>음… <code>tibble</code>로는 된거 같은데, 뭔가 이상합니다. 찾아보니 <code>tibble</code>은 컬럼의 자료형이 <code>list</code>가 가능하더라구요. 그럼 평소에 알고 있는 모습으로 바꾸는 작업이 필요할 것 같습니다.</p>
-<h4 id="새롭게-배운-함수-1-tidyrunnest">새롭게 배운 함수 1 <code>tidyr::unnest()</code></h4>
+<p>음… <code>tibble</code>로는 된거 같은데, 뭔가 이상합니다. 찾아보니
+<code>tibble</code>은 컬럼의 자료형이 <code>list</code>가
+가능하더라구요. 그럼 평소에 알고 있는 모습으로 바꾸는 작업이 필요할 것
+같습니다.</p>
+<h4 id="새롭게-배운-함수-1-tidyrunnest">새롭게 배운 함수 1
+<code>tidyr::unnest()</code></h4>
 <pre><code>Nest and unnest
 
 Description
@@ -1556,7 +1583,8 @@ unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
   names_sep = NULL, names_repair = &quot;check_unique&quot;,
   .drop = deprecated(), .id = deprecated(), .sep = deprecated(),
   .preserve = deprecated())</code></pre>
-<p>제목과 설명을 보면 딱 필요한 함수 같아 보입니다. 한번 사용해 볼까요?</p>
+<p>제목과 설명을 보면 딱 필요한 함수 같아 보입니다. 한번 사용해
+볼까요?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>col_first_list</span> <span class='op'>%&gt;%</span> 
@@ -1572,7 +1600,8 @@ unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
 3     3     6</code></pre>
 </div>
 <p>깔끔하게 결과가 나왔습니다.</p>
-<p>하지만 보통 json을 웹서비스에서 받을 때 반대로 되어 있는 경우가 많습니다.</p>
+<p>하지만 보통 json을 웹서비스에서 받을 때 반대로 되어 있는 경우가
+많습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>row_first_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>3</span>, b <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>
@@ -1611,8 +1640,11 @@ unnest(data, cols, ..., keep_empty = FALSE, ptype = NULL,
 <pre><code>Error: Columns 1, 2, and 3 must be named.
 Use .name_repair to specify repair.</code></pre>
 </div>
-<p>우선 <code>tibble::as_tibble()</code>이 바로 처리 해주지를 못합니다. 컬럼은 이름이 있어야만 한다는 군요. 이때 <code>purrr::transpose()</code> 가 필요합니다.</p>
-<h4 id="새롭게-배운-함수-2-purrrtranspose">새롭게 배운 함수 2 <code>purrr::transpose()</code></h4>
+<p>우선 <code>tibble::as_tibble()</code>이 바로 처리 해주지를 못합니다.
+컬럼은 이름이 있어야만 한다는 군요. 이때 <code>purrr::transpose()</code>
+가 필요합니다.</p>
+<h4 id="새롭게-배운-함수-2-purrrtranspose">새롭게 배운 함수 2
+<code>purrr::transpose()</code></h4>
 <pre><code>Transpose a list.
 
 Description
@@ -1635,9 +1667,17 @@ transpose(.l, .names = NULL)</code></pre>
 2     2     5
 3     3     6</code></pre>
 </div>
-<p>이렇게 2단 으로 구성된 json 파일은 쉽게 <code>tibble</code> 자료형으로 고쳐서 R에서 다룰수 있습니다.</p>
-<h4 id="tidyrunnest-함수의-문제점"><code>tidyr::unnest()</code> 함수의 문제점</h4>
-<p>이제 얼마든지 <code>json</code> 데이터를 사용하기 좋게 <code>tibble</code>로 바꿀 수 있게 된 것 같았습니다. (2단 구성이라면 말이지요.) 하지만 어찌된 일인지 상황에 따라 에러가 계속 발생하더군요. 찾아보니 컬럼에 <code>null</code>이 있을 때가 문제였습니다. <code>list</code> 자료형은 그대로 <code>null</code>을 가지고 있는 반면, <code>tidyr::unnest()</code>가 동작할 때 <code>null</code>이 없어져서 다른 컬럼과 갯수가 맞지 않게 되는 것이었습니다.</p>
+<p>이렇게 2단 으로 구성된 json 파일은 쉽게 <code>tibble</code>
+자료형으로 고쳐서 R에서 다룰수 있습니다.</p>
+<h4 id="tidyrunnest-함수의-문제점"><code>tidyr::unnest()</code> 함수의
+문제점</h4>
+<p>이제 얼마든지 <code>json</code> 데이터를 사용하기 좋게
+<code>tibble</code>로 바꿀 수 있게 된 것 같았습니다. (2단 구성이라면
+말이지요.) 하지만 어찌된 일인지 상황에 따라 에러가 계속 발생하더군요.
+찾아보니 컬럼에 <code>null</code>이 있을 때가 문제였습니다.
+<code>list</code> 자료형은 그대로 <code>null</code>을 가지고 있는 반면,
+<code>tidyr::unnest()</code>가 동작할 때 <code>null</code>이 없어져서
+다른 컬럼과 갯수가 맞지 않게 되는 것이었습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>includ_null</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='cn'>NULL</span>, <span class='fl'>6.5</span><span class='op'>)</span><span class='op'>)</span>
@@ -1652,7 +1692,9 @@ transpose(.l, .names = NULL)</code></pre>
 2 &lt;dbl [1]&gt; &lt;NULL&gt;   
 3 &lt;dbl [1]&gt; &lt;dbl [1]&gt;</code></pre>
 </div>
-<p>이렇게 <code>tibble::as_tibble()</code> 함수는 <code>null</code>을 유지한 채로 동작했습니다. 하지만 <code>tidyr::unnest()</code>은 처리하지 못하고 에러가 발생하네요.</p>
+<p>이렇게 <code>tibble::as_tibble()</code> 함수는 <code>null</code>을
+유지한 채로 동작했습니다. 하지만 <code>tidyr::unnest()</code>은 처리하지
+못하고 에러가 발생하네요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>includ_null</span> <span class='op'>%&gt;%</span> 
@@ -1689,9 +1731,17 @@ transpose(.l, .names = NULL)</code></pre>
 </div>
 <pre><code>Error: `b` must be a data frame column</code></pre>
 </div>
-<p>이 두 가지는 다른 처리방법을 사용해야 할 것 같습니다. 전체가 <code>null</code>인 컬럼은 제거하고, 일부가 <code>null</code>인 컬럼은 <code>null</code>을 다른 값으로 대체해야 겠네요. 전체가 <code>null</code>인 컬럼 이름을 하드코딩할 수도 있겠지만, 찾아서 제거하는 것이 더 좋아보였습니다.</p>
-<h4 id="새롭게-배운-함수-3-dplyr_if">새롭게 배운 함수 3 <code>dplyr::*_if()</code></h4>
-<p><code>dplyr</code> 패키지에는 <code>muate()</code> 함수나 <code>select()</code> 함수 뒤에 <code>_if()</code>가 붙은 조건 계열의 함수가 있습니다. 이걸 이용해서 컬럼내 데이터가 전체 <code>null</code>인 것을 제외하고 <code>select()</code> 하겠다가 가능할 것 같습니다.</p>
+<p>이 두 가지는 다른 처리방법을 사용해야 할 것 같습니다. 전체가
+<code>null</code>인 컬럼은 제거하고, 일부가 <code>null</code>인 컬럼은
+<code>null</code>을 다른 값으로 대체해야 겠네요. 전체가
+<code>null</code>인 컬럼 이름을 하드코딩할 수도 있겠지만, 찾아서
+제거하는 것이 더 좋아보였습니다.</p>
+<h4 id="새롭게-배운-함수-3-dplyr_if">새롭게 배운 함수 3
+<code>dplyr::*_if()</code></h4>
+<p><code>dplyr</code> 패키지에는 <code>muate()</code> 함수나
+<code>select()</code> 함수 뒤에 <code>_if()</code>가 붙은 조건 계열의
+함수가 있습니다. 이걸 이용해서 컬럼내 데이터가 전체 <code>null</code>인
+것을 제외하고 <code>select()</code> 하겠다가 가능할 것 같습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>nulls_party</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, 
@@ -1711,17 +1761,33 @@ transpose(.l, .names = NULL)</code></pre>
 2 &lt;dbl [1]&gt; &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;   
 3 &lt;dbl [1]&gt; &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt;</code></pre>
 </div>
-<p>조금 복잡한데요. <code>~</code>은 익명 함수를 작성하는 줄임표현입니다. <code>~ sum(.x)</code>는 <code>funcion(x) sum(x)</code>와 같은 표현이죠. <code>!</code>는 논리형을 반대로 바꿔라는 뜻이구요. <code>all()</code> 함수는 <code>is.null()</code> 함수는 데이터가 <code>null</code>인지를 확인하는 함수 입니다. <code>select_if()</code> 함수 내에서 익명 함수 문법을 사용하게 되면, <code>.x</code>는 컬럼을 뜻하게 됩니다. 지금은 컬럼이 리스트기 때문에 <code>unlist()</code>로 <code>vector</code>로 바꾸었습니다.</p>
+<p>조금 복잡한데요. <code>~</code>은 익명 함수를 작성하는
+줄임표현입니다. <code>~ sum(.x)</code>는
+<code>funcion(x) sum(x)</code>와 같은 표현이죠. <code>!</code>는
+논리형을 반대로 바꿔라는 뜻이구요. <code>all()</code> 함수는
+<code>is.null()</code> 함수는 데이터가 <code>null</code>인지를 확인하는
+함수 입니다. <code>select_if()</code> 함수 내에서 익명 함수 문법을
+사용하게 되면, <code>.x</code>는 컬럼을 뜻하게 됩니다. 지금은 컬럼이
+리스트기 때문에 <code>unlist()</code>로 <code>vector</code>로
+바꾸었습니다.</p>
 <p>그럼 설명해보면</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select_if</span>( <span class="sc">~</span> <span class="sc">!</span><span class="fu">all</span>(<span class="fu">is.null</span>(<span class="fu">unlist</span>(.x))))</span></code></pre></div>
-<p><code>select_if()</code>: 조건에 맞는 것만 선택할꺼야. <code>~</code>: 함수를 조합해야 하니까 익명함수를 쓸께. <code>!</code>: 뒤에 논리형 결과가 나오면 반대로 바꿔줘. <code>all()</code>: 안에 모두가 <code>TRUE</code>면 <code>TRUE</code>하나를, 하나라도 아니라면 <code>FALSE</code>를 반환해. <code>is.null</code>: 값이 <code>NULL</code>이면 <code>TRUE</code>를 주세요. <code>unlist()</code>: <code>list</code> 자료형을 <code>vector</code>로 풀어줘. <code>.x</code>: 익명 함수에서 입력을 대표해.</p>
+<p><code>select_if()</code>: 조건에 맞는 것만 선택할꺼야.
+<code>~</code>: 함수를 조합해야 하니까 익명함수를 쓸께. <code>!</code>:
+뒤에 논리형 결과가 나오면 반대로 바꿔줘. <code>all()</code>: 안에 모두가
+<code>TRUE</code>면 <code>TRUE</code>하나를, 하나라도 아니라면
+<code>FALSE</code>를 반환해. <code>is.null</code>: 값이
+<code>NULL</code>이면 <code>TRUE</code>를 주세요. <code>unlist()</code>:
+<code>list</code> 자료형을 <code>vector</code>로 풀어줘.
+<code>.x</code>: 익명 함수에서 입력을 대표해.</p>
 <p>입니다.</p>
 <p>그러고 보니…</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select_if</span>(<span class="sc">~</span> .x <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">is.null</span>() <span class="sc">%&gt;%</span> <span class="fu">all</span>() <span class="sc">%&gt;%</span> <span class="sc">!</span>.)</span></code></pre></div>
 <p>이렇게 해도 되는군요. 조금 가독성이 좋아졌습니다.</p>
-<p>이제 전체 <code>NULL</code>인 컬럼을 제거 했으니, 일부가 <code>NULL</code>인 경우 우선 <code>0</code>으로 대체 해보겠습니다.</p>
+<p>이제 전체 <code>NULL</code>인 컬럼을 제거 했으니, 일부가
+<code>NULL</code>인 경우 우선 <code>0</code>으로 대체 해보겠습니다.</p>
 <h4 id="maps-party">map’s party</h4>
 <p>우선 결론 먼저 쓰고 시작해보면,</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1741,16 +1807,38 @@ transpose(.l, .names = NULL)</code></pre>
 </div>
 <p>입니다.</p>
 <p>새롭게 배우게 된 함수는 <code>purrr::map_dfc()</code> 였습니다.</p>
-<p><code>purrr::map()</code>함수는 기본적으로 <code>list</code>를 인풋으로 받습니다. 결과도 마찬가지로 <code>list</code>를 출력해줍니다.</p>
-<p>복잡하게 결과가 나와야 한다면, 전처리를 따로 하기위해서 <code>list</code> 아웃풋은 좋은 선택입니다. 하지만 <code>vector</code>로 나올법한 결과(ex&gt; <code>sum()</code>같이 개별 리스트당 하나의 결과가 나오거나 하는 등)라면 <code>vector</code>로 아웃풋이 나와도 좋을 것 같습니다.</p>
-<p>그렇게 해주는 함수가 <code>purrr::map_*()</code>계열 함수입니다. * 에는 <code>lgl</code>, <code>dbl</code>, <code>chr</code>같이 자료형이 들어가 있죠. 당연한 설계입니다. <code>vector</code>는 모든 요소가 같은 자료형이어야 하니까요.</p>
-<p>그럼 <code>data.frame</code> 형태로 받을수는 없을까요? 찾아보니 <code>purrr::map_df*()</code>가 그 역할을 하더라구요. 그냥 <code>df</code>와 <code>dfr</code>, <code>dfc</code> 3개의 접미사를 제공합니다. <code>dfr</code>과 <code>dfc</code>는 각각 데이터를 <code>row</code> 방향과 <code>col</code> 방향으로 합치겠다는 뜻입니다.</p>
-<p><code>map()</code>함수는 <code>data.frame</code> 자료형에서 기본적으로 <code>col</code>을 <code>list</code> 처럼 받아서 처리합니다. 그럼 각 컬럼별로 개별 요소에 <code>NULL</code>이 있는지 확인하고 만약 <code>NULL</code>이라면 0으로 바꿔라 라고 해보겠습니다.</p>
+<p><code>purrr::map()</code>함수는 기본적으로 <code>list</code>를
+인풋으로 받습니다. 결과도 마찬가지로 <code>list</code>를
+출력해줍니다.</p>
+<p>복잡하게 결과가 나와야 한다면, 전처리를 따로 하기위해서
+<code>list</code> 아웃풋은 좋은 선택입니다. 하지만 <code>vector</code>로
+나올법한 결과(ex&gt; <code>sum()</code>같이 개별 리스트당 하나의 결과가
+나오거나 하는 등)라면 <code>vector</code>로 아웃풋이 나와도 좋을 것
+같습니다.</p>
+<p>그렇게 해주는 함수가 <code>purrr::map_*()</code>계열 함수입니다. *
+에는 <code>lgl</code>, <code>dbl</code>, <code>chr</code>같이 자료형이
+들어가 있죠. 당연한 설계입니다. <code>vector</code>는 모든 요소가 같은
+자료형이어야 하니까요.</p>
+<p>그럼 <code>data.frame</code> 형태로 받을수는 없을까요? 찾아보니
+<code>purrr::map_df*()</code>가 그 역할을 하더라구요. 그냥
+<code>df</code>와 <code>dfr</code>, <code>dfc</code> 3개의 접미사를
+제공합니다. <code>dfr</code>과 <code>dfc</code>는 각각 데이터를
+<code>row</code> 방향과 <code>col</code> 방향으로 합치겠다는
+뜻입니다.</p>
+<p><code>map()</code>함수는 <code>data.frame</code> 자료형에서
+기본적으로 <code>col</code>을 <code>list</code> 처럼 받아서 처리합니다.
+그럼 각 컬럼별로 개별 요소에 <code>NULL</code>이 있는지 확인하고 만약
+<code>NULL</code>이라면 0으로 바꿔라 라고 해보겠습니다.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_dfc</span>(<span class="sc">~</span> .x <span class="sc">%&gt;%</span> purrr<span class="sc">::</span><span class="fu">map</span>(is.null) <span class="sc">%&gt;%</span> <span class="fu">ifelse</span>(<span class="dv">0</span>,.x) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>())</span></code></pre></div>
-<p>이것도 조금 어렵네요… 우선 골치 아파지는 이유가 각 컬럼이 <code>list</code>이기 때문입니다. <code>map()</code>을 이중으로 써야 하는군요.</p>
-<p><code>purrr::map_dfc()</code>는 위에서 충분히 설명한 것 같습니다. 그러면 익명함수 다음부터 확인해 볼 껀데요.</p>
-<p>각 컬럼내의 <code>list</code>요소가 각각 <code>NULL</code>인지 확인합니다. 이때! <code>purrr:map()</code>때문에, <code>.x</code>가 각 컬럼을 대표하지 않고, 각 셀을 대표하는 상태로 변합니다.</p>
+<p>이것도 조금 어렵네요… 우선 골치 아파지는 이유가 각 컬럼이
+<code>list</code>이기 때문입니다. <code>map()</code>을 이중으로 써야
+하는군요.</p>
+<p><code>purrr::map_dfc()</code>는 위에서 충분히 설명한 것 같습니다.
+그러면 익명함수 다음부터 확인해 볼 껀데요.</p>
+<p>각 컬럼내의 <code>list</code>요소가 각각 <code>NULL</code>인지
+확인합니다. 이때! <code>purrr:map()</code>때문에, <code>.x</code>가 각
+컬럼을 대표하지 않고, 각 셀을 대표하는 상태로 변합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>&lt;-</span> <span class='va'>nulls_party</span> <span class='op'>%&gt;%</span> 
@@ -1766,7 +1854,8 @@ transpose(.l, .names = NULL)</code></pre>
 2 &lt;dbl [1]&gt; &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;   
 3 &lt;dbl [1]&gt; &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt;</code></pre>
 </div>
-<p>그냥 <code>purrr:map()</code>을 사용해서 <code>.x</code>가 <code>NULL</code>인지 체크해보겠습니다.</p>
+<p>그냥 <code>purrr:map()</code>을 사용해서 <code>.x</code>가
+<code>NULL</code>인지 체크해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1785,7 +1874,10 @@ $d
 $e
 [1] FALSE</code></pre>
 </div>
-<p>4개 컬럼에 <code>FALSE</code>라는 결과를 <code>list</code>로 출력해줬네요. 이건 슬프게도 컬럼이 <code>NULL</code>이냐 물어본 것이라 당연히 전부 <code>FALSE</code>가 나와야 합니다. 그럼 다시 <code>map() in map()</code>으로 작성해서 확인해 보겠습니다.</p>
+<p>4개 컬럼에 <code>FALSE</code>라는 결과를 <code>list</code>로
+출력해줬네요. 이건 슬프게도 컬럼이 <code>NULL</code>이냐 물어본 것이라
+당연히 전부 <code>FALSE</code>가 나와야 합니다. 그럼 다시
+<code>map() in map()</code>으로 작성해서 확인해 보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1835,7 +1927,10 @@ $e[[2]]
 $e[[3]]
 [1] FALSE</code></pre>
 </div>
-<p>2단 <code>list</code>로 결과를 주는데, 결국 전부 <code>list</code>이군요? 이제 <code>ifelse()</code> 함수로 <code>is.null()</code> 결과가 <code>TRUE</code>면 0을, <code>FALSE</code>면 원래 값 그대로 넣어보겠습니다.</p>
+<p>2단 <code>list</code>로 결과를 주는데, 결국 전부
+<code>list</code>이군요? 이제 <code>ifelse()</code> 함수로
+<code>is.null()</code> 결과가 <code>TRUE</code>면 0을,
+<code>FALSE</code>면 원래 값 그대로 넣어보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1885,7 +1980,9 @@ $e[[2]]
 $e[[3]]
 [1] 3</code></pre>
 </div>
-<p>이렇게 보니 <code>ifelse()</code>에 들어가는 <code>.x</code>는 처음에 사용한 <code>.x</code>가 아니라, 안쪽에 있는 <code>purrr::map()</code> 함수에서 사용하는 <code>.x</code>인듯합니다.</p>
+<p>이렇게 보니 <code>ifelse()</code>에 들어가는 <code>.x</code>는 처음에
+사용한 <code>.x</code>가 아니라, 안쪽에 있는 <code>purrr::map()</code>
+함수에서 사용하는 <code>.x</code>인듯합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1956,7 +2053,10 @@ $d
 $e
 [1] 1 0 3</code></pre>
 </div>
-<p>컬럼 단위는 잘 진행된 것 같습니다. 헌데 지금 예시야 숫자만 있지만, 글자인 컬럼이 있거나 하면 에러가 날겁니다. <code>list</code>를 <code>vector</code>로 풀면 될 것 같은데… 우리는 이미 그런 동작을 해주는 함수를 알고 있습니다.</p>
+<p>컬럼 단위는 잘 진행된 것 같습니다. 헌데 지금 예시야 숫자만 있지만,
+글자인 컬럼이 있거나 하면 에러가 날겁니다. <code>list</code>를
+<code>vector</code>로 풀면 될 것 같은데… 우리는 이미 그런 동작을 해주는
+함수를 알고 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1975,7 +2075,10 @@ $d
 $e
 [1] 1 0 3</code></pre>
 </div>
-<p>같은 결과가 나왔군요! 패키지 코드에서는 이미 확인했지만, 컬럼이 여러 자료형이어도 잘 동작합니다. 그럼 이제 만들어진 개별 <code>list</code>를 컬럼으로 합치기만 하면 되군요! 드디어 처음에 설명했던 <code>purrr::map_dfc()</code>함수를 사용할 차례인가 봅니다.</p>
+<p>같은 결과가 나왔군요! 패키지 코드에서는 이미 확인했지만, 컬럼이 여러
+자료형이어도 잘 동작합니다. 그럼 이제 만들어진 개별 <code>list</code>를
+컬럼으로 합치기만 하면 되군요! 드디어 처음에 설명했던
+<code>purrr::map_dfc()</code>함수를 사용할 차례인가 봅니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>maps_party</span> <span class='op'>%&gt;%</span> 
@@ -1989,11 +2092,19 @@ $e
 2     2     1     0     0
 3     3     2     0     3</code></pre>
 </div>
-<p>중간에 <code>unlist()</code>를 사용하면서, 이미 개별 컬럼이 <code>list</code>가 아니게 되었네요. 감사하게 여기서는 <code>tidyr::unnest()</code> 함수를 사용할 필요가 없어진 것 같습니다.</p>
+<p>중간에 <code>unlist()</code>를 사용하면서, 이미 개별 컬럼이
+<code>list</code>가 아니게 되었네요. 감사하게 여기서는
+<code>tidyr::unnest()</code> 함수를 사용할 필요가 없어진 것
+같습니다.</p>
 <h3 id="마치며">마치며</h3>
-<p>다시 한 번 {purrr} 패키지의 강력함과 어려움을 동시에 느낄 수 있었던 작업이었습니다. <code>map()</code>을 이 중으로 사용하면서 <code>.x</code>이 대표하는 대상이 달라진다는 점이 재밌었는데요. 앞으로 복잡한 <code>list</code>(<code>json</code>)를 다룰 때 더 수월하게 할 수 있을 것 같습니다.</p>
+<p>다시 한 번 {purrr} 패키지의 강력함과 어려움을 동시에 느낄 수 있었던
+작업이었습니다. <code>map()</code>을 이 중으로 사용하면서
+<code>.x</code>이 대표하는 대상이 달라진다는 점이 재밌었는데요. 앞으로
+복잡한 <code>list</code>(<code>json</code>)를 다룰 때 더 수월하게 할 수
+있을 것 같습니다.</p>
 <p>감사합니다.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
