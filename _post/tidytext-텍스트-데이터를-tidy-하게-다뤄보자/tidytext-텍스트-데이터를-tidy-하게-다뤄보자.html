@@ -1551,19 +1551,19 @@ form</strong>, <strong>wide form</strong> 입니다.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 352,590 x 8
-   지역  건물명 건물층수 운행층수 승강기종류 `건물용도(대)`
-   &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         
- 1 강원 강… (주)강남…        7        2 덤웨이터   숙박시설      
- 2 강원 강… (주)강남…        7        3 덤웨이터   숙박시설      
- 3 강원 강… (주)강남…        7        8 승객용     숙박시설      
- 4 강원 강… (주)강릉…        3        3 화물용     판매시설      
- 5 강원 강… (주)경포…        4        5 승객용     제1종근린생활시설…
- 6 강원 강… (주)뉴광…        6        7 승객용     제2종근린생활시설…
- 7 강원 강… (주)대성…        3        3 화물용(DW) 공장          
- 8 강원 강… (주)동부…        3        3 장애인용   공장          
- 9 강원 강… (주)동아…        2        2 화물용(DW) 제2종근린생활시설…
-10 강원 강… (주)롯데…       10        2 화물용     공장          
+<pre><code># A tibble: 352,590 × 8
+   지역        건물명      건물층수 운행층수 승강기종류 `건물용도(대)`
+   &lt;chr&gt;       &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         
+ 1 강원 강릉시 (주)강남강…        7        2 덤웨이터   숙박시설      
+ 2 강원 강릉시 (주)강남강…        7        3 덤웨이터   숙박시설      
+ 3 강원 강릉시 (주)강남강…        7        8 승객용     숙박시설      
+ 4 강원 강릉시 (주)강릉농…        3        3 화물용     판매시설      
+ 5 강원 강릉시 (주)경포솔…        4        5 승객용     제1종근린생활…
+ 6 강원 강릉시 (주)뉴광산…        6        7 승객용     제2종근린생활…
+ 7 강원 강릉시 (주)대성환…        3        3 화물용(DW) 공장          
+ 8 강원 강릉시 (주)동부쏠…        3        3 장애인용   공장          
+ 9 강원 강릉시 (주)동아에…        2        2 화물용(DW) 제2종근린생활…
+10 강원 강릉시 (주)롯데칠…       10        2 화물용     공장          
 # … with 352,580 more rows, and 2 more variables:
 #   `정격속도(m/s)` &lt;dbl&gt;, 대수 &lt;int&gt;</code></pre>
 </div>
@@ -1579,16 +1579,16 @@ form</strong>, <strong>wide form</strong> 입니다.</p>
 <code>(주)강남강릉호텔</code>이네요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>`건물명`</span> <span class='op'>==</span> <span class='st'>"(주)강남강릉호텔"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 3 x 8
-  지역  건물명 건물층수 운행층수 승강기종류 `건물용도(대)`
-  &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         
-1 강원 강… (주)강남…        7        2 덤웨이터   숙박시설      
-2 강원 강… (주)강남…        7        3 덤웨이터   숙박시설      
-3 강원 강… (주)강남…        7        8 승객용     숙박시설      
+<pre><code># A tibble: 3 × 8
+  지역        건물명      건물층수 운행층수 승강기종류 `건물용도(대)`
+  &lt;chr&gt;       &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         
+1 강원 강릉시 (주)강남강…        7        2 덤웨이터   숙박시설      
+2 강원 강릉시 (주)강남강…        7        3 덤웨이터   숙박시설      
+3 강원 강릉시 (주)강남강…        7        8 승객용     숙박시설      
 # … with 2 more variables: `정격속도(m/s)` &lt;dbl&gt;, 대수 &lt;int&gt;</code></pre>
 </div>
 <p>지금 <code>lift</code> 데이터는 tidy하게 잘 정리되어 있습니다. 그
@@ -1622,13 +1622,13 @@ href="http://tidyr.tidyverse.org/">tidyr</a>입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift_sm</span> <span class='op'>&lt;-</span> 
-    <span class='va'>lift</span> <span class='op'>%&gt;%</span> 
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>`건물명`</span>, <span class='va'>`승강기종류`</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='va'>lift</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>`건물명`</span>, <span class='va'>`승강기종류`</span><span class='op'>)</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>`총대수` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>`대수`</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>lift_sm</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 231,928 x 3
+<pre><code># A tibble: 231,928 × 3
 # Groups:   건물명 [175,090]
    건물명                       승강기종류    총대수
    &lt;chr&gt;                        &lt;chr&gt;          &lt;int&gt;
@@ -1651,34 +1651,31 @@ href="http://tidyr.tidyverse.org/">tidyr</a>입니다.</p>
 와이드폼으로 바꿔보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift_sm</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lift_sm</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://tidyr.tidyverse.org/reference/spread.html'>spread</a></span><span class='op'>(</span><span class='va'>`승강기종류`</span>, <span class='va'>`총대수`</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 175,090 x 30
+<pre><code># A tibble: 175,090 × 30
 # Groups:   건물명 [175,090]
-   건물명 경사형휠체어리프트… 덤웨이터 `비상/승객화물용`… `비상/장애/승객화물`…
-   &lt;chr&gt;             &lt;int&gt;    &lt;int&gt;            &lt;int&gt;            &lt;int&gt;
- 1 .(주)와…               NA       NA               NA               NA
- 2 .건영빌딩…               NA       NA               NA               NA
- 3 .광장금호…               NA       NA               NA               NA
- 4 .늘푸른빌…               NA       NA               NA               NA
- 5 .대전광역…               NA       NA               NA               NA
- 6 .리버캐슬…               NA       NA               NA               NA
- 7 .상현재원…               NA       NA               NA               NA
- 8 .유진프라…               NA       NA               NA               NA
- 9 .윤성코아…               NA       NA               NA               NA
-10 .카밀리아…               NA       NA               NA               NA
+   건물명 경사형휠체어리프… 덤웨이터 `비상/승객화물…` `비상/장애/승…`
+   &lt;chr&gt;              &lt;int&gt;    &lt;int&gt;            &lt;int&gt;           &lt;int&gt;
+ 1 .(주)…                NA       NA               NA              NA
+ 2 .건영…                NA       NA               NA              NA
+ 3 .광장…                NA       NA               NA              NA
+ 4 .늘푸…                NA       NA               NA              NA
+ 5 .대전…                NA       NA               NA              NA
+ 6 .리버…                NA       NA               NA              NA
+ 7 .상현…                NA       NA               NA              NA
+ 8 .유진…                NA       NA               NA              NA
+ 9 .윤성…                NA       NA               NA              NA
+10 .카밀…                NA       NA               NA              NA
 # … with 175,080 more rows, and 25 more variables:
 #   `비상/장애/전망용` &lt;int&gt;, `비상/장애/침대용` &lt;int&gt;,
 #   `비상/장애인용` &lt;int&gt;, `비상/침대용` &lt;int&gt;, 비상용 &lt;int&gt;,
 #   소형엘리베이터 &lt;int&gt;, 수직형휠체어리프트 &lt;int&gt;, 수평보행기 &lt;int&gt;,
 #   승객용 &lt;int&gt;, 승객화물용 &lt;int&gt;, 에스컬레이터 &lt;int&gt;,
 #   자동차용 &lt;int&gt;, `장애/승객화물용` &lt;int&gt;,
-#   `장애/전망/침대용` &lt;int&gt;, `장애/전망용` &lt;int&gt;,
-#   `장애/침대용` &lt;int&gt;, 장애인용 &lt;int&gt;, `전망/침대용` &lt;int&gt;,
-#   전망용 &lt;int&gt;, 침대용 &lt;int&gt;, `피난/장애인용` &lt;int&gt;, 피난용 &lt;int&gt;,
-#   `화물/자동차용` &lt;int&gt;, 화물용 &lt;int&gt;, `화물용(DW)` &lt;int&gt;</code></pre>
+#   `장애/전망/침대용` &lt;int&gt;, `장애/전망용` &lt;int&gt;, …</code></pre>
 </div>
 <p><code>spread(사용할 데이터, 컬럼 역할을 할 컬럼, 셀 역할을 할 컬럼)</code>으로
 함수가 동작하는데요. 이렇게 보니 와이드폼은 한 가지 종류의
@@ -1758,14 +1755,14 @@ href="http://www.pa.go.kr/research/contents/speech/index.jsp">대통령
   <span class='va'>speech_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='va'>speech_list</span>,
                        <span class='fu'><a href='https://rdrr.io/pkg/presidentSpeech/man/search_speech.html'>search_speech</a></span><span class='op'>(</span>president <span class='op'>=</span> <span class='va'>tar_pre</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
-<span class='va'>speech_list</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>president</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='va'>speech_list</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>president</span><span class='op'>)</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 4 x 2
+<pre><code># A tibble: 4 × 2
   president count
-* &lt;chr&gt;     &lt;int&gt;
+  &lt;chr&gt;     &lt;int&gt;
 1 김대중      822
 2 김영삼      728
 3 노무현      780
@@ -1773,7 +1770,7 @@ href="http://www.pa.go.kr/research/contents/speech/index.jsp">대통령
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 
-<span class='va'>speech_list</span> <span class='op'>%&gt;%</span> 
+<span class='va'>speech_list</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>field</span>, fill <span class='op'>=</span> <span class='va'>president</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"count"</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>president</span><span class='op'>)</span>
@@ -1781,7 +1778,7 @@ href="http://www.pa.go.kr/research/contents/speech/index.jsp">대통령
 </div>
 <img src="tidytext-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-tidy-%ED%95%98%EA%B2%8C-%EB%8B%A4%EB%A4%84%EB%B3%B4%EC%9E%90_files/figure-html5/unnamed-chunk-11-1.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>speech_list</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>speech_list</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>event</span>, fill <span class='op'>=</span> <span class='va'>president</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"count"</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>president</span><span class='op'>)</span>

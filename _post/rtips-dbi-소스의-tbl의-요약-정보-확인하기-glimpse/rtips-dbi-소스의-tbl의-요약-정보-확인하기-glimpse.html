@@ -1558,7 +1558,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   .. .. ..@ loadable.extensions: logi TRUE
   .. .. ..@ flags              : int 70
   .. .. ..@ vfs                : chr &quot;&quot;
-  .. .. ..@ ref                :&lt;environment: 0x7fcb6ce38210&gt; 
+  .. .. ..@ ref                :&lt;environment: 0x7fd48153df48&gt; 
   .. .. ..@ bigint             : chr &quot;integer64&quot;
   .. .. ..@ extended_types     : logi FALSE
   ..$ disco: NULL
@@ -1577,7 +1577,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 컬럼이 많아지면 한눈에 보기 불편한 문제가 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/hadley/nycflights13'>nycflights13</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/nycflights13'>nycflights13</a></span><span class='op'>)</span>
 <span class='va'>flights</span>
 </code></pre>
 </div>
@@ -1608,12 +1608,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 없더니… 등잔밑이 어둡다가 정말 이럴때 쓰는 말인가 싶더군요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>mtcars_sql</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>mtcars_sql</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Rows: ??
 Columns: 11
-Database: sqlite 3.35.2 [:memory:]
+Database: sqlite 3.38.2 [:memory:]
 $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 1…
 $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4…
 $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7,…
@@ -1644,7 +1644,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2…</c
   .. .. ..@ loadable.extensions: logi TRUE
   .. .. ..@ flags              : int 70
   .. .. ..@ vfs                : chr &quot;&quot;
-  .. .. ..@ ref                :&lt;environment: 0x7fcb6ce38210&gt; 
+  .. .. ..@ ref                :&lt;environment: 0x7fd48153df48&gt; 
   .. .. ..@ bigint             : chr &quot;integer64&quot;
   .. .. ..@ extended_types     : logi FALSE
   ..$ disco: NULL
@@ -1655,12 +1655,12 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2…</c
   ..- attr(*, &quot;class&quot;)= chr [1:3] &quot;op_base_remote&quot; &quot;op_base&quot; &quot;op&quot;
  - attr(*, &quot;class&quot;)= chr [1:5] &quot;tbl_SQLiteConnection&quot; &quot;tbl_dbi&quot; &quot;tbl_sql&quot; &quot;tbl_lazy&quot; ...</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>flights_sql</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>flights_sql</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Rows: ??
 Columns: 19
-Database: sqlite 3.35.2 [:memory:]
+Database: sqlite 3.38.2 [:memory:]
 $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 201…
 $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
 $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …

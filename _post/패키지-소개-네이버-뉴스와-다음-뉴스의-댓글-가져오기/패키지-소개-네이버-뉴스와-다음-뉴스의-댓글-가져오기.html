@@ -1524,7 +1524,7 @@ href="https://forkonlp.github.io/N2H4/">N2H4</a> 패키지의 골격을 가져�
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># remotes::install_github("forkonlp/DNH4")</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/forkonlp/D2H4'>DNH4</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://forkonlp.github.io/DNH4/'>DNH4</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1551,7 +1551,7 @@ href="http://v.media.daum.net/v/20180513202105651">기사</a>로
 해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>comments</span> <span class='op'>&lt;-</span> <span class='fu'>DNH4</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/DNH4/man/getComment.html'>getComment</a></span><span class='op'>(</span><span class='st'>"http://v.media.daum.net/v/20180513202105651"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>comments</span> <span class='op'>&lt;-</span> <span class='fu'>DNH4</span><span class='fu'>::</span><span class='fu'><a href='https://forkonlp.github.io/DNH4/reference/getComment.html'>getComment</a></span><span class='op'>(</span><span class='st'>"http://v.media.daum.net/v/20180513202105651"</span><span class='op'>)</span>
 <span class='va'>comments</span>
 </code></pre>
 </div>
@@ -1595,7 +1595,7 @@ href="http://v.media.daum.net/v/20180513202105651">기사</a>로
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># remotes::install_github("forkonlp/N2H4")</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/forkonlp/N2H4'>N2H4</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/forkonlp/N2H4'>N2H4</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1608,18 +1608,18 @@ href="http://v.media.daum.net/v/20180513202105651">기사</a>로
 </code></pre>
 </div>
 <pre><code># A tibble: 10 × 80
-   ticket objectId           categoryId templateId commentNo parentCommentNo
-   &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          
- 1 news   news214,0000833933 *          default_e… 13435975… 1343597525     
- 2 news   news214,0000833933 *          view_econ… 13435957… 1343595725     
- 3 news   news214,0000833933 *          default_e… 13435895… 1343589535     
- 4 news   news214,0000833933 *          view_econ… 13435368… 1343536845     
- 5 news   news214,0000833933 *          view_econ… 13434077… 1343407745     
- 6 news   news214,0000833933 *          view_econ… 13433325… 1343332545     
- 7 news   news214,0000833933 *          view_econ… 13433135… 1343313585     
- 8 news   news214,0000833933 *          view_econ… 13432001… 1343200155     
- 9 news   news214,0000833933 *          view_econ… 13431857… 1343185745     
-10 news   news214,0000833933 *          view_econ… 13431465… 1343146585     
+   ticket objectId     categoryId templateId commentNo parentCommentNo
+   &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;          
+ 1 news   news214,000… *          default_e… 13435975… 1343597525     
+ 2 news   news214,000… *          view_econ… 13435957… 1343595725     
+ 3 news   news214,000… *          default_e… 13435895… 1343589535     
+ 4 news   news214,000… *          view_econ… 13435368… 1343536845     
+ 5 news   news214,000… *          view_econ… 13434077… 1343407745     
+ 6 news   news214,000… *          view_econ… 13433325… 1343332545     
+ 7 news   news214,000… *          view_econ… 13433135… 1343313585     
+ 8 news   news214,000… *          view_econ… 13432001… 1343200155     
+ 9 news   news214,000… *          view_econ… 13431857… 1343185745     
+10 news   news214,000… *          view_econ… 13431465… 1343146585     
 # … with 74 more variables: replyLevel &lt;int&gt;, replyCount &lt;int&gt;,
 #   replyAllCount &lt;int&gt;, replyPreviewNo &lt;lgl&gt;, replyList &lt;lgl&gt;,
 #   imageCount &lt;int&gt;, imageList &lt;lgl&gt;, imagePathList &lt;lgl&gt;,
@@ -1648,202 +1648,170 @@ N2H4 패키지의 <code>getComment()</code> 함수도 <code>type</code>을
                  type <span class='op'>=</span> <span class='st'>"list"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>  success code                           message lang country
-1    TRUE 1000 요청을 성공적으로 처리하였습니다.   ko      KR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    result.commentList
-1 news, news, news, news, news, news, news, news, news, news, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, *, *, *, *, *, *, *, *, *, *, default_economy, view_economy, default_economy, view_economy, view_economy, view_economy, view_economy, view_economy, view_economy, view_economy, 1343597525, 1343595725, 1343589535, 1343536845, 1343407745, 1343332545, 1343313585, 1343200155, 1343185745, 1343146585, 1343597525, 1343595725, 1343589535, 1343536845, 1343407745, 1343332545, 1343313585, 1343200155, 1343185745, 1343146585, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, txt, txt, txt, txt, txt, txt, txt, txt, txt, txt, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1526301193506, 1526301073422, 1526300678769, 1526297019573, 1526288199784, 1526283570906, 1526282249099, 1526276078855, 1526275163246, 1526272157197, 정말 가난한 사람들이구나 마음이~~~~, 주민들 다바보냐 ㆍ대표 감사 다한통속이고 ᆢ비리밝혀야지, 헐~~~, 그냥 옛날 귀족과 뭐가 다름?\n아 아니다. 귀족이 아니라 왕이나 다름 없다고 봐야 겠네.\n내가 뭐 잘못 말했나?, 와........대단하다 대단해...., 갑질로 시작해서 여기까지 올줄은 몰랐지? 전문경영인 세우고 오너일가 싹 물러나라, 식탁도 글로벌하네..그럼 감방도 글로벌하게 세계3대 감옥으로가자..국내감방에서도 갑질할거니, 그냥 다없애주세요!얼마나 무고한 사람들이 힘들었을까\n국외로 추방했으면 합니다!!, 공물 갖다 바치는거냐. 왕조네 왕조., 법개정해서 걍 평생 옥살이 시켜라 저런건 나와도 사회도움 절대 안된다, 37nsJ, 5HzPo, 37nsJ, 1YJyu, 7dGi7, 2mS6W, 3mIMN, 4aKKm, Q7ZE, 6f8ZY, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ko, ko, ko, ko, ko, ko, ko, ko, ko, ko, IT, KR, IT, KR, KR, KR, KR, KR, KR, KR, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, elen****, unb1****, elen****, pcw1****, iluv****, ywj2****, 77gu****, tntj****, c32h****, betl****, , , , , , , , , , , naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, 2018-05-14T21:33:13+0900, 2018-05-14T21:31:13+0900, 2018-05-14T21:24:38+0900, 2018-05-14T20:23:39+0900, 2018-05-14T17:56:39+0900, 2018-05-14T16:39:30+0900, 2018-05-14T16:17:29+0900, 2018-05-14T14:34:38+0900, 2018-05-14T14:19:23+0900, 2018-05-14T13:29:17+0900, 2018-05-14T12:33:13+0000, 2018-05-14T12:31:13+0000, 2018-05-14T12:24:38+0000, 2018-05-14T11:23:39+0000, 2018-05-14T08:56:39+0000, 2018-05-14T07:39:30+0000, 2018-05-14T07:17:29+0000, 2018-05-14T05:34:38+0000, 2018-05-14T05:19:23+0000, 2018-05-14T04:29:17+0000, 2018-05-14T21:33:13+0900, 2018-05-14T21:31:13+0900, 2018-05-14T21:24:38+0900, 2018-05-14T20:23:39+0900, 2018-05-14T17:56:39+0900, 2018-05-14T16:39:30+0900, 2018-05-14T16:17:29+0900, 2018-05-14T14:34:38+0900, 2018-05-14T14:19:23+0900, 2018-05-14T13:29:17+0900, 2018-05-14T12:33:13+0000, 2018-05-14T12:31:13+0000, 2018-05-14T12:24:38+0000, 2018-05-14T11:23:39+0000, 2018-05-14T08:56:39+0000, 2018-05-14T07:39:30+0000, 2018-05-14T07:17:29+0000, 2018-05-14T05:34:38+0000, 2018-05-14T05:19:23+0000, 2018-05-14T04:29:17+0000, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, 37nsJ, 5HzPo, 37nsJ, 1YJyu, 7dGi7, 2mS6W, 3mIMN, 4aKKm, Q7ZE, 6f8ZY, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, elen****, unb1****, elen****, pcw1****, iluv****, ywj2****, 77gu****, tntj****, c32h****, betl****, el****, un****, el****, pc****, il****, yw****, 77****, tn****, c3****, be****, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
-  result.pageModel.page result.pageModel.pageSize
-1                     1                        10
-  result.pageModel.indexSize result.pageModel.startRow
-1                         10                         1
-  result.pageModel.endRow result.pageModel.totalRows
-1                      10                       2475
-  result.pageModel.startIndex result.pageModel.totalPages
-1                           0                         248
-  result.pageModel.firstPage result.pageModel.prevPage
-1                          1                         0
-  result.pageModel.nextPage result.pageModel.lastPage
-1                         2                        10
-  result.pageModel.current result.pageModel.threshold
-1                       NA                         NA
-  result.pageModel.moveToLastPage result.pageModel.moveToComment
-1                           FALSE                          FALSE
-  result.pageModel.moveToLastPrev result.morePage.prev
-1                           FALSE        04q7zmlgkmzg8
-  result.morePage.next result.morePage.start result.morePage.end
-1        04q7okqkyfpj0                    NA                  NA
-  result.exposureConfig.reason result.exposureConfig.status
-1                           NA                   COMMENT_ON
-  result.count.comment result.count.reply result.count.exposeCount
-1                 2475                233                     2506
-  result.count.delCommentByUser result.count.delCommentByMon
-1                          1148                           11
-  result.count.blindCommentByUser result.count.blindReplyByUser
-1                               0                             0
-  result.count.total result.listStatus result.sort
-1               2708           current         NEW
-  result.config.useSnsLogin result.config.lineFeedOn
-1                     FALSE                    FALSE
-  result.config.useBest result.config.useVote
-1                 FALSE                  TRUE
-  result.config.useVoteSelf result.config.useVoteGoodOnly
-1                     FALSE                         FALSE
-  result.config.useReport result.config.useCommonReport
-1                    TRUE                         FALSE
-  result.config.reportAuthority
-1                           ALL
-  result.config.useDeleteOnManagerReport
-1                                  FALSE
-  result.config.useReportSecret result.config.useSort
-1                         FALSE                  TRUE
-  result.config.sortTypes result.config.defaultSort
-1                     NEW                       NEW
-  result.config.useByteLength result.config.useReply
-1                       FALSE                   TRUE
-  result.config.useReplyOnReply result.config.pageAfterReply
-1                         FALSE                 TO_LAST_PAGE
-  result.config.maxReplyWriteBoxCount result.config.useAutoRefresh
-1                                   0                        FALSE
-  result.config.useMention result.config.min result.config.max
-1                    FALSE                 1               300
-  result.config.useSticker result.config.stickerOnly
-1                    FALSE                     FALSE
-  result.config.stickerSupportedCategories
-1                                       NA
-  result.config.stickerDefaultCategory result.config.stickerCategory
-1                                   NA                            NA
-  result.config.stickerContentsUrl result.config.stickerKeyUrl
-1                               NA                          NA
-  result.config.stickerTabUrl result.config.stickerType
-1                          NA                        NA
-  result.config.stickerText result.config.stickerMarketUrl
-1                     FALSE                             NA
-  result.config.stickerMobileResize result.config.useProfile
-1                             FALSE                     TRUE
-  result.config.useNaverProfile result.config.dynamicProfile
-1                          TRUE                        FALSE
-  result.config.profileImageAreas
-1                     LIST, WRITE
-                                         result.config.profileEmptyImage
+<pre><code>$success
+[1] TRUE
+
+$code
+[1] &quot;1000&quot;
+
+$message
+[1] &quot;요청을 성공적으로 처리하였습니다.&quot;
+
+$lang
+[1] &quot;ko&quot;
+
+$country
+[1] &quot;KR&quot;
+
+$result
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           commentList
+1 news, news, news, news, news, news, news, news, news, news, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, news214,0000833933, *, *, *, *, *, *, *, *, *, *, default_economy, view_economy, default_economy, view_economy, view_economy, view_economy, view_economy, view_economy, view_economy, view_economy, 1343597525, 1343595725, 1343589535, 1343536845, 1343407745, 1343332545, 1343313585, 1343200155, 1343185745, 1343146585, 1343597525, 1343595725, 1343589535, 1343536845, 1343407745, 1343332545, 1343313585, 1343200155, 1343185745, 1343146585, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, txt, txt, txt, txt, txt, txt, txt, txt, txt, txt, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1526301193506, 1526301073422, 1526300678769, 1526297019573, 1526288199784, 1526283570906, 1526282249099, 1526276078855, 1526275163246, 1526272157197, 정말 가난한 사람들이구나 마음이~~~~, 주민들 다바보냐 ㆍ대표 감사 다한통속이고 ᆢ비리밝혀야지, 헐~~~, 그냥 옛날 귀족과 뭐가 다름?\n아 아니다. 귀족이 아니라 왕이나 다름 없다고 봐야 겠네.\n내가 뭐 잘못 말했나?, 와........대단하다 대단해...., 갑질로 시작해서 여기까지 올줄은 몰랐지? 전문경영인 세우고 오너일가 싹 물러나라, 식탁도 글로벌하네..그럼 감방도 글로벌하게 세계3대 감옥으로가자..국내감방에서도 갑질할거니, 그냥 다없애주세요!얼마나 무고한 사람들이 힘들었을까\n국외로 추방했으면 합니다!!, 공물 갖다 바치는거냐. 왕조네 왕조., 법개정해서 걍 평생 옥살이 시켜라 저런건 나와도 사회도움 절대 안된다, 37nsJ, 5HzPo, 37nsJ, 1YJyu, 7dGi7, 2mS6W, 3mIMN, 4aKKm, Q7ZE, 6f8ZY, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ko, ko, ko, ko, ko, ko, ko, ko, ko, ko, IT, KR, IT, KR, KR, KR, KR, KR, KR, KR, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, elen****, unb1****, elen****, pcw1****, iluv****, ywj2****, 77gu****, tntj****, c32h****, betl****, , , , , , , , , , , naver, naver, naver, naver, naver, naver, naver, naver, naver, naver, 2018-05-14T21:33:13+0900, 2018-05-14T21:31:13+0900, 2018-05-14T21:24:38+0900, 2018-05-14T20:23:39+0900, 2018-05-14T17:56:39+0900, 2018-05-14T16:39:30+0900, 2018-05-14T16:17:29+0900, 2018-05-14T14:34:38+0900, 2018-05-14T14:19:23+0900, 2018-05-14T13:29:17+0900, 2018-05-14T12:33:13+0000, 2018-05-14T12:31:13+0000, 2018-05-14T12:24:38+0000, 2018-05-14T11:23:39+0000, 2018-05-14T08:56:39+0000, 2018-05-14T07:39:30+0000, 2018-05-14T07:17:29+0000, 2018-05-14T05:34:38+0000, 2018-05-14T05:19:23+0000, 2018-05-14T04:29:17+0000, 2018-05-14T21:33:13+0900, 2018-05-14T21:31:13+0900, 2018-05-14T21:24:38+0900, 2018-05-14T20:23:39+0900, 2018-05-14T17:56:39+0900, 2018-05-14T16:39:30+0900, 2018-05-14T16:17:29+0900, 2018-05-14T14:34:38+0900, 2018-05-14T14:19:23+0900, 2018-05-14T13:29:17+0900, 2018-05-14T12:33:13+0000, 2018-05-14T12:31:13+0000, 2018-05-14T12:24:38+0000, 2018-05-14T11:23:39+0000, 2018-05-14T08:56:39+0000, 2018-05-14T07:39:30+0000, 2018-05-14T07:17:29+0000, 2018-05-14T05:34:38+0000, 2018-05-14T05:19:23+0000, 2018-05-14T04:29:17+0000, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, 37nsJ, 5HzPo, 37nsJ, 1YJyu, 7dGi7, 2mS6W, 3mIMN, 4aKKm, Q7ZE, 6f8ZY, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, elen****, unb1****, elen****, pcw1****, iluv****, ywj2****, 77gu****, tntj****, c32h****, betl****, el****, un****, el****, pc****, il****, yw****, 77****, tn****, c3****, be****, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
+  pageModel.page pageModel.pageSize pageModel.indexSize
+1              1                 10                  10
+  pageModel.startRow pageModel.endRow pageModel.totalRows
+1                  1               10                2475
+  pageModel.startIndex pageModel.totalPages pageModel.firstPage
+1                    0                  248                   1
+  pageModel.prevPage pageModel.nextPage pageModel.lastPage
+1                  0                  2                 10
+  pageModel.current pageModel.threshold pageModel.moveToLastPage
+1                NA                  NA                    FALSE
+  pageModel.moveToComment pageModel.moveToLastPrev morePage.prev
+1                   FALSE                    FALSE 04q7zmlgkmzg8
+  morePage.next morePage.start morePage.end exposureConfig.reason
+1 04q7okqkyfpj0             NA           NA                    NA
+  exposureConfig.status count.comment count.reply count.exposeCount
+1            COMMENT_ON          2475         233              2506
+  count.delCommentByUser count.delCommentByMon
+1                   1148                    11
+  count.blindCommentByUser count.blindReplyByUser count.total
+1                        0                      0        2708
+  listStatus sort config.useSnsLogin config.lineFeedOn config.useBest
+1    current  NEW              FALSE             FALSE          FALSE
+  config.useVote config.useVoteSelf config.useVoteGoodOnly
+1           TRUE              FALSE                  FALSE
+  config.useReport config.useCommonReport config.reportAuthority
+1             TRUE                  FALSE                    ALL
+  config.useDeleteOnManagerReport config.useReportSecret
+1                           FALSE                  FALSE
+  config.useSort config.sortTypes config.defaultSort
+1           TRUE              NEW                NEW
+  config.useByteLength config.useReply config.useReplyOnReply
+1                FALSE            TRUE                  FALSE
+  config.pageAfterReply config.maxReplyWriteBoxCount
+1          TO_LAST_PAGE                            0
+  config.useAutoRefresh config.useMention config.min config.max
+1                 FALSE             FALSE          1        300
+  config.useSticker config.stickerOnly
+1             FALSE              FALSE
+  config.stickerSupportedCategories config.stickerDefaultCategory
+1                                NA                            NA
+  config.stickerCategory config.stickerContentsUrl
+1                     NA                        NA
+  config.stickerKeyUrl config.stickerTabUrl config.stickerType
+1                   NA                   NA                 NA
+  config.stickerText config.stickerMarketUrl
+1              FALSE                      NA
+  config.stickerMobileResize config.useProfile config.useNaverProfile
+1                      FALSE              TRUE                   TRUE
+  config.dynamicProfile config.profileImageAreas
+1                 FALSE              LIST, WRITE
+                                                config.profileEmptyImage
 1 https://static.nid.naver.com/images/web/user/default.png?type=f132_132
-  result.config.displayMaskedUserId result.config.useManager
-1                             FALSE                    FALSE
-  result.config.managerDelete result.config.managerBlock
-1                       FALSE                      FALSE
-  result.config.managerNotice result.config.contentsManagerIcon
-1                       FALSE                             FALSE
-  result.config.secretComment result.config.exposureConfig
-1                       FALSE                        FALSE
-  result.config.deleteAllAfterBlock result.config.useFold
-1                             FALSE                  TRUE
-  result.config.replyPreviewCount result.config.maxImageUploadCount
-1                               0                                 0
-  result.config.maxImageUploadFileSize result.config.imageAutoRotate
-1                                    0                         FALSE
-  result.config.autoRefreshTime result.config.autoRefreshDefaultOff
-1                             0                               FALSE
-  result.config.autoRefreshChat result.config.maxChatFPS
-1                         FALSE                        0
-  result.config.commentModify result.config.useCommentModify
-1                       FALSE                          FALSE
-  result.config.useViewAll result.config.useUserLevel
-1                     TRUE                      FALSE
-  result.config.anyUseImageExpose result.config.useImageComment
-1                            TRUE                         FALSE
-  result.config.useUrlLink result.config.useCommentListIncludeDelete
-1                    FALSE                                     FALSE
-  result.config.useStats result.config.statsMinCount
-1                   TRUE                         100
-  result.config.useUserEnvStats result.config.countryStatsMinCount
-1                         FALSE                                  0
-  result.config.useConcurrentStats result.config.useVoteStats
-1                            FALSE                      FALSE
-  result.config.useGpopCache result.config.useEnterSubmit
-1                      FALSE                        FALSE
-  result.config.useListReverse result.config.useTranslation
-1                        FALSE                        FALSE
-  result.config.useDeletedList result.config.combinedDeletedList
-1                         TRUE                              TRUE
-  result.config.displayDeletedList result.config.applyChangedNotice
-1                             TRUE                            FALSE
-  result.config.useUserCommentUi
-1                           TRUE
-  result.config.useUserCommentProfileUi
-1                                  TRUE
-  result.config.userRecentStatsStartDate result.config.userSortTypes
-1                           1.584544e+12   FAVORITE, NEW, OLD, REPLY
-  result.config.useMentionLegacyFormat result.config.useMentionWrite
-1                                FALSE                         FALSE
-  result.config.mentionMaxCount result.config.useSecret
-1                             0                   FALSE
-  result.config.useIdPenaltyLayer result.config.useRestrictWriteBySns
-1                            TRUE                               FALSE
-  result.config.photoInfraUploadDomain
-1                                   NA
-  result.config.photoInfraSelectDomainHttp
-1                      g-cbox.dv.phinf.net
-  result.config.photoInfraSelectDomainHttps
-1                        g-cbox.pstatic.net
-  result.config.pcTempThumbnailType
-1                           ff80_80
-  result.config.mobileTempThumbnailType
-1                               ff50_50
-  result.config.realnameVerificationBlock
-1                                   FALSE
-  result.config.realnameVerificationMessage
-1                                        NA
-  result.config.useBlindByReport
-1                          FALSE
-  result.config.keepTextareaOnRestriction
-1                                      NA
-  result.config.displayIndividualBlindOnly
-1                                    FALSE
-  result.config.hashtagMaxLength result.config.useDualPagination
-1                             20                           FALSE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      result.config.reportReasonList
+  config.displayMaskedUserId config.useManager config.managerDelete
+1                      FALSE             FALSE                FALSE
+  config.managerBlock config.managerNotice config.contentsManagerIcon
+1               FALSE                FALSE                      FALSE
+  config.secretComment config.exposureConfig
+1                FALSE                 FALSE
+  config.deleteAllAfterBlock config.useFold config.replyPreviewCount
+1                      FALSE           TRUE                        0
+  config.maxImageUploadCount config.maxImageUploadFileSize
+1                          0                             0
+  config.imageAutoRotate config.autoRefreshTime
+1                  FALSE                      0
+  config.autoRefreshDefaultOff config.autoRefreshChat
+1                        FALSE                  FALSE
+  config.maxChatFPS config.commentModify config.useCommentModify
+1                 0                FALSE                   FALSE
+  config.useViewAll config.useUserLevel config.anyUseImageExpose
+1              TRUE               FALSE                     TRUE
+  config.useImageComment config.useUrlLink
+1                  FALSE             FALSE
+  config.useCommentListIncludeDelete config.useStats
+1                              FALSE            TRUE
+  config.statsMinCount config.useUserEnvStats
+1                  100                  FALSE
+  config.countryStatsMinCount config.useConcurrentStats
+1                           0                     FALSE
+  config.useVoteStats config.useGpopCache config.useEnterSubmit
+1               FALSE               FALSE                 FALSE
+  config.useListReverse config.useTranslation config.useDeletedList
+1                 FALSE                 FALSE                  TRUE
+  config.combinedDeletedList config.displayDeletedList
+1                       TRUE                      TRUE
+  config.applyChangedNotice config.useUserCommentUi
+1                     FALSE                    TRUE
+  config.useUserCommentProfileUi config.userRecentStatsStartDate
+1                           TRUE                    1.584544e+12
+       config.userSortTypes config.useMentionLegacyFormat
+1 FAVORITE, NEW, OLD, REPLY                         FALSE
+  config.useMentionWrite config.mentionMaxCount config.useSecret
+1                  FALSE                      0            FALSE
+  config.useIdPenaltyLayer config.useRestrictWriteBySns
+1                     TRUE                        FALSE
+  config.photoInfraUploadDomain config.photoInfraSelectDomainHttp
+1                            NA               g-cbox.dv.phinf.net
+  config.photoInfraSelectDomainHttps config.pcTempThumbnailType
+1                 g-cbox.pstatic.net                    ff80_80
+  config.mobileTempThumbnailType config.realnameVerificationBlock
+1                        ff50_50                            FALSE
+  config.realnameVerificationMessage config.useBlindByReport
+1                                 NA                   FALSE
+  config.keepTextareaOnRestriction config.displayIndividualBlindOnly
+1                               NA                             FALSE
+  config.hashtagMaxLength config.useDualPagination
+1                      20                    FALSE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             config.reportReasonList
 1 AA03, AA14, AA68, AA33, AA01, AA24, AB28, 스팸홍보/도배글입니다., 음란물입니다., 불법정보를 포함하고 있습니다., 청소년에게 유해한 내용입니다., 욕설/생명경시/혐오/차별적 표현입니다., 개인정보 노출 게시물입니다., 불쾌한 표현이 있습니다., 사행성 오락이나 도박을 홍보하거나 권장하는 내용 등의 부적절한 스팸 홍보 행위, 동일하거나 유사한 내용 반복 게시, 성적 수치심을 일으키는 내용, 아동이나 청소년을 성 대상화한 표현, 과도하거나 의도적인 신체 노출, 음란한 행위와 관련된 부적절한 내용, 불법 행위, 불법 링크에 대한 정보 제공, 불법 상품을 판매하거나 유도하는 내용, 가출/왕따/학교폭력/자살 등 청소년에게 부정적인 영향을 조성하는 내용, 직·간접적인 욕설을 사용하여 타인에게 모욕감을 주는 내용, 생명을 경시여기거나 비하하는 내용, 계층/지역/종교/성별 등을 혐오하거나 비하하는 표현, 신체/외모/취향 등을 경멸하는 표현, 법적으로 중요한 타인의 개인정보를 게재, 당사자 동의 없는 특정 개인을 인지할 수 있는 정보, 불쾌한 표현 포함 [해당 사유는 클린봇 학습에 도움이 될 수 있습니다.] 
-  result.config.displayReportLayer result.config.useHideAfterReport
-1                             TRUE                             TRUE
-  result.config.useCleanbot result.config.cleanbotEnforced
-1                      TRUE                          FALSE
-  result.config.cleanbotServiceStepUI
-1                                   2
-  result.config.useCommentLinkToken result.config.useUserBlock
-1                              TRUE                       TRUE
-  result.config.useUserBlockNaverIdType
-1                                  TRUE
-  result.config.useUserBlockNeoIdType
-1                               FALSE
-  result.config.useUserBlockProifleImageUi result.config.useChoice
-1                                     TRUE                   FALSE
-  result.config.useNcc result.config.useRating
-1                FALSE                   FALSE
-  result.config.ratingUseSingleType result.config.useScore
-1                             FALSE                  FALSE
-  result.config.scoreScale result.config.scoreSelectorCount
-1                        0                                0
-  result.config.useManagerLike result.config.usePick
-1                        FALSE                 FALSE
-  result.config.pickLimit result.config.pickManagerLimit
-1                       0                              0
-  result.config.useLMP
-1                FALSE
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 result.config.blindReportReasonList
+  config.displayReportLayer config.useHideAfterReport
+1                      TRUE                      TRUE
+  config.useCleanbot config.cleanbotEnforced
+1               TRUE                   FALSE
+  config.cleanbotServiceStepUI config.useCommentLinkToken
+1                            2                       TRUE
+  config.useUserBlock config.useUserBlockNaverIdType
+1                TRUE                           TRUE
+  config.useUserBlockNeoIdType config.useUserBlockProifleImageUi
+1                        FALSE                              TRUE
+  config.useChoice config.useNcc config.useRating
+1            FALSE         FALSE            FALSE
+  config.ratingUseSingleType config.useScore config.scoreScale
+1                      FALSE           FALSE                 0
+  config.scoreSelectorCount config.useManagerLike config.usePick
+1                         0                 FALSE          FALSE
+  config.pickLimit config.pickManagerLimit config.useLMP
+1                0                       0         FALSE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        config.blindReportReasonList
 1 AA03, AA14, AA68, AA33, AA01, AA24, AB28, 스팸홍보/도배글입니다., 음란물입니다., 불법정보를 포함하고 있습니다., 청소년에게 유해한 내용입니다., 욕설/생명경시/혐오/차별적 표현입니다., 개인정보 노출 게시물입니다., 불쾌한 표현이 있습니다., 사행성 오락이나 도박을 홍보하거나 권장하는 내용 등의 부적절한 스팸 홍보 행위, 동일하거나 유사한 내용 반복 게시, 성적 수치심을 일으키는 내용, 아동이나 청소년을 성 대상화한 표현, 과도하거나 의도적인 신체 노출, 음란한 행위와 관련된 부적절한 내용, 불법 행위, 불법 링크에 대한 정보 제공, 불법 상품을 판매하거나 유도하는 내용, 가출/왕따/학교폭력/자살 등 청소년에게 부정적인 영향을 조성하는 내용, 직·간접적인 욕설을 사용하여 타인에게 모욕감을 주는 내용, 생명을 경시여기거나 비하하는 내용, 계층/지역/종교/성별 등을 혐오하거나 비하하는 표현, 신체/외모/취향 등을 경멸하는 표현, 법적으로 중요한 타인의 개인정보를 게재, 당사자 동의 없는 특정 개인을 인지할 수 있는 정보, 불쾌한 표현 포함 [해당 사유는 클린봇 학습에 도움이 될 수 있습니다.] 
-  result.bestList result.graph.gender.male result.graph.gender.female
-1            NULL                       63                         37
-                                                                                                                                                        result.graph.old
+  bestList graph.gender.male graph.gender.female
+1     NULL                63                  37
+                                                                                                                                                               graph.old
 1 10, 20, 30, 40, 50, 60, 1, 6, 29, 42, 18, 4, exact, exact, exact, exact, exact, over, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE
-  result.graph.client result.graph.country result.graph.empty
-1                  NA                   NA              FALSE
-  result.notice.noticeNo
-1                     41
-                              result.notice.title
+  graph.client graph.country graph.empty notice.noticeNo
+1           NA            NA       FALSE              41
+                                     notice.title
 1 &#39;언론사별 댓글 선택제&#39;에 대해 안내 말씀드립니다
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      result.notice.content
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             notice.content
 1 안녕하세요, 네이버 뉴스입니다.\r&lt;br&gt;​\r&lt;br&gt;네이버 뉴스는 2018년 10월부터 각 언론사가 해당 매체 기사의 댓글 제공 방식을 직접 선택하여 운영하는 &#39;언론사별 댓글 선택제&#39;를 시행하고 있습니다.\r&lt;br&gt; \r&lt;br&gt;2021년 8월부터 &#39;언론사별 댓글 선택제&#39;를 강화하여 언론사는 &#39;개별 기사 단위&#39;로 제공 여부를 설정할 수 있습니다. \r&lt;br&gt;[개별 기사 단위 댓글 제공여부 설정기능은 기존에 제공되던 섹션단위 댓글 설정을 언론사들의 요청에 따라 개별 기사별로 모든 댓글의 정책을 언론사에서 결정할 수 있도록 제공드린 것입니다.]\r&lt;br&gt;​\r&lt;br&gt;각 언론사는 댓글 정렬의 노출 순서, 그리고 기본 정렬값을 섹션별로 직접 설정하고 있습니다. \r&lt;br&gt;​\r&lt;br&gt;언론사가 직접 설정해 제공하는 정렬방식은 순공감순, 공감비율순, 답글순, 최신순, 과거순 5가지이며,\r&lt;br&gt;각 정렬별 산출기준은 아래와 같습니다.\r&lt;br&gt;​\r&lt;br&gt;최신순 : 등록시간이 최근 순\r&lt;br&gt;과거순 : 등록시간이 오래된 순\r&lt;br&gt;답글순 : 답글이 많은 순\r&lt;br&gt;순공감순 : 공감수에서 비공감수를 뺀 수치가 높은 순 : [공감수 - 비공감수]\r&lt;br&gt;공감비율순 : 전체 공감수와 비공감수 중 공감수 비율이 높은 순 : 공감수 ÷ [ 공감수 + 비공감수 ]\r&lt;br&gt;                   * 단, 공감과 비공감수 합이 5미만인 경우에는 0으로 처리\r&lt;br&gt; \r&lt;br&gt;댓글서비스가 보다 투명하고 사용자 만족도가 높아질 수 있는 환경이 될 수 있도록 지속적으로 보완해 가겠습니다. \r&lt;br&gt;​감사합니다​
-     result.notice.regTime                     date
-1 2022-02-08T16:21:56+0900 2022-04-04T05:25:12+0000</code></pre>
+            notice.regTime
+1 2022-02-08T16:21:56+0900
+
+$date
+[1] &quot;2022-04-05T02:39:47+0000&quot;
+
+attr(,&quot;row.names&quot;)
+[1] 1</code></pre>
 </div>
 <p>드디어 다음 댓글을 가져올 수 있게 된 만큼, 많은 분들이 <a
 href="https://forkonlp.github.io/DNH4/">DNH4</a> 패키지도 찾아주시리라

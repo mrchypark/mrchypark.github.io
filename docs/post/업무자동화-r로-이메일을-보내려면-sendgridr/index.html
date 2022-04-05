@@ -2669,13 +2669,13 @@ href="https://mrchypark.github.io/sendgridr/reference/index.html">여기</a>에�
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/sendgridr'>sendgridr</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/mail.html'>mail</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/from.html'>from</a></span><span class='op'>(</span><span class='st'>"example1@mail.com"</span>, <span class='st'>"example name for display"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/address.html'>to</a></span><span class='op'>(</span><span class='st'>"example2@mail.com"</span>, <span class='st'>"example name for display 2"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/subject.html'>subject</a></span><span class='op'>(</span><span class='st'>"test mail title"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>content</span><span class='op'>(</span><span class='st'>"hello world!"</span><span class='op'>)</span>  <span class='op'>%&gt;%</span> 
+<span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/mail.html'>mail</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/from.html'>from</a></span><span class='op'>(</span><span class='st'>"example1@mail.com"</span>, <span class='st'>"example name for display"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/address.html'>to</a></span><span class='op'>(</span><span class='st'>"example2@mail.com"</span>, <span class='st'>"example name for display 2"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/subject.html'>subject</a></span><span class='op'>(</span><span class='st'>"test mail title"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>content</span><span class='op'>(</span><span class='st'>"hello world!"</span><span class='op'>)</span>  <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
   <span class='co'>## attachments is optional</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/attachments.html'>attachments</a></span><span class='op'>(</span><span class='st'>"report.html"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/attachments.html'>attachments</a></span><span class='op'>(</span><span class='st'>"report.html"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/sendgridr/man/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://rdrr.io/pkg/sendgridr/man/send.html'>send</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
