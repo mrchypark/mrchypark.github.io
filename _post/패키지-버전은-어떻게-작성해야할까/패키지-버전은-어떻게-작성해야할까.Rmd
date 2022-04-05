@@ -9,7 +9,7 @@ categories:
   - develop
   - semantic-release
 description: |
-  시멘틱 버전의 의미와 현대적인 방식의 버전 관리 방식을 소개합니다.
+	시멘틱 버전의 의미와 현대적인 방식의 버전 관리 방식을 소개합니다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"

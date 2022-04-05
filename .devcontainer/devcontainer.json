@@ -17,7 +17,8 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-    "jkroening.vscoder"
+    "jkroening.vscoder",
+		"TianyiShi.rmarkdown"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

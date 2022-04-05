@@ -7,7 +7,7 @@ categories:
   - dbi
   - package
 description: |
-  이제 R로 MongoDB, Redis(server based), CouchDB, Elasticsearch, etcd를 다룰 수 있습니다.
+	이제 R로 MongoDB, Redis(server based), CouchDB, Elasticsearch, etcd를 다룰 수 있습니다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"

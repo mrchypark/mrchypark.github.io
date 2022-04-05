@@ -2472,9 +2472,7 @@ gtag('config', 'UA-47822682-14');
   <a href="../../index.html#category:blog" class="dt-tag">blog</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>다른 좋은 접근이 많아서 개발을 중지하였습니다. 포스트나
-발표자료에서 함수를 설명할 일이 많아서 <code>usehelp</code>라는 패키지를
-만들었습니다.</p></p>
+<p><p>다른 좋은 접근이 많아서 개발을 중지하였습니다. 포스트나 발표자료에서 함수를 설명할 일이 많아서 <code>usehelp</code>라는 패키지를 만들었습니다.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2500,26 +2498,12 @@ gtag('config', 'UA-47822682-14');
 </ul>
 <h3 id="한줄요약">한줄요약</h3>
 <ol type="1">
-<li>포스트나 발표자료에서 함수를 설명할 일이 많아서
-<code>usehelp</code>라는 패키지를 만들었습니다.</li>
+<li>포스트나 발표자료에서 함수를 설명할 일이 많아서 <code>usehelp</code>라는 패키지를 만들었습니다.</li>
 </ol>
-<p>저는 R 언어를 매우 사랑합니다. 이미 문법이 익숙해서, 다른 걸
-사용하는게 매우 불편하죠. 이 블로그도 <a
-href="https://github.com/rstudio/blogdown">blogdown</a> 패키지를
-이용하고 있고, 발표자료는 <a
-href="https://github.com/yihui/xaringan">xaringan</a>으로 만들어
-공유합니다. 포스트를 작성할 때 마다 대문 이미지를 계속 넣어왔는데요.
-<code>img</code> 태그를 쓰다가 결국, <a
-href="https://github.com/rstudio/htmltools">htmltools</a>로 바꿨습니다.
-아주 마음이 편하네요. ㅎㅎㅎ 잠시 딴길로 샜는데, 어쩄든 포스트나
-발표자료를 R로 만들다 보니, 함수 설명할 일이 매우 많습니다.</p>
-<p>매번 제가 직접 작성하고 있었는데… 생각해보니 설명서에 제목이며,
-설명이며 다 있는 겁니다! 그래서 그 텍스트를 가져와서 출력해주는 패키지를
-생각해보게 되었습니다.</p>
+<p>저는 R 언어를 매우 사랑합니다. 이미 문법이 익숙해서, 다른 걸 사용하는게 매우 불편하죠. 이 블로그도 <a href="https://github.com/rstudio/blogdown">blogdown</a> 패키지를 이용하고 있고, 발표자료는 <a href="https://github.com/yihui/xaringan">xaringan</a>으로 만들어 공유합니다. 포스트를 작성할 때 마다 대문 이미지를 계속 넣어왔는데요. <code>img</code> 태그를 쓰다가 결국, <a href="https://github.com/rstudio/htmltools">htmltools</a>로 바꿨습니다. 아주 마음이 편하네요. ㅎㅎㅎ 잠시 딴길로 샜는데, 어쩄든 포스트나 발표자료를 R로 만들다 보니, 함수 설명할 일이 매우 많습니다.</p>
+<p>매번 제가 직접 작성하고 있었는데… 생각해보니 설명서에 제목이며, 설명이며 다 있는 겁니다! 그래서 그 텍스트를 가져와서 출력해주는 패키지를 생각해보게 되었습니다.</p>
 <h3 id="usehelp">usehelp</h3>
-<p>당장 가볍게 만들다보니, 설명서의 텍스트를 R 객체로 가져오는 선에서
-끝나고 있습니다. 이제 시작인 셈인데요. github 버전만 있어서 우선
-<code>remotes::install_github()</code> 함수로 설치해야 합니다.</p>
+<p>당장 가볍게 만들다보니, 설명서의 텍스트를 R 객체로 가져오는 선에서 끝나고 있습니다. 이제 시작인 셈인데요. github 버전만 있어서 우선 <code>remotes::install_github()</code> 함수로 설치해야 합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>remotes</span><span class='fu'>::</span><span class='fu'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='op'>(</span><span class='st'>"mrchypark/usehelp"</span><span class='op'>)</span>
@@ -2538,39 +2522,22 @@ href="https://github.com/rstudio/htmltools">htmltools</a>로 바꿨습니다.
 [1] &lt;head&gt;\n&lt;title&gt;R: get help&lt;/title&gt;\n&lt;meta http-equiv=&quot;Content-T ...
 [2] &lt;body&gt;&lt;div class=&quot;container&quot;&gt;\n\n&lt;table width=&quot;100%&quot; summary=&quot;p ...</code></pre>
 </div>
-<p><code>get_help()</code> 함수는 패키지 이름, 함수 이름을 받아
-<code>help</code>의 글자를 전부 가져와서, <code>help</code> 클래스로
-만듭니다. <code>help</code> 클래스의 출력를 조정해야 하지만, 이제
-0.0.0.9000 버전일 뿐이니 우선 넘어가죠. <code>help</code> 클래스라고
-했는데, 지금 모양은 <code>xml_document</code> 입니다. 여러 양식으로
-제공해주던데, 제가 다루기 쉬운 <code>xml</code>로 처리하기로 했습니다.
-일부 데이터를 가져오는 것은 당연히 <a
-href="https://github.com/hadley/rvest">rvest</a>를 사용했습니다.</p>
+<p><code>get_help()</code> 함수는 패키지 이름, 함수 이름을 받아 <code>help</code>의 글자를 전부 가져와서, <code>help</code> 클래스로 만듭니다. <code>help</code> 클래스의 출력를 조정해야 하지만, 이제 0.0.0.9000 버전일 뿐이니 우선 넘어가죠. <code>help</code> 클래스라고 했는데, 지금 모양은 <code>xml_document</code> 입니다. 여러 양식으로 제공해주던데, 제가 다루기 쉬운 <code>xml</code>로 처리하기로 했습니다. 일부 데이터를 가져오는 것은 당연히 <a href="https://github.com/hadley/rvest">rvest</a>를 사용했습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/usehelp/man/get_help.html'>get_help</a></span><span class='op'>(</span><span class='st'>"usehelp"</span>,<span class='st'>"get_help"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/usehelp/man/get_help.html'>get_help</a></span><span class='op'>(</span><span class='st'>"usehelp"</span>,<span class='st'>"get_help"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/usehelp/man/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://rdrr.io/pkg/usehelp/man/getfrom.html'>get_title</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] &quot;get help&quot;</code></pre>
 </div>
-<p>그래서 필요한 글자를 가져오는 함수들은 전부 <a
-href="https://github.com/hadley/rvest">rvest</a>를 덮어서 만들었습니다.
-아직은 <code>title</code>과 <code>description</code>, <code>usage</code>
-만 있지만 차츰 추가해 나가겠습니다.</p>
+<p>그래서 필요한 글자를 가져오는 함수들은 전부 <a href="https://github.com/hadley/rvest">rvest</a>를 덮어서 만들었습니다. 아직은 <code>title</code>과 <code>description</code>, <code>usage</code> 만 있지만 차츰 추가해 나가겠습니다.</p>
 <h3 id="향후-계획">향후 계획</h3>
-<p>우선 포스트와 발표자료에 예쁘게 사용하기 위해 <code>html</code>
-출력을 추가할 계획입니다. <code>help</code> 클래스의 콘솔 출력도
-조정해야 할 것 같구요. 마지막으로 가능하다면 번역기를 붙여서 한글자료
-만들 때 어설픈 채로라도 사용할 수 있게 조정해볼 계획입니다.</p>
+<p>우선 포스트와 발표자료에 예쁘게 사용하기 위해 <code>html</code> 출력을 추가할 계획입니다. <code>help</code> 클래스의 콘솔 출력도 조정해야 할 것 같구요. 마지막으로 가능하다면 번역기를 붙여서 한글자료 만들 때 어설픈 채로라도 사용할 수 있게 조정해볼 계획입니다.</p>
 <p>마지막은 정말 희망사항이네요 ㅎㅎ</p>
-<p>여기까지 <a href="https://github.com/mrchypark/usehelp">usehelp</a>
-패키지 소개였습니다. 아직 사용할 수준은 아니지만, 사용하시게 되면 이슈나
-PR 대환영입니다. 콘솔 출력과 <code>html</code> 형태 삽입만 마무리되면
-cran에 등록할 계획입니다.</p>
+<p>여기까지 <a href="https://github.com/mrchypark/usehelp">usehelp</a> 패키지 소개였습니다. 아직 사용할 수준은 아니지만, 사용하시게 되면 이슈나 PR 대환영입니다. 콘솔 출력과 <code>html</code> 형태 삽입만 마무리되면 cran에 등록할 계획입니다.</p>
 <p>감사합니다.</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

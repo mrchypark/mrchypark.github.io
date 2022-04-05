@@ -2489,70 +2489,25 @@ gtag('config', 'UA-47822682-14');
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#conda4r-패키지-개발을-중단합니다.">conda4r 패키지 개발을
-중단합니다.</a></li>
+<li><a href="#conda4r-패키지-개발을-중단합니다.">conda4r 패키지 개발을 중단합니다.</a></li>
 </ul>
 </nav>
 </div>
 <p><img width=100% src="https://user-images.githubusercontent.com/6179259/106564003-fe783c80-656f-11eb-948f-7896c100b4db.png"></p>
-<h2 id="conda4r-패키지-개발을-중단합니다.">conda4r 패키지 개발을
-중단합니다.</h2>
-<p><a href="https://rstudio.github.io/reticulate/">reticulate</a>
-패키지에 <code>install_miniconda()</code> 함수가 포함되기로 결정되어서
-패키지 개발을 중단합니다.</p>
-<p><a href="https://mrchypark.github.io/multilinguer/">multilinguer</a>
-패키지의 <code>install_conda()</code> 함수는 <a
-href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지의
-함수를 사용하는 것으로 변경 중입니다.</p>
-<p>블로그 내의 함수 동작도 우선은 전부 멈춰두었습니다. 이후 <a
-href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지의
-cran 버전에 포함되면 위 이야기대로 동작하도록 하겠습니다.</p>
+<h2 id="conda4r-패키지-개발을-중단합니다.">conda4r 패키지 개발을 중단합니다.</h2>
+<p><a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지에 <code>install_miniconda()</code> 함수가 포함되기로 결정되어서 패키지 개발을 중단합니다.</p>
+<p><a href="https://mrchypark.github.io/multilinguer/">multilinguer</a> 패키지의 <code>install_conda()</code> 함수는 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지의 함수를 사용하는 것으로 변경 중입니다.</p>
+<p>블로그 내의 함수 동작도 우선은 전부 멈춰두었습니다. 이후 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지의 cran 버전에 포함되면 위 이야기대로 동작하도록 하겠습니다.</p>
 <h3 id="한줄요약">한줄요약</h3>
 <ol type="1">
 <li><code>multilinguer::install_conda()</code>를 쓰세요. (응?)</li>
 </ol>
-<p><a href="https://docs.conda.io/en/latest/">conda</a>는 다양한 언어를
-위한 패키지 매니저로 개발중입니다. <a
-href="https://www.anaconda.com/">anaconda</a>로 익히 알려지면서 python
-배포판의 일종으로 쓰이고 있습니다. 최근 파이썬은 딥러닝 프레임워크들의
-인기에 힘입어 많은 사람들의 관심을 받고 있습니다. 개발과 연구라는 두
-마리 토끼를 잡기 위해서 많은 프레임워크가 파이썬으로 개발되었습니다.</p>
-<p>이런 환경에서 R은 취약한 자체적인 프레임워크를 해결하기 위해 python을
-품는 결정을 합니다. 그 결과로 나온 부산물이 <a
-href="https://rstudio.github.io/reticulate/">reticulate</a>
-패키지입니다. Rstudio 팀은 <a
-href="https://tensorflow.rstudio.com/">tensorflow</a>와 <a
-href="https://tensorflow.rstudio.com/keras/">keras</a>를 이용하기 위해서
-<a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지를
-개발합니다. 이는 놀라운 생산성으로 이어졌습니다. R 패키지는 python
-패키지에서 api 변경만 따라가면 되는 상황이 되었습니다. 내부 로직을 전부
-python 패키지에 위임함으로써 R 패키지의 유지보수관리에 혁신적인 효율성을
-확보한 셈이죠.</p>
-<p>이 때 중요하게 권장하는 사항이 <a
-href="https://docs.conda.io/en/latest/">conda</a> 패키지 매니저를
-사용하는 것입니다. 헌데 R 사용자에게 다른 개발 언어를 설치하는 것은
-어려운 일일 수 있습니다. 그 중에 <a
-href="https://docs.conda.io/en/latest/">conda</a> 패키지 매니저는 매우
-쉬운 축에 속합니다…만, 뭔가 화면 하나하나, 옵션 하나하나 어떤 것인지
-아는 것은 확실히 어려운 일입니다. 그런거 다 알꺼면 왜 R로
-스크립팅하나요…</p>
-<p><strong>그래서 <a
-href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지를
-준비했습니다. <a href="https://github.com/mrchypark/conda4r">conda4r</a>
-패키지는 Windows 32bit, 64bit, MacOS, Linux를 지원하는 <a
-href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>를
-설치하는 함수를 제공합니다.</strong></p>
+<p><a href="https://docs.conda.io/en/latest/">conda</a>는 다양한 언어를 위한 패키지 매니저로 개발중입니다. <a href="https://www.anaconda.com/">anaconda</a>로 익히 알려지면서 python 배포판의 일종으로 쓰이고 있습니다. 최근 파이썬은 딥러닝 프레임워크들의 인기에 힘입어 많은 사람들의 관심을 받고 있습니다. 개발과 연구라는 두 마리 토끼를 잡기 위해서 많은 프레임워크가 파이썬으로 개발되었습니다.</p>
+<p>이런 환경에서 R은 취약한 자체적인 프레임워크를 해결하기 위해 python을 품는 결정을 합니다. 그 결과로 나온 부산물이 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지입니다. Rstudio 팀은 <a href="https://tensorflow.rstudio.com/">tensorflow</a>와 <a href="https://tensorflow.rstudio.com/keras/">keras</a>를 이용하기 위해서 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지를 개발합니다. 이는 놀라운 생산성으로 이어졌습니다. R 패키지는 python 패키지에서 api 변경만 따라가면 되는 상황이 되었습니다. 내부 로직을 전부 python 패키지에 위임함으로써 R 패키지의 유지보수관리에 혁신적인 효율성을 확보한 셈이죠.</p>
+<p>이 때 중요하게 권장하는 사항이 <a href="https://docs.conda.io/en/latest/">conda</a> 패키지 매니저를 사용하는 것입니다. 헌데 R 사용자에게 다른 개발 언어를 설치하는 것은 어려운 일일 수 있습니다. 그 중에 <a href="https://docs.conda.io/en/latest/">conda</a> 패키지 매니저는 매우 쉬운 축에 속합니다…만, 뭔가 화면 하나하나, 옵션 하나하나 어떤 것인지 아는 것은 확실히 어려운 일입니다. 그런거 다 알꺼면 왜 R로 스크립팅하나요…</p>
+<p><strong>그래서 <a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지를 준비했습니다. <a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지는 Windows 32bit, 64bit, MacOS, Linux를 지원하는 <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>를 설치하는 함수를 제공합니다.</strong></p>
 <h3 id="설치-방법">설치 방법</h3>
-<p><a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지는 R
-사용자를 위한 다른 개발 언어 설치를 지원하는 프로젝트인 <a
-href="https://mrchypark.github.io/multilinguer/">multilinguer</a>
-패키지군의 일원입니다. <a
-href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지는
-인프라로써 설치를 위한 개별 함수들을 제공합니다. <a
-href="https://mrchypark.github.io/multilinguer/">multilinguer</a>
-패키지는 <code>has_conda()</code> 함수를 제공합니다.
-<code>has_conda()</code> 함수는 제가 할 수 있는 한의 테스트를 통해서
-<code>conda</code>가 동작하는 상태를 만드는 것을 목표로 합니다.</p>
+<p><a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지는 R 사용자를 위한 다른 개발 언어 설치를 지원하는 프로젝트인 <a href="https://mrchypark.github.io/multilinguer/">multilinguer</a> 패키지군의 일원입니다. <a href="https://github.com/mrchypark/conda4r">conda4r</a> 패키지는 인프라로써 설치를 위한 개별 함수들을 제공합니다. <a href="https://mrchypark.github.io/multilinguer/">multilinguer</a> 패키지는 <code>has_conda()</code> 함수를 제공합니다. <code>has_conda()</code> 함수는 제가 할 수 있는 한의 테스트를 통해서 <code>conda</code>가 동작하는 상태를 만드는 것을 목표로 합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("remotes")</span>
@@ -2561,65 +2516,43 @@ href="https://mrchypark.github.io/multilinguer/">multilinguer</a>
 </div>
 </div>
 <h3 id="사용법">사용법</h3>
-<p>위에 설명드린 대로 <code>has_conda()</code> 함수를 실행하면
-끝입니다.</p>
+<p>위에 설명드린 대로 <code>has_conda()</code> 함수를 실행하면 끝입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>multilinguer</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/multilinguer'>multilinguer</a></span><span class='op'>)</span>
 <span class='fu'>has_conda</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>그럼 기존에 설치된 <code>conda</code>가 있는지 확인합니다. 있으면
-그대로 종료, 아니라면 <code>conda</code> 설치를 시작합니다. 우선
-다운로드 받고, 표준 경로에 <code>miniconda</code>를 설치합니다.
-Windows에서 <code>ssl</code> 관련된 문제가 있어 수정합니다. 그리고
-<code>conda</code> 버전을 업데이트 합니다. 버전 업데이트를 진행하고 싶지
-않다면 <code>update</code> 옵션을 <code>FALSE</code>를 주면 됩니다. 잘
-됬는지 확인하기 위해 <code>conda</code>를 사용하는 패키지를 설치, 실행해
-보겠습니다.</p>
+<p>그럼 기존에 설치된 <code>conda</code>가 있는지 확인합니다. 있으면 그대로 종료, 아니라면 <code>conda</code> 설치를 시작합니다. 우선 다운로드 받고, 표준 경로에 <code>miniconda</code>를 설치합니다. Windows에서 <code>ssl</code> 관련된 문제가 있어 수정합니다. 그리고 <code>conda</code> 버전을 업데이트 합니다. 버전 업데이트를 진행하고 싶지 않다면 <code>update</code> 옵션을 <code>FALSE</code>를 주면 됩니다. 잘 됬는지 확인하기 위해 <code>conda</code>를 사용하는 패키지를 설치, 실행해 보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>remotes</span><span class='fu'>::</span><span class='fu'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='op'>(</span><span class='st'>"haven-jeon/KoSpacing"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>
-패키지는 <code>KoNLP</code> 패키지의 개발자이신 <a
-href="http://freesearch.pe.kr/">고감자</a>님이 만든 띄어쓰기
-패키지입니다. <code>python</code>의 <code>keras</code> 패키지를 사용하기
-때문에, 패키지를 사용하기 위해서 <a
-href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지와 <a
-href="https://docs.conda.io/en/latest/">conda</a>가 필요합니다.</p>
+<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지는 <code>KoNLP</code> 패키지의 개발자이신 <a href="http://freesearch.pe.kr/">고감자</a>님이 만든 띄어쓰기 패키지입니다. <code>python</code>의 <code>keras</code> 패키지를 사용하기 때문에, 패키지를 사용하기 위해서 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지와 <a href="https://docs.conda.io/en/latest/">conda</a>가 필요합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>
-패키지는 버전이 0.1.1 이상인지 꼭 확인하셔야 합니다. 이전 버전은 설치에
-문제가 있어서 동작하지 않습니다.</p>
+<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지는 버전이 0.1.1 이상인지 꼭 확인하셔야 합니다. 이전 버전은 설치에 문제가 있어서 동작하지 않습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span><span class='op'>(</span><span class='st'>"KoSpacing"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a>
-패키지의 설치에서는 <code>conda</code>가 필요하지 않습니다만,
-<code>library(KoSpacing)</code>을 실행시 나오는 안내 문구처럼
-<code>set_env()</code> 함수를 실행할 때 필요합니다. 앞서
-<code>has_conda()</code>를 잘 실행하셨다면 이제 <code>set_env()</code>
-실행할 때 문제가 생기지 않으면 좋을 것 같습니다.(응?)</p>
+<p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지의 설치에서는 <code>conda</code>가 필요하지 않습니다만, <code>library(KoSpacing)</code>을 실행시 나오는 안내 문구처럼 <code>set_env()</code> 함수를 실행할 때 필요합니다. 앞서 <code>has_conda()</code>를 잘 실행하셨다면 이제 <code>set_env()</code> 실행할 때 문제가 생기지 않으면 좋을 것 같습니다.(응?)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/KoSpacing/man/set_env.html'>set_env</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>아마 위에 함수가 잘 끝나면 세션을 재시작할 것입니다. 이제 동작을
-확인해보겠습니다.</p>
+<p>아마 위에 함수가 잘 끝나면 세션을 재시작할 것입니다. 이제 동작을 확인해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
@@ -2631,10 +2564,8 @@ href="https://docs.conda.io/en/latest/">conda</a>가 필요합니다.</p>
 loaded KoSpacing model!
 [1] &quot;김형호 영화시장 분석가는 &#39;1987&#39;의 네이버 영화 정보 네티즌 10점 평에서 언급된 단어들을 지난해 12월 27일부터 올해 1월 10일까지 통계 프로그램 R과 KoNLP 패키지로 텍스트마이닝하여 분석했다.&quot;</code></pre>
 <p>첫 실행 이후에는 위 메세지 없이 결과만 출력합니다.</p>
-<p>잘 동작하시나요? 혹시라도 안되시는 분들은 댓글로 남겨주시면
-감사하겠습니다.</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>잘 동작하시나요? 혹시라도 안되시는 분들은 댓글로 남겨주시면 감사하겠습니다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

@@ -1479,8 +1479,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">correttor</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p><code>multilinguer::install_java()</code>를 쓰세요.(MacOS는 컴퓨터
-비밀번호가 필요)</p></p>
+<p><p><code>multilinguer::install_java()</code>를 쓰세요.(MacOS는 컴퓨터 비밀번호가 필요)</p></p>
 </div>
 
 <div class="d-byline">
@@ -1494,54 +1493,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img width=100% src="https://user-images.githubusercontent.com/6179259/106564199-45663200-6570-11eb-894c-d89fa3c860f4.png"></p>
 <h3 id="한줄요약">한줄요약</h3>
 <ol type="1">
-<li><code>multilinguer::install_java()</code>를 쓰세요.(MacOS는 컴퓨터
-비밀번호가 필요)</li>
+<li><code>multilinguer::install_java()</code>를 쓰세요.(MacOS는 컴퓨터 비밀번호가 필요)</li>
 </ol>
-<p>앞서 R에서 <code>python</code>을 설치해서 사용하기 위해
-<code>conda</code>를 설치하는 방법을 살펴봤습니다. 이번에는
-<code>java</code>입니다.(두둥)(엄근진)</p>
-<p><del><code>java</code>를 설치하기 위해서 <a
-href="https://aws.amazon.com/ko/corretto/">corretto</a> 배포판을
-선택했습니다. <a href="https://aws.amazon.com/ko/corretto/">corretto</a>
-배포판의 설치를 지원하는 <a
-href="https://mrchypark.github.io/correttor/">correttor</a> 패키지는
-Windows 32 bit, 64 bit, MacOS를 지원합니다.</del></p>
-<p><del><a href="https://mrchypark.github.io/conda4r/">conda4r</a>
-패키지와 마찬가지로 <a
-href="https://mrchypark.github.io/correttor/">correttor</a> 패키지는 <a
-href="https://github.com/mrchypark/multilinguer">multilinguer</a>
-패키지군의 일원입니다.</del></p>
-<p><a href="https://github.com/mrchypark/multilinguer">multilinguer</a>
-패키지가 직접 인스톨 코드 등을 가지도록 개발하고 있습니다.</p>
+<p>앞서 R에서 <code>python</code>을 설치해서 사용하기 위해 <code>conda</code>를 설치하는 방법을 살펴봤습니다. 이번에는 <code>java</code>입니다.(두둥)(엄근진)</p>
+<p><del><code>java</code>를 설치하기 위해서 <a href="https://aws.amazon.com/ko/corretto/">corretto</a> 배포판을 선택했습니다. <a href="https://aws.amazon.com/ko/corretto/">corretto</a> 배포판의 설치를 지원하는 <a href="https://mrchypark.github.io/correttor/">correttor</a> 패키지는 Windows 32 bit, 64 bit, MacOS를 지원합니다.</del></p>
+<p><del><a href="https://mrchypark.github.io/conda4r/">conda4r</a> 패키지와 마찬가지로 <a href="https://mrchypark.github.io/correttor/">correttor</a> 패키지는 <a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지군의 일원입니다.</del></p>
+<p><a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지가 직접 인스톨 코드 등을 가지도록 개발하고 있습니다.</p>
 <p>이 포스트는 두말 않고 진행해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("remotes")</span>
 <span class='fu'>remotes</span><span class='fu'>::</span><span class='fu'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='op'>(</span><span class='st'>"mrchypark/multilinguer"</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>multilinguer</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/multilinguer'>multilinguer</a></span><span class='op'>)</span>
 <span class='fu'>install_java</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><code>install_java()</code> 함수의 목표는 <a
-href="https://github.com/s-u/rJava">rJava</a>를 설치하여 문제 없이
-동작하게 만드는 것입니다. <code>install_java()</code> 함수는 현재
-컴퓨터에 <code>java</code>가 설치되어 있는지 확인합니다. 없다면 설치를
-시작합니다. Windows 에서는 사용자 계정 별 폴더에 <code>corretto</code>
-폴더를 만들고 저장합니다. 그리고 유저 환경변수를 설정합니다. MacOS
-에서는 <code>/Library/Java/JavaVirtualMachines/</code> 경로에
-<code>java11</code> 버전으로 명시하여 저장합니다. 말씀 드린 것 처럼,
-MacOS는 앞의 위치에 설치하기 위해서 컴퓨터 비밀번호가 필요합니다.
-문제있는 동작은 없으니 걱정되시면 <a
-href="https://github.com/mrchypark/multilinguer/blob/master/R/uncompress_java.R">소스</a>를
-확인해 주세요.</p>
-<p>앞의 설치는 마지막에 재시작을 하고 <a
-href="https://github.com/s-u/rJava">rJava</a> 패키지를
-<code>binary</code>로 설치한 후 다시 재시작합니다. <code>.jinit()</code>
-함수를 수행하면서 마무리를 하기 때문에 문제가 있다면 이 단계에서 에러를
-출력합니다. 혹시 에러가 발생하면 꼭 알려주세요.</p>
-<p>위 설치로 바로 사용해 볼 수 있는 패키지는 역시 <a
-href="https://github.com/haven-jeon/KoNLP">KoNLP</a> 입니다.</p>
+<p><code>install_java()</code> 함수의 목표는 <a href="https://github.com/s-u/rJava">rJava</a>를 설치하여 문제 없이 동작하게 만드는 것입니다. <code>install_java()</code> 함수는 현재 컴퓨터에 <code>java</code>가 설치되어 있는지 확인합니다. 없다면 설치를 시작합니다. Windows 에서는 사용자 계정 별 폴더에 <code>corretto</code> 폴더를 만들고 저장합니다. 그리고 유저 환경변수를 설정합니다. MacOS 에서는 <code>/Library/Java/JavaVirtualMachines/</code> 경로에 <code>java11</code> 버전으로 명시하여 저장합니다. 말씀 드린 것 처럼, MacOS는 앞의 위치에 설치하기 위해서 컴퓨터 비밀번호가 필요합니다. 문제있는 동작은 없으니 걱정되시면 <a href="https://github.com/mrchypark/multilinguer/blob/master/R/uncompress_java.R">소스</a>를 확인해 주세요.</p>
+<p>앞의 설치는 마지막에 재시작을 하고 <a href="https://github.com/s-u/rJava">rJava</a> 패키지를 <code>binary</code>로 설치한 후 다시 재시작합니다. <code>.jinit()</code> 함수를 수행하면서 마무리를 하기 때문에 문제가 있다면 이 단계에서 에러를 출력합니다. 혹시 에러가 발생하면 꼭 알려주세요.</p>
+<p>위 설치로 바로 사용해 볼 수 있는 패키지는 역시 <a href="https://github.com/haven-jeon/KoNLP">KoNLP</a> 입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"KoNLP"</span><span class='op'>)</span>
@@ -1550,15 +1520,10 @@ href="https://github.com/haven-jeon/KoNLP">KoNLP</a> 입니다.</p>
 </div>
 </div>
 <pre><code>## Checking user defined dictionary!</code></pre>
-<p>위 메세지가 실행된다면, 자바를 사용하는 R 패키지를 문제없이 사용할 수
-있는 상태가 되었다는 뜻입니다.</p>
-<p>현재 MacOS에서 R 버전이 3.5.X 버전일 때 문제가 있는 것을
-파악했습니다.</p>
-<p><a href="https://mrchypark.github.io/correttor/">correttor</a> 패키지
-개발에 도움을 주신 많은 분들께 다시 한번 감사드립니다. 빨리 여러 곳에서
-안정적으로 동작하는 패키지가 되도록 노력하겠습니다. 감사합니다.</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>위 메세지가 실행된다면, 자바를 사용하는 R 패키지를 문제없이 사용할 수 있는 상태가 되었다는 뜻입니다.</p>
+<p>현재 MacOS에서 R 버전이 3.5.X 버전일 때 문제가 있는 것을 파악했습니다.</p>
+<p><a href="https://mrchypark.github.io/correttor/">correttor</a> 패키지 개발에 도움을 주신 많은 분들께 다시 한번 감사드립니다. 빨리 여러 곳에서 안정적으로 동작하는 패키지가 되도록 노력하겠습니다. 감사합니다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
