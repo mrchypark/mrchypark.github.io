@@ -8,7 +8,7 @@ categories:
   - R-universe
 description: |
   install.packages("KoNLP", 
-    repos = c("https://forkonlp.r-universe.dev","https://cloud.r-project.org"),
+    repos = "https://forkonlp.r-universe.dev",
     INSTALL_opts = c("--no-multiarch")
   )
 base_url: https://mrchypark.github.io
@@ -84,34 +84,24 @@ multilinguer::install_jdk()
 
 > multilinguer::install_jdk() 을 실행하면 R 새션을 재시작합니다. 
 
-> mac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고 합니다.
-
 jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로 넘어갑니다.
 
 ## 2. KoNLP 설치
 
 아래 코드로 `KoNLP` 패키지를 설치하세요.
 
-```r
+```{R}
 install.packages("KoNLP", 
-    repos = c("https://forkonlp.r-universe.dev",
-              "https://cloud.r-project.org"),
+    repos = "https://forkonlp.r-universe.dev",
     INSTALL_opts = c("--no-multiarch")
   )
 ```
 
 이제 사용해서 잘 동작하는지 확인하겠습니다.
 
-```r
+```{R}
 library("KoNLP")
 SimplePos09("안녕하신가요?")
-```
-```
-$안녕하신가요
-[1] "안녕/N+하/X+시ㄴ가/E+요/J"
-
-$`?`
-[1] "?/S"
 ```
 
 ### 설명
@@ -134,8 +124,7 @@ $`?`
 install.packages("multilinguer")
 multilinguer::install_jdk()
 install.packages("KoNLP", 
-    repos = c("https://forkonlp.r-universe.dev",
-              "https://cloud.r-project.org"),
+    repos = "https://forkonlp.r-universe.dev",
     INSTALL_opts = c("--no-multiarch")
   )
 ```

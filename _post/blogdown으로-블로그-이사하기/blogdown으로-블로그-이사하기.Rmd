@@ -37,13 +37,9 @@ knitr::opts_chunk$set(echo = T, cache = T)
 
 탈도 많았던 blog의 engine 이전을 완료했습니다. 사용하는 테마가 바뀌긴했지만, 그래도 지금 테마가 어느 정도 만족스러워 결정하게 되었습니다. 원래 `jekyll`로 작성한 블로그에서 `blogdown(Hugo)`으로 변경하였는데요. [blogdown](https://github.com/rstudio/blogdown)은 rstudio의 수석 엔지니어인 [Yihui Xie](https://yihui.name/en/)가 [golang](https://golang.org/)으로 작성된 `static site generator` 입니다. `jekyll` 또한 같은 범주의 도구이죠.
 
-
-
 ### 그동안 `jekyll`을 사용한 이유
 
 `jekyll`은 간단함, 자유로운 테마 선택, 간단함 때문에 사용했습니다.
-
-
 
 #### `jekyll`의 간단함
 
@@ -52,8 +48,6 @@ knitr::opts_chunk$set(echo = T, cache = T)
 `jekyll`은 지향점이 *text를 블로그로 바꿔라!* 입니다. 덕분에 *매우 쉬운* 도구가 되었죠. `.md` 파일을 블로그 포스트에 해당하는 형태로 운영할 수 있게 해줍니다.
 
 Github는 [ruby](https://www.ruby-lang.org/ko/)라는 언어로 개발되었다고 합니다. 공교롭게도(!) `jekyll`도 [ruby](https://www.ruby-lang.org/ko/)로 작성되어 있죠. 그래서 Github에서 제공하는 [pages](https://pages.github.com/)라는 서비스에서 `jekyll`를 빌드없이 바로 사용할 수 있습니다. 물론 `.Rmd`를 `.md`로 렌더링하는 과정이 필요하기 때문에 R로 블로깅할 때는 아쉬운 대목입니다.
-
-
 
 #### 자유로운 테마 선택
 

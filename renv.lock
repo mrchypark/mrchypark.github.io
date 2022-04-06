@@ -466,6 +466,22 @@
         "vctrs"
       ]
     },
+    "elbird": {
+      "Package": "elbird",
+      "Version": "0.1.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ba45bc00f33d855cdda7a9d81b5ff154",
+      "Requirements": [
+        "R6",
+        "cpp11",
+        "dplyr",
+        "matchr",
+        "purrr",
+        "tibble",
+        "vroom"
+      ]
+    },
     "ellipsis": {
       "Package": "ellipsis",
       "Version": "0.3.2",
@@ -953,6 +969,16 @@
       "Repository": "CRAN",
       "Hash": "7ce2733a9826b3aeb1775d56fd305472",
       "Requirements": []
+    },
+    "matchr": {
+      "Package": "matchr",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b1499d3eba437dba5dcd495bfe2566e6",
+      "Requirements": [
+        "rlang"
+      ]
     },
     "memoise": {
       "Package": "memoise",

@@ -32,6 +32,7 @@ preview: https://user-images.githubusercontent.com/6179259/106562157-3fbb1d00-65
 # 업데이트
 
 * 다른 좋은 접근이 많아서 개발을 중지하였습니다.
+# TODO: 좋은 접근 링크 공유.
 
 ### 한줄요약
 

@@ -83,7 +83,7 @@ tidy함이란 3가지 조건을 충족해야 합니다.
 데이터를 보면서 알아볼까요?
 
 ```{r}
-# remotes::install_github("mrchypark/krlift")
+# remotes::install_github("r-krdb/krlift")
 library(krlift)
 ```
 

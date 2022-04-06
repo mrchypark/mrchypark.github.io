@@ -8,8 +8,10 @@ categories:
   - java
   - installr
   - windows
+	- multilinguer
+	- jdk
 description: |
- `installr::install.java()`
+ `multilinguer::install_jdk()`
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
@@ -30,6 +32,17 @@ preview: https://user-images.githubusercontent.com/6179259/106492503-53c63680-64
 ---
 
 <img width=100% src="https://user-images.githubusercontent.com/6179259/106492503-53c63680-64fb-11eb-9522-f09beac39a25.png">
+
+## 업데이트 2022-04-06
+
+Java(`jdk`)를 설치하는 [multilinguer][multilinguer] 패키지에서 `install_jdk()` 함수를 제공합니다.
+
+```R
+install.packages("multilinguer")
+multilinguer::install_jdk()
+```
+
+[multilinguer]: https://github.com/mrchypark/multilinguer
 
 ## 업데이트 2019-08-10
 
@@ -121,18 +134,18 @@ Examples:
 그럼 이제 R 콘솔을 실행해서 에러없이 동작하는지 확인하면 됩니다.
 
 ```R
-install.packages("rJava")
-source("https://install-github.me/talgalili/installr")
+remotes::install_github("talgalili/installr")
 installr::install.java()
+install.packages("rJava")
 library(rJava)
 ```
 
 실제로 잘 동작하는 것인지 결과물로 확인하고 싶으시다면 [KoNLP][KoNLP]를 사용해보시면 좋을 것 같습니다.
 
 ```R
-install.packages('KoNLP')
-source("https://install-github.me/talgalili/installr")
+remotes::install_github("talgalili/installr")
 installr::install.java()
+install.packages('KoNLP')
 library(KoNLP)
 
 ## Checking user defined dictionary!

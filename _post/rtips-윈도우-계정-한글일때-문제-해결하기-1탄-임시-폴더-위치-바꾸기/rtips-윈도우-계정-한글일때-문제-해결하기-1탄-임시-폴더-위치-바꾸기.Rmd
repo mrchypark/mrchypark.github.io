@@ -29,6 +29,10 @@ preview: https://user-images.githubusercontent.com/6179259/106563781-a17c8680-65
 
 <img src="https://user-images.githubusercontent.com/6179259/106563781-a17c8680-656f-11eb-8578-fe866238dc8e.png" width=100%>
 
+## 업데이트 2022-04-20
+
+R 4.2.0 이후 윈도우 버전의 비 latin 계열 언어의 인코딩 문제가 해결되었습니다.
+
 ### 한줄요약
 
 1. `Temp(임시 폴더)`의 위치를 `.Renviron` 파일에 써서 바꾸세요.
