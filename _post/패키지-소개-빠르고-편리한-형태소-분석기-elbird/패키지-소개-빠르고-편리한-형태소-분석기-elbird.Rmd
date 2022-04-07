@@ -4,11 +4,11 @@ date: '2022-04-05'
 categories:
   - R
   - package
-	- cran
-	- kiwi
-	- elbird
-	- morphological
-	- analyzer
+  - cran
+  - kiwi
+  - elbird
+  - morphological
+  - analyzer
 description: |
   cpp 기반의 한글 형태소 분석기인 kiwi를 사용하여 빠르고 편리한 R 패키지인 elbird를 제작하였습니다.
 base_url: https://mrchypark.github.io

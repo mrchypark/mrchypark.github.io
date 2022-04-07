@@ -8,7 +8,7 @@ categories:
   - comment
   - forkonlp
 description: |
-	DNH4가 댓글 수집을 드디어 지원합니다. 덕분에 N2H4도 함께 홍보합니다.
+  DNH4가 댓글 수집을 드디어 지원합니다. 덕분에 N2H4도 함께 홍보합니다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
