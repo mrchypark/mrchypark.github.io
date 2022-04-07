@@ -7,7 +7,7 @@ categories:
   - temp
   - tempdir
 description: |
-  임시 폴더의 위치를 조정해서 윈도우 계정이 한글일때 생기는 문제를 해결합니다.
+  "임시 폴더의 위치를 조정해서 윈도우 계정이 한글일때 생기는 문제를 해결합니다."
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"

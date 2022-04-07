@@ -8,8 +8,8 @@ categories:
   - java
   - installr
   - windows
-	- multilinguer
-	- jdk
+  - multilinguer
+  - jdk
 description: |
  `multilinguer::install_jdk()`
 base_url: https://mrchypark.github.io
