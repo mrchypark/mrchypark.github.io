@@ -40,10 +40,9 @@ jobs:
         run: |
           R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
           R -e 'rmarkdown::render_site(encoding = "UTF-8")'
-      - name: Commit results
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add .
-          git commit -m 'Re-build blog files' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+
+      - name: Deploy to GitHub pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: docs
