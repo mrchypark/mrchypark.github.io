@@ -90,16 +90,17 @@ jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과�
 
 아래 코드로 `KoNLP` 패키지를 설치하세요.
 
-```{R}
+```r
 install.packages("KoNLP", 
     repos = "https://forkonlp.r-universe.dev",
+		dependencies = TRUE,
     INSTALL_opts = c("--no-multiarch")
   )
 ```
 
 이제 사용해서 잘 동작하는지 확인하겠습니다.
 
-```{R}
+```r
 library("KoNLP")
 SimplePos09("안녕하신가요?")
 ```
