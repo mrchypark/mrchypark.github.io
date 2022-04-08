@@ -92,7 +92,7 @@ tokenize_tbl("안녕하세요.", stopwords = FALSE)
 library(magrittr)
 library(tidytext)
 library(tibble)
-tar <- tibble(content = "유구한 역사와 전통에 빛나는 우리 대한국민은 3ㆍ1운동으로 건립된 대한민국임시정부의 법통과 불의에 항거한 4ㆍ19민주이념을 계승하고, ...")
+tar <- tibble(content = "유구한 역사와 전통에 빛나는 우리 대한국민은 3ㆍ1운동으로 건립된...")
 
 tar %>% 
   unnest_tokens(
