@@ -4,8 +4,6 @@ image: "https://media-exp1.licdn.com/dms/image/C5103AQHEnbVyKFc5tQ/profile-displ
 links:
   - label: GitHub
     url: "https://github.com/mrchypark"
-  - label: Facebook
-    url: "https://www.facebook.com/mrchypark/"
   - label: LinkedIn
     url: "https://linkedin.com/in/chanyubpark/"
   - label: Twitter
@@ -22,14 +20,14 @@ output:
 
 **R**과 **docker**를 사랑하는 데이터 관련 종사자입니다.    
 **Text**에 관련된 연구에 관심이 많습니다.    
-최근에는 **go**와 **elixir**를 공부하고 있습니다.    
+최근에는 **go**와 **rust**를 공부하고 있습니다.    
 사람들이 더 쉽게 데이터를 다루어서 결국 데이터 기반의 소통이 활성화되는 것에 관심이 많습니다.    
 저의 대부분의 계정과 연락처, 프로필은 왼쪽의 링크들을 참고해 주세요.    
 
 ## 활동
 
 - 한글 연구를 위한 데이터 보급 비영리 단체인 [포크온엘피(ForkonLP)][forkonlp]를 운영하고 있습니다.  
-    - 대표적으로 [N2H4][N2H4], [DNH4][DNH4], [presidentSpeechKr][presidentSpeechKr]를 만들고 관리하고 있습니다.    
+    - 대표적으로 [N2H4][N2H4], [DNH4][DNH4], [presidentSpeech][presidentSpeech]를 만들고 관리하고 있습니다.    
 - R에 기여하기 위해 노력하고 있습니다.
     1. 패키지를 만들어 cran에 [등록][등록]하고 관리합니다([github][repo]에 먼저 올립니다.).    
     2. 가능한한 다른 패키지에 [기여][기여]하려고 합니다.    
@@ -60,5 +58,5 @@ output:
 [등록]: https://cran.r-project.org/web/packages/ubci/index.html
 [N2H4]: https://forkonlp.github.io/N2H4/
 [DNH4]: https://forkonlp.github.io/DNH4/
-[presidentSpeechKr]: https://forkonlp.github.io/presidentSpeechKr/
+[presidentSpeech]: https://forkonlp.github.io/presidentSpeech/
 

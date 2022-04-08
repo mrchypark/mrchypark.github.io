@@ -37,11 +37,11 @@ forkonlp
     - [presidentSpeech](https://github.com/forkonlp/presidentSpeech) : 역대 대통령 연설문 데이터 패키지     
     
 mrchypark    
+    - [elbird](https://github.com/mrchypark/elbird) : 빠르고 설치가 쉽고 사전관리 기능이 있는 형태소 분석기 패키지
+    - [multilinguer](https://github.com/mrchypark/multilinguer) : R에서 사용하는 다른 언어의 설치 기능을 제공하는 패키지. 현재는 java만 가능.
     - [sendgridr](https://github.com/mrchypark/sendgridr) : sendgrid 서비스를 이용한 메일 전송 패키지    
-    - [usehelp](https://github.com/mrchypark/usehelp) : rmd의 html 결과물에서 help 페이지 정보를 출력해주는 패키지    
     - [DBF](https://github.com/mrchypark/DBF) : DBI 패키지로 연결한 데이터베이스의 함수를 namespace에서 볼 수 있게 등록하는 패키지    
     - [ubci](https://github.com/mrchypark/ubci) : ubci 지수 확보 패키지    
     - [tqk](https://github.com/mrchypark/tqk) : 한국 주가 확보 패키지    
     - [krlift](https://github.com/mrchypark/krlift) : 한국 엘리베이터 데이터 패키지    
     - [krlandprice](https://github.com/mrchypark/krlandprice) : 한국 지가 데이터 패키지     
-    - [korbitr](https://github.com/mrchypark/korbitr) : korbit api 연결 패키지    
