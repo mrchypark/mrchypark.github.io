@@ -31,18 +31,15 @@ R로 만든 머신러닝 모델을 api로 제공하기 : [[자료][10]]
 
 참여한 레포들을 공유합니다. 부족한 부분도 많고, 잘못된 부분이 있을 수도 있습니다. 언제든지 지적해주시면 참고하도록 하겠습니다. 감사합니다.
 
-- [elbird](https://github.com/mrchypark/elbird) : 빠르고 설치가 쉽고 사전관리 기능이 있는 형태소 분석기 패키지
-- [multilinguer](https://github.com/mrchypark/multilinguer) : R에서 사용하는 다른 언어의 설치 기능을 제공하는 패키지. 현재는 java만 가능.
+- [elbird](https://github.com/mrchypark/elbird) : 빠르고 설치가 쉽고 사전관리 기능이 있는 형태소 분석기 패키지    
+- [multilinguer](https://github.com/mrchypark/multilinguer) : R에서 사용하는 다른 언어의 설치 기능을 제공하는 패키지. 현재는 java만 가능.    
 - [sendgridr](https://github.com/mrchypark/sendgridr) : sendgrid 서비스를 이용한 메일 전송 패키지    
 - [DBF](https://github.com/mrchypark/DBF) : DBI 패키지로 연결한 데이터베이스의 함수를 namespace에서 볼 수 있게 등록하는 패키지    
 - [ubci](https://github.com/mrchypark/ubci) : ubci 지수 확보 패키지    
-- [tqk](https://github.com/mrchypark/tqk) : 한국 주가 확보 패키지 
-
+- [tqk](https://github.com/mrchypark/tqk) : 한국 주가 확보 패키지    
 - [N2H4](https://github.com/forkonlp/N2H4) : 네이버 뉴스 수집 패키지    
 - [DNH4](https://github.com/forkonlp/DNH4) : 다음 뉴스 수집 패키지    
 - [presidentSpeech](https://github.com/forkonlp/presidentSpeech) : 역대 대통령 연설문 데이터 패키지     
-
-- [kiwigo](https://github.com/codingpot/kiwigo) : kiwi 형태소 분석기의 go binding
-
+- [kiwigo](https://github.com/codingpot/kiwigo) : kiwi 형태소 분석기의 go binding    
 - [krlift](https://github.com/r-krdb/krlift) : 한국 엘리베이터 데이터 패키지    
 - [krlandprice](https://github.com/r-krdb/krlandprice) : 한국 지가 데이터 패키지     
