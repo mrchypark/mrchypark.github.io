@@ -2570,19 +2570,20 @@ gtag('config', 'UA-47822682-14');
 [1] 2</code></pre>
 </div>
 <p><a href="https://github.com/bab2min/Kiwi">kiwi</a>는 내장 불용어사전을 제공하고 있습니다. 이에 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>도 불용어사전을 관리하고 사용하는 방법을 함께 제공합니다. 우선 <code>tokenize()</code> 함수는 <code>stopwords</code> 파라미터를 제공하며, 기본값은 <code>TRUE</code>입니다. 내장 불용어 사전을 사용한다는 뜻입니다. 사용하지 않으려면 <code>FALSE</code>를 주시면 됩니다.</p>
+<ul>
+<li>현재 <code>tokenize()</code> 함수만 기본값이 <code>TRUE</code>이고, <code>tokenize_tbl()</code>의 기본값은 <code>FALSE</code>네요. 수정하겠습니다. ㅠ</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span>, stopwords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 5 × 5
+<pre><code># A tibble: 3 × 5
   unique form  tag   start   len
   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
 1 1      안녕  NNG       1     2
-2 1      하    XSA       3     1
-3 1      시    EP        4     1
-4 1      어요  EF        4     2
-5 1      .     SF        6     1</code></pre>
+2 1      시    EP        4     1
+3 1      어요  EF        4     2</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span>, stopwords <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
