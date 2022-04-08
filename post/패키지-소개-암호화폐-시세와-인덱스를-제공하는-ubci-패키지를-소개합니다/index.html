@@ -2574,7 +2574,7 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 1,000 × 6
    index date            open     high       low     close
    &lt;chr&gt; &lt;date&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
- 1 UBMI  2022-04-08 10113.51  10228.09 10087.64  10207.66 
+ 1 UBMI  2022-04-08 10113.51  10308.43 10087.64  10267.05 
  2 UBMI  2022-04-07  9872.877 10186.19  9798.669 10106.66 
  3 UBMI  2022-04-06 10618.61  10618.61  9856.141  9868.092
  4 UBMI  2022-04-05 10822.88  10914.17 10613.70  10614.17 
@@ -2670,18 +2670,18 @@ gtag('config', 'UA-47822682-14');
 </code></pre>
 </div>
 <pre><code># A tibble: 400 × 7
-   code       date           open     high      low    close    volume
-   &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 UPBIT.KRW… 2022-04-08 53813000 54300000 53670000 54150000  850.9866
- 2 UPBIT.KRW… 2022-04-07 53072000 54340000 52754000 53814000 5354.289 
- 3 UPBIT.KRW… 2022-04-06 56195000 56323000 53034000 53072000 6776.519 
- 4 UPBIT.KRW… 2022-04-05 57069000 57645000 56070000 56155000 4627.209 
- 5 UPBIT.KRW… 2022-04-04 56596000 57300000 55510000 57055000 5916.740 
- 6 UPBIT.KRW… 2022-04-03 56006000 57500000 55830000 56639000 3818.056 
- 7 UPBIT.KRW… 2022-04-02 56326000 57350000 55831000 56050000 3882.902 
- 8 UPBIT.KRW… 2022-04-01 55331000 56790000 54246000 56369000 6752.645 
- 9 UPBIT.KRW… 2022-03-31 56594000 57227000 55230000 55352000 5141.563 
-10 UPBIT.KRW… 2022-03-30 56985000 57100000 56015000 56620000 4136.114 
+   code        date           open     high      low    close   volume
+   &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 UPBIT.KRW-… 2022-04-08 53813000 54700000 53670000 54398000 1608.730
+ 2 UPBIT.KRW-… 2022-04-07 53072000 54340000 52754000 53814000 5354.289
+ 3 UPBIT.KRW-… 2022-04-06 56195000 56323000 53034000 53072000 6776.519
+ 4 UPBIT.KRW-… 2022-04-05 57069000 57645000 56070000 56155000 4627.209
+ 5 UPBIT.KRW-… 2022-04-04 56596000 57300000 55510000 57055000 5916.740
+ 6 UPBIT.KRW-… 2022-04-03 56006000 57500000 55830000 56639000 3818.056
+ 7 UPBIT.KRW-… 2022-04-02 56326000 57350000 55831000 56050000 3882.902
+ 8 UPBIT.KRW-… 2022-04-01 55331000 56790000 54246000 56369000 6752.645
+ 9 UPBIT.KRW-… 2022-03-31 56594000 57227000 55230000 55352000 5141.563
+10 UPBIT.KRW-… 2022-03-30 56985000 57100000 56015000 56620000 4136.114
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
