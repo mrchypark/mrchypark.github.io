@@ -30,8 +30,10 @@ output:
 preview: https://user-images.githubusercontent.com/6179259/161697867-de4156cf-3f56-49f7-aa26-413ce300fd4b.png
 ---
 
-<img src="https://user-images.githubusercontent.com/6179259/161697867-de4156cf-3f56-49f7-aa26-413ce300fd4b.png" width=100%>
-
+<a href="https://news.hada.io/topic?id=6290">
+  <img src="https://user-images.githubusercontent.com/6179259/161697867-de4156cf-3f56-49f7-aa26-413ce300fd4b.png" width=100%>
+</a>
+혹시 괜찮으시면 위 이미지 클릭해서 좋아요 한번 부탁드립니다. :)
 
 ### 한줄요약
 
@@ -142,5 +144,6 @@ cpp로 제작하고 오픈소스이며, 사용자 기능이 잘 되어 있는 �
 [HanNanum]: http://semanticweb.kaist.ac.kr/home/index.php/HanNanum
 [KoNLP]: https://github.com/haven-jeon/KoNLP
 [kiwi]: https://github.com/bab2min/Kiwi
+[kiwigo]: https://github.com/codingpot/kiwigo
 [kiwipiepy]: https://github.com/bab2min/kiwipiepy
 [elbird]: https://mrchypark.github.io/elbird/index.html
