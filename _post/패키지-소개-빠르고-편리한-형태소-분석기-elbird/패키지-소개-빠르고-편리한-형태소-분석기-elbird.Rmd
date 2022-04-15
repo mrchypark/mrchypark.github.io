@@ -58,7 +58,7 @@ install.packages("elbird")
 
 ```{r}
 library(elbird)
-tokenize("새로운 형태소 분석기인 elbird를 소개합니다.")
+tokenize(text = "새로운 형태소 분석기인 elbird를 소개합니다.")
 ```
 
 `tokenize()` 함수는 아마 형태소 분석기가 필요하신 분들이 가장 많이 사용하는 함수일 것입니다.
@@ -70,8 +70,8 @@ tokenize("새로운 형태소 분석기인 elbird를 소개합니다.")
 사용하지 않으려면 `FALSE`를 주시면 됩니다.
 
 ```{r}
-tokenize("안녕하세요.")
-tokenize("안녕하세요.", stopwords = FALSE)
+tokenize(text = "안녕하세요.")
+tokenize(text = "안녕하세요.", stopwords = FALSE)
 ```
 
 비교해서 보면 문장부호가 분석 결과로 포함된 것을 알 수 있습니다.
