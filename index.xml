@@ -13,7 +13,15 @@
       <link>https://mrchypark.github.io</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>[elbird] 불용어 처리하기 Stopwords</title>
+      <dc:creator>SKTelecom</dc:creator>
+      <link>https://mrchypark.github.io/post/elbird-불용어-처리하기-Stopwords</link>
+      <description>A short description of the post.</description>
+      <guid>https://mrchypark.github.io/post/elbird-불용어-처리하기-Stopwords</guid>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>[패키지 소개] 빠르고 편리한 형태소 분석기 elbird</title>
       <dc:creator>Chanyub Park</dc:creator>
