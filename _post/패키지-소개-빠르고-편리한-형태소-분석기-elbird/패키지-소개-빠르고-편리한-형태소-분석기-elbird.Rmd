@@ -39,6 +39,8 @@ preview: https://user-images.githubusercontent.com/6179259/161697867-de4156cf-3f
 
 1. 이제 한번에 설치해서 사용하는 [elbird][elbird]로 편안한 텍스트마이닝하세요~~
 
+## elbird 패키지
+
 [elbird][elbird]를 소개합니다.
 [elbird][elbird]는 cpp로 개발된 [kiwi][kiwi]를 사용하는 형태소 분석기로, 
 python 버전 kiwi인 [kiwipiepy][kiwipiepy]를 사용하는 형태로 2020년 6월에 시작하였습니다.
@@ -50,6 +52,7 @@ python 버전 kiwi인 [kiwipiepy][kiwipiepy]를 사용하는 형태로 2020년 6
 드디어, 다른 설치 없이 바로 사용할 수 있는 빠르고 편리한 형태소 분석기 R 패키지 [elbird][elbird]의 기본 골격을 갖추었습니다.
 
 현재 크랜 버전은 0.1.3 입니다.
+
 ```r
 install.packages("elbird")
 ```
@@ -58,7 +61,8 @@ install.packages("elbird")
 
 ```{r}
 library(elbird)
-tokenize(text = "새로운 형태소 분석기인 elbird를 소개합니다.")
+tokenize
+tokenize("새로운 형태소 분석기인 elbird를 소개합니다.")
 ```
 
 `tokenize()` 함수는 아마 형태소 분석기가 필요하신 분들이 가장 많이 사용하는 함수일 것입니다.
@@ -70,8 +74,8 @@ tokenize(text = "새로운 형태소 분석기인 elbird를 소개합니다.")
 사용하지 않으려면 `FALSE`를 주시면 됩니다.
 
 ```{r}
-tokenize(text = "안녕하세요.")
-tokenize(text = "안녕하세요.", stopwords = FALSE)
+tokenize("안녕하세요.")
+tokenize("안녕하세요.", stopwords = FALSE)
 ```
 
 비교해서 보면 문장부호가 분석 결과로 포함된 것을 알 수 있습니다.
