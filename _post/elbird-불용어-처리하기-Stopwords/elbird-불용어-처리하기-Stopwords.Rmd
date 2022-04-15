@@ -1,0 +1,22 @@
+---
+title: "[elbird] 불용어 처리하기 Stopwords"
+description: |
+  A short description of the post.
+author:
+  - name: SKTelecom
+date: 2022-04-15
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

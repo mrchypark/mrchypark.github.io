@@ -25,7 +25,7 @@ jobs:
           brew install pandoc
       - name: Install Sys dep
         run: |
-          brew install libgit2        
+          brew install libgit2
       - name: Cache Renv packages
         uses: actions/cache@v2
         with:
@@ -43,7 +43,7 @@ jobs:
           R -e 'install.packages("fs")'
       - name: Build site
         run: |
-          R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_post", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
+          R -e 'purrr::map(grep("*.Rmd", fs::dir_ls("_posts", recurse = T), value=T), ~ rmarkdown::render(.x, encoding = 'UTF-8'))'
           R -e 'rmarkdown::render_site(encoding = "UTF-8")'
       - name: Commit results
         run: |
