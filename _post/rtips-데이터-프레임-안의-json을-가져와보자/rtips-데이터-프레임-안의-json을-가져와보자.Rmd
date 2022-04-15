@@ -174,7 +174,7 @@ library(dplyr)
 ```{r}
 library(purrr)
 
-nested_json <- data.frame(a = 1:5, b = rep(json_text, 5), stringsAsFactors = F)
+nested_json <- data.frame(a = 1:5, b = rep(json_text, 5))
 
 nested_json %>% 
   mutate(b = map(b, fromJSON))

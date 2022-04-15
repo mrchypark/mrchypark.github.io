@@ -201,7 +201,7 @@ bind_rows(tar)
 library(purrr)
 tar_list <- list()
 num_of_tables <- nrow(tar_tables)
-for(i in 1:num_of_tables) {
+for(i in seq_len(num_of_tables)) {
   tar_list[[i]] <- 
     tbl(conn, tar_tables[i, 1])
 }

@@ -7,7 +7,10 @@ categories:
   - install.packages
   - R-universe
 description: |
-  install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
+  install.packages("KoNLP", 
+    repos = "https://forkonlp.r-universe.dev",
+    INSTALL_opts = c("--no-multiarch")
+  )
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
@@ -81,8 +84,6 @@ multilinguer::install_jdk()
 
 > multilinguer::install_jdk() 을 실행하면 R 새션을 재시작합니다. 
 
-> mac 사용자라면 설치 경로 권한을 얻기 위해 비밀번호를 입력하라고 합니다.
-
 jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과정으로 넘어갑니다.
 
 ## 2. KoNLP 설치
@@ -90,7 +91,11 @@ jdk 설치 확인을 한번 더 해보고, 동작하면 아래 KoNLP 설치 과�
 아래 코드로 `KoNLP` 패키지를 설치하세요.
 
 ```r
-install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
+install.packages("KoNLP", 
+    repos = "https://forkonlp.r-universe.dev",
+		dependencies = TRUE,
+    INSTALL_opts = c("--no-multiarch")
+  )
 ```
 
 이제 사용해서 잘 동작하는지 확인하겠습니다.
@@ -99,13 +104,17 @@ install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
 library("KoNLP")
 SimplePos09("안녕하신가요?")
 ```
-```
-$안녕하신가요
-[1] "안녕/N+하/X+시ㄴ가/E+요/J"
 
-$`?`
-[1] "?/S"
-```
+### 설명
+
+현재 `KoNLP` 패키지는 [CRAN][cran]에서 내려가 있는 상태입니다. 
+그래서 다른 패키지 저장소인 `r-universe.dev`에 빌드에서 업로드를 해둔 상태입니다.
+`r-universe.dev`는 사설 패키지 저장소라고 보시면 될 것 같습니다.
+
+그래서 `install.packages()` 명령에 추가 저장소 주소를 더하는 줄을 추가하였습니다.
+다른 패키지들은 기본 [CRAN][cran]을 사용하므로 함께 작성하였습니다.
+패키지 설치시 32비트와 64비트를 모두 설치하는 것이 기본 동작인 듯합니다.
+현재 java 64bit 만 설치되어 있으므로 기본 64bit 패키지만 설치하라는 옵션을 추가했습니다.
 
 ## 전체 코드
 
@@ -115,7 +124,10 @@ $`?`
 ```r
 install.packages("multilinguer")
 multilinguer::install_jdk()
-install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
+install.packages("KoNLP", 
+    repos = "https://forkonlp.r-universe.dev",
+    INSTALL_opts = c("--no-multiarch")
+  )
 ```
 
 ## 조심해야 할 점
@@ -129,3 +141,4 @@ install.packages('KoNLP', repos = 'https://forkonlp.r-universe.dev')
 [rJava]: https://github.com/s-u/rJava
 [correto]: https://aws.amazon.com/ko/corretto/
 [mis]: https://github.com/mrchypark/multilinguer/issues
+[cran]: https://cran.r-project.org/

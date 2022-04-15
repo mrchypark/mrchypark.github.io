@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>[conda4r] R을 위해서 conda를 설치해보자</title>
@@ -116,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["conda4r-r을-위해서-conda를-설치해보자_files/anchor/anchor.min.js","conda4r-r을-위해서-conda를-설치해보자_files/bowser/bowser.min.js","conda4r-r을-위해서-conda를-설치해보자_files/distill/template.v2.js","conda4r-r을-위해서-conda를-설치해보자_files/header-attrs/header-attrs.js","conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery.min.js","conda4r-r을-위해서-conda를-설치해보자_files/popper/popper.min.js","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy-bundle.umd.min.js","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy-light-border.css","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy.css","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy.umd.min.js","conda4r-r을-위해서-conda를-설치해보자_files/webcomponents/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["conda4r-r을-위해서-conda를-설치해보자_files/anchor/anchor.min.js","conda4r-r을-위해서-conda를-설치해보자_files/bowser/bowser.min.js","conda4r-r을-위해서-conda를-설치해보자_files/distill/template.v2.js","conda4r-r을-위해서-conda를-설치해보자_files/header-attrs/header-attrs.js","conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery-3.6.0.js","conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery-3.6.0.min.js","conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery-3.6.0.min.map","conda4r-r을-위해서-conda를-설치해보자_files/popper/popper.min.js","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy-bundle.umd.min.js","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy-light-border.css","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy.css","conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy.umd.min.js","conda4r-r을-위해서-conda를-설치해보자_files/webcomponents/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1263,7 +1264,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1435,7 +1439,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="conda4r-r을-위해서-conda를-설치해보자_files/header-attrs/header-attrs.js"></script>
-  <script src="conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery.min.js"></script>
+  <script src="conda4r-r을-위해서-conda를-설치해보자_files/jquery/jquery-3.6.0.min.js"></script>
   <script src="conda4r-r을-위해서-conda를-설치해보자_files/popper/popper.min.js"></script>
   <link href="conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy.css" rel="stylesheet" />
   <link href="conda4r-r을-위해서-conda를-설치해보자_files/tippy/tippy-light-border.css" rel="stylesheet" />
@@ -1521,7 +1525,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>위에 설명드린 대로 <code>has_conda()</code> 함수를 실행하면 끝입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>multilinguer</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/multilinguer'>multilinguer</a></span><span class='op'>)</span>
 <span class='fu'>has_conda</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1536,7 +1540,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지는 <code>KoNLP</code> 패키지의 개발자이신 <a href="http://freesearch.pe.kr/">고감자</a>님이 만든 띄어쓰기 패키지입니다. <code>python</code>의 <code>keras</code> 패키지를 사용하기 때문에, 패키지를 사용하기 위해서 <a href="https://rstudio.github.io/reticulate/">reticulate</a> 패키지와 <a href="https://docs.conda.io/en/latest/">conda</a>가 필요합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>KoSpacing</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1550,15 +1554,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><a href="https://github.com/haven-jeon/KoSpacing">KoSpacing</a> 패키지의 설치에서는 <code>conda</code>가 필요하지 않습니다만, <code>library(KoSpacing)</code>을 실행시 나오는 안내 문구처럼 <code>set_env()</code> 함수를 실행할 때 필요합니다. 앞서 <code>has_conda()</code>를 잘 실행하셨다면 이제 <code>set_env()</code> 실행할 때 문제가 생기지 않으면 좋을 것 같습니다.(응?)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/KoSpacing/man/set_env.html'>set_env</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>set_env</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>아마 위에 함수가 잘 끝나면 세션을 재시작할 것입니다. 이제 동작을 확인해보겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/haven-jeon/KoSpacing'>KoSpacing</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/KoSpacing/man/spacing.html'>spacing</a></span><span class='op'>(</span><span class='st'>"김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>KoSpacing</span><span class='op'>)</span>
+<span class='fu'>spacing</span><span class='op'>(</span><span class='st'>"김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>

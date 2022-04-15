@@ -31,6 +31,10 @@ preview: https://user-images.githubusercontent.com/6179259/106564003-fe783c80-65
 
 <img width=100% src="https://user-images.githubusercontent.com/6179259/106564003-fe783c80-656f-11eb-948f-7896c100b4db.png">
 
+## 업데이트
+
+`reticulate::install_miniconda()` 를 사용해주세요.
+
 ## conda4r 패키지 개발을 중단합니다.
 
 [reticulate][reticulate] 패키지에 `install_miniconda()` 함수가 포함되기로 결정되어서 패키지 개발을 중단합니다.

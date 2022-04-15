@@ -1,7 +1,7 @@
 ---
 title: 논리 연산자 정리
 description: |
- 드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.
+  R의 논리 연산자에 대해 설명합니다.
 base_url: https://mrchypark.github.io
 date: "2017-07-31"
 categories:
@@ -138,17 +138,11 @@ a <- c(10,20,30,40,50)
 b <- 30
 
 a + b
-
 a - b
-
 a * b
-
 a / b
-
 a ** b
-
 a %% b
-
 a %/% b
 ```
 

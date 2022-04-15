@@ -1,0 +1,37 @@
+---
+title: 쿠버네티스 리소스가 삭제 안될 때
+date: '2021-06-15'
+categories:
+  - k8s
+  - kubernetes
+  - resource
+  - delete
+  - terminating
+description: |
+  쿠버네티스에서 네임스페이스 등 리소스를 삭제했는데, terminating 에서 진행이 안될 때의 방법을 공유합니다.
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg
+draft: true
+---
+
+<img width=100% src="https://user-images.githubusercontent.com/6179259/120228661-881de980-c286-11eb-8ed0-86d198bbf21f.jpg">
+
+
+https://github.com/kubernetes/kubernetes/issues/60538
+
+kubectl patch crd/orders.acme.cert-manager.io -p '{"metadata": {"finalizers": []}}' --type=merge 
