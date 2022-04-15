@@ -58,16 +58,10 @@ install.packages("elbird")
 
 ```{r}
 library(elbird)
-tokenize_tbl("안녕하세요.")
+tokenize("안녕하세요.")
 ```
 
 `tokenize()` 함수는 아마 형태소 분석기가 필요하신 분들이 가장 많이 사용하는 함수일 것입니다.
-`tokenize_tbl()` 함수는 출력 결과를 `tibble` 자료형으로 제공합니다.
-기본은 `list` 자료형입니다.
-
-```{r}
-tokenize("안녕하세요.")
-```
 
 [kiwi][kiwi]는 내장 불용어사전을 제공하고 있습니다.
 이에 [elbird][elbird]도 불용어사전을 관리하고 사용하는 방법을 함께 제공합니다.
@@ -75,10 +69,8 @@ tokenize("안녕하세요.")
 내장 불용어 사전을 사용한다는 뜻입니다.
 사용하지 않으려면 `FALSE`를 주시면 됩니다.
 
-* 현재 `tokenize()` 함수만 기본값이 `TRUE`이고, `tokenize_tbl()`의 기본값은 `FALSE`네요. 수정하겠습니다. ㅠ
-
 ```{r}
-tokenize_tbl("안녕하세요.", stopwords = TRUE)
+tokenize_tbl("안녕하세요.")
 tokenize_tbl("안녕하세요.", stopwords = FALSE)
 ```
 
