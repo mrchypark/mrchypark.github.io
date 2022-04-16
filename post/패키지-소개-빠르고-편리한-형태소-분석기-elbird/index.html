@@ -2490,6 +2490,7 @@ gtag('config', 'UA-47822682-14');
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#elbird-패키지">elbird 패키지</a></li>
 <li><a href="#개발-뒷이야기">개발 뒷이야기</a></li>
 </ul>
 </nav>
@@ -2499,6 +2500,7 @@ gtag('config', 'UA-47822682-14');
 <ol type="1">
 <li>이제 한번에 설치해서 사용하는 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>로 편안한 텍스트마이닝하세요~~</li>
 </ol>
+<h2 id="elbird-패키지">elbird 패키지</h2>
 <p><a href="https://mrchypark.github.io/elbird/index.html">elbird</a>를 소개합니다. <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>는 cpp로 개발된 <a href="https://github.com/bab2min/Kiwi">kiwi</a>를 사용하는 형태소 분석기로, python 버전 kiwi인 <a href="https://github.com/bab2min/kiwipiepy">kiwipiepy</a>를 사용하는 형태로 2020년 6월에 시작하였습니다.</p>
 <p>하지만 conda를 설치해야 한다는 의존성 부분이 존재했기 때문에, cpp를 사용하는 방법을 계속 공부하였습니다. 그 부산물로 go 패키지인 <a href="https://github.com/codingpot/kiwigo">kiwigo</a>도 제작해보면서 개발에 필요한 내용을 파악할 수 있었습니다. 역시 <a href="https://github.com/codingpot/kiwigo">kiwigo</a> 개발을 하드케리해주신 <a href="https://github.com/kkweon">kkweon</a>님께 진심으로 감사드립니다.</p>
 <p>드디어, 다른 설치 없이 바로 사용할 수 있는 빠르고 편리한 형태소 분석기 R 패키지 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>의 기본 골격을 갖추었습니다.</p>
@@ -2508,94 +2510,44 @@ gtag('config', 'UA-47822682-14');
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/elbird/'>elbird</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize</a></span><span class='op'>(</span><span class='st'>"새로운 형태소 분석기인 elbird를 소개합니다."</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 5 × 5
-  unique form  tag   start   len
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-1 1      안녕  NNG       1     2
-2 1      하    XSA       3     1
-3 1      시    EP        4     1
-4 1      어요  EF        4     2
-5 1      .     SF        6     1</code></pre>
+<pre><code># A tibble: 6 × 5
+  sent  form   tag   start   len
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1 1     새롭   VA        1     3
+2 1     형태소 NNG       5     3
+3 1     분석기 NNG       9     3
+4 1     elbird SL       14     6
+5 1     소개   NNG      22     2
+6 1     ᆸ니다  EF       24     3</code></pre>
 </div>
-<p><code>tokenize()</code> 함수는 아마 형태소 분석기가 필요하신 분들이 가장 많이 사용하는 함수일 것입니다. <code>tokenize_tbl()</code> 함수는 출력 결과를 <code>tibble</code> 자료형으로 제공합니다. 기본은 <code>list</code> 자료형입니다.</p>
+<p><code>tokenize()</code> 함수는 아마 형태소 분석기가 필요하신 분들이 가장 많이 사용하는 함수일 것입니다.</p>
+<p><a href="https://github.com/bab2min/Kiwi">kiwi</a>는 내장 불용어사전을 제공하고 있습니다. 이에 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>도 불용어사전을 관리하고 사용하는 방법을 함께 제공합니다. 우선 <code>tokenize()</code> 함수는 <code>stopwords</code> 파라미터를 제공하며, 기본값은 <code>TRUE</code>입니다. 내장 불용어 사전을 사용한다는 뜻입니다. 사용하지 않으려면 <code>FALSE</code>를 주시면 됩니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[[1]]
-[[1]]$Token
-[[1]]$Token[[1]]
-[[1]]$Token[[1]]$form
-[1] &quot;안녕&quot;
-
-[[1]]$Token[[1]]$tag
-[1] &quot;NNG&quot;
-
-[[1]]$Token[[1]]$start
-[1] 1
-
-[[1]]$Token[[1]]$len
-[1] 2
-
-
-[[1]]$Token[[2]]
-[[1]]$Token[[2]]$form
-[1] &quot;시&quot;
-
-[[1]]$Token[[2]]$tag
-[1] &quot;EP&quot;
-
-[[1]]$Token[[2]]$start
-[1] 4
-
-[[1]]$Token[[2]]$len
-[1] 1
-
-
-[[1]]$Token[[3]]
-[[1]]$Token[[3]]$form
-[1] &quot;어요&quot;
-
-[[1]]$Token[[3]]$tag
-[1] &quot;EF&quot;
-
-[[1]]$Token[[3]]$start
-[1] 4
-
-[[1]]$Token[[3]]$len
-[1] 2</code></pre>
-</div>
-<p><a href="https://github.com/bab2min/Kiwi">kiwi</a>는 내장 불용어사전을 제공하고 있습니다. 이에 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a>도 불용어사전을 관리하고 사용하는 방법을 함께 제공합니다. 우선 <code>tokenize()</code> 함수는 <code>stopwords</code> 파라미터를 제공하며, 기본값은 <code>TRUE</code>입니다. 내장 불용어 사전을 사용한다는 뜻입니다. 사용하지 않으려면 <code>FALSE</code>를 주시면 됩니다.</p>
-<ul>
-<li>현재 <code>tokenize()</code> 함수만 기본값이 <code>TRUE</code>이고, <code>tokenize_tbl()</code>의 기본값은 <code>FALSE</code>네요. 수정하겠습니다. ㅠ</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span>, stopwords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
 <pre><code># A tibble: 3 × 5
-  unique form  tag   start   len
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-1 1      안녕  NNG       1     2
-2 1      시    EP        4     1
-3 1      어요  EF        4     2</code></pre>
+  sent  form  tag   start   len
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1 1     안녕  NNG       1     2
+2 1     시    EP        4     1
+3 1     어요  EF        4     2</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize_tbl</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span>, stopwords <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/elbird/man/tokenize.html'>tokenize</a></span><span class='op'>(</span><span class='st'>"안녕하세요."</span>, stopwords <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 5 × 5
-  unique form  tag   start   len
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-1 1      안녕  NNG       1     2
-2 1      하    XSA       3     1
-3 1      시    EP        4     1
-4 1      어요  EF        4     2
-5 1      .     SF        6     1</code></pre>
+  sent  form  tag   start   len
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1 1     안녕  NNG       1     2
+2 1     하    XSA       3     1
+3 1     시    EP        4     1
+4 1     어요  EF        4     2
+5 1     .     SF        6     1</code></pre>
 </div>
 <p>비교해서 보면 문장부호가 분석 결과로 포함된 것을 알 수 있습니다. 내장 불용어사전에는 문장부호가 등록되어 있어 <code>stopwords = TRUE</code> 일 때 결과에서 제외되는 것입니다.</p>
 <p><a href="https://mrchypark.github.io/elbird/index.html">elbird</a>는 처음부터 <a href="https://www.tidytextmining.com/tidytext.html">tidytext</a>와 함께 사용하는 것을 고려하여 제작하였습니다. <a href="https://www.tidytextmining.com/tidytext.html">tidytext</a>의 <code>unnest_tokens()</code> 함수와는 이렇게 사용할 수 있습니다.</p>
@@ -2614,20 +2566,18 @@ gtag('config', 'UA-47822682-14');
     <span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 23 × 1
-   word    
-   &lt;chr&gt;   
- 1 유구/xr 
- 2 하/xsa  
- 3 ᆫ/etm   
- 4 역사/nng
- 5 와/jc   
- 6 전통/nng
- 7 에/jkb  
- 8 빛나/vv 
- 9 는/etm  
-10 우리/np 
-# … with 13 more rows</code></pre>
+<pre><code># A tibble: 9 × 1
+  word    
+  &lt;chr&gt;   
+1 유구/xr 
+2 역사/nng
+3 전통/nng
+4 빛나/vv 
+5 국민/nng
+6 3/sn    
+7 1/sn    
+8 운동/nng
+9 건립/nng</code></pre>
 </div>
 <p><a href="https://github.com/bab2min/Kiwi">kiwi</a> 기능에서 아직 구현되지 않은 기능들이 있습니다. 모두 구현하고, 또 소개하겠습니다. 감사합니다.</p>
 <h2 id="개발-뒷이야기">개발 뒷이야기</h2>
@@ -2636,7 +2586,7 @@ gtag('config', 'UA-47822682-14');
 <p>사용하기 쉽고, 다른 추가 설치를 하지 않아도 되고, 사용자 사전 관리 기능도 잘 되어 있는 패키지가 있으면 좋겠지 않나요?</p>
 <p>그렇게 <a href="https://mrchypark.github.io/elbird/index.html">elbird</a> 개발을 시작하였습니다.</p>
 <p>우선 잘 되어 있는 다른 형태소 분석기를 찾기 시작했습니다. 저는 형태소 분석기를 직접 만들 능력이 없었기 때문입니다. cpp로 제작하고 오픈소스이며, 사용자 기능이 잘 되어 있는 패키지를 찾다가 조건에 맞는 것을 찾았습니다. 바로 <a href="https://github.com/bab2min/Kiwi">kiwi</a>입니다. 이 자리를 빌어 좋은 형태소 분석기를 개발해 주시고, 계속 개선하고 계시는 <a href="https://github.com/bab2min">bab2min</a>님께 깊은 감사의 인사를 드립니다.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
