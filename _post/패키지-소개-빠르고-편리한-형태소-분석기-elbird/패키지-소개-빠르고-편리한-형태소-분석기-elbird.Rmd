@@ -61,7 +61,6 @@ install.packages("elbird")
 
 ```{r}
 library(elbird)
-tokenize
 tokenize("새로운 형태소 분석기인 elbird를 소개합니다.")
 ```
 
