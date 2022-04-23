@@ -2518,9 +2518,9 @@ gtag('config', 'UA-47822682-14');
 </code></pre>
 </div>
 <pre><code>{html_document}
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;html&gt;
 [1] &lt;head&gt;\n&lt;title&gt;R: get help&lt;/title&gt;\n&lt;meta http-equiv=&quot;Content-T ...
-[2] &lt;body&gt;&lt;div class=&quot;container&quot;&gt;\n\n&lt;table width=&quot;100%&quot; summary=&quot;p ...</code></pre>
+[2] &lt;body&gt;\n&lt;div class=&quot;container&quot;&gt;\n\n&lt;table width=&quot;100%&quot;&gt;&lt;tr&gt;\n&lt;t ...</code></pre>
 </div>
 <p><code>get_help()</code> 함수는 패키지 이름, 함수 이름을 받아 <code>help</code>의 글자를 전부 가져와서, <code>help</code> 클래스로 만듭니다. <code>help</code> 클래스의 출력를 조정해야 하지만, 이제 0.0.0.9000 버전일 뿐이니 우선 넘어가죠. <code>help</code> 클래스라고 했는데, 지금 모양은 <code>xml_document</code> 입니다. 여러 양식으로 제공해주던데, 제가 다루기 쉬운 <code>xml</code>로 처리하기로 했습니다. 일부 데이터를 가져오는 것은 당연히 <a href="https://github.com/hadley/rvest">rvest</a>를 사용했습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
