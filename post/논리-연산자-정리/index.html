@@ -2651,7 +2651,7 @@ x가 TRUE이다
 </div>
 <pre><code>function (x) 
 is.logical(x) &amp;&amp; length(x) == 1L &amp;&amp; !is.na(x) &amp;&amp; x
-&lt;bytecode: 0x7fbd0f2d0710&gt;
+&lt;bytecode: 0x7fb93898af10&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p><code>isTRUE()</code>가 어떻게 동작하는 함수인지 궁금해서 코드를 확인해 봤습니다. 여러개가 있지만 눈에 들어오는 것은 <code>identical(TRUE, x)</code>네요. 입력인자인 <code>x</code>가 <code>TRUE</code>와 같은 것인지를 확인하는 것입니다. <code>identical()</code>은 <code>정확하게</code> 같은지를 결과로 줍니다. 예를 들면 같은 숫자인데 자료형이 다르던가, <code>R</code>은 <code>NA</code>를 계산할 수 없음으로 취급해서 <code>==</code>으로 확인하면 <code>NA</code>로 결과를 줍니다. 그래서 rstudio를 사용하시면 <code>== NA</code>를 인식해서 <code>is.ns()</code>를 사용하라고 경고를 주기도 합니다. 아래 코드를 봐주세요.</p>
