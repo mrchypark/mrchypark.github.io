@@ -2530,7 +2530,7 @@ gtag('config', 'UA-47822682-14');
 #   dislikeCount &lt;int&gt;, user_id &lt;int&gt;, user_status &lt;chr&gt;,
 #   user_providerId &lt;chr&gt;, user_displayName &lt;chr&gt;,
 #   user_commentCount &lt;int&gt;, user_flags &lt;int&gt;, user_title &lt;chr&gt;,
-#   user_username &lt;chr&gt;, user_roles &lt;chr&gt;, user_providerUserId &lt;chr&gt;,
+#   user_username &lt;chr&gt;, user_providerUserId &lt;chr&gt;, user_roles &lt;chr&gt;,
 #   user_type &lt;chr&gt;</code></pre>
 </div>
 <p><code>getComment()</code> 함수는 몇 가지 옵션이 있습니다. <code>limit</code>은 가져오는 댓글의 갯수로 기본 10개로 설정되어 있습니다. 전체 댓글수를 가져오는 함수가 필요하다는 것을 확인하는 시점이네요. <code>parentId</code>는 대댓글등을 가져올 때 사용하는 옵션으로, 기본값 0에서 바꾸실 일이 거의 없을 겁니다. <code>sort</code>는 역시 추천순와 최신순 두 가지 옵션을 제공합니다. <code>type</code>은 결과값을 주는 형태를 의미합니다. 옵션은 <code>df</code>와 <code>list</code>가 있으며 원래 제공하는 자료형이 <code>json</code>이기 때문에 <code>list</code>가 익숙하진 분들은 <code>list</code> 자료형을 권장합니다. 기본값은 <code>df</code> 입니다. 댓글의 상황에 따라 <code>Warning messages</code>가 나오는데 무시하셔도 좋습니다. 내용상 신경이 쓰이시면 <code>list</code>를 직접 다루어 보시는 것도 좋은 공부가 될 것입니다.</p>
@@ -2748,7 +2748,7 @@ $result
 1 2022-04-08T01:47:43+0900
 
 $date
-[1] &quot;2022-06-10T05:08:17+0000&quot;
+[1] &quot;2022-06-11T05:07:21+0000&quot;
 
 attr(,&quot;row.names&quot;)
 [1] 1</code></pre>
