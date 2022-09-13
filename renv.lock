@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.1.3",
+    "Version": "4.2.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -476,13 +476,10 @@
     },
     "elbird": {
       "Package": "elbird",
-      "Version": "0.2.0.9006",
+      "Version": "0.2.5",
       "Source": "Repository",
-      "Repository": "https://mrchypark.r-universe.dev",
-      "RemoteUrl": "https://github.com/mrchypark/elbird",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "f59107f1c966b46ad06b53cae5bbd75716443bef",
-      "Hash": "f67c8f890c6d37cf477b8b90635100e3",
+      "Repository": "CRAN",
+      "Hash": "d9ebc500b9f64317ac33beb57fe839ac",
       "Requirements": [
         "R6",
         "cpp11",
