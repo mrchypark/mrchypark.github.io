@@ -17,7 +17,7 @@
     <item>
       <title>[Rtips] m1 mac에서 패키지 인스톨 문제 해결하기</title>
       <dc:creator>Chanyub Park</dc:creator>
-      <link>https://mrchypark.github.io/post/rtips-m1-맥북에서-인스톨-문제-해결하기</link>
+      <link>https://mrchypark.github.io/post/rtips-m1-mac에서-패키지-인스톨-문제-해결하기</link>
       <description>공식 문서 링크: https://mac.r-project.org/tools/</description>
       <category>R</category>
       <category>m1</category>
@@ -26,7 +26,7 @@
       <category>fortran</category>
       <category>compiler</category>
       <category>Rtips</category>
-      <guid>https://mrchypark.github.io/post/rtips-m1-맥북에서-인스톨-문제-해결하기</guid>
+      <guid>https://mrchypark.github.io/post/rtips-m1-mac에서-패키지-인스톨-문제-해결하기</guid>
       <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/190064110-47aa2571-5986-424d-b454-fb498a100b84.jpeg" medium="image" type="image/jpeg"/>
     </item>
