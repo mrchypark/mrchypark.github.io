@@ -1,5 +1,5 @@
 ---
-title: blogdown으로 블로그 이사하기
+title: 'blogdown으로 블로그 이사하기'
 date: '2018-03-06'
 categories:
   - blog

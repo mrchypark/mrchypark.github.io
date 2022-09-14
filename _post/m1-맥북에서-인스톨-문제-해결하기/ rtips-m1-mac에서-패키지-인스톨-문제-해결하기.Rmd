@@ -1,0 +1,90 @@
+---
+title: '[Rtips] m1 mac에서 패키지 인스톨 문제 해결하기'
+date: '2022-09-14'
+categories:
+  - R
+  - m1
+  - package install
+  - xcode
+  - fortran
+  - compiler
+  - Rtips
+description: |
+  공식 문서 링크: https://mac.r-project.org/tools/
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/190064110-47aa2571-5986-424d-b454-fb498a100b84.jpeg
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = T, cache = T)
+```
+
+<figure>
+  <img width=100% src="https://user-images.githubusercontent.com/6179259/190064110-47aa2571-5986-424d-b454-fb498a100b84.jpeg">
+  <figcaption>
+  Photo by <a href="https://unsplash.com/@nampoh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maxim Hopman</a> on <a href="https://unsplash.com/s/photos/macbook?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </figcaption>
+</figure>
+
+### 한줄요약
+
+> [공식 문서][공식 문서]를 확인하자.
+
+최근 mac에서 R의 패키지를 설치할 때 컴파일 단계에서 문제가 생기는 경우가 있습니다. 
+`gfortran 이 없다`는 식의 에러인데요.
+보통 `xcode`가 설치가 안되어 있거나 `brew install gcc` 정도로 해결되었던 문제라 넘어갔었습니다.
+근데, 최근에 mac을 다시 설정할 일이 생겨서 살펴보니 같은 문제가 발생했습니다.
+
+### 해결방법
+
+총 2개를 설치하라고 안내하고 있습니다.
+
+1. xcode
+
+mac용 개발도구인 `xcode`를 설지합니다.
+어떤 방식으로 설치해도 문제는 없는 것 같습니다만,
+터미널에서 아래 명령으로 설치할 수 있습니다. 
+
+```sh
+sudo xcode-select --install
+```
+
+2. GNU fortran
+아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다.
+인텔 맥인지, m1 맥인지에 따라 방법이 다릅니다.
+
+2.1 인텔 맥
+dmg 설치 파일을 제공합니다. 
+`/usr/local/gfortran/bin` 위치에 설치를 하나봅니다.
+`export PATH=$PATH:/usr/local/gfortran/bin` 로 PATH를 추가해야 합니다.
+
+2.2 m1 맥
+m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다.
+다운로드 받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.
+```sh
+sudo tar fxz gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz -C /
+```
+
+그리고 마찬가지로 `export PATH=$PATH:/opt/R/arm64/gfortran/bin` 로 경로를 추가합니다.
+
+모든 것이 끝나면 이제 문제없이 패키지를 컴파일하여 설치할 겁니다.
+
+
+
+[공식 문서]: https://mac.r-project.org/tools/
