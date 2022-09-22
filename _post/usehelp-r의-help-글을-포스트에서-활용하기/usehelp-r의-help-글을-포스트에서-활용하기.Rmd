@@ -7,7 +7,8 @@ categories:
   - package
   - blog
 description: |
-  다른 좋은 접근이 많아서 개발을 중지하였습니다. 포스트나 발표자료에서 함수를 설명할 일이 많아서 `usehelp`라는 패키지를 만들었습니다.
+  다른 좋은 접근이 많아서 개발을 중지하였습니다. 
+  포스트나 발표자료에서 함수를 설명할 일이 많아서 `usehelp`라는 패키지를 만들었습니다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"

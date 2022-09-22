@@ -9,6 +9,7 @@ categories:
   - fortran
   - compiler
   - Rtips
+  - iamdt
 description: |
   공식 문서 링크: https://mac.r-project.org/tools/
 base_url: https://mrchypark.github.io
