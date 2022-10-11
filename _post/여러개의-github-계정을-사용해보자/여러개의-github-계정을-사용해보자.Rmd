@@ -9,7 +9,6 @@ categories:
   - ssh
 description: |
   여러 ssh키를 사용하려면 .gitconfig에 설정해주면 된다. 폴더별 프로필과 ssh key를 설정할 수 있다.
-draft: true
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
