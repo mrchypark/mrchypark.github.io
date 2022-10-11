@@ -1,0 +1,190 @@
+---
+title: 여러개의 github 계정을 사용해보자
+date: '2022-10-12'
+categories:
+  - github
+  - account
+  - tips
+  - gitconfig
+  - ssh
+description: |
+  여러 ssh키를 사용하려면 .gitconfig에 설정해주면 된다. 폴더별 프로필과 ssh key를 설정할 수 있다.
+draft: true
+base_url: https://mrchypark.github.io
+author:
+  - first_name: "Chanyub"
+    last_name: "Park"
+    url: https://mrchypark.github.io/about
+    affiliation: Forkonlp
+    affiliation_url: https://forkonlp.github.io/
+    orcid_id: 0000-0001-6474-2570
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_depth: 2
+    code_folding: false
+    theme: theme.css
+    number_sections: true
+preview: https://user-images.githubusercontent.com/6179259/195148825-b47fd39a-d194-4ce5-b1b3-2b0b5327ec0e.jpg
+---
+
+<figure>
+  <img width=100% src="https://user-images.githubusercontent.com/6179259/195148825-b47fd39a-d194-4ce5-b1b3-2b0b5327ec0e.jpg">
+  <figcaption>
+  Photo by <a href="https://unsplash.com/@erol?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Erol Ahmed</a> on <a href="https://unsplash.com/s/photos/double?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </figcaption>
+</figure>
+
+여러 블로그를 찾아본 결과, .ssh/config 파일을 작성하는 방법이나 `GIT_SSH_COMMAND`를 사용하는 방법을 설명하고 있습니다.
+모두 너무 불편해서 다른 방법을 열심히 찾았고, 폴더 경로 기준으로 동작하는 방법을 찾아서 공유합니다.
+
+### 한줄 요약
+
+> .gitconfig를 잘 사용하면 된다. 
+
+
+`github`은 명실상부 코드를 사용하는 사람이라면 사용해야 하는 최우선 서비스로 도약했습니다.
+그러다 보니 개인적으로 계정을 사용하는 경우가 많아졌는데요.
+역시 회사 계정을 추가로 사용할 일도 생기고는 합니다.
+물론 회사 조직에 개인 계정을 추가할 수 도 있습니다만, 몇 가지 안타까운 지점이 발생합니다.
+
+1. SAML로 접근제어를 하는 경우 개인 계정을 관리 범위를 벗어납니다.
+2. 개인이 어떤 회사에 코드기여한 것을 공유하고 싶지 않을 수 있습니다. 
+
+1번의 사례는 아마도 구글 workspace를 사용하는 경우일텐데요.
+github도 엔터프라이즈 플랜에서는 SAML(Security Assertion Markup Language)을 지원한답니다?
+SAML을 지원하면 계정관리를 한 곳에 통합할 수 있습니다.
+구글 workspace에서 제거하면 github 조직 계정에서 함께 제거(정확하진 않지만)되는 것이지요.
+
+2번의 경우는 2가지 일텐데요.
+하나는 혹시 퇴사를 하게 되면 이후 회사의 구성원에게 내가 기여한 부분을 알리고 싶지 않다.
++ 혹시 그 코드를 오픈하게 되면 다른 사람들에게 알리고 싶지 않다가 되겠습니다.
+
+물론 계정명으로 공유되는 만큼, 노출 정도가 다를 수는 있겠습니다만.
+회사 활동과 개인 활동을 명확히 구분하려면, 그리고 회사에서도 개발자가 생산한 코드의 회사 소유를 확인하는데에도 필요한 활동이다 싶습니다.
+
+아무튼, 여러 가지 이유로 여러 github 계정을 가지게 되었고, 이걸 개별 ssh 키를 사용해야 하며(github에서 여러 계정에 공통 ssh키를 허용하지 않음.) 같은 컴퓨터에서 사용하고 싶은 분들에게 설정하는 방법을 공유하고자 합니다.
+
+## 답은 gitconfig다
+
+여러 자료가 다양한 이야기를 하고 있지만 제가 실행해본 가장 최신의 방법은, .gitconfig 파일을 잘 작성하는 것으로 해결되었습니다.
+우선 저는 회사 repo는 특별한 하나의 폴더 내에서 사용한다는 상태를 가정하고 시작하였습니다.
+
+### ssh키 생성
+
+ssh 키 생성은 `ssh-keygen` 명령으로 수행합니다.
+우선 ssh 키를 사용하는 이유는 보안때문인데요.
+많은 키생성 알고리즘이 있습니다만, 제가 찾는 한 권장되는 방법은 2가지 입니다.
+RSA를 높은 비트로 수행하는것, EdDSA(Ed25519)를 사용하는 것. [참고1][keyref1], [참고2][keyref2]
+
+둘 중에 하나를 선택해 생성하면 됩니다.
+저는 EdDSA를 선택했습니다.
+
+```
+ssh-keygen -t ed25519 -C "보통 이메일 주소"
+```
+
+rsa 방식은 아래와 같습니다.
+
+```
+ssh-keygen -t rsa -b 4096 -C "보통 이메일 주소"
+```
+
+> -C 는 주석으로 보통 사용하는 이메일을 작성하는 것 같아 추가했습니다.
+
+개인적으로 이미 사용하고 있는게 있다면 아마도 id_rsa 정도로 저장되어 있을 겁니다.
+(없다면 하나 생성하세요.)
+id_work 정도로 새로 사용할 키를 추가하시면 되겠습니다.
+
+### github에 ssh 키 등록
+
+이 부분은 github 의 공식 문서로 대체합니다.
+<https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>
+
+혹시 이해가 안되시면 댓글달아주세요.
+
+### 기본 프로필 설정
+
+우선 `~/` 위치에 `.gitconfig` 파일을 생성합니다.
+저는 개인 계정을 기본값으로, 회사 계정을 특수한 폴더내에 설정하려고 합니다.
+그래서 ~/ 위치의 `.gitconfig` 파일에는 개인 설정을 추가합니다.
+설정 파일은 아래와 같습니다.
+
+```
+# ~/.gitconfig 파일의 내용
+
+[user]
+    email = mrchypark@gmail.com
+    name = Chanyub.Park
+
+[github]
+    user = mrchypark
+ 
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_ed25519_persnal"
+
+[includeIf "gitdir:~/Documents/work/"] 
+    path = ~/.gitconfig-work
+```
+
+갑자기 설명할게 많아졌네요.
+`[user]`는 `git config --global user.`하고 설정하는 설정값입니다.
+`email`과 `name`이 없으면 commit이 안되니 모두 알고 있을거라 생각합니다.
+`[github]`은 github 계정명인데, 이게 없으면 어떻게 되는지는 잘 모릅니다.
+우선은 필요한 것 같아 작성했는데요.
+혹시 테스트를 해보신 분이 있으면 댓글 달아 주세요. :)
+(아마 github에서 사용하는 계정 연동용 키이겠죠?)
+
+`[core]` 부분이 중요한데요.
+기본 프로필에서 사용할 ssh 키의 위치입니다.
+저는 개인이 사용할 키 이름을 `id_ed25519_persnal`로 작성했으니 이곳에 명시적으로 작성해두었습니다.
+
+`[includeIf` 로 시작하는 부분이 이제 조건문인데요.
+만약 git이 이 폴더 내부에 있다면 아래 설정파일을 사용해라! 라는 설정입니다.
+`includeIf` 덕분에 여러 계정 설정이 가능해서 감사할 따름입니다.
+저는 문서 폴더에 `work`라는 폴더의 git들은 `~/.gitconfig-work` 설정을 사용하라고 지정했습니다.
+
+```
+# ~/.gitconfig-work 파일의 내용
+
+[user]
+    email = <회사 이메일 계정 정보>
+    name = Chanyub.Park
+
+[github]
+    user = <회사의 깃헙 계정>
+ 
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_ed25519_work"
+```
+
+이 파일에는 기본 설정파일인 `~/.gitconfig`에서 덮을 설정들을 추가합니다.
+`[user]`, `[github]`, `[core]`에서의 ssh key 위치 모두 추가하였습니다.
+이때 사용한 ssh 키는 물론 github 회사 계정에서 ssh 키로 등록해야 합니다.
+
+이제 실제로 사용하기 위해서 `ssh-add`에 추가해 줍니다.
+
+```
+ssh-add ~/.ssh/id_ed25519_persnal
+ssh-add ~/.ssh/id_ed25519_work
+```
+
+저는 zsh를 사용하고 있어서 .zshrc에 위 명령을 모두 추가해두었습니다.
+이게 있어야 `devcontainer` 사용할 때 다른 설정 없이 ssh키를 git으로 사용할 수 있더라구요.
+
+그리고 아직 공부가 부족하여 기존에 로컬 레포를 연결하는 방법을 모르겠습니다.
+한번 `remote` 명령으로 기존 레포의 리모트 설정을 변경해보았는데, 작동하지 않더라구요.
+슬프게도, `git clone`한 레포에서는 잘 작동하는 것을 확인하였습니다.
+
+이 포스트를 작성하면서, 정보를 전달하면서도, 제가 부족한 부분이 3가지 있었습니다.
+
+1. 정말 추천하는 알고리즘
+2. `[github]` 설정의 기능과 동작
+3. 기존에 사용하고 있던 레포의 설정 적용
+
+혹시 답을 알고 계신 분이 계시다면 답글 달아주시고, 포스트가 도움이 되셨다면 공유라도 한번 부탁드립니다.
+감사합니다.
+
+[keyref1]: https://naleejang.tistory.com/218
+[keyref2]: https://goteleport.com/blog/comparing-ssh-keys/
