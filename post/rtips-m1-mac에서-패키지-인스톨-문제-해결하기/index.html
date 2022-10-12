@@ -2506,10 +2506,13 @@ Photo by <a href="https://unsplash.com/@nampoh?utm_source=unsplash&utm_medium=re
 <p>mac용 개발도구인 <code>xcode</code>를 설지합니다. 어떤 방식으로 설치해도 문제는 없는 것 같습니다만, 터미널에서 아래 명령으로 설치할 수 있습니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> xcode-select <span class="at">--install</span></span></code></pre></div>
 <ol start="2" type="1">
-<li>GNU fortran 아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다. 인텔 맥인지, m1 맥인지에 따라 방법이 다릅니다.</li>
+<li>GNU fortran</li>
 </ol>
-<p>2.1 인텔 맥 dmg 설치 파일을 제공합니다. <code>/usr/local/gfortran/bin</code> 위치에 설치를 하나봅니다. <code>export PATH=$PATH:/usr/local/gfortran/bin</code> 로 PATH를 추가해야 합니다.</p>
-<p>2.2 m1 맥 m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다. 다운로드 받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.</p>
+<p>아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다. 인텔 맥인지, m1 맥인지에 따라 방법이 다릅니다.</p>
+<p>2.1 인텔 맥</p>
+<p>dmg 설치 파일을 제공합니다. <code>/usr/local/gfortran/bin</code> 위치에 설치를 하나봅니다. <code>export PATH=$PATH:/usr/local/gfortran/bin</code> 로 PATH를 추가해야 합니다.</p>
+<p>2.2 m1 맥</p>
+<p>m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다. 다운로드 받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar fxz gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz <span class="at">-C</span> /</span></code></pre></div>
 <p>그리고 마찬가지로 <code>export PATH=$PATH:/opt/R/arm64/gfortran/bin</code> 로 경로를 추가합니다.</p>
 <p>모든 것이 끝나면 이제 문제없이 패키지를 컴파일하여 설치할 겁니다.</p>
