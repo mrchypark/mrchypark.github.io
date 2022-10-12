@@ -67,15 +67,18 @@ sudo xcode-select --install
 ```
 
 2. GNU fortran
+
 아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다.
 인텔 맥인지, m1 맥인지에 따라 방법이 다릅니다.
 
 2.1 인텔 맥
+
 dmg 설치 파일을 제공합니다. 
 `/usr/local/gfortran/bin` 위치에 설치를 하나봅니다.
 `export PATH=$PATH:/usr/local/gfortran/bin` 로 PATH를 추가해야 합니다.
 
 2.2 m1 맥
+
 m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다.
 다운로드 받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.
 ```sh

@@ -5,3 +5,4 @@ docs/
 *.txt
 *_files*
 *.html
+*_cache
