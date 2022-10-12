@@ -13,7 +13,21 @@
       <link>https://mrchypark.github.io</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 14 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>여러개의 github 계정을 사용해보자</title>
+      <dc:creator>Chanyub Park</dc:creator>
+      <link>https://mrchypark.github.io/post/여러개의-github-계정을-사용해보자</link>
+      <description>여러 ssh키를 사용하려면 .gitconfig에 설정해주면 된다. 폴더별 프로필과 ssh key를 설정할 수 있다.</description>
+      <category>github</category>
+      <category>account</category>
+      <category>tips</category>
+      <category>gitconfig</category>
+      <category>ssh</category>
+      <guid>https://mrchypark.github.io/post/여러개의-github-계정을-사용해보자</guid>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://user-images.githubusercontent.com/6179259/195148825-b47fd39a-d194-4ce5-b1b3-2b0b5327ec0e.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>[Rtips] m1 mac에서 패키지 인스톨 문제 해결하기</title>
       <dc:creator>Chanyub Park</dc:creator>
@@ -26,6 +40,7 @@
       <category>fortran</category>
       <category>compiler</category>
       <category>Rtips</category>
+      <category>iamdt</category>
       <guid>https://mrchypark.github.io/post/rtips-m1-mac에서-패키지-인스톨-문제-해결하기</guid>
       <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/190064110-47aa2571-5986-424d-b454-fb498a100b84.jpeg" medium="image" type="image/jpeg"/>
@@ -121,6 +136,8 @@
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/distill로-옮깁니다</link>
       <description>드디어 블로그를 단순하게 유지하기 위해 distill로 옮깁니다.</description>
+      <category>anounce</category>
+      <category>blog</category>
       <guid>https://mrchypark.github.io/post/distill로-옮깁니다</guid>
       <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
       <media:content url="https://user-images.githubusercontent.com/6179259/119273060-17524e00-bc44-11eb-9d8a-e7feb5063005.png" medium="image" type="image/png"/>
@@ -248,7 +265,8 @@
       <title>[usehelp] R의 help 글을 포스트에서 활용하기</title>
       <dc:creator>Chanyub Park</dc:creator>
       <link>https://mrchypark.github.io/post/usehelp-r의-help-글을-포스트에서-활용하기</link>
-      <description>다른 좋은 접근이 많아서 개발을 중지하였습니다. 포스트나 발표자료에서 함수를 설명할 일이 많아서 `usehelp`라는 패키지를 만들었습니다.</description>
+      <description>다른 좋은 접근이 많아서 개발을 중지하였습니다. 
+포스트나 발표자료에서 함수를 설명할 일이 많아서 `usehelp`라는 패키지를 만들었습니다.</description>
       <category>R</category>
       <category>usehelp</category>
       <category>package</category>
