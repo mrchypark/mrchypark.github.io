@@ -1,5 +1,5 @@
 ---
-title: [it 용어 번여가] IAM 액세스 관리에 대해 알아보자
+title: '[it 용어 번여가] IAM 액세스 관리에 대해 알아보자'
 date: '2022-09-22'
 categories:
   - transparktor

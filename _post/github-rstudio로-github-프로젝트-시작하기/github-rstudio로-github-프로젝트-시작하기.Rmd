@@ -1,5 +1,5 @@
 ---
-title: [github] rstudio로 github 프로젝트 시작하기
+title: '[github] rstudio로 github 프로젝트 시작하기'
 date: '2018-03-15'
 categories:
   - R
@@ -7,7 +7,7 @@ categories:
   - github
   - project
 description: |
- github은 git의 공개 remote repo를 제공하는 서비스다. 그래서 git 사용법을 알아야 한다. Rstudio의 project를 사용하면 좀 쉽다.
+  github은 git의 공개 remote repo를 제공하는 서비스다. 그래서 git 사용법을 알아야 한다. Rstudio의 project를 사용하면 좀 쉽다.
 base_url: https://mrchypark.github.io
 author:
   - first_name: "Chanyub"
