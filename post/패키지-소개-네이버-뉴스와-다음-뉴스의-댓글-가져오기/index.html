@@ -2529,9 +2529,9 @@ gtag('config', 'UA-47822682-14');
 #   updatedAt &lt;chr&gt;, childCount &lt;int&gt;, likeCount &lt;int&gt;,
 #   dislikeCount &lt;int&gt;, user_id &lt;int&gt;, user_status &lt;chr&gt;,
 #   user_providerId &lt;chr&gt;, user_displayName &lt;chr&gt;,
-#   user_commentCount &lt;int&gt;, user_providerUserId &lt;chr&gt;,
-#   user_flags &lt;int&gt;, user_username &lt;chr&gt;, user_title &lt;chr&gt;,
-#   user_roles &lt;chr&gt;, user_type &lt;chr&gt;</code></pre>
+#   user_commentCount &lt;int&gt;, user_flags &lt;int&gt;, user_title &lt;chr&gt;,
+#   user_username &lt;chr&gt;, user_providerUserId &lt;chr&gt;, user_roles &lt;chr&gt;,
+#   user_type &lt;chr&gt;</code></pre>
 </div>
 <p><code>getComment()</code> 함수는 몇 가지 옵션이 있습니다. <code>limit</code>은 가져오는 댓글의 갯수로 기본 10개로 설정되어 있습니다. 전체 댓글수를 가져오는 함수가 필요하다는 것을 확인하는 시점이네요. <code>parentId</code>는 대댓글등을 가져올 때 사용하는 옵션으로, 기본값 0에서 바꾸실 일이 거의 없을 겁니다. <code>sort</code>는 역시 추천순와 최신순 두 가지 옵션을 제공합니다. <code>type</code>은 결과값을 주는 형태를 의미합니다. 옵션은 <code>df</code>와 <code>list</code>가 있으며 원래 제공하는 자료형이 <code>json</code>이기 때문에 <code>list</code>가 익숙하진 분들은 <code>list</code> 자료형을 권장합니다. 기본값은 <code>df</code> 입니다. 댓글의 상황에 따라 <code>Warning messages</code>가 나오는데 무시하셔도 좋습니다. 내용상 신경이 쓰이시면 <code>list</code>를 직접 다루어 보시는 것도 좋은 공부가 될 것입니다.</p>
 <h3 id="네이버-뉴스-댓글-가져오기">네이버 뉴스 댓글 가져오기</h3>
@@ -2607,9 +2607,9 @@ $result
   pageModel.page pageModel.pageSize pageModel.indexSize
 1              1                 10                  10
   pageModel.startRow pageModel.endRow pageModel.totalRows
-1                  1               10                2451
+1                  1               10                2450
   pageModel.startIndex pageModel.totalPages pageModel.firstPage
-1                    0                  246                   1
+1                    0                  245                   1
   pageModel.prevPage pageModel.nextPage pageModel.lastPage
 1                  0                  2                 10
   pageModel.current pageModel.threshold pageModel.moveToLastPage
@@ -2619,13 +2619,13 @@ $result
   morePage.prev morePage.next morePage.start  morePage.end
 1 04q7zmlgkmzg8 04q7okqkyfpj0  04q7zmlgkmzg8 04q71atbvmojj
   exposureConfig.reason exposureConfig.status count.comment
-1                    NA            COMMENT_ON          2451
+1                    NA            COMMENT_ON          2450
   count.reply count.exposeCount count.delCommentByUser
-1         231              2482                   1172
+1         231              2481                   1173
   count.delCommentByMon count.blindCommentByUser
 1                    11                        0
   count.blindReplyByUser count.total listStatus sort
-1                      0        2682    current  NEW
+1                      0        2681    current  NEW
   config.useSnsLogin config.lineFeedOn config.useBest config.useVote
 1              FALSE             FALSE          FALSE           TRUE
   config.useVoteSelf config.useVoteGoodOnly config.useReport
@@ -2744,7 +2744,7 @@ $result
 1           NA            NA       FALSE
 
 $date
-[1] &quot;2022-10-12T07:19:14+0000&quot;
+[1] &quot;2022-10-13T05:58:04+0000&quot;
 
 attr(,&quot;row.names&quot;)
 [1] 1</code></pre>
