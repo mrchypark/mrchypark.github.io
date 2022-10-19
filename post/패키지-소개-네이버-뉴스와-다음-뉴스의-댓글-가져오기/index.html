@@ -2529,9 +2529,9 @@ gtag('config', 'UA-47822682-14');
 #   updatedAt &lt;chr&gt;, childCount &lt;int&gt;, likeCount &lt;int&gt;,
 #   dislikeCount &lt;int&gt;, user_id &lt;int&gt;, user_status &lt;chr&gt;,
 #   user_providerId &lt;chr&gt;, user_displayName &lt;chr&gt;,
-#   user_commentCount &lt;int&gt;, user_flags &lt;int&gt;, user_username &lt;chr&gt;,
-#   user_providerUserId &lt;chr&gt;, user_title &lt;chr&gt;, user_roles &lt;chr&gt;,
-#   user_type &lt;chr&gt;</code></pre>
+#   user_commentCount &lt;int&gt;, user_flags &lt;int&gt;,
+#   user_providerUserId &lt;chr&gt;, user_username &lt;chr&gt;, user_title &lt;chr&gt;,
+#   user_roles &lt;chr&gt;, user_type &lt;chr&gt;</code></pre>
 </div>
 <p><code>getComment()</code> 함수는 몇 가지 옵션이 있습니다. <code>limit</code>은 가져오는 댓글의 갯수로 기본 10개로 설정되어 있습니다. 전체 댓글수를 가져오는 함수가 필요하다는 것을 확인하는 시점이네요. <code>parentId</code>는 대댓글등을 가져올 때 사용하는 옵션으로, 기본값 0에서 바꾸실 일이 거의 없을 겁니다. <code>sort</code>는 역시 추천순와 최신순 두 가지 옵션을 제공합니다. <code>type</code>은 결과값을 주는 형태를 의미합니다. 옵션은 <code>df</code>와 <code>list</code>가 있으며 원래 제공하는 자료형이 <code>json</code>이기 때문에 <code>list</code>가 익숙하진 분들은 <code>list</code> 자료형을 권장합니다. 기본값은 <code>df</code> 입니다. 댓글의 상황에 따라 <code>Warning messages</code>가 나오는데 무시하셔도 좋습니다. 내용상 신경이 쓰이시면 <code>list</code>를 직접 다루어 보시는 것도 좋은 공부가 될 것입니다.</p>
 <h3 id="네이버-뉴스-댓글-가져오기">네이버 뉴스 댓글 가져오기</h3>
@@ -2700,18 +2700,18 @@ $result
 1                  FALSE                      0            FALSE
   config.useIdPenaltyLayer config.useRestrictWriteBySns
 1                     TRUE                        FALSE
-  config.photoInfraUploadDomain config.photoInfraSelectDomainHttp
-1                            NA               g-cbox.dv.phinf.net
-  config.photoInfraSelectDomainHttps config.pcTempThumbnailType
-1                 g-cbox.pstatic.net                    ff80_80
-  config.mobileTempThumbnailType config.realnameVerificationBlock
-1                        ff50_50                            FALSE
-  config.realnameVerificationMessage config.useBlindByReport
-1                                 NA                   FALSE
-  config.keepTextareaOnRestriction config.displayIndividualBlindOnly
-1                               NA                             FALSE
-  config.hashtagMaxLength config.useDualPagination
-1                      20                    FALSE
+  config.photoInfraUploadDomain config.photoInfraSelectDomainHttps
+1                            NA                 g-cbox.pstatic.net
+  config.pcTempThumbnailType config.mobileTempThumbnailType
+1                    ff80_80                        ff50_50
+  config.realnameVerificationBlock config.realnameVerificationMessage
+1                            FALSE                                 NA
+  config.useBlindByReport config.keepTextareaOnRestriction
+1                   FALSE                               NA
+  config.displayIndividualBlindOnly config.hashtagMaxLength
+1                             FALSE                      20
+  config.useDualPagination
+1                    FALSE
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              config.reportReasonList
 1 AA03, AA14, AA68, AA33, AA01, AA24, AB28, 스팸홍보/도배글입니다., 음란물입니다., 불법정보를 포함하고 있습니다., 청소년에게 유해한 내용입니다., 욕설/생명경시/혐오/차별적 표현입니다., 개인정보 노출 게시물입니다., 불쾌한 표현이 있습니다., 사행성 오락이나 도박을 홍보하거나 권장하는 내용 등의 부적절한 스팸 홍보 행위, 동일하거나 유사한 내용 반복 게시, 성적 수치심을 일으키는 내용, 아동이나 청소년을 성 대상화한 표현, 과도하거나 의도적인 신체 노출, 음란한 행위와 관련된 부적절한 내용, 불법 행위, 불법 링크에 대한 정보 제공, 불법 상품을 판매하거나 유도하는 내용, 가출/왕따/학교폭력/자살 등 청소년에게 부정적인 영향을 조성하는 내용, 직·간접적인 욕설을 사용하여 타인에게 모욕감을 주는 내용, 생명을 경시여기거나 비하하는 내용, 계층/지역/종교/성별 등을 혐오하거나 비하하는 표현, 신체/외모/취향 등을 경멸하는 표현, 법적으로 중요한 타인의 개인정보를 게재, 당사자 동의 없는 특정 개인을 인지할 수 있는 정보, 불쾌한 표현 포함 [해당 사유는 클린봇 학습에 도움이 될 수 있습니다.] 
   config.displayReportLayer config.useHideAfterReport
@@ -2744,7 +2744,7 @@ $result
 1           NA            NA       FALSE
 
 $date
-[1] &quot;2022-10-18T06:07:47+0000&quot;
+[1] &quot;2022-10-19T08:13:54+0000&quot;
 
 attr(,&quot;row.names&quot;)
 [1] 1</code></pre>
