@@ -2476,7 +2476,8 @@ gtag('config', 'UA-47822682-14');
   <a href="../../index.html#category:iamdt" class="dt-tag">iamdt</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>공식 문서 링크: <a href="https://mac.r-project.org/tools/" class="uri">https://mac.r-project.org/tools/</a></p></p>
+<p><p>공식 문서 링크: <a href="https://mac.r-project.org/tools/"
+class="uri">https://mac.r-project.org/tools/</a></p></p>
 </div>
 
 <div class="d-byline">
@@ -2490,33 +2491,51 @@ gtag('config', 'UA-47822682-14');
 <figure>
 <img width=100% src="https://user-images.githubusercontent.com/6179259/190064110-47aa2571-5986-424d-b454-fb498a100b84.jpeg">
 <figcaption>
-Photo by <a href="https://unsplash.com/@nampoh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maxim Hopman</a> on <a href="https://unsplash.com/s/photos/macbook?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by
+<a href="https://unsplash.com/@nampoh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maxim
+Hopman</a> on
+<a href="https://unsplash.com/s/photos/macbook?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 </figcaption>
 </figure>
 <h3 id="한줄요약">한줄요약</h3>
 <blockquote>
-<p><a href="https://mac.r-project.org/tools/">공식 문서</a>를 확인하자.</p>
+<p><a href="https://mac.r-project.org/tools/">공식 문서</a>를
+확인하자.</p>
 </blockquote>
-<p>최근 mac에서 R의 패키지를 설치할 때 컴파일 단계에서 문제가 생기는 경우가 있습니다. <code>gfortran 이 없다</code>는 식의 에러인데요. 보통 <code>xcode</code>가 설치가 안되어 있거나 <code>brew install gcc</code> 정도로 해결되었던 문제라 넘어갔었습니다. 근데, 최근에 mac을 다시 설정할 일이 생겨서 살펴보니 같은 문제가 발생했습니다.</p>
+<p>최근 mac에서 R의 패키지를 설치할 때 컴파일 단계에서 문제가 생기는
+경우가 있습니다. <code>gfortran 이 없다</code>는 식의 에러인데요. 보통
+<code>xcode</code>가 설치가 안되어 있거나 <code>brew install gcc</code>
+정도로 해결되었던 문제라 넘어갔었습니다. 근데, 최근에 mac을 다시 설정할
+일이 생겨서 살펴보니 같은 문제가 발생했습니다.</p>
 <h3 id="해결방법">해결방법</h3>
 <p>총 2개를 설치하라고 안내하고 있습니다.</p>
 <ol type="1">
 <li>xcode</li>
 </ol>
-<p>mac용 개발도구인 <code>xcode</code>를 설지합니다. 어떤 방식으로 설치해도 문제는 없는 것 같습니다만, 터미널에서 아래 명령으로 설치할 수 있습니다.</p>
+<p>mac용 개발도구인 <code>xcode</code>를 설지합니다. 어떤 방식으로
+설치해도 문제는 없는 것 같습니다만, 터미널에서 아래 명령으로 설치할 수
+있습니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> xcode-select <span class="at">--install</span></span></code></pre></div>
 <ol start="2" type="1">
 <li>GNU fortran</li>
 </ol>
-<p>아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다. 인텔 맥인지, m1 맥인지에 따라 방법이 다릅니다.</p>
+<p>아쉽게도 포트란 컴파일러가 xcode에 포함되어 있지 않답니다. 인텔
+맥인지, m1 맥인지에 따라 방법이 다릅니다.</p>
 <p>2.1 인텔 맥</p>
-<p>dmg 설치 파일을 제공합니다. <code>/usr/local/gfortran/bin</code> 위치에 설치를 하나봅니다. <code>export PATH=$PATH:/usr/local/gfortran/bin</code> 로 PATH를 추가해야 합니다.</p>
+<p>dmg 설치 파일을 제공합니다. <code>/usr/local/gfortran/bin</code>
+위치에 설치를 하나봅니다.
+<code>export PATH=$PATH:/usr/local/gfortran/bin</code> 로 PATH를
+추가해야 합니다.</p>
 <p>2.2 m1 맥</p>
-<p>m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다. 다운로드 받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.</p>
+<p>m1 맥용 컴파일러를 다운로드 받아서 압축을 풀어야 합니다. 다운로드
+받은 파일이 있는 위치에 가서 아래 명령을 터미널에서 수행합니다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar fxz gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz <span class="at">-C</span> /</span></code></pre></div>
-<p>그리고 마찬가지로 <code>export PATH=$PATH:/opt/R/arm64/gfortran/bin</code> 로 경로를 추가합니다.</p>
+<p>그리고 마찬가지로
+<code>export PATH=$PATH:/opt/R/arm64/gfortran/bin</code> 로 경로를
+추가합니다.</p>
 <p>모든 것이 끝나면 이제 문제없이 패키지를 컴파일하여 설치할 겁니다.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

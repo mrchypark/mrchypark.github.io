@@ -2487,24 +2487,40 @@ gtag('config', 'UA-47822682-14');
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#함수-예">함수 예</a></li>
-<li><a href="#라이선스-문제">라이선스 문제</a></li>
-<li><a href="#패키지-계획">패키지 계획</a></li>
+<li><a href="#함수-예" id="toc-함수-예">함수 예</a></li>
+<li><a href="#라이선스-문제" id="toc-라이선스-문제">라이선스
+문제</a></li>
+<li><a href="#패키지-계획" id="toc-패키지-계획">패키지 계획</a></li>
 </ul>
 </nav>
 </div>
 <p><img width=100% src="https://user-images.githubusercontent.com/6179259/106495895-9558e080-64ff-11eb-9fd5-9d5ffeea0fcc.png"></p>
 <h3 id="세줄요약">세줄요약</h3>
 <ol type="1">
-<li>암호화폐 관련 시세와 인덱스 정보를 제공하는 <code>ubci</code> 패키지를 공개함.</li>
-<li><a href="https://www.ubcindex.com/indexes">ubci</a>는 <a href="https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC">upbit</a>에서 제공하는 데이터로 비영리 배포는 자유라고 해서 개발함.</li>
-<li>데이터 라이선스는 또 다른 문제이니 <a href="https://www.ubcindex.com/indexes">ubci</a> 가서 확인바람.</li>
+<li>암호화폐 관련 시세와 인덱스 정보를 제공하는 <code>ubci</code>
+패키지를 공개함.</li>
+<li><a href="https://www.ubcindex.com/indexes">ubci</a>는 <a
+href="https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC">upbit</a>에서
+제공하는 데이터로 비영리 배포는 자유라고 해서 개발함.</li>
+<li>데이터 라이선스는 또 다른 문제이니 <a
+href="https://www.ubcindex.com/indexes">ubci</a> 가서 확인바람.</li>
 </ol>
-<p>암호화폐는 2017년의 붐을 기점으로 사회 곳곳에 그 존재감을 드러내고 있습니다. 여러 이슈가 있긴 하지만 국내에는 4대 거래소(빗썸, 업비트, 코빗, 코인원)외에도 새로운 거래소들이 속속 나타고 있는 중입니다. 이외에도 카카오와 라인(네이버)이 각각 암호화폐 전문 자회사를 세우는 등 기업의 관심이 그 어느때보다 높습니다.</p>
-<p>아직 이슈가 안정적인 분야가 아니다 보니 이슈 파이팅이 그 어느 분야보다 중요한데요. 현시간 코인마켓캡 기준 전세계 거래량 6위쯤 되는 upbit가 코인 인텍스를 들고나왔습니다. 바로 <a href="https://www.ubcindex.com/indexes">UBCI</a>입니다. 저도 관심이 가는 내용이라 사이트를 둘러보았는데, 데이터를 깨끗하게 제공하더라구요. 그래서 간단하게 R 패키지화 해보았습니다. 놀랍게도 패키지 이름은 <a href="https://mrchypark.github.io/ubci/">ubci</a>입니다.</p>
+<p>암호화폐는 2017년의 붐을 기점으로 사회 곳곳에 그 존재감을 드러내고
+있습니다. 여러 이슈가 있긴 하지만 국내에는 4대 거래소(빗썸, 업비트,
+코빗, 코인원)외에도 새로운 거래소들이 속속 나타고 있는 중입니다.
+이외에도 카카오와 라인(네이버)이 각각 암호화폐 전문 자회사를 세우는 등
+기업의 관심이 그 어느때보다 높습니다.</p>
+<p>아직 이슈가 안정적인 분야가 아니다 보니 이슈 파이팅이 그 어느
+분야보다 중요한데요. 현시간 코인마켓캡 기준 전세계 거래량 6위쯤 되는
+upbit가 코인 인텍스를 들고나왔습니다. 바로 <a
+href="https://www.ubcindex.com/indexes">UBCI</a>입니다. 저도 관심이 가는
+내용이라 사이트를 둘러보았는데, 데이터를 깨끗하게 제공하더라구요. 그래서
+간단하게 R 패키지화 해보았습니다. 놀랍게도 패키지 이름은 <a
+href="https://mrchypark.github.io/ubci/">ubci</a>입니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## github에서 패키지 설치</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;mrchypark/ubci&quot;</span>)</span></code></pre></div>
-<p>한글 데이터가 포함되어 있으니 인코딩이 <code>UTF-8</code>인지 확인해 주세요.</p>
+<p>한글 데이터가 포함되어 있으니 인코딩이 <code>UTF-8</code>인지 확인해
+주세요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/locales.html'>Sys.getlocale</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2513,9 +2529,11 @@ gtag('config', 'UA-47822682-14');
 <pre><code>[1] &quot;en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8&quot;</code></pre>
 </div>
 <h2 id="함수-예">함수 예</h2>
-<p>패키지가 리드미와 설명서를 제공하고 있지만 저도 다시 사용해 보겠습니다.</p>
+<p>패키지가 리드미와 설명서를 제공하고 있지만 저도 다시 사용해
+보겠습니다.</p>
 <h3 id="인덱스-코드-가져오기">인덱스 코드 가져오기</h3>
-<p><code>ubci_index_options()</code> 함수는 인덱스를 가져오기에 앞서 인덱스의 이름과 설명을 알려줍니다.</p>
+<p><code>ubci_index_options()</code> 함수는 인덱스를 가져오기에 앞서
+인덱스의 이름과 설명을 알려줍니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mrchypark/ubci'>ubci</a></span><span class='op'>)</span>
@@ -2537,7 +2555,10 @@ gtag('config', 'UA-47822682-14');
 10 THMIDX23 Smart Contracts                     Theme Indexes  &quot;&quot;     
 # … with 16 more rows</code></pre>
 </div>
-<p>자료형은 <code>tbl</code>로 되어 있네요. 주식 분석 패키지의 최강자인 <a href="https://github.com/business-science/tidyquant">tidyquant</a>와 상성을 고려한 선택이었습니다. <code>ubci_index_options()</code> 함수는 lang 인자로 언어를 변경할 수 있습니다.</p>
+<p>자료형은 <code>tbl</code>로 되어 있네요. 주식 분석 패키지의 최강자인
+<a href="https://github.com/business-science/tidyquant">tidyquant</a>와
+상성을 고려한 선택이었습니다. <code>ubci_index_options()</code> 함수는
+lang 인자로 언어를 변경할 수 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index_options.html'>ubci_index_options</a></span><span class='op'>(</span>lang<span class='op'>=</span><span class='st'>"ko"</span><span class='op'>)</span>
@@ -2559,7 +2580,9 @@ gtag('config', 'UA-47822682-14');
 # … with 16 more rows</code></pre>
 </div>
 <h3 id="인덱스-데이터">인덱스 데이터</h3>
-<p><code>ubci_index()</code> 함수는 인덱스의 일별 시가, 고가, 저가, 종가, 거래량을 제공합니다. <code>from</code>,<code>to</code> 인자로 기간을 조절할 수 있습니다.</p>
+<p><code>ubci_index()</code> 함수는 인덱스의 일별 시가, 고가, 저가,
+종가, 거래량을 제공합니다. <code>from</code>,<code>to</code> 인자로
+기간을 조절할 수 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>loi</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index_options.html'>ubci_index_options</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2574,16 +2597,16 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 1,000 × 6
    index date           open     high      low    close
    &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UBMI  2022-10-26 5221.793 5289.716 5215.205 5249.174
- 2 UBMI  2022-10-25 5030.411 5322.453 5001.135 5222.223
- 3 UBMI  2022-10-24 5080.576 5098.275 4994.408 5030.659
- 4 UBMI  2022-10-23 4981.846 5095.160 4948.551 5076.423
- 5 UBMI  2022-10-22 4963.703 4994.622 4947.087 4980.591
- 6 UBMI  2022-10-21 4927.839 4975.320 4847.648 4962.772
- 7 UBMI  2022-10-20 4959.123 5004.707 4906.955 4928.835
- 8 UBMI  2022-10-19 5021.363 5024.963 4951.845 4960.597
- 9 UBMI  2022-10-18 5072.500 5094.911 4968.655 5025.359
-10 UBMI  2022-10-17 5000.185 5096.772 4969.064 5070.101
+ 1 UBMI  2022-10-27 5375.961 5406.937 5354.110 5398.830
+ 2 UBMI  2022-10-26 5221.793 5437.679 5215.205 5373.460
+ 3 UBMI  2022-10-25 5030.411 5322.453 5001.135 5222.223
+ 4 UBMI  2022-10-24 5080.576 5098.275 4994.408 5030.659
+ 5 UBMI  2022-10-23 4981.846 5095.160 4948.551 5076.423
+ 6 UBMI  2022-10-22 4963.703 4994.622 4947.087 4980.591
+ 7 UBMI  2022-10-21 4927.839 4975.320 4847.648 4962.772
+ 8 UBMI  2022-10-20 4959.123 5004.707 4906.955 4928.835
+ 9 UBMI  2022-10-19 5021.363 5024.963 4951.845 4960.597
+10 UBMI  2022-10-18 5072.500 5094.911 4968.655 5025.359
 # … with 990 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2592,12 +2615,12 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 6 × 6
   index date           open     high      low    close
   &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UBMI  2020-02-05 1592.415 1674.467 1588.123 1669.449
-2 UBMI  2020-02-04 1602.023 1610.048 1563.758 1592.534
-3 UBMI  2020-02-03 1597.538 1631.330 1594.068 1602.485
-4 UBMI  2020-02-02 1595.531 1620.148 1574.967 1597.507
-5 UBMI  2020-02-01 1585.257 1609.657 1585.067 1595.721
-6 UBMI  2020-01-31 1589.064 1597.787 1560.708 1584.609</code></pre>
+1 UBMI  2020-02-06 1669.379 1724.204 1643.247 1704.291
+2 UBMI  2020-02-05 1592.415 1674.467 1588.123 1669.449
+3 UBMI  2020-02-04 1602.023 1610.048 1563.758 1592.534
+4 UBMI  2020-02-03 1597.538 1631.330 1594.068 1602.485
+5 UBMI  2020-02-02 1595.531 1620.148 1574.967 1597.507
+6 UBMI  2020-02-01 1585.257 1609.657 1585.067 1595.721</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
@@ -2614,7 +2637,8 @@ gtag('config', 'UA-47822682-14');
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;</code></pre>
 </div>
 <h3 id="암호화폐-코드">암호화폐 코드</h3>
-<p><code>ubci_get_options()</code> 함수는 취급하는 암호화폐의 종류를 이름과 코드로 제공합니다.</p>
+<p><code>ubci_get_options()</code> 함수는 취급하는 암호화폐의 종류를
+이름과 코드로 제공합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get_options.html'>ubci_get_options</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2657,7 +2681,8 @@ gtag('config', 'UA-47822682-14');
 # … with 1,046 more rows</code></pre>
 </div>
 <h3 id="암호화폐-시세-정보">암호화폐 시세 정보</h3>
-<p><code>ubci_get()</code> 함수 또한 암호화폐의 일별 시가, 고가, 저가, 종가, 거래량을 제공합니다.</p>
+<p><code>ubci_get()</code> 함수 또한 암호화폐의 일별 시가, 고가, 저가,
+종가, 거래량을 제공합니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>loc</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get_options.html'>ubci_get_options</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -2672,16 +2697,16 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 400 × 7
    code        date           open     high      low    close   volume
    &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UPBIT.KRW-… 2022-10-26 28494000 28789000 28470000 28565000 1043.103
- 2 UPBIT.KRW-… 2022-10-25 27803000 28844000 27621000 28494000 4893.203
- 3 UPBIT.KRW-… 2022-10-24 27981000 28077000 27663000 27803000 3125.349
- 4 UPBIT.KRW-… 2022-10-23 27620000 28152000 27484000 27981000 2722.170
- 5 UPBIT.KRW-… 2022-10-22 27600000 27700000 27547000 27620000 2036.105
- 6 UPBIT.KRW-… 2022-10-21 27505000 27700000 27130000 27580000 2767.622
- 7 UPBIT.KRW-… 2022-10-20 27639000 27800000 27400000 27505000 2683.248
- 8 UPBIT.KRW-… 2022-10-19 27824000 27825000 27536000 27657000 3160.616
- 9 UPBIT.KRW-… 2022-10-18 27995000 28180000 27530000 27812000 3645.547
-10 UPBIT.KRW-… 2022-10-17 27655000 28200000 27526000 27993000 3325.592
+ 1 UPBIT.KRW-… 2022-10-27 29116000 29238000 28973000 29178000 1441.824
+ 2 UPBIT.KRW-… 2022-10-26 28494000 29447000 28470000 29079000 5979.876
+ 3 UPBIT.KRW-… 2022-10-25 27803000 28844000 27621000 28494000 4893.203
+ 4 UPBIT.KRW-… 2022-10-24 27981000 28077000 27663000 27803000 3125.349
+ 5 UPBIT.KRW-… 2022-10-23 27620000 28152000 27484000 27981000 2722.170
+ 6 UPBIT.KRW-… 2022-10-22 27600000 27700000 27547000 27620000 2036.105
+ 7 UPBIT.KRW-… 2022-10-21 27505000 27700000 27130000 27580000 2767.622
+ 8 UPBIT.KRW-… 2022-10-20 27639000 27800000 27400000 27505000 2683.248
+ 9 UPBIT.KRW-… 2022-10-19 27824000 27825000 27536000 27657000 3160.616
+10 UPBIT.KRW-… 2022-10-18 27995000 28180000 27530000 27812000 3645.547
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2690,12 +2715,12 @@ gtag('config', 'UA-47822682-14');
 <pre><code># A tibble: 6 × 7
   code        date           open     high      low    close    volume
   &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-1 UPBIT.KRW-… 2021-09-27 52798000 53800000 51747000 51834000  4963.318
-2 UPBIT.KRW-… 2021-09-26 52326000 53607000 50803000 52798000  5945.409
-3 UPBIT.KRW-… 2021-09-25 52176000 52452000 51056000 52326000  4371.930
-4 UPBIT.KRW-… 2021-09-24 54405000 54534000 50900000 52176000 11468.26 
-5 UPBIT.KRW-… 2021-09-23 53853000 54656000 52571000 54410000  7737.699
-6 UPBIT.KRW-… 2021-09-22 50699000 54153000 50059000 53856000  8922.158</code></pre>
+1 UPBIT.KRW-… 2021-09-28 51831000 52103000 50222000 50309000  6216.155
+2 UPBIT.KRW-… 2021-09-27 52798000 53800000 51747000 51834000  4963.318
+3 UPBIT.KRW-… 2021-09-26 52326000 53607000 50803000 52798000  5945.409
+4 UPBIT.KRW-… 2021-09-25 52176000 52452000 51056000 52326000  4371.930
+5 UPBIT.KRW-… 2021-09-24 54405000 54534000 50900000 52176000 11468.26 
+6 UPBIT.KRW-… 2021-09-23 53853000 54656000 52571000 54410000  7737.699</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
@@ -2712,14 +2737,33 @@ gtag('config', 'UA-47822682-14');
 #   high &lt;dbl&gt;, low &lt;dbl&gt;, close &lt;dbl&gt;, volume &lt;dbl&gt;</code></pre>
 </div>
 <h2 id="라이선스-문제">라이선스 문제</h2>
-<p><a href="https://www.ubcindex.com/indexes">ubci</a>와 시세는 라이선스가 다를텐데요. <a href="https://www.ubcindex.com/indexes">ubci</a>는 메인 페이지에서 데이터 라이선스와 법적 이슈에 대해 고지하고 있습니다. 시세는 제가 못찾은건지 데이터관런 라이선스 고지를 찾을 수가 없네요.</p>
-<p><a href="https://www.ubcindex.com/indexes">ubci</a>는 비영리 배포에 대해 허용하고 있어 마음껏 작성하였구요. 시세는 하는김에 라는 느낌이라서 업비트에서 뭐라고 하면 내릴 계획입니다.</p>
+<p><a href="https://www.ubcindex.com/indexes">ubci</a>와 시세는
+라이선스가 다를텐데요. <a
+href="https://www.ubcindex.com/indexes">ubci</a>는 메인 페이지에서
+데이터 라이선스와 법적 이슈에 대해 고지하고 있습니다. 시세는 제가
+못찾은건지 데이터관런 라이선스 고지를 찾을 수가 없네요.</p>
+<p><a href="https://www.ubcindex.com/indexes">ubci</a>는 비영리 배포에
+대해 허용하고 있어 마음껏 작성하였구요. 시세는 하는김에 라는 느낌이라서
+업비트에서 뭐라고 하면 내릴 계획입니다.</p>
 <h2 id="패키지-계획">패키지 계획</h2>
-<p>만들다 보니 <a href="https://www.ubcindex.com/indexes">ubci</a>의 세부 정보(ex&gt; 구성 화폐시세와 비율, 추가 설명 등)가 함께 있으면 좋겠다 싶어서 추가하려고 계획하고 있습니다. 시세쪽은 지금은 데일리만 있는데, 분단위 정보를 제공하기는 하더라구요. 비정상 이용에 대해 막을 가능성이 높긴 하지만, 제한적으로나마 분단위나 15분 단위의 데이터를 제공하는 함수를 만들 수 있을 것 같습니다.</p>
-<p>깃헙주소는 <a href="https://github.com/mrchypark/ubci" class="uri">https://github.com/mrchypark/ubci</a> 입니다. 재밌게 보신 분들은 별이라도 한번 눌러주시구요. 설명의 추가나 위에 예정중인 함수 작성, 테스트 케이스 작성등 패키지 개발을 위해서 아직 남은 일이 많은데요. 도움 주시는 분이 계시면 정말 감사할 것 같습니다.</p>
-<p>언제나처럼 문의나 잘못된 점 등 알려주시면 반영하겠습니다. 감사합니다.</p>
-<p>p.s 간단한 분석을 포함한 영문 포스팅을 해주실 용자분을 찾습니다. 해외에서도 관심가질만한 주제라고 생각해서 소개하고 싶은데, 제가 능력이 안되네요. 감사합니다.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>만들다 보니 <a href="https://www.ubcindex.com/indexes">ubci</a>의
+세부 정보(ex&gt; 구성 화폐시세와 비율, 추가 설명 등)가 함께 있으면
+좋겠다 싶어서 추가하려고 계획하고 있습니다. 시세쪽은 지금은 데일리만
+있는데, 분단위 정보를 제공하기는 하더라구요. 비정상 이용에 대해 막을
+가능성이 높긴 하지만, 제한적으로나마 분단위나 15분 단위의 데이터를
+제공하는 함수를 만들 수 있을 것 같습니다.</p>
+<p>깃헙주소는 <a href="https://github.com/mrchypark/ubci"
+class="uri">https://github.com/mrchypark/ubci</a> 입니다. 재밌게 보신
+분들은 별이라도 한번 눌러주시구요. 설명의 추가나 위에 예정중인 함수
+작성, 테스트 케이스 작성등 패키지 개발을 위해서 아직 남은 일이 많은데요.
+도움 주시는 분이 계시면 정말 감사할 것 같습니다.</p>
+<p>언제나처럼 문의나 잘못된 점 등 알려주시면 반영하겠습니다.
+감사합니다.</p>
+<p>p.s 간단한 분석을 포함한 영문 포스팅을 해주실 용자분을 찾습니다.
+해외에서도 관심가질만한 주제라고 생각해서 소개하고 싶은데, 제가 능력이
+안되네요. 감사합니다.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

@@ -2491,29 +2491,56 @@ gtag('config', 'UA-47822682-14');
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#업데이트-2022-04-06">업데이트 2022-04-06</a></li>
-<li><a href="#업데이트-2019-08-10">업데이트 2019-08-10</a></li>
-<li><a href="#installrinstallr"><span>installr</span></a></li>
-<li><a href="#install.java">install.java()</a></li>
-<li><a href="#따라하기">따라하기</a></li>
+<li><a href="#업데이트-2022-04-06" id="toc-업데이트-2022-04-06">업데이트
+2022-04-06</a></li>
+<li><a href="#업데이트-2019-08-10" id="toc-업데이트-2019-08-10">업데이트
+2019-08-10</a></li>
+<li><a href="#installrinstallr"
+id="toc-installrinstallr">installr</a></li>
+<li><a href="#install.java"
+id="toc-install.java">install.java()</a></li>
+<li><a href="#따라하기" id="toc-따라하기">따라하기</a></li>
 </ul>
 </nav>
 </div>
 <p><img width=100% src="https://user-images.githubusercontent.com/6179259/106492503-53c63680-64fb-11eb-9522-f09beac39a25.png"></p>
 <h2 id="업데이트-2022-04-06">업데이트 2022-04-06</h2>
-<p>Java(<code>jdk</code>)를 설치하는 <a href="https://github.com/mrchypark/multilinguer">multilinguer</a> 패키지에서 <code>install_jdk()</code> 함수를 제공합니다.</p>
+<p>Java(<code>jdk</code>)를 설치하는 <a
+href="https://github.com/mrchypark/multilinguer">multilinguer</a>
+패키지에서 <code>install_jdk()</code> 함수를 제공합니다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;multilinguer&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>multilinguer<span class="sc">::</span><span class="fu">install_jdk</span>()</span></code></pre></div>
 <h2 id="업데이트-2019-08-10">업데이트 2019-08-10</h2>
-<p>Windows와 MacOS 에서 동작하는 방법을 설명하는 <a href="https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/">포스트</a>를 작성하였습니다.</p>
-<p><a href="https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/" class="uri">https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/</a></p>
+<p>Windows와 MacOS 에서 동작하는 방법을 설명하는 <a
+href="https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/">포스트</a>를
+작성하였습니다.</p>
+<p><a
+href="https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/"
+class="uri">https://mrchypark.github.io/post/correttor-r을-위해서-java를-설치해보자/</a></p>
 <h3 id="한줄요약">한줄요약</h3>
 <ol type="1">
 <li><code>installr::install.java()</code></li>
 </ol>
-<p><code>rJava</code> 패키지는 java의 풍부한 생태계를 R에서 사용하기 위해 꼭 필요한 인터페이싱 패키지입니다. 비슷한 부류로 python의 <a href="https://github.com/rstudio/reticulate">reticulate</a>, C++의 <code>Rcpp</code> 등이 있죠. 모두 각각의 언어를 설치하고 경로 설정을 해줘야 하는 단계를 가지고 있습니다. 막상 진행해보면 쉬운 일이 아닙니다. 그래서 해결책을 좀 찾아봤는데요. windows 환경에서 R에 관련된 설치와 R과 함께 많이 사용하는 외부 프로그램 설치를 함수로 제공하는 <a href="https://github.com/talgalili/installr">installr</a> 패키지를 소개하겠습니다.</p>
-<h2 id="installrinstallr"><a href="https://github.com/talgalili/installr">installr</a></h2>
-<p><a href="https://github.com/talgalili/installr">installr</a> 패키지는 R의 업데이트 함수인 <code>updateR()</code>을 제공합니다. R과 함께 사용하는 외부 프로그램 중 설치가 까다로운 <a href="https://www.imagemagick.org/script/index.php">ImageMagick</a>이나 <a href="https://miktex.org/">MikTeX</a> 같은 것도 제공합니다. 지금은 rstudio에서 함께 제공하여 문제가 없지만, 저도 pandoc과 Tex 계열을 설치할 때 도움을 받았습니다. 아무튼 <a href="https://github.com/talgalili/installr">installr</a> 패키지에서 제공하는 <code>install.java()</code>를 살펴보겠습니다.</p>
+<p><code>rJava</code> 패키지는 java의 풍부한 생태계를 R에서 사용하기
+위해 꼭 필요한 인터페이싱 패키지입니다. 비슷한 부류로 python의 <a
+href="https://github.com/rstudio/reticulate">reticulate</a>, C++의
+<code>Rcpp</code> 등이 있죠. 모두 각각의 언어를 설치하고 경로 설정을
+해줘야 하는 단계를 가지고 있습니다. 막상 진행해보면 쉬운 일이 아닙니다.
+그래서 해결책을 좀 찾아봤는데요. windows 환경에서 R에 관련된 설치와 R과
+함께 많이 사용하는 외부 프로그램 설치를 함수로 제공하는 <a
+href="https://github.com/talgalili/installr">installr</a> 패키지를
+소개하겠습니다.</p>
+<h2 id="installrinstallr"><a
+href="https://github.com/talgalili/installr">installr</a></h2>
+<p><a href="https://github.com/talgalili/installr">installr</a> 패키지는
+R의 업데이트 함수인 <code>updateR()</code>을 제공합니다. R과 함께
+사용하는 외부 프로그램 중 설치가 까다로운 <a
+href="https://www.imagemagick.org/script/index.php">ImageMagick</a>이나
+<a href="https://miktex.org/">MikTeX</a> 같은 것도 제공합니다. 지금은
+rstudio에서 함께 제공하여 문제가 없지만, 저도 pandoc과 Tex 계열을 설치할
+때 도움을 받았습니다. 아무튼 <a
+href="https://github.com/talgalili/installr">installr</a> 패키지에서
+제공하는 <code>install.java()</code>를 살펴보겠습니다.</p>
 <h2 id="install.java">install.java()</h2>
 <pre><code>Downloads and set path openjdk
 
@@ -2555,8 +2582,14 @@ Examples:
     install.java(version = 10)
     install.java(10)
     ## End(Not run)</code></pre>
-<p><code>install.java()</code>는 3개의 인자를 제공합니다. <code>version</code>,<code>page_with_download_url</code>,<code>path</code>이네요. 현재는 windows 10 64x에서 jdk9와 jdk10만 지원한답니다.</p>
-<p><code>version</code>은 jdk 버전을 의미하는 것이군요. <code>page_with_download_url</code>은 바꿀 수 있어 보이지 않네요. <a href="http://openjdk.java.net/">openjdk</a> 프로젝트의 최근 결과물인 것 같습니다. <code>path</code>는 컴퓨터의 설치 경로를 뜻합니다. 기본값이 이해하기 쉬운 곳에 있으니 저는 그냥 두겠습니다.</p>
+<p><code>install.java()</code>는 3개의 인자를 제공합니다.
+<code>version</code>,<code>page_with_download_url</code>,<code>path</code>이네요.
+현재는 windows 10 64x에서 jdk9와 jdk10만 지원한답니다.</p>
+<p><code>version</code>은 jdk 버전을 의미하는 것이군요.
+<code>page_with_download_url</code>은 바꿀 수 있어 보이지 않네요. <a
+href="http://openjdk.java.net/">openjdk</a> 프로젝트의 최근 결과물인 것
+같습니다. <code>path</code>는 컴퓨터의 설치 경로를 뜻합니다. 기본값이
+이해하기 쉬운 곳에 있으니 저는 그냥 두겠습니다.</p>
 <h2 id="따라하기">따라하기</h2>
 <p>조건을 잘 따져보겠습니다.<br />
 1. windows 10 64비트를 사용하고 있다.<br />
@@ -2566,7 +2599,9 @@ Examples:
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">install.java</span>()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rJava&quot;</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rJava)</span></code></pre></div>
-<p>실제로 잘 동작하는 것인지 결과물로 확인하고 싶으시다면 <a href="https://github.com/haven-jeon/KoNLP">KoNLP</a>를 사용해보시면 좋을 것 같습니다.</p>
+<p>실제로 잘 동작하는 것인지 결과물로 확인하고 싶으시다면 <a
+href="https://github.com/haven-jeon/KoNLP">KoNLP</a>를 사용해보시면 좋을
+것 같습니다.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;talgalili/installr&quot;</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">install.java</span>()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;KoNLP&#39;</span>)</span>
@@ -2574,8 +2609,10 @@ Examples:
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Checking user defined dictionary!</span></span></code></pre></div>
 <p>문제 없이 실행되셨나요?</p>
-<p>언제나 그렇듯, 잘못된 내용이 있거나 문제가 생기면 언제든지 알려주세요. 감사합니다.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>언제나 그렇듯, 잘못된 내용이 있거나 문제가 생기면 언제든지
+알려주세요. 감사합니다.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
