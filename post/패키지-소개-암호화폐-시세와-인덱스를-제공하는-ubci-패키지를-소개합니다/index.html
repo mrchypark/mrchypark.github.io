@@ -2597,16 +2597,16 @@ lang 인자로 언어를 변경할 수 있습니다.</p>
 <pre><code># A tibble: 1,000 × 6
    index date           open     high      low    close
    &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 UBMI  2023-01-02 3746.201 3768.646 3722.763 3758.316
- 2 UBMI  2023-01-01 3736.400 3756.854 3723.182 3747.078
- 3 UBMI  2022-12-31 3734.097 3765.242 3712.864 3737.055
- 4 UBMI  2022-12-30 3756.410 3760.983 3668.071 3733.564
- 5 UBMI  2022-12-29 3738.657 3779.808 3701.218 3757.370
- 6 UBMI  2022-12-28 3812.094 3816.850 3725.658 3738.099
- 7 UBMI  2022-12-27 3881.762 3888.066 3797.852 3811.735
- 8 UBMI  2022-12-26 3896.060 3897.372 3853.800 3879.605
- 9 UBMI  2022-12-25 3920.606 3925.019 3870.055 3894.577
-10 UBMI  2022-12-24 3913.445 3928.653 3909.744 3919.528
+ 1 UBMI  2023-01-03 3780.006 3801.682 3776.652 3792.450
+ 2 UBMI  2023-01-02 3746.201 3809.383 3722.763 3782.374
+ 3 UBMI  2023-01-01 3736.400 3756.854 3723.182 3747.078
+ 4 UBMI  2022-12-31 3734.097 3765.242 3712.864 3737.055
+ 5 UBMI  2022-12-30 3756.410 3760.983 3668.071 3733.564
+ 6 UBMI  2022-12-29 3738.657 3779.808 3701.218 3757.370
+ 7 UBMI  2022-12-28 3812.094 3816.850 3725.658 3738.099
+ 8 UBMI  2022-12-27 3881.762 3888.066 3797.852 3811.735
+ 9 UBMI  2022-12-26 3896.060 3897.372 3853.800 3879.605
+10 UBMI  2022-12-25 3920.606 3925.019 3870.055 3894.577
 # … with 990 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2615,12 +2615,12 @@ lang 인자로 언어를 변경할 수 있습니다.</p>
 <pre><code># A tibble: 6 × 6
   index date           open     high      low    close
   &lt;chr&gt; &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 UBMI  2020-04-13 1256.314 1256.314 1209.345 1240.221
-2 UBMI  2020-04-12 1255.510 1298.044 1236.319 1256.286
-3 UBMI  2020-04-11 1247.446 1268.687 1232.856 1255.778
-4 UBMI  2020-04-10 1312.912 1316.093 1217.658 1247.517
-5 UBMI  2020-04-09 1317.088 1324.012 1288.615 1312.345
-6 UBMI  2020-04-08 1280.992 1329.781 1276.020 1316.989</code></pre>
+1 UBMI  2020-04-14 1240.465 1253.084 1224.904 1240.533
+2 UBMI  2020-04-13 1256.314 1256.314 1209.345 1240.221
+3 UBMI  2020-04-12 1255.510 1298.044 1236.319 1256.286
+4 UBMI  2020-04-11 1247.446 1268.687 1232.856 1255.778
+5 UBMI  2020-04-10 1312.912 1316.093 1217.658 1247.517
+6 UBMI  2020-04-09 1317.088 1324.012 1288.615 1312.345</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_index.html'>ubci_index</a></span><span class='op'>(</span><span class='va'>loi</span><span class='op'>$</span><span class='va'>index</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
@@ -2697,16 +2697,16 @@ lang 인자로 언어를 변경할 수 있습니다.</p>
 <pre><code># A tibble: 400 × 7
    code       date           open     high      low    close    volume
    &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 UPBIT.KRW… 2023-01-02 21128000 21291000 21047000 21224000  685.2881
- 2 UPBIT.KRW… 2023-01-01 21079000 21171000 21002000 21123000 1486.468 
- 3 UPBIT.KRW… 2022-12-31 21086000 21249000 20966000 21079000 2960.900 
- 4 UPBIT.KRW… 2022-12-30 21201000 21232000 20700000 21070000 2699.072 
- 5 UPBIT.KRW… 2022-12-29 21061000 21295000 20908000 21201000 2464.458 
- 6 UPBIT.KRW… 2022-12-28 21324000 21396000 21010000 21061000 3151.281 
- 7 UPBIT.KRW… 2022-12-27 21711000 21745000 21242000 21321000 2842.525 
- 8 UPBIT.KRW… 2022-12-26 21854000 21861000 21596000 21702000 2548.578 
- 9 UPBIT.KRW… 2022-12-25 21951000 21962000 21776000 21848000 2041.541 
-10 UPBIT.KRW… 2022-12-24 21884000 21985000 21858000 21951000 1191.820 
+ 1 UPBIT.KRW… 2023-01-03 21209000 21321000 21178000 21279000  601.0564
+ 2 UPBIT.KRW… 2023-01-02 21128000 21400000 21047000 21215000 2578.845 
+ 3 UPBIT.KRW… 2023-01-01 21079000 21171000 21002000 21123000 1486.468 
+ 4 UPBIT.KRW… 2022-12-31 21086000 21249000 20966000 21079000 2960.900 
+ 5 UPBIT.KRW… 2022-12-30 21201000 21232000 20700000 21070000 2699.072 
+ 6 UPBIT.KRW… 2022-12-29 21061000 21295000 20908000 21201000 2464.458 
+ 7 UPBIT.KRW… 2022-12-28 21324000 21396000 21010000 21061000 3151.281 
+ 8 UPBIT.KRW… 2022-12-27 21711000 21745000 21242000 21321000 2842.525 
+ 9 UPBIT.KRW… 2022-12-26 21854000 21861000 21596000 21702000 2548.578 
+10 UPBIT.KRW… 2022-12-25 21951000 21962000 21776000 21848000 2041.541 
 # … with 390 more rows</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, from<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2715,12 +2715,12 @@ lang 인자로 언어를 변경할 수 있습니다.</p>
 <pre><code># A tibble: 6 × 7
   code        date           open     high      low    close    volume
   &lt;chr&gt;       &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-1 UPBIT.KRW-… 2021-12-04 68068000 68191000 56000000 62206000 28348.96 
-2 UPBIT.KRW-… 2021-12-03 70563000 71189000 67034000 68053000 15061.78 
-3 UPBIT.KRW-… 2021-12-02 70936000 71500000 69958000 70539000 10208.00 
-4 UPBIT.KRW-… 2021-12-01 70771000 72850000 70500000 70936000  7443.530
-5 UPBIT.KRW-… 2021-11-30 72241000 73300000 70000000 70702000  8717.766
-6 UPBIT.KRW-… 2021-11-29 72255000 73166000 71298000 72240000  5965.745</code></pre>
+1 UPBIT.KRW-… 2021-12-05 62178000 63297000 59685000 61877000 12124.69 
+2 UPBIT.KRW-… 2021-12-04 68068000 68191000 56000000 62206000 28348.96 
+3 UPBIT.KRW-… 2021-12-03 70563000 71189000 67034000 68053000 15061.78 
+4 UPBIT.KRW-… 2021-12-02 70936000 71500000 69958000 70539000 10208.00 
+5 UPBIT.KRW-… 2021-12-01 70771000 72850000 70500000 70936000  7443.530
+6 UPBIT.KRW-… 2021-11-30 72241000 73300000 70000000 70702000  8717.766</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ubci/man/ubci_get.html'>ubci_get</a></span><span class='op'>(</span><span class='va'>loc</span><span class='op'>$</span><span class='va'>code</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, to<span class='op'>=</span><span class='st'>"2018-05-15"</span><span class='op'>)</span>
 </code></pre>
